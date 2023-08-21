@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const https = require('https');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -34,8 +35,12 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
+  const statusCode = res.statusCode;
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error.ejs', {
+    message: err.message,
+    error: statusCode
+  });
 });
 
 module.exports = app;
