@@ -1,0 +1,6 @@
+body{
+    display: flex;
+    justify-content: space-between;
+    padding: 5%;
+    background-color: #33338D;
+}
