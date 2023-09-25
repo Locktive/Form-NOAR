@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index.ejs');
+  res.render('index.ejs', { title: 'Login - Bombeiros de Guaramirim' });
 });
 
 router.get('/form', function(req, res, next) {
