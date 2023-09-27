@@ -1,75 +1,94 @@
 <!-- FILEPATH: c:\Users\guilherme_cancio\Documents\GitHub\Form-NOAR\views\index.ejs -->
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< Updated upstream
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%  %></title>
+    <title><%- title %></title>
+    <style>
+        /* Add responsive styles */
+        @media only screen and (max-width: 600px) {
+            img {
+
+                position: relative;
+            }
+
+            form {
+                width: 90%;
+                height: auto;
+                position: relative;
+                margin: 0 auto;
+            }
+
+            div[style*="width: 343px;"] {
+                width: 100%;
+                left: 0;
+                margin-bottom: 10px;
+            }
+
+            div[style*="width: 265px;"] {
+                width: 100%;
+                left: 0;
+                margin-bottom: 20px;
+            }
+
+            div[style*="width: 145px;"] {
+                width: 100%;
+                left: 0;
+            }
+        }
+
+        .button {
+            text-align: center;
+            border: none;
+            color: black;
+            background: #FFF0A3;
+            font-size: 15px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+
+        .input {
+            background-color: #E1E1E1;
+            border: solid 2px #54545430;
+            height: 25px;
+            border-radius: 100px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 20px;
+            border-radius: 5px;
+            border: solid 2px #54545430;
+            background-color: #F1F1F1;
+        }
+    </style>
 </head>
+
 <body>
     <%- include('./partials/cabecalho.ejs') %>
-    
-    <%- include('./partials/footer.ejs') %>
-</body>
-=======
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><%- title %></title>
-        <style>
-            /* Add responsive styles */
-            @media only screen and (max-width: 600px) {
-                img {
-
-                    position: relative;
-                }
-                form {
-                    width: 90%;
-                    height: auto;
-                    position: relative;
-                    margin: 0 auto;
-                }
-                div[style*="width: 343px;"] {
-                    width: 100%;
-                    left: 0;
-                    margin-bottom: 10px;
-                }
-                div[style*="width: 265px;"] {
-                    width: 100%;
-                    left: 0;
-                    margin-bottom: 20px;
-                }
-                div[style*="width: 145px;"] {
-                    width: 100%;
-                    left: 0;
-                }
-                input{
-                    background: #E1E1E1; 
-                    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25) inset; 
-                    border-radius: 100px;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <%- include('./partials/cabecalho.ejs') %>
         <div style="display: flex; flex-direction: column; align-content: center; justify-content: center;">
-        <div style="display: flex; justify-content: center; height: min-content;">
-        <img src="./images/logo_pequena.png"/>
-        </div>
-        <form action="" method="post">
-            <div style="background: #F1F1F1; box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25) inset; display: flex; justify-content: center; flex-direction: column;">
-                <div style="text-align: center; color: black; font-size: 35px; font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 700; word-wrap: break-word">Login</div>               
-                    <input placeholder="E-mail" type="email" name="email" required>
-
-                    <input placeholder="Senha" type="password" name="password" required>
-                <br>
-                    <button type="submit" style="text-align: center; border: none; color: black; background: #FFF0A3; font-size: 15px; font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 700; word-wrap: break-word">Entrar</button>
+            <div style="display: flex; justify-content: center; height: min-content;">
+                <img src="./images/logo_pequena.png" />
             </div>
-        </form>
-    </div>
+            <form action="" method="post">
+                <div class="container">
+                    <div
+                        style="text-align: center; color: black; font-size: 35px; font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 700; word-wrap: break-word">
+                        Login</div>
+                    <input class="input" placeholder="E-mail" type="email" name="email" required>
+
+                    <input class="input" placeholder="Senha" type="password" name="password" required>
+                    <br>
+                    <button class="button" type="submit">Entrar</button>
+                </div>
+            </form>
+        </div>
         <%- include('./partials/footer.ejs') %>
-    </body>
->>>>>>> Stashed changes
+</body>
+
 </html>
