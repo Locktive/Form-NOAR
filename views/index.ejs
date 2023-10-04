@@ -8,35 +8,12 @@
     <title><%- title %></title>
     <style>
         /* Add responsive styles */
-        @media only screen and (max-width: 600px) {
-            img {
 
-                position: relative;
-            }
-
-            form {
-                width: 90%;
-                height: auto;
-                position: relative;
-                margin: 0 auto;
-            }
-
-            div[style*="width: 343px;"] {
-                width: 100%;
-                left: 0;
-                margin-bottom: 10px;
-            }
-
-            div[style*="width: 265px;"] {
-                width: 100%;
-                left: 0;
-                margin-bottom: 20px;
-            }
-
-            div[style*="width: 145px;"] {
-                width: 100%;
-                left: 0;
-            }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .button {
@@ -45,49 +22,117 @@
             color: black;
             background: #FFF0A3;
             font-size: 15px;
+            padding: 5px 10px 5px 10px;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             font-weight: 700;
             word-wrap: break-word;
         }
 
         .input {
-            background-color: #E1E1E1;
-            border: solid 2px #54545430;
-            height: 25px;
+            border: solid #dddddd 3px;
+            height: 15px;
             border-radius: 100px;
         }
 
         .container {
             display: flex;
             flex-direction: column;
+            align-items: center;
             gap: 15px;
+            width: 18rem;
             padding: 20px;
-            border-radius: 5px;
-            border: solid 2px #54545430;
             background-color: #F1F1F1;
         }
+        /* input */
+        .input-group {
+            position: relative;
+            margin: 20px;
+        }
+
+        .input {
+            background-color: #F1F1F1;
+            font-size: 18px;
+            padding: 10px 10px 10px 5px;
+            display: block;
+            justify-content: center;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        label {
+            color: #999;
+            font-size: 15px;
+            font-weight: normal;
+            position: absolute;
+            pointer-events: none;
+            left: 15px;
+            top: 8px;
+            transition: 0.2s ease all;
+            -moz-transition: 0.2s ease all;
+            -webkit-transition: 0.2s ease all;
+        }
+
+        .input:focus~label,
+        .input:valid~label {
+
+            top: -10px;
+            font-size: 15px;
+            background-color: #F1F1F1;
+            color: #9c9c9c;
+        }
+
+        .bar {
+            position: relative;
+            display: block;
+            width: 100%;
+        }
+
+
+        .bar:before {
+            left: 50%;
+        }
+
+        .bar:after {
+            right: 50%;
+        }
+
+        .input:focus~.bar:before,
+        .input:focus~.bar:after {
+            width: 50%;
+        }
+
+/* input */
+
     </style>
 </head>
 
 <body>
     <%- include('./partials/cabecalho.ejs') %>
-        <div style="display: flex; flex-direction: column; align-content: center; justify-content: center;">
-            <div style="display: flex; justify-content: center; height: min-content;">
-                <img src="./images/logo_pequena.png" />
-            </div>
-            <form action="" method="post">
-                <div class="container">
-                    <div
-                        style="text-align: center; color: black; font-size: 35px; font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 700; word-wrap: break-word">
-                        Login</div>
-                    <input class="input" placeholder="E-mail" type="email" name="email" required>
-
-                    <input class="input" placeholder="Senha" type="password" name="password" required>
-                    <br>
-                    <button class="button" type="submit">Entrar</button>
-                </div>
-            </form>
+        <div>
+            <img src="./images/logo_pequena.png" />
         </div>
+        <form action="" method="post" style="text-align: center; display: flex; justify-content: center;">
+            <div class="container">
+                <div class="input-group">
+                    <input type="email" required class="input">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Username</label>
+                  </div>
+                  
+                  <div class="input-group">
+                    <input type="password" required class="input">
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Password</label>
+                  </div>
+                  <br>
+                <button class="button" type="submit">Entrar</button>
+            </div>
+        </form>
         <%- include('./partials/footer.ejs') %>
-    </body>
+</body>
+
 </html>
