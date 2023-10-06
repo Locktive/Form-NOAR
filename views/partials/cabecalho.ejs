@@ -8,12 +8,13 @@
     <style>
 
 
-        .container_cab { 
+        .container_cab {
+            z-index: 1;
             position: fixed;
             top: 0%;
             display: flex;
             justify-content: space-between;
-            width: 95%;
+            width: 100%;
             height: 35px;
             background-color: #33338D;
             padding: 10px;
@@ -27,12 +28,13 @@
         }
 
         .page_title {
-            width: 1fr;
+
             font-weight: 600;
-            font-size: 25px;
+            font-size: 2vw;
             color: white;
             text-align: center;
             justify-content: center;
+            
         }
     </style>
 </head>
@@ -42,7 +44,7 @@
         <a class="cab menu_button" href="#">
             <img src="./images/Vector.png" width="35" height="35" alt="">
         </a>
-        <p class="cab page_title">Ocorrências<!-- substituir por <%  %> --></p>
+        <p class="cab page_title">Nome da tela<!-- substituir por <%  %> --></p>
         <a class="cab logo_medicina" href="#">
             <img src="./images/logo_medicina.png" width="40" height="40" alt="">
         </a>

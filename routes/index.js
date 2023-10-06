@@ -10,4 +10,8 @@ router.get('/form', function(req, res, next) {
   res.render('formulario_principal.ejs', { title: 'Formulário - Bombeiros de Guaramirim' });
 });
 
+router.get('/cadastro', function(req, res, next) {
+  res.render('cadastro.ejs', { title: 'Cadastro - Bombeiros de Guaramirim' });
+});
+
 module.exports = router;
