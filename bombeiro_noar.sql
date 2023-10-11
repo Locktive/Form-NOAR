@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05-Out-2023 às 16:44
+-- Tempo de geração: 09-Out-2023 às 14:46
 -- Versão do servidor: 8.0.21
 -- versão do PHP: 8.1.2
 
@@ -31,6 +31,39 @@ CREATE TABLE `acompanhante` (
   `id_acompanhante` int NOT NULL,
   `nome` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `idade` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `anamnese_emergencial`
+--
+
+CREATE TABLE `anamnese_emergencial` (
+  `id_anamnese_emer` int NOT NULL,
+  `o_que_ocorreu` varchar(200) NOT NULL,
+  `quanto_tempo_ocorreu` varchar(300) DEFAULT NULL,
+  `quais_problemas` varchar(300) DEFAULT NULL,
+  `quais_medicamentos` varchar(300) DEFAULT NULL,
+  `aconteceu_outras_vezes` tinyint(1) NOT NULL,
+  `usa_medicacao` tinyint(1) NOT NULL,
+  `horario_ultima_medicacao` time DEFAULT NULL,
+  `alergias` varchar(300) DEFAULT NULL,
+  `alergico` tinyint(1) NOT NULL,
+  `ingeriu_mais_de_6hrs` tinyint(1) NOT NULL,
+  `ingeriu_que_hrs` time DEFAULT NULL,
+  `possui_problema_saude` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `avaliacao_cinematica`
+--
+
+CREATE TABLE `avaliacao_cinematica` (
+  `id_cinematica` int NOT NULL,
+  `escolhas` varchar(7) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -243,6 +276,18 @@ ALTER TABLE `acompanhante`
   ADD PRIMARY KEY (`id_acompanhante`);
 
 --
+-- Índices para tabela `anamnese_emergencial`
+--
+ALTER TABLE `anamnese_emergencial`
+  ADD PRIMARY KEY (`id_anamnese_emer`);
+
+--
+-- Índices para tabela `avaliacao_cinematica`
+--
+ALTER TABLE `avaliacao_cinematica`
+  ADD PRIMARY KEY (`id_cinematica`);
+
+--
 -- Índices para tabela `bombeiro`
 --
 ALTER TABLE `bombeiro`
@@ -337,6 +382,18 @@ ALTER TABLE `vitima_era`
 --
 ALTER TABLE `acompanhante`
   MODIFY `id_acompanhante` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `anamnese_emergencial`
+--
+ALTER TABLE `anamnese_emergencial`
+  MODIFY `id_anamnese_emer` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `avaliacao_cinematica`
+--
+ALTER TABLE `avaliacao_cinematica`
+  MODIFY `id_cinematica` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `bombeiro`
