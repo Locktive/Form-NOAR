@@ -1,16 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <div class="Logo_">
+<style>
+    /* Add responsive styles */
+    * {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        margin: 0 auto;
+    }
 
-    </div>
-    <div class="container">
-        
-    </div>
+    body {
+        display: flex;
+        min-width: 520px;
+        flex-direction: column;
+        row-gap: 20px;
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .button {
+        text-align: center;
+        border: none;
+        border-radius: 10px;
+        color: black;
+        background: #A3ADE0;
+        font-size: 15px;
+        padding: 10px 20px 10px 20px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: 700;
+        word-wrap: break-word;
+    }
+
+    .button:hover {
+        text-align: center;
+        border: none;
+        border-radius: 10px;
+        color: black;
+        background: #8e97c5;
+        font-size: 15px;
+        padding: 10px 20px 10px 20px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: 700;
+        word-wrap: break-word;
+    }
+
+    .input {
+        border: solid #dddddd 3px;
+        height: 15px;
+        border-radius: 5px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        width: 30rem;
+        height: 20rem;
+        padding: 20px;
+        background-color: #F1F1F1;
+        border-radius: 5px;
+    }
+
+    /* input */
+    .input-group {
+        position: relative;
+    }
+
+    .input {
+        background-color: #F1F1F1;
+        font-size: 18px;
+        padding: 10px 10px 10px 5px;
+        display: block;
+        justify-content: center;
+    }
+
+    .campo {
+        display: flex;
+        border: none;
+        align-items: center;
+        gap: 150px;
+        background-color: #E1E1E1;
+        font-size: 18px;
+        width: 28rem;
+        padding: 10px 15px 10px 15px;
+        color: #999;
+        margin: 0;
+        text-align: left;
+    }
+
+    .botao {
+        display: block;
+        position: relative;
+        width: 30px;
+        height: 30px;
+        background-color: #E1E1E1;
+        border: none;
+    }
+
+    .ocorrencia {
+        display: flex;
+        border: none;
+        align-items: center;
+        gap: 150px;
+        background-color: #E1E1E1;
+        font-size: 18px;
+        width: 28rem;
+        padding: 10px 15px 10px 15px;
+        color: #999;
+        margin: 0;
+        text-align: left;
+    }
+</style>
+
+<body>
+
+    <%- include('./partials/cabecalho.ejs') %>
+        <div>
+            <img src="./images/logo_pequena.png" />
+        </div>
+
+        <form action="" method="post" style="text-align: center; display: flex; justify-content: center;">
+            <div class="container">
+                
+                <div class="Title">
+                    <p class="title" style="font-weight: 700; font-size: 40px; color: black;">Ocorrência</p>
+                </div>
+
+                <a href="/cadastro" class="campo add_ocorrencia">Criar uma nova ocorrência
+                    <img src="./images/plus.png" style="width: 30px; height: 30px; position: relative;" />
+                </a>
+
+                <a href="/vitima" class="ocorrencia">Ocorrência: XXXXXXXXXXXXXX</a>
+
+            </div>
+        </form>
+        <%- include('./partials/footer.ejs') %>
 </body>
+
 </html>
