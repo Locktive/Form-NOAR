@@ -1,11 +1,495 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/floating_label.css"/>
     <title><%- title %></title>
 </head>
+
 <body>
-    
+
+    <div class="container mt-20">
+        <h1>Accordion</h1>
+
+        <div class="accordion" id="accordionExample">
+            <!-- Item 1 -->
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">
+                            TIPO DE OCORRENCIA (PRÉ-HOSPITALAR)
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                    data-parent="#accordionExample">
+                    <div class="card-body" id="conteudoItem1">
+                        <div class="btn-group">
+                            <button>Apple</button>
+                            <button>Samsung</button>
+                            <button>Sony</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+
+            </div>
+            <!-- Item 2 com conteúdo da btn-group que aparece apenas quando o acordeão é aberto -->
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            AVALIAÇÃO DO PACIENTE (Glasgow) </button>
+                    </h2>
+                </div>
+
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body" id="conteudoItem2">
+                        <div class="btn-group">
+                            <button>Apple</button>
+                            <button>Samsung</button>
+                            <button>Sony</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseThree"
+                            aria-expanded="true" aria-controls="collapseThree">
+                            SINAIS VITAIS
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseThree" class="collapse show" aria-labelledby="headingThree"
+                    data-parent="#accordionExample">
+                    <div class="card-body" id="conteudoItem3">
+                        <div class="btn-group">
+                            <button>Apple</button>
+                            <button>Samsung</button>
+                            <button>Sony</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingFour">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFour"
+                            aria-expanded="true" aria-controls="collapseFour">
+                            PROBLEMAS ENCONTRADOS SUSPEITOS </button>
+                    </h2>
+                </div>
+
+                <div id="collapseFour" class="collapse show" aria-labelledby="headingFour"
+                    data-parent="#accordionExample">
+                    <div class="card-body" id="conteudoItem4">
+                        <div class="btn-group">
+                            <button>Apple</button>
+                            <button>Samsung</button>
+                            <button>Sony</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingFive">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFive"
+                            aria-expanded="true" aria-controls="collapseFive">
+                            LOCALIZAÇÃO DOS TRAUMAS
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseFive" class="collapse show" aria-labelledby="headingFive"
+                    data-parent="#accordionExample">
+                    <div class="card-body" id="conteudoItem5">
+                        <div class="btn-group">
+                            <button>Apple</button>
+                            <button>Samsung</button>
+                            <button>Sony</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingSix">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSix"
+                            aria-expanded="true" aria-controls="collapseSix">
+                            FERIMENTOS/FRATURAS/ENTORSES
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseSix" class="collapse show" aria-labelledby="headingSix"
+                    data-parent="#accordionExample">
+                    <div class="card-body" id="conteudoItem6">
+                        <div class="btn-group">
+                            <button>Apple</button>
+                            <button>Samsung</button>
+                            <button>Sony</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingseven">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseseven"
+                            aria-expanded="true" aria-controls="collapseseven">
+                            OBJETOS RECOLHIDOS
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseseven" class="collapse show" aria-labelledby="headingseven"
+                    data-parent="#accordionExample">
+                    <div class="card-body" id="conteudoItem7">
+                        <div class="btn-group">
+                            <button>Apple</button>
+                            <button>Samsung</button>
+                            <button>Sony</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingEight">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseEight"
+                            aria-expanded="true" aria-controls="collapseEight">
+                            SINAIS E SINTOMAS
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseEight" class="collapse show" aria-labelledby="headingEight"
+                    data-parent="#accordionExample">
+                    <div class="card-body" id="conteudoItem8">
+                        <div class="btn-group">
+                            <button>Apple</button>
+                            <button>Samsung</button>
+                            <button>Sony</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingNine">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseNine"
+                            aria-expanded="true" aria-controls="collapseNine">
+                            QUEIMADURAS
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseNine" class="collapse show" aria-labelledby="headingNine"
+                    data-parent="#accordionExample">
+                    <div class="card-body" id="conteudoItem9">
+                        <div class="btn-group">
+                            <button>Apple</button>
+                            <button>Samsung</button>
+                            <button>Sony</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingTen">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTen"
+                            aria-expanded="true" aria-controls="collapseTen">
+                            FORMAS DE CONDUÇÃO
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseTen" class="collapse show" aria-labelledby="headingTen"
+                    data-parent="#accordionExample">
+                    <div class="card-body" id="conteudoItem10">
+                        <div class="btn-group">
+                            <button>Apple</button>
+                            <button>Samsung</button>
+                            <button>Sony</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingEleven">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseEleven"
+                            aria-expanded="true" aria-controls="collapseEleven">
+                            DECISÃO DE TRANSPORTE
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseEleven" class="collapse show" aria-labelledby="headingEleven"
+                    data-parent="#accordionExample">
+                    <div class="card-body" id="conteudoItem11">
+                        <div class="btn-group">
+                            <button>Apple</button>
+                            <button>Samsung</button>
+                            <button>Sony</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingTwelve">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwelve"
+                            aria-expanded="true" aria-controls="collapseTwelve">
+                            VITÍMA ERA
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseTwelve" class="collapse show" aria-labelledby="headingTwelve"
+                    data-parent="#accordionExample">
+                    <div class="card-body" id="conteudoItem12">
+                        <div class="btn-group">
+                            <button>Apple</button>
+                            <button>Samsung</button>
+                            <button>Sony</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingThirteen">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse"
+                            data-target="#collapseThirteen" aria-expanded="true" aria-controls="collapseThirteen">
+                            ANAMNESE DA EMERGÊNCIA MÉDICA
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseThirteen" class="collapse show" aria-labelledby="headingThirteen"
+                    data-parent="#accordionExample">
+                    <div class="card-body" id="conteudoItem13">
+                        <div class="btn-group">
+                            <button>Apple</button>
+                            <button>Samsung</button>
+                            <button>Sony</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingFourteen">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse"
+                            data-target="#collapseFourteen" aria-expanded="true" aria-controls="collapseFourteen">
+                            PROCEDIMENTOS EFETUADOS
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseFourteen" class="collapse show" aria-labelledby="headingFourteen"
+                    data-parent="#accordionExample">
+                    <div class="card-body" id="conteudoItem14">
+                        <div class="btn-group">
+                            <button>Apple</button>
+                            <button>Samsung</button>
+                            <button>Sony</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingFifteen">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseFifteen"
+                            aria-expanded="true" aria-controls="collapseFifteen">
+                            AVALIAÇÃO DA CINEMÁTICA
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseFifteen" class="collapse show" aria-labelledby="headingFifteen"
+                    data-parent="#accordionExample">
+                    <div class="card-body" id="conteudoItem15">
+                        <div class="btn-group">
+                            <button>Apple</button>
+                            <button>Samsung</button>
+                            <button>Sony</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingSixteen">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSixteen"
+                            aria-expanded="true" aria-controls="collapseSixteen">
+                            OBSERVAÇÕES IMPORTANTES
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseSixteen" class="collapse show" aria-labelledby="headingSixteen"
+                    data-parent="#accordionExample">
+                    <div class="card-body" id="conteudoItem16">
+                        <div class="btn-group">
+                            <button>Apple</button>
+                            <button>Samsung</button>
+                            <button>Sony</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingSeventeen">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse"
+                            data-target="#collapseSeventeen" aria-expanded="true" aria-controls="collapseSeventeen">
+                            MATERIAIS UTILIZADOS DESCARTÁVEIS
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseSeventeen" class="collapse show" aria-labelledby="headingSeventeen"
+                    data-parent="#accordionExample">
+                    <div class="card-body" id="conteudoItem17">
+                        <div class="btn-group">
+                            <button>Apple</button>
+                            <button>Samsung</button>
+                            <button>Sony</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingEighteen">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse"
+                            data-target="#collapseEighteen" aria-expanded="true" aria-controls="collapseEighteen">
+                            MATERIAIS UTILIZADOS DEIXADOS NO HOSPITAL
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseEighteen" class="collapse show" aria-labelledby="headingEighteen"
+                    data-parent="#accordionExample">
+                    <div class="card-body" id="conteudoItem18">
+                        <div class="btn-group">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingNineteen">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse"
+                            data-target="#collapseNineteen" aria-expanded="true" aria-controls="collapseNineteen">
+                            TERMO DE RECUSA DE ATENDIMENTO/TRANSPORTE
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseNineteen" class="collapse show" aria-labelledby="headingNineteen"
+                    data-parent="#accordionExample">
+                    <div class="card-body" id="conteudoItem19">
+                        <div class="btn-group">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header" id="headingTwenty">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwenty"
+                            aria-expanded="true" aria-controls="collapseTwenty">
+                            RESPONSÁVEL PELO PREENCHIMENTO
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseTwenty" class="collapse show" aria-labelledby="headingTwenty"
+                    data-parent="#accordionExample">
+                    <div class="card-body" id="conteudoItem20">
+                        <div class="btn-group">
+                            <button>Apple</button>
+                            <button>Samsung</button>
+                            <button>Sony</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Adicione mais itens de acordeão aqui se necessário -->
+
+        </div>
+    </div>
+
+    <style>
+        .accordion+.accordion {
+            margin-top: 20px;
+        }
+
+        .card-header {}
+
+        .btn-group button {
+            background-color: #04AA6D;
+            border: 1px solid green;
+            color: white;
+            padding: 10px 24px;
+            cursor: pointer;
+            float: left;
+        }
+
+        .btn-group button:not(:last-child) {
+            border-right: none;
+        }
+
+        .btn-group:after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .btn-group button:hover {
+            background-color: #3e8e41;
+        }
+    </style>
 </body>
+
 </html>

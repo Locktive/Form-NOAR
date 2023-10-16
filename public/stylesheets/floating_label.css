@@ -1,0 +1,133 @@
+label {
+    color: #999;
+    font-size: 15px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    padding: 5px;
+    left: 10px;
+    top: 5px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+.did-floating-label-content {
+    position: relative;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.did-floating-label {
+    height: 10px;
+    font-size: 15px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 10px;
+    top: 15px;
+    background-color: #F1F1F1;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+.did-floating-input,
+.did-floating-select {
+    position: relative;
+    top: 8px;
+    width: 15rem;
+    display: block;
+    font-size: 15px;
+    padding: 10px 10px 10px 5px;
+    background-color: #F1F1F1;
+    color: #323840;
+    border: solid #dddddd 3px;
+    border-radius: 5px;
+
+
+    &:focus {
+        outline: none;
+
+        ~.did-floating-label {
+            top: -5px;
+            
+        }
+    }
+}
+
+select.did-floating-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+select.did-floating-select::-ms-expand {
+    display: none;
+}
+
+.did-floating-input:not(:placeholder-shown)~.did-floating-label {
+    top: -5px;
+    font-size: 15px;
+}
+
+.did-floating-select:not([value=""]):valid~.did-floating-label {
+    top: -5px;
+    font-size: 15px;
+}
+
+.did-floating-select[value=""]:focus~.did-floating-label {
+    top: -5px;
+    font-size: 15px;
+}
+
+.did-floating-select:not([multiple]):not([size]) {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='6' viewBox='0 0 8 6'%3E%3Cpath id='Path_1' data-name='Path 1' d='M371,294l4,6,4-6Z' transform='translate(-371 -294)' fill='%23003d71'/%3E%3C/svg%3E%0A");
+    background-position: right 15px top 50%;
+    background-repeat: no-repeat;
+}
+
+.did-error-input {
+
+    .did-floating-input,
+    .did-floating-select {
+        border: 2px solid #9d3b3b;
+        color: #9d3b3b;
+    }
+
+    .did-floating-label {
+        font-weight: 600;
+        color: #9d3b3b;
+    }
+
+    .did-floating-select:not([multiple]):not([size]) {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='6' viewBox='0 0 8 6'%3E%3Cpath id='Path_1' data-name='Path 1' d='M371,294l4,6,4-6Z' transform='translate(-371 -294)' fill='%239d3b3b'/%3E%3C/svg%3E%0A");
+    }
+}
+
+.input-group {
+    display: flex;
+}
+
+.input-group-append {
+    display: flex;
+    align-items: center;
+    /*   margin-left:-1px; */
+}
+
+.input-group-text {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    height: 34px;
+    color: #9c9c9c;
+    padding: 0 5px 0 20px;
+    font-size: 12px;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: 4px 0 0 4px;
+    border-right: none;
+}

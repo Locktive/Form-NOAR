@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/floating_label.css" />
     <title><%- title %></title>
     <style>
         /* Add responsive styles */
@@ -12,6 +13,7 @@
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             margin: 0 auto;
         }
+
         body {
             display: flex;
             min-width: 330px;
@@ -65,64 +67,6 @@
             background-color: #F1F1F1;
             border-radius: 5px;
         }
-
-        /* input */
-        .input-group {
-            position: relative;
-        }
-
-        .input {
-            background-color: #F1F1F1;
-            font-size: 18px;
-            padding: 10px 10px 10px 5px;
-            display: block;
-            justify-content: center;
-        }
-
-        input:focus {
-            outline: none;
-        }
-
-        label {
-            color: #999;
-            font-size: 15px;
-            font-weight: normal;
-            position: absolute;
-            pointer-events: none;
-            padding: 5px;
-            left: 10px;
-            top: 5px;
-            transition: 0.2s ease all;
-            -moz-transition: 0.2s ease all;
-            -webkit-transition: 0.2s ease all;
-        }
-
-        .input:focus~label,
-        .input:valid~label {
-
-            top: -14px;
-            font-size: 15px;
-            background-color: #F1F1F1;
-            color: #9c9c9c;
-        }
-
-        .bar {
-            position: relative;
-            display: block;
-            width: 100%;
-        }
-
-
-        .bar:before {
-            left: 50%;
-        }
-
-        .bar:after {
-            right: 50%;
-        }
-
-
-        /* input */
     </style>
 </head>
 
@@ -137,11 +81,9 @@
                 <div class="Title">
                     <p class="title" style="font-weight: 700; font-size: 40px; color: black;">Login</p>
                 </div>
-
-
-                <div class="input-group">
-                    <input type="password" required class="input">
-                    <label class="username">codigo de bombeiro</label>
+                <div class="did-floating-label-content">
+                    <input class="did-floating-input" type="text" required placeholder=" ">
+                    <label class="did-floating-label">Código de bombeiro</label>
                 </div>
 
                 <button class="button" type="submit">Entrar</button>

@@ -82,9 +82,25 @@
         justify-content: center;
     }
 
+    .linha_input-group {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+
+    .input_idade {
+        width: 4rem;
+    }
+
+    .input_fone {
+        width: 20rem;
+    }
+
     input:focus {
         outline: none;
     }
+
 
     label {
         color: #999;
@@ -124,8 +140,7 @@
         right: 50%;
     }
 
-    /* input */
-
+   
     .campo {
         display: flex;
         border: none;
@@ -174,14 +189,30 @@
             <div class="container">
 
 
-                <div class="input-group">
-                    <input type="text" required class="input input_nome">
-                    <label class="username">Nome</label>
-                </div>
+                        label {
+            color: #999;
+            font-size: 15px;
+            font-weight: normal;
+            position: absolute;
+            pointer-events: none;
+            padding: 5px;
+            left: 10px;
+            top: 5px;
+            transition: 0.2s ease all;
+            -moz-transition: 0.2s ease all;
+            -webkit-transition: 0.2s ease all;
+        }
 
-                <div class="input-group">
-                    <input type="text" required class="input input_idade">
-                    <label class="password">idade</label>
+                <div class="linha_input-group">
+                    <div class="input-group">
+                        <input type="text" class="input input_idade">
+                        <label class="password">idade</label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" aria-required="true" class="input input_fone">
+                        <label class="username">Numero</label>
+                    </div>
                 </div>
 
             </div>
