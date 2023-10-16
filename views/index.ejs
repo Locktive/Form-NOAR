@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
     <title><%- title %></title>
     <style>
         /* Add responsive styles */
@@ -131,7 +132,7 @@
         <div>
             <img src="./images/logo_pequena.png" />
         </div>
-        <form action="" method="post" style="text-align: center; display: flex; justify-content: center;">
+        <form action="/login" method="post" style="text-align: center; display: flex; justify-content: center;">
             <div class="container">
 
                 <div class="Title">
@@ -140,14 +141,34 @@
 
 
                 <div class="input-group">
-                    <input type="password" required class="input">
-                    <label class="username">codigo de bombeiro</label>
+                    <input id="input" name="input" pattern="[0-9]{0,10}" type="text" required class="input">
+                    <label class="username">Codigo de bombeiro</label>
+                </div>
+
+                <div class="input-group">
+                    <input id="Senha" name="Senha" type="password" required class="input">
+                    <label class="username">Senha</label>
                 </div>
 
                 <button class="button" type="submit">Entrar</button>
             </div>
         </form>
+        <% if (typeof errorMessage !=='undefined' ) { %>
+            <p class="wrongpass">
+                <%= errorMessage %>
+            </p>
+            <% } %>
         <%- include('./partials/footer.ejs') %>
+        <script>
+            $(document).ready(function() {
+                $("#input").inputmask({
+    mask: '9999999999',
+    placeholder: '',
+    showMaskOnHover: false,
+    showMaskOnFocus: false
+  });
+});
+        </script>
 </body>
 
 </html>
