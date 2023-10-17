@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/floating_label.css" />
     <title>Document</title>
 </head>
 <style>
@@ -51,9 +52,30 @@
     }
 
     .input {
+        background-color: #E1E1E1;
         border: solid #dddddd 3px;
-        height: 15px;
+        height: 2rem;
+        width: 2rem;
         border-radius: 5px;
+    }
+
+    .linha_input-group {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .input_idade {
+        width: 3.5rem;
+        text-align: center;
+    }
+
+    .input_nome {
+        width: 22rem;
+    }
+
+    .input_numero {
+        width: 15rem;
     }
 
     .container {
@@ -61,86 +83,13 @@
         flex-direction: column;
         align-items: center;
         gap: 30px;
-        width: 30rem;
+        width: 25rem;
         height: 20rem;
         padding: 20px;
         background-color: #F1F1F1;
         border-radius: 5px;
     }
 
-    /* input */
-    .input-group {
-        position: relative;
-    }
-
-    .input {
-        background-color: #F1F1F1;
-        font-size: 18px;
-        width: 28rem;
-        padding: 10px 10px 10px 5px;
-        display: block;
-        justify-content: center;
-    }
-
-    .linha_input-group {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-        gap: 2rem;
-    }
-
-    .input_idade {
-        width: 4rem;
-    }
-
-    .input_fone {
-        width: 20rem;
-    }
-
-    input:focus {
-        outline: none;
-    }
-
-
-    label {
-        color: #999;
-        font-size: 15px;
-        font-weight: normal;
-        position: absolute;
-        pointer-events: none;
-        padding: 5px;
-        left: 10px;
-        top: 5px;
-        transition: 0.2s ease all;
-        -moz-transition: 0.2s ease all;
-        -webkit-transition: 0.2s ease all;
-    }
-
-    .input:focus~label,
-    .input:valid~label {
-
-        top: -14px;
-        font-size: 15px;
-        background-color: #F1F1F1;
-        color: #9c9c9c;
-    }
-
-    .bar {
-        position: relative;
-        display: block;
-        width: 100%;
-    }
-
-
-    .bar:before {
-        left: 50%;
-    }
-
-    .bar:after {
-        right: 50%;
-    }
-
-   
     .campo {
         display: flex;
         border: none;
@@ -177,6 +126,20 @@
         margin: 0;
         text-align: left;
     }
+
+    label {
+        color: #999;
+        font-size: 15px;
+        font-weight: normal;
+        position: absolute;
+        pointer-events: none;
+        padding: 5px;
+        left: 10px;
+        top: 5px;
+        transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all;
+    }
 </style>
 
 <body>
@@ -188,25 +151,16 @@
         <form action="" method="post" style="text-align: center; display: flex; justify-content: center;">
             <div class="container">
 
-
-                        label {
-            color: #999;
-            font-size: 15px;
-            font-weight: normal;
-            position: absolute;
-            pointer-events: none;
-            padding: 5px;
-            left: 10px;
-            top: 5px;
-            transition: 0.2s ease all;
-            -moz-transition: 0.2s ease all;
-            -webkit-transition: 0.2s ease all;
-        }
+                <div class="did-floating-label-content">
+                    <input class="did-floating-input input_nome" type="text" placeholder=" ">
+                    <label class="did-floating-label">Nome</label>
+                </div>
 
                 <div class="linha_input-group">
-                    <div class="input-group">
-                        <input type="text" class="input input_idade">
-                        <label class="password">idade</label>
+
+                    <div class="did-floating-label-content">
+                        <input class="did-floating-input input_idade" type="text" placeholder=" ">
+                        <label class="did-floating-label">Idade</label>
                     </div>
 
                     <div class="input-group">
