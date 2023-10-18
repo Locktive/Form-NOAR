@@ -82,8 +82,13 @@
                     <p class="title" style="font-weight: 700; font-size: 40px; color: black;">Login</p>
                 </div>
                 <div class="did-floating-label-content">
-                    <input class="did-floating-input" type="text" required placeholder=" ">
+                    <input class="did-floating-input" type="text" id="input" required placeholder=" ">
                     <label class="did-floating-label">Código de bombeiro</label>
+                </div>
+
+                <div class="did-floating-label-content">
+                    <input class="did-floating-input" type="password" id="Senha" required placeholder=" ">
+                    <label class="did-floating-label">Senha</label>
                 </div>
 
                 <button class="button" type="submit">Entrar</button>
@@ -94,17 +99,7 @@
                 <%= errorMessage %>
             </p>
             <% } %>
-        <%- include('./partials/footer.ejs') %>
-        <script>
-            $(document).ready(function() {
-                $("#input").inputmask({
-    mask: '9999999999',
-    placeholder: '',
-    showMaskOnHover: false,
-    showMaskOnFocus: false
-  });
-});
-        </script>
+                <%- include('./partials/footer.ejs') %>
 </body>
 
 </html>

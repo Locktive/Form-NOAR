@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/floating_label.css" />
     <title><%- title %></title>
     <style>
         /* Add responsive styles */
@@ -137,24 +138,25 @@
                 <div class="Title">
                     <p class="title" style="font-weight: 700; font-size: 40px; color: black;">Cadastro</p>
                 </div>
-                <div class="input-group">
-                    <input type="text" required class="input">
-                    <label class="username">Nome</label>
+
+                <div class="did-floating-label-content">
+                    <input class="did-floating-input" type="text" id="input" required placeholder=" ">
+                    <label class="did-floating-label">Nome</label>
                 </div>
 
-                <div class="input-group">
-                    <input type="text" required class="input">
-                    <label class="password">Email</label>
+                <div class="did-floating-label-content">
+                    <input class="did-floating-input" type="text" id="input" required placeholder=" ">
+                    <label class="did-floating-label">Email</label>
                 </div>
 
-                <div class="input-group">
-                    <input type="password" required class="input">
-                    <label class="username">Senha</label>
+                <div class="did-floating-label-content">
+                    <input class="did-floating-input" type="Password" id="Senha" required placeholder=" ">
+                    <label class="did-floating-label">Senha</label>
                 </div>
 
-                <div class="input-group">
-                    <input type="text" required class="input">
-                    <label class="username">Código de bombeiro</label>
+                <div class="did-floating-label-content">
+                    <input class="did-floating-input" type="text" id="input" required placeholder=" ">
+                    <label class="did-floating-label">Código de bombeiro</label>
                 </div>
 
                 <button class="button" type="submit">Cadastrar</button>
