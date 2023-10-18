@@ -65,4 +65,8 @@ router.get('/vitima', function(req, res, next) {
   res.render('vitima.ejs', { title: 'Vítima - Bombeiros de Guaramirim' });
 });
 
+router.get('/formulario', function(req, res, next) {
+  res.render('formulario_principal.ejs', { title: 'Formulário - Bombeiros de Guaramirim' });
+});
+
 module.exports = router;
