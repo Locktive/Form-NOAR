@@ -22,7 +22,7 @@ label {
 }
 
 .did-floating-label {
-    height: 10px;
+    height: 30px;
     font-size: 15px;
     font-weight: normal;
     position: absolute;
@@ -75,11 +75,13 @@ select.did-floating-select::-ms-expand {
 }
 
 .did-floating-select:not([value=""]):valid~.did-floating-label {
+
     top: -5px;
     font-size: 15px;
 }
 
 .did-floating-select[value=""]:focus~.did-floating-label {
+
     top: -5px;
     font-size: 15px;
 }

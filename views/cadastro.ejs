@@ -5,25 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./stylesheets/floating_label.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/margin.css" />
     <title><%- title %></title>
     <style>
         /* Add responsive styles */
-        * {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            margin: 0 auto;
-        }
-        body {
-            display: flex;
-            min-width: 330px;
-            flex-direction: column;
-            row-gap: 20px;
-            margin-top: 5rem;
-            margin-bottom: 5rem;
-            justify-content: center;
-            align-items: center;
-        }
 
-        .button {
+
+        .button_cadastro {
             text-align: center;
             border: none;
             border-radius: 10px;
@@ -36,7 +24,7 @@
             word-wrap: break-word;
         }
 
-        .button:hover {
+        .button_cadastro:hover {
             text-align: center;
             border: none;
             border-radius: 10px;
@@ -55,7 +43,7 @@
             border-radius: 5px;
         }
 
-        .container {
+        .container_cadastro {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -132,7 +120,7 @@
             <img src="./images/logo_pequena.png" />
         </div>
         <form action="" method="post" style="text-align: center; display: flex; justify-content: center;">
-            <div class="container">
+            <div class="container_cadastro">
 
 
                 <div class="Title">
@@ -159,7 +147,7 @@
                     <label class="did-floating-label">Código de bombeiro</label>
                 </div>
 
-                <button class="button" type="submit">Cadastrar</button>
+                <button class="button_cadastro" type="submit">Cadastrar</button>
             </div>
         </form>
         <%- include('./partials/footer.ejs') %>
