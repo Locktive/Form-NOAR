@@ -75,7 +75,7 @@
         <div>
             <img src="./images/logo_pequena.png" />
         </div>
-        <form action="" method="post" style="text-align: center; display: flex; justify-content: center;">
+        <form action="/login" method="post" style="text-align: center; display: flex; justify-content: center;">
             <div class="container">
 
                 <div class="Title">
@@ -89,7 +89,22 @@
                 <button class="button" type="submit">Entrar</button>
             </div>
         </form>
+        <% if (typeof errorMessage !=='undefined' ) { %>
+            <p class="wrongpass">
+                <%= errorMessage %>
+            </p>
+            <% } %>
         <%- include('./partials/footer.ejs') %>
+        <script>
+            $(document).ready(function() {
+                $("#input").inputmask({
+    mask: '9999999999',
+    placeholder: '',
+    showMaskOnHover: false,
+    showMaskOnFocus: false
+  });
+});
+        </script>
 </body>
 
 </html>

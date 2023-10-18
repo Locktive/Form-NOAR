@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 09-Out-2023 às 14:46
+-- Tempo de geração: 16-Out-2023 às 14:40
 -- Versão do servidor: 8.0.21
 -- versão do PHP: 8.1.2
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `bombeiro_noar`
+-- Banco de dados: `noar_bombeiro`
 --
 
 -- --------------------------------------------------------
@@ -76,8 +76,17 @@ CREATE TABLE `bombeiro` (
   `id_bombeiro` int NOT NULL,
   `Nome` varchar(80) NOT NULL,
   `Data_inicio` date NOT NULL,
-  `Operante` tinyint(1) NOT NULL
+  `Operante` tinyint(1) NOT NULL,
+  `codigo` varchar(10) NOT NULL,
+  `senha` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Extraindo dados da tabela `bombeiro`
+--
+
+INSERT INTO `bombeiro` (`id_bombeiro`, `Nome`, `Data_inicio`, `Operante`, `codigo`, `senha`) VALUES
+(1, 'adm_teste', '2023-10-16', 1, '0000000001', 'senha');
 
 -- --------------------------------------------------------
 
@@ -399,7 +408,7 @@ ALTER TABLE `avaliacao_cinematica`
 -- AUTO_INCREMENT de tabela `bombeiro`
 --
 ALTER TABLE `bombeiro`
-  MODIFY `id_bombeiro` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_bombeiro` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `decisao_transporte`
