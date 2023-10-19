@@ -17,7 +17,9 @@
             margin-top: 20px;
         }
 
-        .card-header {}
+        .card-header {
+            background-color: FFF0A3;
+        }
 
         .btn-group button {
             background-color: #04AA6D;
@@ -46,17 +48,16 @@
 
 <body class="body">
     <%- include('./partials/cabecalho.ejs') %>
-        <div class="container mt-20">
-            <h1>Accordion</h1>
-
-            <div class="accordion" id="accordionExample">
+        <div class="container mt-20">   
+            <div class="accordion" id="accordionExample" style="display: flex; flex-direction: column; margin-bottom: 20px;">
                 <!-- Item 1 -->
-                <div class="card">
-                    <div class="card-header" id="headingOne">
+                <!-- container dentro do acordeão -->
+                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
+                    <div class="card-header" id="headingOne" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-                                aria-expanded="true" aria-controls="collapseOne">
-                                TIPO DE OCORRENCIA (PRÉ-HOSPITALAR)
+                                 aria-expanded="true" aria-controls="collapseOne">
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">TIPO DE OCORRENCIA (PRÉ-HOSPITALAR)</p>
                             </button>
                         </h2>
                     </div>
@@ -64,10 +65,15 @@
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem1">
-                            <div class="btn-group">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
+                                <button>Apple</button>
+                                <button>Samsung</button>
+                                <button>Sony</button>
+                                <button>Apple</button>
+                                <button>Samsung</button>
                             </div>
                         </div>
                     </div>
@@ -76,12 +82,13 @@
 
                 </div>
                 <!-- Item 2 com conteúdo da btn-group que aparece apenas quando o acordeão é aberto -->
-                <div class="card">
-                    <div class="card-header" id="headingTwo">
+                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
+                    <div class="card-header" id="headingTwo" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
                                 data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                AVALIAÇÃO DO PACIENTE (Glasgow) </button>
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">AVALIAÇÃO DO PACIENTE (Glasgow)</p>
+                             </button>
                         </h2>
                     </div>
 
@@ -98,12 +105,12 @@
                 <div>
 
                 </div>
-                <div class="card">
-                    <div class="card-header" id="headingThree">
+                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
+                    <div class="card-header" id="headingThree" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                                SINAIS VITAIS
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">SINAIS VITAIS</p>
                             </button>
                         </h2>
                     </div>
@@ -122,12 +129,13 @@
                 <div>
 
                 </div>
-                <div class="card">
-                    <div class="card-header" id="headingFour">
+                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
+                    <div class="card-header" id="headingFour" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                                PROBLEMAS ENCONTRADOS SUSPEITOS </button>
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">PROBLEMAS ENCONTRADOS SUSPEITOS</p> 
+                            </button>
                         </h2>
                     </div>
 
@@ -145,12 +153,12 @@
                 <div>
 
                 </div>
-                <div class="card">
-                    <div class="card-header" id="headingFive">
+                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
+                    <div class="card-header" id="headingFive" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
-                                LOCALIZAÇÃO DOS TRAUMAS
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">LOCALIZAÇÃO DOS TRAUMAS</p>
                             </button>
                         </h2>
                     </div>
@@ -167,12 +175,12 @@
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-header" id="headingSix">
+                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
+                    <div class="card-header" id="headingSix" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSix"
                                 aria-expanded="true" aria-controls="collapseSix">
-                                FERIMENTOS/FRATURAS/ENTORSES
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">FERIMENTOS/FRATURAS/ENTORSES</p>
                             </button>
                         </h2>
                     </div>
@@ -189,12 +197,12 @@
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-header" id="headingseven">
+                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
+                    <div class="card-header" id="headingseven" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseseven" aria-expanded="true" aria-controls="collapseseven">
-                                OBJETOS RECOLHIDOS
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">OBJETOS RECOLHIDOS</p>
                             </button>
                         </h2>
                     </div>
@@ -211,12 +219,12 @@
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-header" id="headingEight">
+                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
+                    <div class="card-header" id="headingEight" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
-                                SINAIS E SINTOMAS
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">SINAIS E SINTOMAS</p>
                             </button>
                         </h2>
                     </div>
@@ -233,12 +241,12 @@
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-header" id="headingNine">
+                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
+                    <div class="card-header" id="headingNine" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
-                                QUEIMADURAS
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">QUEIMADURAS</p>
                             </button>
                         </h2>
                     </div>
@@ -255,12 +263,12 @@
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-header" id="headingTen">
+                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
+                    <div class="card-header" id="headingTen" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTen"
                                 aria-expanded="true" aria-controls="collapseTen">
-                                FORMAS DE CONDUÇÃO
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">FORMAS DE CONDUÇÃO</p>
                             </button>
                         </h2>
                     </div>
@@ -277,12 +285,12 @@
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-header" id="headingEleven">
+                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
+                    <div class="card-header" id="headingEleven" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseEleven" aria-expanded="true" aria-controls="collapseEleven">
-                                DECISÃO DE TRANSPORTE
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">DECISÃO DE TRANSPORTE</p>
                             </button>
                         </h2>
                     </div>
@@ -299,12 +307,12 @@
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-header" id="headingTwelve">
+                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
+                    <div class="card-header" id="headingTwelve" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseTwelve" aria-expanded="true" aria-controls="collapseTwelve">
-                                VITÍMA ERA
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">VITÍMA ERA</p>
                             </button>
                         </h2>
                     </div>
@@ -321,12 +329,12 @@
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-header" id="headingThirteen">
+                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
+                    <div class="card-header" id="headingThirteen" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseThirteen" aria-expanded="true" aria-controls="collapseThirteen">
-                                ANAMNESE DA EMERGÊNCIA MÉDICA
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">ANAMNESE DA EMERGÊNCIA MÉDICA</p>
                             </button>
                         </h2>
                     </div>
@@ -343,12 +351,12 @@
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-header" id="headingFourteen">
+                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
+                    <div class="card-header" id="headingFourteen" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseFourteen" aria-expanded="true" aria-controls="collapseFourteen">
-                                PROCEDIMENTOS EFETUADOS
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">PROCEDIMENTOS EFETUADOS</p>
                             </button>
                         </h2>
                     </div>
@@ -365,12 +373,12 @@
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-header" id="headingFifteen">
+                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
+                    <div class="card-header" id="headingFifteen" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseFifteen" aria-expanded="true" aria-controls="collapseFifteen">
-                                AVALIAÇÃO DA CINEMÁTICA
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">AVALIAÇÃO DA CINEMÁTICA</p>
                             </button>
                         </h2>
                     </div>
@@ -387,12 +395,12 @@
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-header" id="headingSixteen">
+                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
+                    <div class="card-header" id="headingSixteen" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseSixteen" aria-expanded="true" aria-controls="collapseSixteen">
-                                OBSERVAÇÕES IMPORTANTES
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">OBSERVAÇÕES IMPORTANTES</p>
                             </button>
                         </h2>
                     </div>
@@ -409,12 +417,12 @@
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-header" id="headingSeventeen">
+                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
+                    <div class="card-header" id="headingSeventeen" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseSeventeen" aria-expanded="true" aria-controls="collapseSeventeen">
-                                MATERIAIS UTILIZADOS DESCARTÁVEIS
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">MATERIAIS UTILIZADOS DESCARTÁVEIS</p>
                             </button>
                         </h2>
                     </div>
@@ -431,12 +439,12 @@
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-header" id="headingEighteen">
+                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
+                    <div class="card-header" id="headingEighteen" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseEighteen" aria-expanded="true" aria-controls="collapseEighteen">
-                                MATERIAIS UTILIZADOS DEIXADOS NO HOSPITAL
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">MATERIAIS UTILIZADOS DEIXADOS NO HOSPITAL</p>
                             </button>
                         </h2>
                     </div>
@@ -453,12 +461,12 @@
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-header" id="headingNineteen">
+                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
+                    <div class="card-header" id="headingNineteen" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseNineteen" aria-expanded="true" aria-controls="collapseNineteen">
-                                TERMO DE RECUSA DE ATENDIMENTO/TRANSPORTE
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">TERMO DE RECUSA DE ATENDIMENTO/TRANSPORTE</p>
                             </button>
                         </h2>
                     </div>
@@ -475,12 +483,12 @@
                     </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-header" id="headingTwenty">
+                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
+                    <div class="card-header" id="headingTwenty" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseTwenty" aria-expanded="true" aria-controls="collapseTwenty">
-                                RESPONSÁVEL PELO PREENCHIMENTO
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">RESPONSÁVEL PELO PREENCHIMENTO</p>
                             </button>
                         </h2>
                     </div>

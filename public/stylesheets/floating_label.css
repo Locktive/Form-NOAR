@@ -1,5 +1,5 @@
-label {
-    color: #999;
+.did-floating-label {
+    color: #333333;
     font-size: 15px;
     font-weight: normal;
     position: absolute;
@@ -22,7 +22,7 @@ label {
 }
 
 .did-floating-label {
-    height: 30px;
+    height: 25px;
     font-size: 16px;
     font-weight: normal;
     position: absolute;
@@ -44,7 +44,7 @@ label {
     font-size: 15px;
     padding: 10px 10px 10px 5px;
     background-color: #F1F1F1;
-    color: #323840;
+    color: #333333;
     border: solid #dddddd 3px;
     border-radius: 5px;
 
@@ -53,8 +53,9 @@ label {
         outline: none;
 
         ~.did-floating-label {
-            top: -5px;
-            
+            top: -6px;
+            font-size: 15px;
+            color: #999;
         }
     }
 }
@@ -70,25 +71,28 @@ select.did-floating-select::-ms-expand {
 }
 
 .did-floating-input:not(:placeholder-shown)~.did-floating-label {
-    top: -5px;
+    top: -6px;
     font-size: 15px;
+    color: #999;
 }
 
 .did-floating-select:not([value=""]):valid~.did-floating-label {
-
     top: -5px;
     font-size: 15px;
+    color: #999;
 }
 
 .did-floating-select[value=""]:focus~.did-floating-label {
 
     top: -5px;
     font-size: 15px;
+    color: #999;
 }
 
 .did-floating-select:not([multiple]):not([size]) {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='6' viewBox='0 0 8 6'%3E%3Cpath id='Path_1' data-name='Path 1' d='M371,294l4,6,4-6Z' transform='translate(-371 -294)' fill='%23003d71'/%3E%3C/svg%3E%0A");
     background-position: right 15px top 50%;
+    color: #999;
     background-repeat: no-repeat;
 }
 
