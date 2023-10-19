@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 16-Out-2023 às 14:40
+-- Tempo de geração: 19-Out-2023 às 17:20
 -- Versão do servidor: 8.0.21
 -- versão do PHP: 8.1.2
 
@@ -78,15 +78,17 @@ CREATE TABLE `bombeiro` (
   `Data_inicio` date NOT NULL,
   `Operante` tinyint(1) NOT NULL,
   `codigo` varchar(10) NOT NULL,
-  `senha` varchar(100) NOT NULL
+  `senha` varchar(100) NOT NULL,
+  `adm` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `bombeiro`
 --
 
-INSERT INTO `bombeiro` (`id_bombeiro`, `Nome`, `Data_inicio`, `Operante`, `codigo`, `senha`) VALUES
-(1, 'adm_teste', '2023-10-16', 1, '0000000001', 'senha');
+INSERT INTO `bombeiro` (`id_bombeiro`, `Nome`, `Data_inicio`, `Operante`, `codigo`, `senha`, `adm`) VALUES
+(1, 'adm_teste', '2023-10-16', 1, '0000000001', 'senha', 1),
+(2, 'boneco', '2023-10-16', 1, '0000000002', 'boneco', 0);
 
 -- --------------------------------------------------------
 
@@ -219,6 +221,26 @@ CREATE TABLE `queimadura` (
   `m_sup_direito` int DEFAULT NULL,
   `m_sup_esquerdo` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `sessions`
+--
+
+CREATE TABLE `sessions` (
+  `session_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `expires` int UNSIGNED NOT NULL,
+  `data` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Extraindo dados da tabela `sessions`
+--
+
+INSERT INTO `sessions` (`session_id`, `expires`, `data`) VALUES
+('8Nv6K5B1IQjv3n37xC5hrUi1ZrDSRLRN', 1697732370, '{\"cookie\":{\"originalMaxAge\":3600000,\"expires\":\"2023-10-19T16:18:33.813Z\",\"httpOnly\":true,\"path\":\"/\"}}'),
+('CjdCRegxwT5AXNDPFCbPx_NSuD-9G5xo', 1697732299, '{\"cookie\":{\"originalMaxAge\":3600000,\"expires\":\"2023-10-19T16:18:19.053Z\",\"httpOnly\":true,\"path\":\"/\"},\"user\":{\"nome\":\"adm_teste\",\"isAdmin\":1}}');
 
 -- --------------------------------------------------------
 
@@ -359,6 +381,12 @@ ALTER TABLE `queimadura`
   ADD PRIMARY KEY (`id_queimadura`);
 
 --
+-- Índices para tabela `sessions`
+--
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`session_id`);
+
+--
 -- Índices para tabela `sinais_e_sintomas`
 --
 ALTER TABLE `sinais_e_sintomas`
@@ -408,7 +436,7 @@ ALTER TABLE `avaliacao_cinematica`
 -- AUTO_INCREMENT de tabela `bombeiro`
 --
 ALTER TABLE `bombeiro`
-  MODIFY `id_bombeiro` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_bombeiro` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `decisao_transporte`

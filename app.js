@@ -11,11 +11,25 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+var MySQLStore = require('express-mysql-session')(session);
+app.use(cookieParser());
+// conexão com o banco de dados
+var options = {
+  host: '127.0.0.1',
+  user: 'root',
+  password: 'root',
+  database: 'noar_bombeiro',
+  port: '3306'
+};
+
+var sessionStore = new MySQLStore(options);
+
 app.use(session({
   secret: 'bombeiro03249u2p54f8',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: true }
+  store: sessionStore,
+  cookie: { maxAge: 3600000 }
 }));
 
 // view engine setup
@@ -51,4 +65,5 @@ app.use(function(err, req, res, next) {
   });
 });
 
+module.exports = session;
 module.exports = app;
