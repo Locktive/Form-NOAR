@@ -17,6 +17,8 @@
     "http-errors": "~1.6.3",
     "jade": "^1.9.2",
     "morgan": "~1.9.1",
-    "mysql2": "^3.6.2"
+    "mysql2": "^3.6.2",
+    "vue": "^3.3.6",
+    "vue-body-part-selector": "^1.1.3"
   }
 }
