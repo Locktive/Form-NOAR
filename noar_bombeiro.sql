@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19-Out-2023 às 17:20
+-- Tempo de geração: 20-Out-2023 às 14:39
 -- Versão do servidor: 8.0.21
 -- versão do PHP: 8.1.2
 
@@ -58,6 +58,44 @@ CREATE TABLE `anamnese_emergencial` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `anamnese_gestacional`
+--
+
+CREATE TABLE `anamnese_gestacional` (
+  `id_anamnese_gest` int NOT NULL,
+  `periodo` varchar(80) DEFAULT NULL,
+  `pre_natal` tinyint(1) NOT NULL,
+  `medico_pre_natal` varchar(120) DEFAULT NULL,
+  `possibilidade_complicacoes` tinyint(1) NOT NULL,
+  `primeiro_filho` tinyint(1) NOT NULL,
+  `quantos_filhos` int DEFAULT NULL,
+  `inicio_contracoes` time DEFAULT NULL,
+  `duracao_contracoes` varchar(20) DEFAULT NULL,
+  `intervalo_contracoes` varchar(20) DEFAULT NULL,
+  `pressao_quadril_ou_evacuar` tinyint(1) NOT NULL,
+  `ruptura_bolsa` tinyint(1) NOT NULL,
+  `inspecao_visual` tinyint(1) NOT NULL,
+  `parto_realizado` tinyint(1) NOT NULL,
+  `hora_nascimento` time DEFAULT NULL,
+  `sexo_bebe` varchar(1) DEFAULT NULL,
+  `nome_do_bebe` varchar(80) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `ataduras`
+--
+
+CREATE TABLE `ataduras` (
+  `id_atadura` int NOT NULL,
+  `tamanho` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `qtde` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `avaliacao_cinematica`
 --
 
@@ -93,6 +131,19 @@ INSERT INTO `bombeiro` (`id_bombeiro`, `Nome`, `Data_inicio`, `Operante`, `codig
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `colar`
+--
+
+CREATE TABLE `colar` (
+  `id_colar` int NOT NULL,
+  `tamanho` varchar(5) NOT NULL,
+  `tamanho_outro` varchar(2) DEFAULT NULL,
+  `qtde` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `decisao_transporte`
 --
 
@@ -115,6 +166,64 @@ CREATE TABLE `decisao_transporte` (
 CREATE TABLE `forma_de_conducao` (
   `id_forma_conducao` int NOT NULL,
   `opcao_escolhida` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `kits`
+--
+
+CREATE TABLE `kits` (
+  `id_KITs` int NOT NULL,
+  `tamanho` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `qtde` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `materiais_deixados_hospital`
+--
+
+CREATE TABLE `materiais_deixados_hospital` (
+  `id_materiais_hospital` int NOT NULL,
+  `base_establizador` int NOT NULL,
+  `fk_colar` int NOT NULL,
+  `coxins_estabilizador` int NOT NULL,
+  `KED_adulto` tinyint(1) NOT NULL,
+  `KED_qtde` int NOT NULL,
+  `maca_rigida` int NOT NULL,
+  `TTF_adulto` tinyint(1) NOT NULL,
+  `TTF_qtde` int NOT NULL,
+  `tirante_aranha` int NOT NULL,
+  `tirante_cabeca` int NOT NULL,
+  `canula` int NOT NULL,
+  `outros` varchar(50) NOT NULL,
+  `outros_qtde` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `materiais_descartaveis`
+--
+
+CREATE TABLE `materiais_descartaveis` (
+  `id_materiais_descartaveis` int NOT NULL,
+  `fk_ataduras` int NOT NULL,
+  `cateter__tp_oculos` int NOT NULL,
+  `compressa_comum` int NOT NULL,
+  `fk_KITs` int NOT NULL,
+  `luvas_descartaveis` int NOT NULL,
+  `mascara_descartavel` int NOT NULL,
+  `manta_luminizada` int NOT NULL,
+  `pas_do_dea` int NOT NULL,
+  `sonda_de_aspiracao` int NOT NULL,
+  `soro_fisiologico` int NOT NULL,
+  `fk_tala_pap` int NOT NULL,
+  `outros` varchar(50) DEFAULT NULL,
+  `outros_qtde` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -234,14 +343,6 @@ CREATE TABLE `sessions` (
   `data` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Extraindo dados da tabela `sessions`
---
-
-INSERT INTO `sessions` (`session_id`, `expires`, `data`) VALUES
-('8Nv6K5B1IQjv3n37xC5hrUi1ZrDSRLRN', 1697732370, '{\"cookie\":{\"originalMaxAge\":3600000,\"expires\":\"2023-10-19T16:18:33.813Z\",\"httpOnly\":true,\"path\":\"/\"}}'),
-('CjdCRegxwT5AXNDPFCbPx_NSuD-9G5xo', 1697732299, '{\"cookie\":{\"originalMaxAge\":3600000,\"expires\":\"2023-10-19T16:18:19.053Z\",\"httpOnly\":true,\"path\":\"/\"},\"user\":{\"nome\":\"adm_teste\",\"isAdmin\":1}}');
-
 -- --------------------------------------------------------
 
 --
@@ -258,6 +359,18 @@ CREATE TABLE `sinais_e_sintomas` (
   `cod_edema` int NOT NULL,
   `cod_hemorragia` int NOT NULL,
   `cod_parada` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `talas_papel`
+--
+
+CREATE TABLE `talas_papel` (
+  `id_talas` int NOT NULL,
+  `tamanho` varchar(3) NOT NULL,
+  `qtde` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
@@ -313,6 +426,18 @@ ALTER TABLE `anamnese_emergencial`
   ADD PRIMARY KEY (`id_anamnese_emer`);
 
 --
+-- Índices para tabela `anamnese_gestacional`
+--
+ALTER TABLE `anamnese_gestacional`
+  ADD PRIMARY KEY (`id_anamnese_gest`);
+
+--
+-- Índices para tabela `ataduras`
+--
+ALTER TABLE `ataduras`
+  ADD PRIMARY KEY (`id_atadura`);
+
+--
 -- Índices para tabela `avaliacao_cinematica`
 --
 ALTER TABLE `avaliacao_cinematica`
@@ -325,6 +450,12 @@ ALTER TABLE `bombeiro`
   ADD PRIMARY KEY (`id_bombeiro`);
 
 --
+-- Índices para tabela `colar`
+--
+ALTER TABLE `colar`
+  ADD PRIMARY KEY (`id_colar`);
+
+--
 -- Índices para tabela `decisao_transporte`
 --
 ALTER TABLE `decisao_transporte`
@@ -335,6 +466,28 @@ ALTER TABLE `decisao_transporte`
 --
 ALTER TABLE `forma_de_conducao`
   ADD PRIMARY KEY (`id_forma_conducao`);
+
+--
+-- Índices para tabela `kits`
+--
+ALTER TABLE `kits`
+  ADD PRIMARY KEY (`id_KITs`);
+
+--
+-- Índices para tabela `materiais_deixados_hospital`
+--
+ALTER TABLE `materiais_deixados_hospital`
+  ADD PRIMARY KEY (`id_materiais_hospital`),
+  ADD KEY `fk_colar` (`fk_colar`);
+
+--
+-- Índices para tabela `materiais_descartaveis`
+--
+ALTER TABLE `materiais_descartaveis`
+  ADD PRIMARY KEY (`id_materiais_descartaveis`),
+  ADD KEY `fk_atadura` (`fk_ataduras`),
+  ADD KEY `fk_kit` (`fk_KITs`),
+  ADD KEY `fk_talas` (`fk_tala_pap`);
 
 --
 -- Índices para tabela `meios_auxiliares`
@@ -393,6 +546,12 @@ ALTER TABLE `sinais_e_sintomas`
   ADD PRIMARY KEY (`id_sinal_sintoma`);
 
 --
+-- Índices para tabela `talas_papel`
+--
+ALTER TABLE `talas_papel`
+  ADD PRIMARY KEY (`id_talas`);
+
+--
 -- Índices para tabela `teste_de_glasgow`
 --
 ALTER TABLE `teste_de_glasgow`
@@ -427,6 +586,18 @@ ALTER TABLE `anamnese_emergencial`
   MODIFY `id_anamnese_emer` int NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de tabela `anamnese_gestacional`
+--
+ALTER TABLE `anamnese_gestacional`
+  MODIFY `id_anamnese_gest` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `ataduras`
+--
+ALTER TABLE `ataduras`
+  MODIFY `id_atadura` int NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `avaliacao_cinematica`
 --
 ALTER TABLE `avaliacao_cinematica`
@@ -439,6 +610,12 @@ ALTER TABLE `bombeiro`
   MODIFY `id_bombeiro` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de tabela `colar`
+--
+ALTER TABLE `colar`
+  MODIFY `id_colar` int NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `decisao_transporte`
 --
 ALTER TABLE `decisao_transporte`
@@ -449,6 +626,24 @@ ALTER TABLE `decisao_transporte`
 --
 ALTER TABLE `forma_de_conducao`
   MODIFY `id_forma_conducao` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `kits`
+--
+ALTER TABLE `kits`
+  MODIFY `id_KITs` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `materiais_deixados_hospital`
+--
+ALTER TABLE `materiais_deixados_hospital`
+  MODIFY `id_materiais_hospital` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `materiais_descartaveis`
+--
+ALTER TABLE `materiais_descartaveis`
+  MODIFY `id_materiais_descartaveis` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `meios_auxiliares`
@@ -499,6 +694,12 @@ ALTER TABLE `sinais_e_sintomas`
   MODIFY `id_sinal_sintoma` int NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de tabela `talas_papel`
+--
+ALTER TABLE `talas_papel`
+  MODIFY `id_talas` int NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `teste_de_glasgow`
 --
 ALTER TABLE `teste_de_glasgow`
@@ -519,6 +720,20 @@ ALTER TABLE `vitima_era`
 --
 -- Restrições para despejos de tabelas
 --
+
+--
+-- Limitadores para a tabela `materiais_deixados_hospital`
+--
+ALTER TABLE `materiais_deixados_hospital`
+  ADD CONSTRAINT `fk_colar` FOREIGN KEY (`fk_colar`) REFERENCES `colar` (`id_colar`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Limitadores para a tabela `materiais_descartaveis`
+--
+ALTER TABLE `materiais_descartaveis`
+  ADD CONSTRAINT `fk_atadura` FOREIGN KEY (`fk_ataduras`) REFERENCES `ataduras` (`id_atadura`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `fk_kit` FOREIGN KEY (`fk_KITs`) REFERENCES `kits` (`id_KITs`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `fk_talas` FOREIGN KEY (`fk_tala_pap`) REFERENCES `talas_papel` (`id_talas`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Limitadores para a tabela `paciente`
