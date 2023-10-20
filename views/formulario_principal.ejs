@@ -8,11 +8,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./stylesheets/margin.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <title><%- title %></title>
     <style>
+
+        .button-row{
+            display: flex;
+            justify-content: center;
+            gap: 10rem;
+            align-items: center;
+            width: 100%;
+        }
+        .button_enviar {
+            text-align: center;
+            border: none;
+            border-radius: 10px;
+            color: black;
+            background: #46ff7d;
+            font-size: 15px;
+            padding: 10px 20px 10px 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+
+        .button_salvar {
+            text-align: center;
+            border: none;
+            border-radius: 10px;
+            color: black;
+            background: #A3ADE0;
+            font-size: 15px;
+            padding: 10px 20px 10px 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+
         .accordion+.accordion {
             margin-top: 20px;
         }
@@ -48,32 +80,33 @@
 
 <body class="body">
     <%- include('./partials/cabecalho.ejs') %>
-        <div class="container mt-20">   
-            <div class="accordion" id="accordionExample" style="display: flex; flex-direction: column; margin-bottom: 20px;">
+        <div class="container mt-20">
+            <div class="accordion" id="accordionExample"
+                style="display: flex; flex-direction: column; margin-bottom: 20px;">
                 <!-- Item 1 -->
                 <!-- container dentro do acordeão -->
-                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
-                    <div class="card-header" id="headingOne" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
+                <div class="card"
+                    style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; ">
+                    
+                    <div class="card-header" id="headingOne"
+                        style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
+                        
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-                                 aria-expanded="true" aria-controls="collapseOne" style="color: #333333; margin: 0px; text-decoration: none;">
-                                <p style="color: #333333; margin: 0px; text-decoration: none;">TIPO DE OCORRENCIA (PRÉ-HOSPITALAR)</p>
+                                aria-expanded="true" aria-controls="collapseOne"
+                                style="color: #333333; margin: 0px; text-decoration: none;">
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">TIPO DE OCORRENCIA
+                                    (PRÉ-HOSPITALAR)</p>
                             </button>
                         </h2>
+
                     </div>
 
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                         data-parent="#accordionExample">
-                        <div class="card-body" id="conteudoItem1">
-                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
-                                <button>Apple</button>
-                                <button>Samsung</button>
-                                <button>Sony</button>
-                                <button>Apple</button>
-                                <button>Samsung</button>
-                                <button>Sony</button>
-                                <button>Apple</button>
-                                <button>Samsung</button>
+                        <div class="card-body" style="margin:0px 15px; padding: 0;" id="conteudoItem1">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
+                                <%- include('./partials/tipo_de_ocorrencia.ejs') %>
                             </div>
                         </div>
                     </div>
@@ -82,19 +115,23 @@
 
                 </div>
                 <!-- Item 2 com conteúdo da btn-group que aparece apenas quando o acordeão é aberto -->
-                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
-                    <div class="card-header" id="headingTwo" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
+                <div class="card"
+                    style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
+                    <div class="card-header" id="headingTwo"
+                        style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-                                 aria-expanded="true" aria-controls="collapseOne" style="color: #333333; margin: 0px; text-decoration: none;">
-                                <p style="color: #333333; margin: 0px; text-decoration: none;">AVALIAÇÃO DO PACIENTE (Glasgow)</p>
-                             </button>
+                                aria-expanded="true" aria-controls="collapseOne"
+                                style="color: #333333; margin: 0px; text-decoration: none;">
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">AVALIAÇÃO DO PACIENTE
+                                    (Glasgow)</p>
+                            </button>
                         </h2>
                     </div>
 
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem2">
-                            <div class="btn-group">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -105,8 +142,10 @@
                 <div>
 
                 </div>
-                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
-                    <div class="card-header" id="headingThree" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
+                <div class="card"
+                    style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
+                    <div class="card-header" id="headingThree"
+                        style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
@@ -118,7 +157,7 @@
                     <div id="collapseThree" class="collapse show" aria-labelledby="headingThree"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem3">
-                            <div class="btn-group">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -129,12 +168,15 @@
                 <div>
 
                 </div>
-                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
-                    <div class="card-header" id="headingFour" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
+                <div class="card"
+                    style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
+                    <div class="card-header" id="headingFour"
+                        style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                                <p style="color: #333333; margin: 0px; text-decoration: none;">PROBLEMAS ENCONTRADOS SUSPEITOS</p> 
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">PROBLEMAS ENCONTRADOS
+                                    SUSPEITOS</p>
                             </button>
                         </h2>
                     </div>
@@ -142,7 +184,7 @@
                     <div id="collapseFour" class="collapse show" aria-labelledby="headingFour"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem4">
-                            <div class="btn-group">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -153,12 +195,15 @@
                 <div>
 
                 </div>
-                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
-                    <div class="card-header" id="headingFive" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
+                <div class="card"
+                    style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
+                    <div class="card-header" id="headingFive"
+                        style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
-                                <p style="color: #333333; margin: 0px; text-decoration: none;">LOCALIZAÇÃO DOS TRAUMAS</p>
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">LOCALIZAÇÃO DOS TRAUMAS
+                                </p>
                             </button>
                         </h2>
                     </div>
@@ -166,7 +211,7 @@
                     <div id="collapseFive" class="collapse show" aria-labelledby="headingFive"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem5">
-                            <div class="btn-group">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -175,12 +220,15 @@
                     </div>
                 </div>
 
-                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
-                    <div class="card-header" id="headingSix" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
+                <div class="card"
+                    style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
+                    <div class="card-header" id="headingSix"
+                        style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSix"
                                 aria-expanded="true" aria-controls="collapseSix">
-                                <p style="color: #333333; margin: 0px; text-decoration: none;">FERIMENTOS/FRATURAS/ENTORSES</p>
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">
+                                    FERIMENTOS/FRATURAS/ENTORSES</p>
                             </button>
                         </h2>
                     </div>
@@ -188,7 +236,7 @@
                     <div id="collapseSix" class="collapse show" aria-labelledby="headingSix"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem6">
-                            <div class="btn-group">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -197,8 +245,10 @@
                     </div>
                 </div>
 
-                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
-                    <div class="card-header" id="headingseven" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
+                <div class="card"
+                    style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
+                    <div class="card-header" id="headingseven"
+                        style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseseven" aria-expanded="true" aria-controls="collapseseven">
@@ -210,7 +260,7 @@
                     <div id="collapseseven" class="collapse show" aria-labelledby="headingseven"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem7">
-                            <div class="btn-group">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -219,8 +269,10 @@
                     </div>
                 </div>
 
-                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
-                    <div class="card-header" id="headingEight" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
+                <div class="card"
+                    style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
+                    <div class="card-header" id="headingEight"
+                        style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
@@ -232,17 +284,17 @@
                     <div id="collapseEight" class="collapse show" aria-labelledby="headingEight"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem8">
-                            <div class="btn-group">
-                                <button>Apple</button>
-                                <button>Samsung</button>
-                                <button>Sony</button>
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
+                                <%- include('./partials/sinais_e_sintomas.ejs') %>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
-                    <div class="card-header" id="headingNine" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
+                <div class="card"
+                    style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
+                    <div class="card-header" id="headingNine"
+                        style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
@@ -254,7 +306,7 @@
                     <div id="collapseNine" class="collapse show" aria-labelledby="headingNine"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem9">
-                            <div class="btn-group">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -263,8 +315,10 @@
                     </div>
                 </div>
 
-                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
-                    <div class="card-header" id="headingTen" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
+                <div class="card"
+                    style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
+                    <div class="card-header" id="headingTen"
+                        style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTen"
                                 aria-expanded="true" aria-controls="collapseTen">
@@ -276,7 +330,7 @@
                     <div id="collapseTen" class="collapse show" aria-labelledby="headingTen"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem10">
-                            <div class="btn-group">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -285,8 +339,10 @@
                     </div>
                 </div>
 
-                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
-                    <div class="card-header" id="headingEleven" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
+                <div class="card"
+                    style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
+                    <div class="card-header" id="headingEleven"
+                        style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseEleven" aria-expanded="true" aria-controls="collapseEleven">
@@ -298,7 +354,7 @@
                     <div id="collapseEleven" class="collapse show" aria-labelledby="headingEleven"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem11">
-                            <div class="btn-group">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -307,8 +363,10 @@
                     </div>
                 </div>
 
-                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
-                    <div class="card-header" id="headingTwelve" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
+                <div class="card"
+                    style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
+                    <div class="card-header" id="headingTwelve"
+                        style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseTwelve" aria-expanded="true" aria-controls="collapseTwelve">
@@ -320,7 +378,7 @@
                     <div id="collapseTwelve" class="collapse show" aria-labelledby="headingTwelve"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem12">
-                            <div class="btn-group">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -329,12 +387,15 @@
                     </div>
                 </div>
 
-                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
-                    <div class="card-header" id="headingThirteen" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
+                <div class="card"
+                    style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
+                    <div class="card-header" id="headingThirteen"
+                        style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseThirteen" aria-expanded="true" aria-controls="collapseThirteen">
-                                <p style="color: #333333; margin: 0px; text-decoration: none;">ANAMNESE DA EMERGÊNCIA MÉDICA</p>
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">ANAMNESE DA EMERGÊNCIA
+                                    MÉDICA</p>
                             </button>
                         </h2>
                     </div>
@@ -342,7 +403,7 @@
                     <div id="collapseThirteen" class="collapse show" aria-labelledby="headingThirteen"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem13">
-                            <div class="btn-group">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -351,12 +412,15 @@
                     </div>
                 </div>
 
-                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
-                    <div class="card-header" id="headingFourteen" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
+                <div class="card"
+                    style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
+                    <div class="card-header" id="headingFourteen"
+                        style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseFourteen" aria-expanded="true" aria-controls="collapseFourteen">
-                                <p style="color: #333333; margin: 0px; text-decoration: none;">PROCEDIMENTOS EFETUADOS</p>
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">PROCEDIMENTOS EFETUADOS
+                                </p>
                             </button>
                         </h2>
                     </div>
@@ -364,7 +428,7 @@
                     <div id="collapseFourteen" class="collapse show" aria-labelledby="headingFourteen"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem14">
-                            <div class="btn-group">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -373,12 +437,15 @@
                     </div>
                 </div>
 
-                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
-                    <div class="card-header" id="headingFifteen" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
+                <div class="card"
+                    style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
+                    <div class="card-header" id="headingFifteen"
+                        style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseFifteen" aria-expanded="true" aria-controls="collapseFifteen">
-                                <p style="color: #333333; margin: 0px; text-decoration: none;">AVALIAÇÃO DA CINEMÁTICA</p>
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">AVALIAÇÃO DA CINEMÁTICA
+                                </p>
                             </button>
                         </h2>
                     </div>
@@ -386,7 +453,7 @@
                     <div id="collapseFifteen" class="collapse show" aria-labelledby="headingFifteen"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem15">
-                            <div class="btn-group">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -395,12 +462,15 @@
                     </div>
                 </div>
 
-                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
-                    <div class="card-header" id="headingSixteen" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
+                <div class="card"
+                    style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
+                    <div class="card-header" id="headingSixteen"
+                        style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseSixteen" aria-expanded="true" aria-controls="collapseSixteen">
-                                <p style="color: #333333; margin: 0px; text-decoration: none;">OBSERVAÇÕES IMPORTANTES</p>
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">OBSERVAÇÕES IMPORTANTES
+                                </p>
                             </button>
                         </h2>
                     </div>
@@ -408,7 +478,7 @@
                     <div id="collapseSixteen" class="collapse show" aria-labelledby="headingSixteen"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem16">
-                            <div class="btn-group">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -417,12 +487,15 @@
                     </div>
                 </div>
 
-                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
-                    <div class="card-header" id="headingSeventeen" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
+                <div class="card"
+                    style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
+                    <div class="card-header" id="headingSeventeen"
+                        style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseSeventeen" aria-expanded="true" aria-controls="collapseSeventeen">
-                                <p style="color: #333333; margin: 0px; text-decoration: none;">MATERIAIS UTILIZADOS DESCARTÁVEIS</p>
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">MATERIAIS UTILIZADOS
+                                    DESCARTÁVEIS</p>
                             </button>
                         </h2>
                     </div>
@@ -430,7 +503,7 @@
                     <div id="collapseSeventeen" class="collapse show" aria-labelledby="headingSeventeen"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem17">
-                            <div class="btn-group">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -439,12 +512,15 @@
                     </div>
                 </div>
 
-                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
-                    <div class="card-header" id="headingEighteen" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
+                <div class="card"
+                    style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
+                    <div class="card-header" id="headingEighteen"
+                        style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseEighteen" aria-expanded="true" aria-controls="collapseEighteen">
-                                <p style="color: #333333; margin: 0px; text-decoration: none;">MATERIAIS UTILIZADOS DEIXADOS NO HOSPITAL</p>
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">MATERIAIS UTILIZADOS
+                                    DEIXADOS NO HOSPITAL</p>
                             </button>
                         </h2>
                     </div>
@@ -452,7 +528,7 @@
                     <div id="collapseEighteen" class="collapse show" aria-labelledby="headingEighteen"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem18">
-                            <div class="btn-group">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -461,12 +537,15 @@
                     </div>
                 </div>
 
-                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
-                    <div class="card-header" id="headingNineteen" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
+                <div class="card"
+                    style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
+                    <div class="card-header" id="headingNineteen"
+                        style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseNineteen" aria-expanded="true" aria-controls="collapseNineteen">
-                                <p style="color: #333333; margin: 0px; text-decoration: none;">TERMO DE RECUSA DE ATENDIMENTO/TRANSPORTE</p>
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">TERMO DE RECUSA DE
+                                    ATENDIMENTO/TRANSPORTE</p>
                             </button>
                         </h2>
                     </div>
@@ -474,7 +553,7 @@
                     <div id="collapseNineteen" class="collapse show" aria-labelledby="headingNineteen"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem19">
-                            <div class="btn-group">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -483,12 +562,15 @@
                     </div>
                 </div>
 
-                <div class="card" style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; padding: 20px;">
-                    <div class="card-header" id="headingTwenty" style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
+                <div class="card"
+                    style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
+                    <div class="card-header" id="headingTwenty"
+                        style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
                             <button class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseTwenty" aria-expanded="true" aria-controls="collapseTwenty">
-                                <p style="color: #333333; margin: 0px; text-decoration: none;">RESPONSÁVEL PELO PREENCHIMENTO</p>
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">RESPONSÁVEL PELO
+                                    PREENCHIMENTO</p>
                             </button>
                         </h2>
                     </div>
@@ -496,7 +578,7 @@
                     <div id="collapseTwenty" class="collapse show" aria-labelledby="headingTwenty"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem20">
-                            <div class="btn-group">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -508,9 +590,19 @@
                 <!-- Adicione mais itens de acordeão aqui se necessário -->
 
             </div>
+
+            <div class="button-row">
+                <button class="button_salvar" type="submit">Salvar</button>
+                <button class="button_enviar" type="submit">Enviar</button>
+            </div>
+
         </div>
 
         <%- include('./partials/footer.ejs') %>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

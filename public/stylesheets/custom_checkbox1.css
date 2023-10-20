@@ -1,16 +1,20 @@
+  
+  
+  .custom_checkbox{
+    margin: 0;
+    display: flex;
+  }
+  
   input[type="radio"] {
-      /* Add if not using autoprefixer */
       -webkit-appearance: none;
       appearance: none;
-      /* For iOS < 15 to remove gradient background */
-      background-color: #F1F1F1;
-      /* Not removed via appearance */
+      background-color: rgba(0, 0, 0, 0);
       margin: 0;
   }
 
   input[type="radio"] {
       appearance: none;
-      background-color: #F1F1F1;
+      background-color: rgba(0, 0, 0, 0);
       margin: 0;
       font: inherit;
       color: currentColor;
@@ -23,7 +27,6 @@
 
 
   input[type="radio"] {
-      /* ...existing styles */
       display: grid;
       place-content: center;
   }

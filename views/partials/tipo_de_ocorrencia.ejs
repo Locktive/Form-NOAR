@@ -1,11 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/custom_checkbox1.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/custom_checkbox2.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/floating_label.css" />
     <title>Document</title>
+    <style>
+        .checkbox_row {
+            display: flex;
+            height: 50px;
+            flex-direction: row;
+            justify-content: space-between;
+            background-color: #E1E1E1;
+            padding: 10px;
+            font-weight: 600;
+
+        }
+
+        .textarea_row {
+            display: flex;
+            width: 100%;
+
+            flex-direction: row;
+            justify-content: space-between;
+            background-color: #E1E1E1;
+            padding: 10px;
+            font-weight: 600;
+
+        }
+
+        .checkbox_text {
+            display: flex;
+            align-items: center;
+            margin: 0;
+        }
+    </style>
+
+
 </head>
+
 <body>
-    
+    <!-- Criação de uma lista de checkboxes -->
+    <div class="checkbox_row">
+        <p class="checkbox_text">CAUSADO POR ANIMAIS</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">COM MEIO DE TRANSPORTE</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">DESMORONAMENTO / DESLIZAMENTO</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">EMERGÊNCIA MÉDICA</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">QUEDA DE ALTURA 2M</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">TENTATIVA DE SUICÍDIO</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">QUEDA PRÓPRIA ALTURA</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">AFOGAMENTO</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">AGRESSÃO</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">ATROPELAMENTO</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">CHOQUE ELÉTRICO</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">DESABAMENTO</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">DOMÉSTICO</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">ESPORTIVO</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">INTOXICAÇÃO</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">QUEDA DE BICICLETA</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">QUEDA DE MOTO</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">QUEDA NÍVEL &lt; 2M </p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">TRABALHO</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">TRANSFERÊNCIA</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio" />
+        </label>
+    </div>
+
+    <!-- Criação de um campo de texto com rótulo flutuante -->
+    <div class="textarea_row">
+        <div class="did-floating-label-content textarea">
+            <textarea class="did-floating-input row_textarea" placeholder=""></textarea>
+            <label class="did-floating-label label_textarea">OUTRO</label>
+        </div>
+    </div>
+
 </body>
+
 </html>
