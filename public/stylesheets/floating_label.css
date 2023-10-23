@@ -12,6 +12,7 @@
     -webkit-transition: 0.2s ease all;
 }
 
+
 .did-floating-label-content {
     position: relative;
     display: flex;
@@ -34,6 +35,22 @@
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all;
 }
+
+/* Textarea dos formularios */
+.row_textarea{
+    width: 100% !important; 
+    background-color: #E1E1E1 !important;
+    border:solid #999 3px !important;
+}
+.label_textarea{
+    background-color: #E1E1E1 !important;
+    font-weight: 600;
+}
+.textarea{
+    width: 100% !important;
+}
+
+
 
 .did-floating-input,
 .did-floating-select {

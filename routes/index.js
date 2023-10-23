@@ -17,7 +17,11 @@ var connection = mysql.createConnection({
 
 /* GET login page. */
 router.get('/', function(req, res, next) {
-  res.render('index.ejs', { title: 'Login - Bombeiros de Guaramirim', pag: 'Login' });
+  if(req.session.user) {
+    res.redirect('/ocorrencia');
+  } else {
+    res.render('index.ejs', { title: 'Login - Bombeiros de Guaramirim', pag: 'Login' });
+  }
 });
 
 // POST no login e criação de sessão
@@ -37,7 +41,7 @@ router.post('/login', function (req, res) {
           };
           console.log(req.session.user)
         console.log("Connected as " + req.session.user.Nome);
-        res.redirect('/ocorrencia', { title: 'Principal - Bombeiros de Guaramirim', pag: 'Ocorrências',  Nome: 'Olá, ' + req.session.user.Nome + '!'});
+        res.redirect('/ocorrencia');
         } else {
           res.render('index.ejs', { title: 'Login - Bombeiros de Guaramirim' , pag: 'Login', errorMessage: 'Senha incorreta' });
           return;
