@@ -39,8 +39,9 @@
 /* Textarea dos formularios */
 .row_textarea{
     width: 100% !important; 
-    background-color: #E1E1E1 !important;
-    border:solid #999 3px !important;
+    background-color: #D3D3D3 !important;
+    border:solid #999 2px !important;
+
 }
 .label_textarea{
     background-color: #E1E1E1 !important;

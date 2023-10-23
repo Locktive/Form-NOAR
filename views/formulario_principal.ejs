@@ -92,7 +92,7 @@
                         style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                            <button style="text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
                                 aria-expanded="true" aria-controls="collapseOne"
                                 style="color: #333333; margin: 0px; text-decoration: none;">
                                 <p style="color: #333333; margin: 0px; text-decoration: none;">TIPO DE OCORRENCIA
@@ -120,8 +120,8 @@
                     <div class="card-header" id="headingTwo"
                         style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-                                aria-expanded="true" aria-controls="collapseOne"
+                            <button style="text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                                aria-expanded="true" aria-controls="collapseTwo"
                                 style="color: #333333; margin: 0px; text-decoration: none;">
                                 <p style="color: #333333; margin: 0px; text-decoration: none;">AVALIAÇÃO DO PACIENTE
                                     (Glasgow)</p>
@@ -147,7 +147,7 @@
                     <div class="card-header" id="headingThree"
                         style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                            <button style="text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
                                 <p style="color: #333333; margin: 0px; text-decoration: none;">SINAIS VITAIS</p>
                             </button>
@@ -158,9 +158,7 @@
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem3">
                             <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
-                                <button>Apple</button>
-                                <button>Samsung</button>
-                                <button>Sony</button>
+                                <%- include('./partials/sinais_vitais.ejs') %>
                             </div>
                         </div>
                     </div>
@@ -173,7 +171,7 @@
                     <div class="card-header" id="headingFour"
                         style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                            <button style="text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
                                 <p style="color: #333333; margin: 0px; text-decoration: none;">PROBLEMAS ENCONTRADOS
                                     SUSPEITOS</p>
@@ -200,7 +198,7 @@
                     <div class="card-header" id="headingFive"
                         style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                            <button style="text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
                                 <p style="color: #333333; margin: 0px; text-decoration: none;">LOCALIZAÇÃO DOS TRAUMAS
                                 </p>
@@ -225,7 +223,7 @@
                     <div class="card-header" id="headingSix"
                         style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSix"
+                            <button style="text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseSix"
                                 aria-expanded="true" aria-controls="collapseSix">
                                 <p style="color: #333333; margin: 0px; text-decoration: none;">
                                     FERIMENTOS/FRATURAS/ENTORSES</p>
@@ -250,7 +248,7 @@
                     <div class="card-header" id="headingseven"
                         style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                            <button style="text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseseven" aria-expanded="true" aria-controls="collapseseven">
                                 <p style="color: #333333; margin: 0px; text-decoration: none;">OBJETOS RECOLHIDOS</p>
                             </button>
@@ -261,9 +259,7 @@
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem7">
                             <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
-                                <button>Apple</button>
-                                <button>Samsung</button>
-                                <button>Sony</button>
+                                <%- include('./partials/objetos_recolhidos.ejs') %>
                             </div>
                         </div>
                     </div>
@@ -274,7 +270,7 @@
                     <div class="card-header" id="headingEight"
                         style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                            <button style="text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
                                 <p style="color: #333333; margin: 0px; text-decoration: none;">SINAIS E SINTOMAS</p>
                             </button>
@@ -296,7 +292,7 @@
                     <div class="card-header" id="headingNine"
                         style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                            <button style="text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseNine" aria-expanded="true" aria-controls="collapseNine">
                                 <p style="color: #333333; margin: 0px; text-decoration: none;">QUEIMADURAS</p>
                             </button>
@@ -320,7 +316,7 @@
                     <div class="card-header" id="headingTen"
                         style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTen"
+                            <button style="text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTen"
                                 aria-expanded="true" aria-controls="collapseTen">
                                 <p style="color: #333333; margin: 0px; text-decoration: none;">FORMAS DE CONDUÇÃO</p>
                             </button>
@@ -344,7 +340,7 @@
                     <div class="card-header" id="headingEleven"
                         style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                            <button style="text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseEleven" aria-expanded="true" aria-controls="collapseEleven">
                                 <p style="color: #333333; margin: 0px; text-decoration: none;">DECISÃO DE TRANSPORTE</p>
                             </button>
@@ -368,7 +364,7 @@
                     <div class="card-header" id="headingTwelve"
                         style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                            <button style="text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseTwelve" aria-expanded="true" aria-controls="collapseTwelve">
                                 <p style="color: #333333; margin: 0px; text-decoration: none;">VITÍMA ERA</p>
                             </button>
@@ -392,7 +388,7 @@
                     <div class="card-header" id="headingThirteen"
                         style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                            <button style="text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseThirteen" aria-expanded="true" aria-controls="collapseThirteen">
                                 <p style="color: #333333; margin: 0px; text-decoration: none;">ANAMNESE DA EMERGÊNCIA
                                     MÉDICA</p>
@@ -417,7 +413,7 @@
                     <div class="card-header" id="headingFourteen"
                         style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                            <button style="text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseFourteen" aria-expanded="true" aria-controls="collapseFourteen">
                                 <p style="color: #333333; margin: 0px; text-decoration: none;">PROCEDIMENTOS EFETUADOS
                                 </p>
@@ -442,7 +438,7 @@
                     <div class="card-header" id="headingFifteen"
                         style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                            <button style="text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseFifteen" aria-expanded="true" aria-controls="collapseFifteen">
                                 <p style="color: #333333; margin: 0px; text-decoration: none;">AVALIAÇÃO DA CINEMÁTICA
                                 </p>
@@ -467,7 +463,7 @@
                     <div class="card-header" id="headingSixteen"
                         style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                            <button style="text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseSixteen" aria-expanded="true" aria-controls="collapseSixteen">
                                 <p style="color: #333333; margin: 0px; text-decoration: none;">OBSERVAÇÕES IMPORTANTES
                                 </p>
@@ -492,7 +488,7 @@
                     <div class="card-header" id="headingSeventeen"
                         style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                            <button style="text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseSeventeen" aria-expanded="true" aria-controls="collapseSeventeen">
                                 <p style="color: #333333; margin: 0px; text-decoration: none;">MATERIAIS UTILIZADOS
                                     DESCARTÁVEIS</p>
@@ -517,7 +513,7 @@
                     <div class="card-header" id="headingEighteen"
                         style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                            <button style="text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseEighteen" aria-expanded="true" aria-controls="collapseEighteen">
                                 <p style="color: #333333; margin: 0px; text-decoration: none;">MATERIAIS UTILIZADOS
                                     DEIXADOS NO HOSPITAL</p>
@@ -542,7 +538,7 @@
                     <div class="card-header" id="headingNineteen"
                         style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                            <button style="text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseNineteen" aria-expanded="true" aria-controls="collapseNineteen">
                                 <p style="color: #333333; margin: 0px; text-decoration: none;">TERMO DE RECUSA DE
                                     ATENDIMENTO/TRANSPORTE</p>
@@ -567,7 +563,7 @@
                     <div class="card-header" id="headingTwenty"
                         style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         <h2 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse"
+                            <button style="text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse"
                                 data-target="#collapseTwenty" aria-expanded="true" aria-controls="collapseTwenty">
                                 <p style="color: #333333; margin: 0px; text-decoration: none;">RESPONSÁVEL PELO
                                     PREENCHIMENTO</p>
@@ -592,8 +588,8 @@
             </div>
 
             <div class="button-row">
-                <button class="button_salvar" type="submit">Salvar</button>
-                <button class="button_enviar" type="submit">Enviar</button>
+                <button style="text-decoration: none;" class="button_salvar" type="submit">Salvar</button>
+                <button style="text-decoration: none;" class="button_enviar" type="submit">Enviar</button>
             </div>
 
         </div>

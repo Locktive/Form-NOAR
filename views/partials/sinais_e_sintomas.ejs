@@ -23,13 +23,12 @@
         .textarea_row {
             display: flex;
             width: 100%;
-
+            height: 8rem;
             flex-direction: row;
             justify-content: space-between;
             background-color: #E1E1E1;
             padding: 10px;
             font-weight: 600;
-
         }
 
         .checkbox_text {
@@ -341,9 +340,11 @@
 
     <!-- Criação de um campo de texto com rótulo flutuante -->
     <div class="textarea_row">
-        <div class="did-floating-label-content textarea">
-            <textarea class="did-floating-input row_textarea" placeholder=""></textarea>
-            <label class="did-floating-label label_textarea">OUTRO</label>
+        <div style="width: 100%;">
+            <p class="checkbox_text">OUTRO</p>
+            <div class="did-floating-label-content textarea">
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+            </div>
         </div>
     </div>
 
