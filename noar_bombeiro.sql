@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `acompanhante` (
   `id_acompanhante` int NOT NULL,
-  `nome` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `nome` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `idade` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -53,7 +53,7 @@ CREATE TABLE `anamnese_emergencial` (
   `ingeriu_mais_de_6hrs` tinyint(1) NOT NULL,
   `ingeriu_que_hrs` time DEFAULT NULL,
   `possui_problema_saude` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -102,7 +102,7 @@ CREATE TABLE `ataduras` (
 CREATE TABLE `avaliacao_cinematica` (
   `id_cinematica` int NOT NULL,
   `escolhas` varchar(7) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -118,7 +118,7 @@ CREATE TABLE `bombeiro` (
   `codigo` varchar(10) NOT NULL,
   `senha` varchar(100) NOT NULL,
   `adm` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `bombeiro`
@@ -155,7 +155,7 @@ CREATE TABLE `decisao_transporte` (
   `socorrista2` varchar(150) DEFAULT NULL,
   `socorrista3` varchar(150) DEFAULT NULL,
   `demandante` varchar(150) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -166,7 +166,7 @@ CREATE TABLE `decisao_transporte` (
 CREATE TABLE `forma_de_conducao` (
   `id_forma_conducao` int NOT NULL,
   `opcao_escolhida` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -240,7 +240,7 @@ CREATE TABLE `meios_auxiliares` (
   `cod_policia` varchar(4) DEFAULT NULL,
   `CIT` tinyint(1) DEFAULT NULL,
   `outro` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -250,8 +250,8 @@ CREATE TABLE `meios_auxiliares` (
 
 CREATE TABLE `objeto_recolhido` (
   `id_recolhidos` int NOT NULL,
-  `descricao` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `descricao` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -262,7 +262,7 @@ CREATE TABLE `objeto_recolhido` (
 CREATE TABLE `observacoes` (
   `id_observ` int NOT NULL,
   `observacoes` varchar(500) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -282,7 +282,7 @@ CREATE TABLE `paciente` (
   `sexo_paciente` varchar(1) DEFAULT NULL,
   `fk_acompanhante` int DEFAULT NULL,
   `gravidez` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -295,7 +295,7 @@ CREATE TABLE `problemas_encontrado_suspeitos` (
   `codigo_selecoes` int NOT NULL,
   `outros` varchar(100) DEFAULT NULL,
   `transporte_outros` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -307,10 +307,10 @@ CREATE TABLE `procedimentos_efetuados` (
   `id_procedimentos` int NOT NULL,
   `codigo_selecoes` varchar(37) DEFAULT NULL,
   `meio_auxiliar_fk` int NOT NULL,
-  `uso_colar_tmn` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `oxigenoterapia_lpm` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `reanimador_lpm` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `uso_colar_tmn` varchar(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `oxigenoterapia_lpm` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `reanimador_lpm` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -329,7 +329,7 @@ CREATE TABLE `queimadura` (
   `m_inf_esquerdo` int DEFAULT NULL,
   `m_sup_direito` int DEFAULT NULL,
   `m_sup_esquerdo` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -341,7 +341,7 @@ CREATE TABLE `sessions` (
   `session_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `expires` int UNSIGNED NOT NULL,
   `data` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -352,14 +352,14 @@ CREATE TABLE `sessions` (
 CREATE TABLE `sinais_e_sintomas` (
   `id_sinal_sintoma` int NOT NULL,
   `codigo_selecoes` varchar(38) NOT NULL,
-  `outros` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `outros` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `codigo_tipopupilas` int NOT NULL,
   `codigo_reagentepupila` int NOT NULL,
   `codigo_cianose` int NOT NULL,
   `cod_edema` int NOT NULL,
   `cod_hemorragia` int NOT NULL,
   `cod_parada` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -383,8 +383,8 @@ CREATE TABLE `teste_de_glasgow` (
   `id_teste_glasgow` int NOT NULL,
   `adulto` tinyint(1) DEFAULT '1',
   `soma_total` int DEFAULT NULL,
-  `nivel_declarado` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `nivel_declarado` varchar(25) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -395,8 +395,8 @@ CREATE TABLE `teste_de_glasgow` (
 CREATE TABLE `tipo_ocorrencia_pre_hospitalar` (
   `id_tipo_ocorrencia` int NOT NULL,
   `codigo_selecoes` int NOT NULL,
-  `outros` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `outros` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -406,8 +406,8 @@ CREATE TABLE `tipo_ocorrencia_pre_hospitalar` (
 
 CREATE TABLE `vitima_era` (
   `id_vit_era` int NOT NULL,
-  `escolha` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `escolha` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Índices para tabelas despejadas
