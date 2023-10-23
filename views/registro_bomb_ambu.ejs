@@ -2,10 +2,63 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%- title %></title>
+    <title>Drag and Drop SVG Icons</title>
+    <style>
+        #svg-body {
+            width: 400px;
+            height: 600px;
+            border: 1px solid black;
+        }
+        .icon {
+            cursor: move;
+        }
+    </style>
 </head>
 <body>
-    <%- Nome %>
+    <div id="svg-body">
+        <svg width="100%" height="100%"></svg>
+    </div>
+    <div class="icon" draggable="true">
+        <svg width="50" height="50">
+            <circle cx="20" cy="20" r="20" fill="purple"/>
+        </svg>
+    </div>
+    <div class="icon" draggable="true">
+        <svg width="50" height="50">
+            <rect x="10" y="10" width="40" height="40" fill="orange"/>
+        </svg>
+    </div>
+    <script>
+        const icons = document.querySelectorAll('.icon');
+        const svgBody = document.querySelector('#svg-body');
+
+        icons.forEach(icon => {
+            icon.addEventListener('dragstart', e => {
+                e.dataTransfer.setData('text/plain', icon.innerHTML);
+            });
+        });
+
+        svgBody.addEventListener('dragover', e => {
+            e.preventDefault();
+        });
+
+        svgBody.addEventListener('drop', e => {
+            e.preventDefault();
+            const x = e.clientX - svgBody.getBoundingClientRect().left;
+            const y = e.clientY - svgBody.getBoundingClientRect().top;
+            const svg = e.dataTransfer.getData('text/plain');
+            const parser = new DOMParser();
+            const icon = parser.parseFromString(svg, 'image/svg+xml').querySelector('svg');
+            icon.setAttribute('x', x - icon.getAttribute('width') / 2);
+            icon.setAttribute('y', y - icon.getAttribute('height') / 2);
+            if (!svgBody.querySelector('svg')) {
+                const newSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                newSvg.setAttribute('width', '100%');
+                newSvg.setAttribute('height', '100%');
+                svgBody.appendChild(newSvg);
+            }
+            svgBody.querySelector('svg').appendChild(icon);
+        });
+    </script>
 </body>
 </html>
