@@ -37,7 +37,7 @@ router.post('/login', function (req, res) {
           };
           console.log(req.session.user)
         console.log("Connected as " + req.session.user.Nome);
-        res.render('pagina_ocorrencia.ejs', { title: 'Principal - Bombeiros de Guaramirim', pag: 'Ocorrências',  Nome: 'Olá, ' + req.session.user.Nome + '!'});
+        res.redirect('/ocorrencia', { title: 'Principal - Bombeiros de Guaramirim', pag: 'Ocorrências',  Nome: 'Olá, ' + req.session.user.Nome + '!'});
         } else {
           res.render('index.ejs', { title: 'Login - Bombeiros de Guaramirim' , pag: 'Login', errorMessage: 'Senha incorreta' });
           return;
