@@ -99,13 +99,19 @@ router.get('/cadastro',requireAuth,admLock, function(req, res, next) {
 // Rota para o histório de ocorrências
 
 router.get('/ocorrencia',requireAuth, function(req, res, next) {
-  res.render('pagina_ocorrencia.ejs', { pag: 'Ocorrências',title: 'Ocorrencia - Bombeiros de Guaramirim' });
+  res.render('pagina_ocorrencia.ejs', { pag: 'Ocorrências',title: 'Ocorrência - Bombeiros de Guaramirim' });
 });
 
 // Rota para a Página dos dados da vítima
 
 router.get('/vitima',requireAuth, function(req, res, next) {
   res.render('vitima.ejs', { pag: 'Dados da vítima',title: 'Vítima - Bombeiros de Guaramirim' });
+});
+
+// Rota tela de contatos
+
+router.get('/contato', function(req, res, next) {
+  res.render('contatos.ejs', { pag: 'Contato',title: 'Contato - Bombeiros de Guaramirim' });
 });
 
 // rota do registro de bombeiros
