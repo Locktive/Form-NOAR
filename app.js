@@ -19,7 +19,10 @@ var options = {
   user: 'root',
   password: 'root',
   database: 'noar_bombeiro',
-  port: '3306'
+  port: '3306',
+  clearExpired: true,
+  checkExpirationInterval: 600000,
+  expiration: 3600000,
 };
 
 var sessionStore = new MySQLStore(options);
