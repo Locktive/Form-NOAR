@@ -27,7 +27,7 @@ var sessionStore = new MySQLStore(options);
 app.use(session({
   secret: 'bombeiro03249u2p54f8',
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   store: sessionStore,
   cookie: { maxAge: 3600000 }
 }));
