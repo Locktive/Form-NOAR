@@ -4,15 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="./images/logo_pequena.png"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <style>
-        .human-body {
-    width: 207px;
-    position: relative;
-    padding-top: 240px;
-    height: 260px;
-    display: block;
-    margin: 40px auto;
-}
 .human-body svg:hover {
     cursor: pointer;
 }
@@ -22,9 +18,7 @@
   }
 
 .human-body svg {
-    position: absolute;
-    left: 50%;
-    fill: #57c9d5;
+    fill: #4a67ce;
 }
 .human-body svg.head {
     margin-left: -28.5px;
@@ -72,7 +66,11 @@
     </style>
 </head>
 <body>
-  <div class="human-body">
+   <div class="container ">
+      <div class="row justify-content-center">
+         
+   
+  <div class="col md-8 human-body justify-content-center">
     <svg onclick="partClicked(event)" xmlns="http://www.w3.org/2000/svg"
          width="259.22897"
    height="350"
@@ -256,8 +254,31 @@
      d="m 49.625175,14.629325 0.063,-2.62462 -0.71441,1.15181 -4.37994,1.49796 4.97857,8.36746 1.83043,5.08188 -0.21949,-13.55362 z"
      id="clavicula-esquerda" />
 </svg>
-    <span style="position:fixed; top:50px; left:50px"></span>
+<div class="col md-4 justify-content-center">
+   <span id="span"></span>
+</div>
   </div>
+  
+  
+  <div class="col md-4">
+      <div class="dropdown col-md-6">
+         <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Selecionar lesão
+         </button>
+         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Fraturas / luxações / entorses</a>
+            <a class="dropdown-item" href="#">Ferimentos diversos</a>
+            <a class="dropdown-item" href="#">Hemorragias</a>
+            <a class="dropdown-item" href="#">Evisceração</a>
+            <a class="dropdown-item" href="#">F.A.B / F.A.F</a>
+            <a class="dropdown-item" href="#">Amputação</a>
+            <a class="dropdown-item" href="#">Queimadura 1° grau</a>
+            <a class="dropdown-item" href="#">Queimadura 2° grau</a>
+            <a class="dropdown-item" href="#">Queimadura 3° grau</a>
+            <a class="dropdown-item" href="#">Queimadura 4° grau</a>
+         </div>
+      </div>
+</div>
 </div>
 <script>
     //codigo que pega a parte selecionada do svg e o marca com a classe selected,
@@ -274,11 +295,11 @@
       if (selectedPart.includes(partId)) {
         clickedPath.classList.remove('selected');
         selectedPart = selectedPart.filter(id => id !== partId);
-        document.querySelector('span').textContent = '';
+        document.querySelector('#span').textContent = '';
       } else {
         clickedPath.classList.add('selected');
         selectedPart.push(partId);
-        document.querySelector('span').textContent = partId;
+        document.querySelector('#span').textContent = partId;
       }
       console.log(selectedPart);
     }
