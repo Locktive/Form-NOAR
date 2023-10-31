@@ -1,6 +1,4 @@
-  
-  
-  .custom_checkbox{
+.custom_checkbox{
     margin: 0;
     display: flex;
   }
@@ -20,7 +18,7 @@
       color: currentColor;
       width: 2em;
       height: 2em;
-      border: solid #333333 3px;;
+      border: solid #333333 3px;
       border-radius: 5px;
       transform: translateY(-0.075em);
   }
@@ -99,20 +97,5 @@
     text-decoration: none !important;
     margin: 0 !important;
 }
-
-.sub_accordion {
-    display: flex !important;
-    width: 100% !important;
-    border: none !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    background-color: #E1E1E1 !important;
-    padding: 10px !important;
-    color: #333333 !important;
-    text-decoration: none !important;
-    margin: 0 !important;
-    font-weight: 600 !important;
-}
-
 
 /* Css das divs do formulário */

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/custom_checkbox1.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/custom_checkbox2.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/floating_label.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/sub_accordion.css" />
+    <title>Document</title>
+</head>
+
+<style>
+    .input_idade {
+        width: 5rem;
+        text-align: center;
+    }
+
+    .sub_accordion2 {
+
+        display: flex !important;
+        width: 100% !important;
+        border: none !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        background-color: #E1E1E1 !important;
+        padding: 10px !important;
+        color: #333333 !important;
+        text-decoration: none !important;
+        margin: 0 !important;
+        font-weight: 600 !important;
+
+    }
+
+    .active,
+    .sub_accordion2:hover {
+
+        background-color: #ccc;
+        transition: 0.4s !important;
+
+    }
+
+    .painel1 {
+
+        display: flex;
+        flex-direction: column !important;
+        gap: 10px;
+        padding: 0 15px 20px 22px;
+        background-color: #F1F1F1;
+        display: none;
+        overflow: hidden;
+        transition: 0.4s !important;
+
+    }
+
+</style>
+
+<body>
+    <!-- Criação de uma lista de checkboxes -->
+
+    <button class="sub_accordion2">
+        <p class="checkbox_text">ABERTURA OCULAR</p>
+        <img src="./images/arrow 4.png" style="width: 32px;  position: relative;" />
+    </button>
+    <div class="painel">
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">ESPONTÂNEA</p>
+            <label class="custom_checkbox">
+                <p class="checkbox_text" style="margin: 10px; font-size: larger;">4</p>
+                <input type="radio" name="radio_AO" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">COMANDO VERVAL</p>
+            <label class="custom_checkbox">
+                <p class="checkbox_text" style="margin: 10px; font-size: larger;">3</p>
+                <input type="radio" name="radio_AO" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">ESTÍMULO DOLOROSO</p>
+            <label class="custom_checkbox">
+                <p class="checkbox_text" style="margin: 10px; font-size: larger;">2</p>
+                <input type="radio" name="radio_AO" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">NENHUMA</p>
+            <label class="custom_checkbox">
+                <p class="checkbox_text" style="margin: 10px; font-size: larger;">1</p>
+                <input type="radio" name="radio_AO" />
+            </label>
+        </div>
+    </div>
+
+    <!-- sub accordion 2 -->
+
+    <button class="sub_accordion2">
+        <p class="checkbox_text">RESPOSTA VERBAL</p>
+        <img src="./images/arrow 4.png" style="width: 32px;  position: relative;" />
+    </button>
+    <div class="painel">
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">ORIENTADO</p>
+            <label class="custom_checkbox">
+                <p class="checkbox_text" style="margin: 10px; font-size: larger;">5</p>
+                <input type="radio" name="radio_RV" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">CONFUSO</p>
+            <label class="custom_checkbox">
+                <p class="checkbox_text" style="margin: 10px; font-size: larger;">4</p>
+                <input type="radio" name="radio_RV" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">PALAVRAS INAPROPRIADAS</p>
+            <label class="custom_checkbox">
+                <p class="checkbox_text" style="margin: 10px; font-size: larger;">3</p>
+                <input type="radio" name="radio_RV" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">PALAVRAS INCOMPREENSÍVEIS</p>
+            <label class="custom_checkbox">
+                <p class="checkbox_text" style="margin: 10px; font-size: larger;">2</p>
+                <input type="radio" name="radio_RV" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">NENHUMA</p>
+            <label class="custom_checkbox">
+                <p class="checkbox_text" style="margin: 10px; font-size: larger;">1</p>
+                <input type="radio" name="radio_RV" />
+            </label>
+        </div>
+
+    </div>
+
+    <button class="sub_accordion2">
+        <p class="checkbox_text">RESPOSTA MOTORA</p>
+        <img src="./images/arrow 4.png" style="width: 32px;  position: relative;" />
+    </button>
+    <div class="painel">
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">OBEDECE COMANDOS</p>
+            <label class="custom_checkbox">
+                <p class="checkbox_text" style="margin: 10px; font-size: larger;">6</p>
+                <input type="radio" name="radio_RM" />
+
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">LOCALIZA DOR</p>
+            <label class="custom_checkbox">
+                <p class="checkbox_text" style="margin: 10px; font-size: larger;">5</p>
+                <input type="radio" name="radio_RM" />
+
+            </label>
+        </div>
+        <div class="checkbox_row">
+            <p class="checkbox_text">MOVIMENTO DE RETIRADA</p>
+            <label class="custom_checkbox">
+                <p class="checkbox_text" style="margin: 10px; font-size: larger;">4</p>
+                <input type="radio" name="radio_RM" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">FLEXÃO ANORMAL</p>
+            <label class="custom_checkbox">
+                <p class="checkbox_text" style="margin: 10px; font-size: larger;">3</p>
+                <input type="radio" name="radio_RM" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">EXTENSÃO ANORMAL</p>
+            <label class="custom_checkbox">
+                <p class="checkbox_text" style="margin: 10px; font-size: larger;">2</p>
+                <input type="radio" name="radio_RM" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">NENHUM</p>
+            <label class="custom_checkbox">
+                <p class="checkbox_text" style="margin: 10px; font-size: larger;">1</p>
+                <input type="radio" name="radio_RM" />
+            </label>
+        </div>
+    </div>
+
+
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        <p class="checkbox_text">TOTAL (GCS) (3-15)</p>
+        <div class="linha_checkbox-group">
+            <label class="custom_checkbox">
+                <div class="did-floating-label-content">
+                    <input class="did-floating-input input_idade" type="text" id="input_idade" placeholder=" ">
+                    <label class="did-floating-label">Total</label>
+                </div>
+            </label>
+        </div>
+    </div>
+
+
+    <!-- COLOCAR A INFORMAÇÃO DO NÍVEL DE CONSCIÊNCIA -->
+
+    <script>
+        var acc = document.getElementsByClassName("sub_accordion2");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+
+                var painel1 = this.nextElementSibling;
+                if (painel1.style.display === "flex") {
+                    painel1.style.display = "none";
+                } else {
+                    painel1.style.display = "flex";
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>

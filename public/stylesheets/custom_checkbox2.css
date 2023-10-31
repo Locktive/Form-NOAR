@@ -13,7 +13,7 @@
       color: currentColor;
       width: 2em;
       height: 2em;
-      border: solid #333333 3px;;
+      border: solid #333333 3px;
       border-radius: 5px;
       transform: translateY(-0.075em);
   }

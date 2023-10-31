@@ -79,14 +79,17 @@
 
 <body class="body">
     <%- include('./partials/cabecalho.ejs') %>
-        <div class="container mt-20">
+        <div class="container mt-20" style="display: flex; flex-direction: column; min-width: 500px;">
             <div class="accordion" id="accordionExample"
                 style="display: flex; flex-direction: column; margin-bottom: 20px;">
+
+
+<!-- TIRAR O "SHOW" PARA FECHAR OS ACCORDIONS AUTOMATICAMENTE -->
+
                 <!-- Item 1 -->
                 <!-- container dentro do acordeão -->
                 <div class="card"
-                    style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; ">
-                    
+                    style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around; ">  
                     <div class="card-header" id="headingOne"
                         style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                         
@@ -104,8 +107,9 @@
                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                         data-parent="#accordionExample">
                         <div class="card-body" style="margin:0px 15px; padding: 0;" id="conteudoItem1">
-                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
                                 <%- include('./partials/tipo_de_ocorrencia.ejs') %>
+                                
                             </div>
                         </div>
                     </div>
@@ -128,12 +132,10 @@
                         </h2>
                     </div>
 
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem2">
-                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
-                                <button>Apple</button>
-                                <button>Samsung</button>
-                                <button>Sony</button>
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
+                                <%- include('./partials/avaliacao_do_paciente_glasgow.ejs') %>
                             </div>
                         </div>
                     </div>
@@ -156,7 +158,7 @@
                     <div id="collapseThree" class="collapse show" aria-labelledby="headingThree"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem3">
-                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
                                 <%- include('./partials/sinais_vitais.ejs') %>
                             </div>
                         </div>
@@ -181,7 +183,7 @@
                     <div id="collapseFour" class="collapse show" aria-labelledby="headingFour"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem4">
-                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -208,7 +210,7 @@
                     <div id="collapseFive" class="collapse show" aria-labelledby="headingFive"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem5">
-                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
                                 <%- include('./partials/registro_bomb_ambu.ejs') %>
                             </div>
                         </div>
@@ -231,7 +233,7 @@
                     <div id="collapseSix" class="collapse show" aria-labelledby="headingSix"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem6">
-                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
                                 <%- include('./partials/ferimentos.ejs') %>
                             </div>
                         </div>
@@ -253,7 +255,7 @@
                     <div id="collapseseven" class="collapse show" aria-labelledby="headingseven"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem7">
-                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
                                 <%- include('./partials/objetos_recolhidos.ejs') %>
                             </div>
                         </div>
@@ -275,7 +277,7 @@
                     <div id="collapseEight" class="collapse show" aria-labelledby="headingEight"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem8">
-                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
                                 <%- include('./partials/sinais_e_sintomas.ejs') %>
                             </div>
                         </div>
@@ -297,7 +299,7 @@
                     <div id="collapseNine" class="collapse show" aria-labelledby="headingNine"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem9">
-                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -321,7 +323,7 @@
                     <div id="collapseTen" class="collapse show" aria-labelledby="headingTen"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem10">
-                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -345,7 +347,7 @@
                     <div id="collapseEleven" class="collapse show" aria-labelledby="headingEleven"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem11">
-                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -369,7 +371,7 @@
                     <div id="collapseTwelve" class="collapse show" aria-labelledby="headingTwelve"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem12">
-                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -394,7 +396,7 @@
                     <div id="collapseThirteen" class="collapse show" aria-labelledby="headingThirteen"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem13">
-                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -419,7 +421,7 @@
                     <div id="collapseFourteen" class="collapse show" aria-labelledby="headingFourteen"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem14">
-                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -444,7 +446,7 @@
                     <div id="collapseFifteen" class="collapse show" aria-labelledby="headingFifteen"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem15">
-                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -469,7 +471,7 @@
                     <div id="collapseSixteen" class="collapse show" aria-labelledby="headingSixteen"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem16">
-                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -494,7 +496,7 @@
                     <div id="collapseSeventeen" class="collapse show" aria-labelledby="headingSeventeen"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem17">
-                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -519,7 +521,7 @@
                     <div id="collapseEighteen" class="collapse show" aria-labelledby="headingEighteen"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem18">
-                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -544,7 +546,7 @@
                     <div id="collapseNineteen" class="collapse show" aria-labelledby="headingNineteen"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem19">
-                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -569,7 +571,7 @@
                     <div id="collapseTwenty" class="collapse show" aria-labelledby="headingTwenty"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem20">
-                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -593,7 +595,7 @@
                     <div id="collapseTwentyOne" class="collapse show" aria-labelledby="headingTwentyOne"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem21">
-                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
                                 <button>Apple</button>
                                 <button>Samsung</button>
                                 <button>Sony</button>
@@ -608,16 +610,16 @@
                     style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
                     <h2 class="mb-0">
                         <button style="text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse"
-                            data-target="#collapseTwentyOne" aria-expanded="true" aria-controls="collapseTwentyOne">
+                            data-target="#collapseTwentyTwo" aria-expanded="true" aria-controls="collapseTwentyTwo">
                             <p style="color: #333333; margin: 0px; text-decoration: none;">FINALIZAÇÃO DO RELATORIO</p>
                         </button>
                     </h2>
                 </div>
 
-                <div id="collapseTwentyOne" class="collapse show" aria-labelledby="headingTwentyOne"
+                <div id="collapseTwentyTwo" class="collapse show" aria-labelledby="headingTwentyTwo"
                     data-parent="#accordionExample">
                     <div class="card-body" id="conteudoItem21">
-                        <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;" style="display: flex; flex-direction: column; gap: 10px;">
+                        <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
                             <%- include('./partials/finalizacao_relatorio.ejs') %>
                         </div>
                     </div>
