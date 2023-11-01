@@ -31,13 +31,6 @@
         margin: 0 !important;
         font-weight: 600 !important;
 
-    }
-
-    .active,
-    .sub_accordion3:hover {
-
-        background-color: #ccc;
-        transition: 0.4s !important;
 
     }
 
@@ -54,6 +47,19 @@
 
     }
 
+    .icon:hover  {
+        transform: rotate(180deg) scale(1.0);
+    }
+
+    .painel2>button:hover~.icon {
+        transform: rotate(180deg) scale(0.8);
+    }
+    .painel2>button:focus~.icon {
+        transform: rotate(180deg) scale(0.8);
+    }
+    .icon {
+        transition: 0.4s;
+    }
 </style>
 
 <body>
@@ -63,12 +69,12 @@
         <p class="checkbox_text">PSIQUIÁTRICO</p>
         <label class="custom_checkbox">
             <input type="radio" name="radio_PSI" />
-        </label> 
+        </label>
     </div>
 
-    <button class="sub_accordion3">
+    <button class="sub_accordion3" onclick="icon_spin()">
         <p class="checkbox_text">RESPIRATÓRIO</p>
-        <img src="./images/arrow 4.png" style="width: 32px;  position: relative;" />
+        <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
     </button>
     <div class="painel">
 
@@ -89,7 +95,7 @@
 
     <button class="sub_accordion3">
         <p class="checkbox_text">DIABETES</p>
-        <img src="./images/arrow 4.png" style="width: 32px;  position: relative;" />
+        <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
     </button>
     <div class="painel">
 
@@ -111,7 +117,7 @@
 
     <button class="sub_accordion3">
         <p class="checkbox_text">OBSTÉTRICO</p>
-        <img src="./images/arrow 4.png" style="width: 32px;  position: relative;" />
+        <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
     </button>
     <div class="painel">
 
@@ -140,7 +146,7 @@
 
     <button class="sub_accordion3">
         <p class="checkbox_text">TRANSPORTE</p>
-        <img src="./images/arrow 4.png" style="width: 32px;  position: relative;" />
+        <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
     </button>
     <div class="painel">
 
@@ -163,7 +169,7 @@
         <div class="checkbox_row">
             <p class="checkbox_text">EMERGENCIAL</p>
             <label class="custom_checkbox">
-                
+
                 <input type="radio" name="radio_TR" />
             </label>
         </div>
@@ -171,7 +177,7 @@
         <div class="checkbox_row">
             <p class="checkbox_text">PÓS-TRAUMA</p>
             <label class="custom_checkbox">
-                
+
                 <input type="radio" name="radio_TR" />
             </label>
         </div>
@@ -186,7 +192,7 @@
         <div class="checkbox_row">
             <p class="checkbox_text">SEM REMOÇÃO</p>
             <label class="custom_checkbox">
-                
+
                 <input type="radio" name="radio_TR" />
             </label>
         </div>
@@ -209,78 +215,6 @@
             </div>
         </div>
     </div>
-    <!-- sub accordion 2 -->
-
-
-    <button class="sub_accordion3">
-        <p class="checkbox_text">RESPOSTA MOTORA</p>
-        <img src="./images/arrow 4.png" style="width: 32px;  position: relative;" />
-    </button>
-    <div class="painel">
-
-        <div class="checkbox_row">
-            <p class="checkbox_text">OBEDECE COMANDOS</p>
-            <label class="custom_checkbox">
-                <p class="checkbox_text" style="margin: 10px; font-size: larger;">6</p>
-                <input type="radio" name="radio_RM" />
-
-            </label>
-        </div>
-
-        <div class="checkbox_row">
-            <p class="checkbox_text">LOCALIZA DOR</p>
-            <label class="custom_checkbox">
-                <p class="checkbox_text" style="margin: 10px; font-size: larger;">5</p>
-                <input type="radio" name="radio_RM" />
-
-            </label>
-        </div>
-        <div class="checkbox_row">
-            <p class="checkbox_text">MOVIMENTO DE RETIRADA</p>
-            <label class="custom_checkbox">
-                <p class="checkbox_text" style="margin: 10px; font-size: larger;">4</p>
-                <input type="radio" name="radio_RM" />
-            </label>
-        </div>
-
-        <div class="checkbox_row">
-            <p class="checkbox_text">FLEXÃO ANORMAL</p>
-            <label class="custom_checkbox">
-                <p class="checkbox_text" style="margin: 10px; font-size: larger;">3</p>
-                <input type="radio" name="radio_RM" />
-            </label>
-        </div>
-
-        <div class="checkbox_row">
-            <p class="checkbox_text">EXTENSÃO ANORMAL</p>
-            <label class="custom_checkbox">
-                <p class="checkbox_text" style="margin: 10px; font-size: larger;">2</p>
-                <input type="radio" name="radio_RM" />
-            </label>
-        </div>
-
-        <div class="checkbox_row">
-            <p class="checkbox_text">NENHUM</p>
-            <label class="custom_checkbox">
-                <p class="checkbox_text" style="margin: 10px; font-size: larger;">1</p>
-                <input type="radio" name="radio_RM" />
-            </label>
-        </div>
-    </div>
-
-
-    <div style="display: flex; flex-direction: column; align-items: center;">
-        <p class="checkbox_text">TOTAL (GCS) (3-15)</p>
-        <div class="linha_checkbox-group">
-            <label class="custom_checkbox">
-                <div class="did-floating-label-content">
-                    <input class="did-floating-input input_idade" type="text" id="input_idade" placeholder=" ">
-                    <label class="did-floating-label">Total</label>
-                </div>
-            </label>
-        </div>
-    </div>
-
 
     <!-- COLOCAR A INFORMAÇÃO DO NÍVEL DE CONSCIÊNCIA -->
 
@@ -295,8 +229,19 @@
                 var painel1 = this.nextElementSibling;
                 if (painel1.style.display === "flex") {
                     painel1.style.display = "none";
-                } else {
+                    function icon_spin() {
+                        icon.classList.toggle('icon_active');
+                    }
+                }
+
+                else {
                     painel1.style.display = "flex";
+                    function icon_spin() {
+                        icon.classList.toggle('icon_active');
+                    }
+                }
+                function icon_spin() {
+                    icon.classList.toggle('icon_active');
                 }
             });
         }
