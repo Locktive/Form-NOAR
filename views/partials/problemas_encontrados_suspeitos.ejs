@@ -51,15 +51,25 @@
         transform: rotate(180deg) scale(1.0);
     }
 
-    .painel2>button:hover~.icon {
-        transform: rotate(180deg) scale(0.8);
-    }
-    .painel2>button:focus~.icon {
-        transform: rotate(180deg) scale(0.8);
-    }
+    .icon_active {
+    transform: rotate(45deg); /* Ajuste o ângulo de rotação desejado */
+    transition: transform 0.3s ease; /* Adicione uma transição suave */
+}
     .icon {
         transition: 0.4s;
     }
+    .rotating {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
 </style>
 
 <body>
@@ -72,7 +82,7 @@
         </label>
     </div>
 
-    <button class="sub_accordion3" onclick="icon_spin()">
+    <button class="sub_accordion3">
         <p class="checkbox_text">RESPIRATÓRIO</p>
         <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
     </button>
@@ -221,27 +231,18 @@
     <script>
         var acc = document.getElementsByClassName("sub_accordion3");
         var i;
-
+    
         for (i = 0; i < acc.length; i++) {
             acc[i].addEventListener("click", function () {
                 this.classList.toggle("active");
-
+    
                 var painel1 = this.nextElementSibling;
+                var icon = painel1.querySelector('.icon'); // Substitua 'sua-classe-da-imagem' pela classe da sua imagem
                 if (painel1.style.display === "flex") {
                     painel1.style.display = "none";
-                    function icon_spin() {
-                        icon.classList.toggle('icon_active');
-                    }
-                }
-
-                else {
+                } else {
                     painel1.style.display = "flex";
-                    function icon_spin() {
-                        icon.classList.toggle('icon_active');
-                    }
-                }
-                function icon_spin() {
-                    icon.classList.toggle('icon_active');
+                    
                 }
             });
         }
