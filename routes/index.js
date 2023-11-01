@@ -3,6 +3,7 @@ var router = express.Router();
 var app = express();
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
+
 var mysql = require('mysql2');
 // conexão com o banco de dados
 
@@ -40,7 +41,7 @@ router.post('/login', function (req, res) {
             isAdmin: results[0].adm // Checa se é admin
           };
           console.log(req.session.user)
-        console.log("Connected as " + req.session.user.Nome);
+        console.log("Connected as " + req.session.user.nome);
         res.redirect('/ocorrencia');
         } else {
           res.render('index.ejs', { title: 'Login - Bombeiros de Guaramirim' , pag: 'Login', errorMessage: 'Senha incorreta' });
