@@ -17,11 +17,16 @@
         <div style="width: 100%;">
             <p class="checkbox_text">OBJETOS RECOLHIDOS</p>
             <div class="did-floating-label-content textarea">
-                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                <textarea id="area" class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
             </div>
         </div>
     </div>
-
+    <script>
+            area.value = localStorage.getItem('area');
+    area.oninput = () => {
+      localStorage.setItem('area', area.value)
+    };
+    </script>
     <!-- Criação de um campo de texto com rótulo flutuante -->
 </body>
 </html>
