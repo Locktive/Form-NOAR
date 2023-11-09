@@ -276,7 +276,8 @@
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem8">
                             <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
-                                <%- include('./partials/sinais_e_sintomas.ejs') %>
+                                
+                                
                             </div>
                         </div>
                     </div>
@@ -289,7 +290,7 @@
                         <h2 class="mb-0">
                             <button style="text-decoration: none;" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTen"
                                 aria-expanded="true" aria-controls="collapseTen">
-                                <p style="color: #333333; margin: 0px; text-decoration: none;">FORMAS DE CONDUÇÃO</p>
+                                <p style="color: #333333; margin: 0px; text-decoration: none;">DECISÃO DE TRANSPORTE</p>
                             </button>
                         </h2>
                     </div>
@@ -297,10 +298,8 @@
                     <div id="collapseTen" class="collapse show" aria-labelledby="headingTen"
                         data-parent="#accordionExample">
                         <div class="card-body" id="conteudoItem10">
-                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
-                                <button>Apple</button>
-                                <button>Samsung</button>
-                                <button>Sony</button>
+                            <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px; align-items: center;">
+                                <%- include('./partials/decisao_transporte.ejs') %>
                             </div>
                         </div>
                     </div>
