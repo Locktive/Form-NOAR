@@ -15,142 +15,172 @@
     <div class="checkbox_row">
         <p class="checkbox_text">CICLISTA</p>
         <label class="custom_checkbox">
-            <input type="radio" name="radio_TDO" />
+            <input type="radio" name="radio_vte" />
         </label>
     </div>
 
     <div class="checkbox_row">
         <p class="checkbox_text">CONDUTOR DE MOTO</p>
         <label class="custom_checkbox">
-            <input type="radio" name="radio_TDO" />
+            <input type="radio" name="radio_vte" />
         </label>
     </div>
 
     <div class="checkbox_row">
         <p class="checkbox_text">DESMORONAMENTO / DESLIZAMENTO</p>
         <label class="custom_checkbox">
-            <input type="radio" name="radio_TDO" />
+            <input type="radio" name="radio_vte" />
         </label>
     </div>
 
     <div class="checkbox_row">
         <p class="checkbox_text">EMERGÊNCIA MÉDICA</p>
         <label class="custom_checkbox">
-            <input type="radio" name="radio_TDO" />
+            <input type="radio" name="radio_vte" />
         </label>
     </div>
 
     <div class="checkbox_row">
         <p class="checkbox_text">QUEDA DE ALTURA 2M</p>
         <label class="custom_checkbox">
-            <input type="radio" name="radio_TDO" />
+            <input type="radio" name="radio_vte" />
         </label>
     </div>
 
     <div class="checkbox_row">
         <p class="checkbox_text">TENTATIVA DE SUICÍDIO</p>
         <label class="custom_checkbox">
-            <input type="radio" name="radio_TDO" />
+            <input type="radio" name="radio_vte" />
         </label>
     </div>
 
     <div class="checkbox_row">
         <p class="checkbox_text">QUEDA PRÓPRIA ALTURA</p>
         <label class="custom_checkbox">
-            <input type="radio" name="radio_TDO" />
+            <input type="radio" name="radio_vte" />
         </label>
     </div>
 
     <div class="checkbox_row">
         <p class="checkbox_text">AFOGAMENTO</p>
         <label class="custom_checkbox">
-            <input type="radio" name="radio_TDO" />
+            <input type="radio" name="radio_vte" />
         </label>
     </div>
 
     <div class="checkbox_row">
         <p class="checkbox_text">AGRESSÃO</p>
         <label class="custom_checkbox">
-            <input type="radio" name="radio_TDO" />
+            <input type="radio" name="radio_vte" />
         </label>
     </div>
 
     <div class="checkbox_row">
         <p class="checkbox_text">ATROPELAMENTO</p>
         <label class="custom_checkbox">
-            <input type="radio" name="radio_TDO" />
+            <input type="radio" name="radio_vte" />
         </label>
     </div>
 
     <div class="checkbox_row">
         <p class="checkbox_text">CHOQUE ELÉTRICO</p>
         <label class="custom_checkbox">
-            <input type="radio" name="radio_TDO" />
+            <input type="radio" name="radio_vte" />
         </label>
     </div>
 
     <div class="checkbox_row">
         <p class="checkbox_text">DESABAMENTO</p>
         <label class="custom_checkbox">
-            <input type="radio" name="radio_TDO" />
+            <input type="radio" name="radio_vte" />
         </label>
     </div>
 
     <div class="checkbox_row">
         <p class="checkbox_text">DOMÉSTICO</p>
         <label class="custom_checkbox">
-            <input type="radio" name="radio_TDO" />
+            <input type="radio" name="radio_vte" />
         </label>
     </div>
 
     <div class="checkbox_row">
         <p class="checkbox_text">ESPORTIVO</p>
         <label class="custom_checkbox">
-            <input type="radio" name="radio_TDO" />
+            <input type="radio" name="radio_vte" />
         </label>
     </div>
 
     <div class="checkbox_row">
         <p class="checkbox_text">INTOXICAÇÃO</p>
         <label class="custom_checkbox">
-            <input type="radio" name="radio_TDO" />
+            <input type="radio" name="radio_vte" />
         </label>
     </div>
 
     <div class="checkbox_row">
         <p class="checkbox_text">QUEDA DE BICICLETA</p>
         <label class="custom_checkbox">
-            <input type="radio" name="radio_TDO" />
+            <input type="radio" name="radio_vte" />
         </label>
     </div>
 
     <div class="checkbox_row">
         <p class="checkbox_text">QUEDA DE MOTO</p>
         <label class="custom_checkbox">
-            <input type="radio" name="radio_TDO" />
+            <input type="radio" name="radio_vte" />
         </label>
     </div>
 
     <div class="checkbox_row">
         <p class="checkbox_text">QUEDA NÍVEL &lt; 2M </p>
         <label class="custom_checkbox">
-            <input type="radio" name="radio_TDO" />
+            <input type="radio" name="radio_vte" />
         </label>
     </div>
 
     <div class="checkbox_row">
         <p class="checkbox_text">TRABALHO</p>
         <label class="custom_checkbox">
-            <input type="radio" name="radio_TDO" />
+            <input type="radio" name="radio_vte" />
         </label>
     </div>
 
     <div class="checkbox_row">
         <p class="checkbox_text">TRANSFERÊNCIA</p>
         <label class="custom_checkbox">
-            <input type="radio" name="radio_TDO" />
+            <input type="radio" name="radio_vte" />
         </label>
     </div>
+    <script>
+        // pega todos os botoes
+  const radiosvte = document.querySelectorAll('input[name="radio_vte"]');
+// Restaura state
+const savedRadiovteState = localStorage.getItem('radiovteState');
+if (savedRadiovteState) {
+    savedRadiovteState.split('').forEach((state, index) => {
+      radiosvte[index].checked = state === '1';
+    });
+  }
+
+
+  // evento de mudança de estado
+  radiosvte.forEach((radio, index) => {
+    radio.addEventListener('change', () => {
+      // cria um codigo binario para cada botao
+      let binaryvte = '';
+      radiosvte.forEach((r, i) => {
+        binaryvte += r.checked && i === index ? '1' : '0';
+      });
+
+      // Save state
+      localStorage.setItem('radiovteState', binaryvte);
+      
+
+      console.log(binaryvte);
+    });
+  });
+
+    </script>
 </body>
 
 </html>

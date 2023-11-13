@@ -162,6 +162,45 @@
         </div>
     </div>
 
+        <script>
+  // pega todos os botoes
+  const radios = document.querySelectorAll('input[name="radio_TDO"]');
+  const textarea = document.querySelector('textarea');
+// Restaura state
+const savedRadioState = localStorage.getItem('radioState');
+const savedTextarea = localStorage.getItem('textarea');
+if (savedRadioState) {
+    savedRadioState.split('').forEach((state, index) => {
+      radios[index].checked = state === '1';
+    });
+  }
+  if (savedTextarea) {
+    textarea.value = savedTextarea;
+  }
+
+  // evento de mudança de estado
+  radios.forEach((radio, index) => {
+    radio.addEventListener('change', () => {
+      // cria um codigo binario para cada botao
+      let binarytdo = '';
+      radios.forEach((r, i) => {
+        binarytdo += r.checked && i === index ? '1' : '0';
+      });
+
+      // Save state
+      localStorage.setItem('radioState', binarytdo);
+      
+
+      console.log(binarytdo);
+    });
+  });
+   // evento de mudança de estado do textarea
+   textarea.addEventListener('input', () => {
+    // salva conteudo da area de texto
+    localStorage.setItem('textarea', textarea.value);
+  });
+</script>
+
 </body>
 
 </html>
