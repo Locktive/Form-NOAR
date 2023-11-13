@@ -215,20 +215,22 @@
                <span id="span"></span>
             </div>
          </div>
- <div class="col-6">
-        <select name="field1" id="field1" multiple onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))" multiselect-hide-x="true">
-         <option value="1">Fratura/luxação/entorse</option>
-         <option value="2">Ferimentos diversos</option>
-         <option value="3">Hemorragias</option>
-         <option value="4">Evisceração</option>
-         <option value="5">F.A.B./F.A.F.</option>
-         <option value="6">Amputação</option>
-         <option value="7">Queimadura 1 grau</option>
-         <option value="8">Queimadura 2 grau</option>
-         <option value="9">Queimadura 3 grau</option>
-         <option value="10">Queimadura 4 grau</option>
-        </select>
-</div>
+         <div class="col-6">
+            <select name="field1" id="field1" multiple
+               onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))"
+               multiselect-hide-x="true">
+               <option value="1">Fratura/luxação/entorse</option>
+               <option value="2">Ferimentos diversos</option>
+               <option value="3">Hemorragias</option>
+               <option value="4">Evisceração</option>
+               <option value="5">F.A.B./F.A.F.</option>
+               <option value="6">Amputação</option>
+               <option value="7">Queimadura 1 grau</option>
+               <option value="8">Queimadura 2 grau</option>
+               <option value="9">Queimadura 3 grau</option>
+               <option value="10">Queimadura 4 grau</option>
+            </select>
+         </div>
       </div>
       <script>
          //codigo que pega a parte selecionada do svg e o marca com a classe selected,
@@ -270,4 +272,5 @@
       </script>
       <script src="./javascripts/multiple_select.js"></script>
 </body>
+
 </html>
