@@ -69,7 +69,7 @@
             <p class="checkbox_text">ESPONTÂNEA</p>
             <label class="custom_checkbox">
                 <p class="checkbox_text" style="margin: 10px; font-size: larger;">4</p>
-                <input type="radio" name="radio_AO" />
+                <input type="radio" name="radio_AOC" value="4" />
             </label>
         </div>
 
@@ -77,7 +77,7 @@
             <p class="checkbox_text">COMANDO VERVAL</p>
             <label class="custom_checkbox">
                 <p class="checkbox_text" style="margin: 10px; font-size: larger;">3</p>
-                <input type="radio" name="radio_AO" />
+                <input type="radio" name="radio_AOC" value="3" />
             </label>
         </div>
 
@@ -85,7 +85,7 @@
             <p class="checkbox_text">ESTÍMULO DOLOROSO</p>
             <label class="custom_checkbox">
                 <p class="checkbox_text" style="margin: 10px; font-size: larger;">2</p>
-                <input type="radio" name="radio_AO" />
+                <input type="radio" name="radio_AOC" value="2" />
             </label>
         </div>
 
@@ -93,7 +93,7 @@
             <p class="checkbox_text">NENHUMA</p>
             <label class="custom_checkbox">
                 <p class="checkbox_text" style="margin: 10px; font-size: larger;">1</p>
-                <input type="radio" name="radio_AO" />
+                <input type="radio" name="radio_AOC" value="1" />
             </label>
         </div>
     </div>
@@ -110,7 +110,7 @@
             <p class="checkbox_text">ORIENTADO</p>
             <label class="custom_checkbox">
                 <p class="checkbox_text" style="margin: 10px; font-size: larger;">5</p>
-                <input type="radio" name="radio_RV" />
+                <input type="radio" name="radio_RV" value="5" />
             </label>
         </div>
 
@@ -118,7 +118,7 @@
             <p class="checkbox_text">CONFUSO</p>
             <label class="custom_checkbox">
                 <p class="checkbox_text" style="margin: 10px; font-size: larger;">4</p>
-                <input type="radio" name="radio_RV" />
+                <input type="radio" name="radio_RV" value="4" />
             </label>
         </div>
 
@@ -126,7 +126,7 @@
             <p class="checkbox_text">PALAVRAS INAPROPRIADAS</p>
             <label class="custom_checkbox">
                 <p class="checkbox_text" style="margin: 10px; font-size: larger;">3</p>
-                <input type="radio" name="radio_RV" />
+                <input type="radio" name="radio_RV" value="3" />
             </label>
         </div>
 
@@ -134,7 +134,7 @@
             <p class="checkbox_text">PALAVRAS INCOMPREENSÍVEIS</p>
             <label class="custom_checkbox">
                 <p class="checkbox_text" style="margin: 10px; font-size: larger;">2</p>
-                <input type="radio" name="radio_RV" />
+                <input type="radio" name="radio_RV" value="2" />
             </label>
         </div>
 
@@ -142,7 +142,7 @@
             <p class="checkbox_text">NENHUMA</p>
             <label class="custom_checkbox">
                 <p class="checkbox_text" style="margin: 10px; font-size: larger;">1</p>
-                <input type="radio" name="radio_RV" />
+                <input type="radio" name="radio_RV" value="1" />
             </label>
         </div>
 
@@ -158,7 +158,7 @@
             <p class="checkbox_text">OBEDECE COMANDOS</p>
             <label class="custom_checkbox">
                 <p class="checkbox_text" style="margin: 10px; font-size: larger;">6</p>
-                <input type="radio" name="radio_RM" />
+                <input type="radio" name="radio_RM" value="6" />
 
             </label>
         </div>
@@ -167,7 +167,7 @@
             <p class="checkbox_text">LOCALIZA DOR</p>
             <label class="custom_checkbox">
                 <p class="checkbox_text" style="margin: 10px; font-size: larger;">5</p>
-                <input type="radio" name="radio_RM" />
+                <input type="radio" name="radio_RM" value="5" />
 
             </label>
         </div>
@@ -175,7 +175,7 @@
             <p class="checkbox_text">MOVIMENTO DE RETIRADA</p>
             <label class="custom_checkbox">
                 <p class="checkbox_text" style="margin: 10px; font-size: larger;">4</p>
-                <input type="radio" name="radio_RM" />
+                <input type="radio" name="radio_RM" value="4" />
             </label>
         </div>
 
@@ -183,7 +183,7 @@
             <p class="checkbox_text">FLEXÃO ANORMAL</p>
             <label class="custom_checkbox">
                 <p class="checkbox_text" style="margin: 10px; font-size: larger;">3</p>
-                <input type="radio" name="radio_RM" />
+                <input type="radio" name="radio_RM" value="3" />
             </label>
         </div>
 
@@ -191,7 +191,7 @@
             <p class="checkbox_text">EXTENSÃO ANORMAL</p>
             <label class="custom_checkbox">
                 <p class="checkbox_text" style="margin: 10px; font-size: larger;">2</p>
-                <input type="radio" name="radio_RM" />
+                <input type="radio" name="radio_RM" value="2" />
             </label>
         </div>
 
@@ -199,7 +199,7 @@
             <p class="checkbox_text">NENHUM</p>
             <label class="custom_checkbox">
                 <p class="checkbox_text" style="margin: 10px; font-size: larger;">1</p>
-                <input type="radio" name="radio_RM" />
+                <input type="radio" name="radio_RM" value="1" />
             </label>
         </div>
     </div>
@@ -222,12 +222,11 @@
 
     <script>
         var acc = document.getElementsByClassName("sub_accordion2");
-        var i;
-
-        for (i = 0; i < acc.length; i++) {
+    
+        for (var i = 0; i < acc.length; i++) {
             acc[i].addEventListener("click", function () {
                 this.classList.toggle("active");
-
+    
                 var painel1 = this.nextElementSibling;
                 if (painel1.style.display === "flex") {
                     painel1.style.display = "none";
@@ -236,7 +235,24 @@
                 }
             });
         }
+    
+        function updateTotal() {
+            var checkboxes = document.querySelectorAll('input[type="radio"]:checked');
+            var total = 0;
+    
+            checkboxes.forEach(function (checkbox) {
+                total += parseInt(checkbox.value) || 0;
+            });
+    
+            document.getElementById("input_idade").value = total;
+        }
+    
+        var radioButtons = document.querySelectorAll('input[type="radio"]');
+        radioButtons.forEach(function (radio) {
+            radio.addEventListener("change", updateTotal);
+        });
     </script>
+    
 
 </body>
 
