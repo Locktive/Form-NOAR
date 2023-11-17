@@ -21,7 +21,7 @@ var options = {
   database: 'noar_bombeiro',
   port: '3306',
   clearExpired: true,
-  checkExpirationInterval: 300000,
+  checkExpirationInterval: 60000,
   expiration: 3600000,
 };
 

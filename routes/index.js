@@ -91,6 +91,10 @@ router.get('/form',requireAuth, function(req, res, next) {
   res.render('formulario_principal.ejs', { pag: 'Formulário', title: 'Formulário - Bombeiros de Guaramirim' });
 });
 
+router.post('/form', function(req, res) {
+  res.redirect('/ocorrencia');
+});
+
 // Rota para o cadastro de bombeiros
 
 router.get('/cadastro',requireAuth,admLock, function(req, res, next) {
