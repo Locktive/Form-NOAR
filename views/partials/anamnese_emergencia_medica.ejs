@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/floating_label.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/decisao_transporte.css" />
+    <title>Document</title>
+</head>
+<style>
+    .input_idade {
+        width: 5rem;
+        text-align: center;
+    }
+
+    .sub_accordion_aem {
+
+        display: flex !important;
+        width: 100% !important;
+        border: none !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        background-color: #E1E1E1 !important;
+        padding: 10px !important;
+        color: #333333 !important;
+        text-decoration: none !important;
+        margin: 0 !important;
+        font-weight: 600 !important;
+
+
+    }
+
+    .painel2 {
+
+        display: flex;
+        flex-direction: column !important;
+        gap: 10px;
+        padding: 0 15px 20px 22px;
+        background-color: #F1F1F1;
+        display: none;
+        overflow: hidden;
+        transition: 0.4s !important;
+
+    }
+
+    .icon:hover {
+        transform: rotate(180deg) scale(1.0);
+    }
+
+    .icon_active {
+        transform: rotate(45deg);
+        /* Ajuste o ângulo de rotação desejado */
+        transition: transform 0.3s ease;
+        /* Adicione uma transição suave */
+    }
+
+    .icon {
+        transition: 0.4s;
+    }
+
+    .rotating {
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<body>
+
+    <div class="textarea_row">
+        <div style="width: 100%;">
+            <p class="checkbox_text">O QUE ACONTECEU:</p>
+            <div class="did-floating-label-content textarea">
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <button type="button" class="sub_accordion_aem">
+        <p class="checkbox_text">ACONTECEU OUTRAS VEZES</p>
+        <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
+    </button>
+    <div class="painel">
+
+        <div class="checkbox_row two_options">
+
+            <div class="checkbox_descrition">
+                <p class="checkbox_text">SIM</p>
+                <input type="radio" name="radio_aconteceu_outras_vezes" />
+            </div>
+
+            <div class="checkbox_descrition">
+                <p class="checkbox_text">NÃO</p>
+                <input type="radio" name="radio_aconteceu_outras_vezes" />
+            </div>
+
+        </div>
+        <div class="textarea_row">
+            <div style="width: 100%;">
+                <p class="checkbox_text">A QUANTO TEMPO ISSO ACONTECEU?</p>
+                <div class="did-floating-label-content textarea">
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <button type="button" class="sub_accordion_aem">
+        <p class="checkbox_text">POSSUI ALGUM PROBLEMA DE SAÚDE</p>
+        <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
+    </button>
+    <div class="painel">
+
+        <div class="checkbox_row two_options">
+
+            <div class="checkbox_descrition">
+                <p class="checkbox_text">SIM</p>
+                <input type="radio" name="radio_prob_saude" />
+            </div>
+
+            <div class="checkbox_descrition">
+                <p class="checkbox_text">NÃO</p>
+                <input type="radio" name="radio_prob_saude" />
+            </div>
+
+        </div>
+
+        <div class="textarea_row">
+            <div style="width: 100%;">
+                <p class="checkbox_text">QUAIS?</p>
+                <div class="did-floating-label-content textarea">
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <button type="button" class="sub_accordion_aem">
+        <p class="checkbox_text">FAZ USO DE MEDICAÇÃO</p>
+        <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
+    </button>
+    <div class="painel">
+
+        <div class="checkbox_row two_options">
+
+            <div class="checkbox_descrition">
+                <p class="checkbox_text">SIM</p>
+                <input type="radio" name="radio_usa_medicacao" />
+            </div>
+
+            <div class="checkbox_descrition">
+                <p class="checkbox_text">NÃO</p>
+                <input type="radio" name="radio_usa_medicacao" />
+            </div>
+
+        </div>
+
+        <div class="textarea_row">
+            <div style="width: 100%;">
+                <p class="checkbox_text">QUAIS OS MEDICAMENTOS?</p>
+                <div class="did-floating-label-content textarea">
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="textarea_row">
+            <div style="width: 100%;">
+                <p class="checkbox_text">HORARIO DA MEDICAÇÃO</p>
+                <div class="did-floating-label-content textarea">
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <button type="button" class="sub_accordion_aem">
+        <p class="checkbox_text">POSSUI ALGUMA ALERGIA</p>
+        <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
+    </button>
+    <div class="painel">
+
+        <div class="checkbox_row two_options">
+
+            <div class="checkbox_descrition">
+                <p class="checkbox_text">SIM</p>
+                <input type="radio" name="radio_alergia" />
+            </div>
+
+            <div class="checkbox_descrition">
+                <p class="checkbox_text">NÃO</p>
+                <input type="radio" name="radio_usa_medicacao" />
+            </div>
+
+        </div>
+
+        <div class="textarea_row">
+            <div style="width: 100%;">
+                <p class="checkbox_text">QUE TIPO DE ALERGIA</p>
+                <div class="did-floating-label-content textarea">
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <button type="button" class="sub_accordion_aem">
+        <p class="checkbox_text">INGERIU ALIMENTO OU LIQUIDO &#62;= 6H:</p>
+        <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
+    </button>
+    <div class="painel">
+
+        <div class="checkbox_row two_options">
+
+            <div class="checkbox_descrition">
+                <p class="checkbox_text">SIM</p>
+                <input type="radio" name="radio_ingerir" />
+            </div>
+
+            <div class="checkbox_descrition">
+                <p class="checkbox_text">NÃO</p>
+                <input type="radio" name="radio_ingerir" />
+            </div>
+
+        </div>
+
+        <div class="textarea_row">
+            <div style="width: 100%;">
+                <p class="checkbox_text">QUE HORAS</p>
+                <div class="did-floating-label-content textarea">
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    var acc = document.getElementsByClassName("sub_accordion_aem");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+
+            var painel1 = this.nextElementSibling;
+            var icon = painel1.querySelector('.icon'); // Substitua 'sua-classe-da-imagem' pela classe da sua imagem
+            if (painel1.style.display === "flex") {
+                painel1.style.display = "none";
+            } else {
+                painel1.style.display = "flex";
+
+            }
+        });
+    }
+</script>
