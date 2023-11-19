@@ -53,6 +53,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/contato">Contato</a>
                 </li>
+                <% if (user && user.isAdmin === 1) { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cadastro">Cadastrar novo bombeiro</a>
+                    </li>
+                <% } %>
+                <li>
+                    <a class="nav-link" href="/logout">Sair</a>
+                </li>
             </ul>
         </div>
     </div>

@@ -107,7 +107,7 @@
     <div class="painel">
 
         <div class="checkbox_row">
-            <p class="checkbox_text">ORIENTADO</p>
+            <p class="checkbox_text">PALAVRAS E FRASES APROPRIADAS</p>
             <label class="custom_checkbox">
                 <p class="checkbox_text" style="margin: 10px; font-size: larger;">5</p>
                 <input type="radio" name="radio_RV" value="5" />
@@ -115,7 +115,7 @@
         </div>
 
         <div class="checkbox_row">
-            <p class="checkbox_text">CONFUSO</p>
+            <p class="checkbox_text">PALAVRAS INAPROPRIADAS</p>
             <label class="custom_checkbox">
                 <p class="checkbox_text" style="margin: 10px; font-size: larger;">4</p>
                 <input type="radio" name="radio_RV" value="4" />
@@ -123,7 +123,7 @@
         </div>
 
         <div class="checkbox_row">
-            <p class="checkbox_text">PALAVRAS INAPROPRIADAS</p>
+            <p class="checkbox_text">CHORO PERSISTENTE OU GRITOS</p>
             <label class="custom_checkbox">
                 <p class="checkbox_text" style="margin: 10px; font-size: larger;">3</p>
                 <input type="radio" name="radio_RV" value="3" />
@@ -131,7 +131,7 @@
         </div>
 
         <div class="checkbox_row">
-            <p class="checkbox_text">PALAVRAS INCOMPREENSÍVEIS</p>
+            <p class="checkbox_text">SONS INCOMPREENSÍVEIS</p>
             <label class="custom_checkbox">
                 <p class="checkbox_text" style="margin: 10px; font-size: larger;">2</p>
                 <input type="radio" name="radio_RV" value="2" />
@@ -139,7 +139,7 @@
         </div>
 
         <div class="checkbox_row">
-            <p class="checkbox_text">NENHUMA</p>
+            <p class="checkbox_text">NENHUMA RESPOSTA VERBAL</p>
             <label class="custom_checkbox">
                 <p class="checkbox_text" style="margin: 10px; font-size: larger;">1</p>
                 <input type="radio" name="radio_RV" value="1" />
@@ -155,7 +155,7 @@
     <div class="painel">
 
         <div class="checkbox_row">
-            <p class="checkbox_text">OBEDECE COMANDOS</p>
+            <p class="checkbox_text">OBEDECE PRONTAMENTE</p>
             <label class="custom_checkbox">
                 <p class="checkbox_text" style="margin: 10px; font-size: larger;">6</p>
                 <input type="radio" name="radio_RM" value="6" />
@@ -164,7 +164,7 @@
         </div>
 
         <div class="checkbox_row">
-            <p class="checkbox_text">LOCALIZA DOR</p>
+            <p class="checkbox_text">LOCALIZA DOR OU ESTÍMULO TATÍL</p>
             <label class="custom_checkbox">
                 <p class="checkbox_text" style="margin: 10px; font-size: larger;">5</p>
                 <input type="radio" name="radio_RM" value="5" />
@@ -210,7 +210,7 @@
         <div class="linha_checkbox-group">
             <label class="custom_checkbox">
                 <div class="did-floating-label-content">
-                    <p class="did-floating-input input_idade" id="input_idade"></p>
+                    <input class="did-floating-input input_idade" type="text" id="input_idade" placeholder=" ">
                     <label class="did-floating-label">Total</label>
                 </div>
             </label>
@@ -221,7 +221,6 @@
     <!-- COLOCAR A INFORMAÇÃO DO NÍVEL DE CONSCIÊNCIA -->
 
     <script>
-        // codigo sub-accordion
         var acc = document.getElementsByClassName("sub_accordion_adp");
     
         for (var i = 0; i < acc.length; i++) {
@@ -245,7 +244,7 @@
                 total += parseInt(checkbox.value) || 0;
             });
     
-            document.getElementById("input_idade").innerText = total;
+            document.getElementById("input_idade").value = total;
         }
     
         var radioButtons = document.querySelectorAll('input[type="radio"]');

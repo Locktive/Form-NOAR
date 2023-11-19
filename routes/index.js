@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
   if(req.session.user) {
     res.redirect('/ocorrencia');
   } else {
-    res.render('index.ejs', { title: 'Login - Bombeiros de Guaramirim', pag: 'Login' });
+    res.render('index.ejs', { title: 'Login - Bombeiros de Guaramirim', pag: 'Login', user: req.session.user });
   }
 });
 
@@ -79,16 +79,21 @@ function admLock(req, res, next) {
   }
 }
 
+// rota de teste
+router.get('/teste', function(req, res, next) {
+  res.render('./partials/procedimentos_efetuados.ejs', { pag: 'teste', title: 'teste', user: req.session.user })
+});
+
 // rota para pagina de acesso negado
 
 router.get('/acesso_negado', function(req, res, next) {
-  res.render('acesso_negado.ejs', { pag: 'Acesso negado', title: 'Acesso negado' })
+  res.render('acesso_negado.ejs', { pag: 'Acesso negado', title: 'Acesso negado', user: req.session.user })
 });
 
 // Rota pra o formulario principal
 
 router.get('/form',requireAuth, function(req, res, next) {
-  res.render('formulario_principal.ejs', { pag: 'Formulário', title: 'Formulário - Bombeiros de Guaramirim' });
+  res.render('formulario_principal.ejs', { pag: 'Formulário', title: 'Formulário - Bombeiros de Guaramirim', user: req.session.user });
 });
 
 router.post('/form', function(req, res) {
@@ -98,30 +103,36 @@ router.post('/form', function(req, res) {
 // Rota para o cadastro de bombeiros
 
 router.get('/cadastro',requireAuth,admLock, function(req, res, next) {
-  res.render('cadastro.ejs', { pag: 'Cadastro', title: 'Cadastro - Bombeiros de Guaramirim' });
+  res.render('cadastro.ejs', { pag: 'Cadastro', title: 'Cadastro - Bombeiros de Guaramirim', user: req.session.user });
 });
 
 // Rota para o histório de ocorrências
 
 router.get('/ocorrencia',requireAuth, function(req, res, next) {
-  res.render('pagina_ocorrencia.ejs', { pag: 'Ocorrências',title: 'Ocorrência - Bombeiros de Guaramirim' });
+  res.render('pagina_ocorrencia.ejs', { pag: 'Ocorrências',title: 'Ocorrência - Bombeiros de Guaramirim', user: req.session.user });
 });
 
 // Rota para a Página dos dados da vítima
 
 router.get('/vitima',requireAuth, function(req, res, next) {
-  res.render('vitima.ejs', { pag: 'Dados da vítima',title: 'Vítima - Bombeiros de Guaramirim' });
+  res.render('vitima.ejs', { pag: 'Dados da vítima',title: 'Vítima - Bombeiros de Guaramirim', user: req.session.user });
+});
+
+router.post('/vitima', function(req, res) {
+
+
+  res.redirect('/form');
 });
 
 // Rota tela de contatos
 
 router.get('/contato', function(req, res, next) {
-  res.render('contatos.ejs', { pag: 'Contato',title: 'Contato - Bombeiros de Guaramirim' });
+  res.render('contatos.ejs', { pag: 'Contato',title: 'Contato - Bombeiros de Guaramirim', user: req.session.user });
 });
 
 // rota do registro de bombeiros
 router.get('/registro',requireAuth,admLock, function(req, res, next) {
-  res.render('registro_bomb_ambu.ejs', { pag: 'Bombeiros registrados',title: 'Bombeiros registrados - Bombeiros de Guaramirim', Nome: 'Olá, ' + req.session.user + '!' });
+  res.render('registro_bomb_ambu.ejs', { pag: 'Bombeiros registrados',title: 'Bombeiros registrados - Bombeiros de Guaramirim', Nome: 'Olá, ' + req.session.user + '!', user: req.session.user });
 });
 
 // log out do usuário
