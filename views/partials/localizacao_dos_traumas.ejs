@@ -215,16 +215,16 @@
             <select name="field1" id="field1" multiple="multiple"
                onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))"
                multiselect-hide-x="true">
-               <option value="1">Fratura/luxação/entorse</option>
-               <option value="2">Ferimentos diversos</option>
-               <option value="3">Hemorragias</option>
-               <option value="4">Evisceração</option>
-               <option value="5">F.A.B./F.A.F.</option>
-               <option value="6">Amputação</option>
-               <option value="7">Queimadura 1 grau</option>
-               <option value="8">Queimadura 2 grau</option>
-               <option value="9">Queimadura 3 grau</option>
-               <option value="10">Queimadura 4 grau</option>
+               <option value="Fratura/luxação/entorse">Fratura/luxação/entorse</option>
+               <option value="Ferimentos diversos">Ferimentos diversos</option>
+               <option value="Hemorragias">Hemorragias</option>
+               <option value="Evisceração">Evisceração</option>
+               <option value="F.A.B./F.A.F.">F.A.B./F.A.F.</option>
+               <option value="Amputação">Amputação</option>
+               <option value="Queimadura 1 grau">Queimadura 1 grau</option>
+               <option value="Queimadura 2 grau">Queimadura 2 grau</option>
+               <option value="Queimadura 3 grau">Queimadura 3 grau</option>
+               <option value="Queimadura 4 grau">Queimadura 4 grau</option>
             </select>
             <div class="dados"></div>
          </div>
@@ -233,7 +233,18 @@
          //codigo que pega a parte selecionada do svg e o marca com a classe selected,
          // alem de mostrar o id da parte selecionada no span
 let partesSelecionadas = [];
-let feridas = {};
+let feridas = {
+      'Fratura/luxação/entorse': [],
+      'Ferimentos diversos': [],
+      'Hemorragias': [],
+      'Evisceração': [],
+      'F.A.B./F.A.F.': [],
+      'Amputação': [],
+      'Queimadura 1 grau': [],
+      'Queimadura 2 grau': [],
+      'Queimadura 3 grau': [],
+      'Queimadura 4 grau': []
+};
 
 function updateRecords() {
     const dadosDiv = document.querySelector('.dados');
@@ -259,6 +270,7 @@ function partClicked(event) {
         if (partesSelecionadas.includes(partId)) {
             clickedPath.classList.remove('selected');
             partesSelecionadas = partesSelecionadas.filter(id => id !== partId);
+            associateInjury();
         } else {
             clickedPath.classList.add('selected');
             partesSelecionadas.push(partId);
@@ -270,9 +282,13 @@ function partClicked(event) {
     updateRecords();
 }
 
+let records = [];
+
 function createRecord(partId, injury) {
-    const gravaElemento = document.createElement('div');
     let lado;
+    const selecionaElementos = document.getElementById('field1');
+    const Feridaselecionada = selecionaElementos.value;
+
     if (partId.includes('esquerda' || 'esquerdo')) {
         lado = 'Esquerdo';
         partId = partId.replace('-esquerda', '');
@@ -283,43 +299,58 @@ function createRecord(partId, injury) {
         lado = 'Meio';
     }
     const parte = partId;
-    const elementoFerimento = document.getElementById('field1');
-    const ferimentoTexto = elementoFerimento.options[elementoFerimento.selectedIndex].text;
+    const ferimentoTexto = Feridaselecionada;
 
-    gravaElemento.textContent = `Local: ${parte}, Ferimento: ${ferimentoTexto}, Lado: ${lado}`;
-    document.querySelector('.dados').appendChild(gravaElemento);
+    const record = { parte, ferimentoTexto, lado };
+    records.push(record);
+
+      console.log(records);
+    displayRecords();
+}
+
+function displayRecords() {
+    const dadosElement = document.querySelector('.dados');
+    dadosElement.innerHTML = '';
+    records.forEach(record => {
+        const gravaElemento = document.createElement('div');
+        gravaElemento.textContent = `Local: ${record.parte}, Ferimento: ${record.ferimentoTexto}, Lado: ${record.lado}`;
+        dadosElement.appendChild(gravaElemento);
+    });
 }
 
 function associateInjury() {
     const selecionaElementos = document.getElementById('field1');
     const Feridaselecionada = selecionaElementos.value;
 
-    if (!Feridaselecionada) {
-        partesSelecionadas = [];
-        return;
+    let opcaoAnterior = null;
+
+    selecionaElementos.addEventListener('change', function() {
+    const Feridaselecionada = this.value;
+
+    // Remova a classe .selected de todos os elementos path
+    document.querySelectorAll('path').forEach(function(path) {
+        path.classList.remove('selected');
+    });
+
+    if (feridas[Feridaselecionada]) {
+        partesSelecionadas = [...feridas[Feridaselecionada]];
+    }else{
+      partesSelecionadas = [];
     }
 
-    feridas[Feridaselecionada] = [...partesSelecionadas];
-    selectedParts = [];
-
+    opcaoAnterior = Feridaselecionada;
+});
+feridas[Feridaselecionada] = partesSelecionadas;
     console.log(feridas);
+    console.log(partesSelecionadas);
     updateRecords();
 }
 
-document.getElementById('field1').addEventListener('change', associateInjury);
+// document.getElementById('field1').addEventListener('change', associateInjury);
 
-         //     window.onload = function () {
-         //     const pieces = document.getElementsByTagName('svg');
-         //     for (var i = 0; pieces.length; i++) {
-         //         let _piece = pieces[i];
-         //         _piece.onclick = function(t) {
-         //             if (t.target.getAttribute('data-position') != null) document.getElementById('data').innerHTML = t.target.getAttribute('data-position');
-         //             if (t.target.parentElement.getAttribute('data-position') != null) document.getElementById('data').innerHTML = t.target.parentElement.getAttribute('data-position');
-         //         }
-         //     }
-         // }
+
       </script>
-       <!-- <script src="./javascripts/multiple_select.js"></script> -->
+
 </body>
 
 </html>
