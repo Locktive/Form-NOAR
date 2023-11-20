@@ -93,10 +93,6 @@
 <body>
    <div class="container ">
       <div class="row justify-content-center">
-
-
-
-
          <div class="col md-6 human-body justify-content-center"
             style="display: flex; flex-direction: column; align-items: center;">
             <svg onclick="partClicked(event)" xmlns="http://www.w3.org/2000/svg" width="259.22897" height="350"
@@ -216,7 +212,7 @@
             </div>
          </div>
          <div class="col-6">
-            <select name="field1" id="field1" multiple
+            <select name="field1" id="field1" multiple="multiple"
                onchange="console.log(Array.from(this.selectedOptions).map(x=>x.value??x.text))"
                multiselect-hide-x="true">
                <option value="1">Fratura/luxação/entorse</option>
@@ -230,35 +226,88 @@
                <option value="9">Queimadura 3 grau</option>
                <option value="10">Queimadura 4 grau</option>
             </select>
+            <div class="dados"></div>
          </div>
       </div>
       <script>
          //codigo que pega a parte selecionada do svg e o marca com a classe selected,
          // alem de mostrar o id da parte selecionada no span
-         let selectedPart = [];
-         function partClicked(event) {
+let partesSelecionadas = [];
+let feridas = {};
 
+function updateRecords() {
+    const dadosDiv = document.querySelector('.dados');
+    dadosDiv.innerHTML = '';
 
-            const clickedPath = event.target;
-            const partId = clickedPath.getAttribute('id');
-            console.log(`Clicked on ${partId}`);
-            if (partId !== null) {
+    for (let x in feridas) {
+        feridas[x].forEach(partId => {
+            createRecord(partId, x);
+        });
+    }
+}
 
+function partClicked(event) {
+    const selectElement = document.getElementById('field1');
+    if (!selectElement.value) {
+        return;
+    }
 
+    const clickedPath = event.target;
+    const partId = clickedPath.getAttribute('id');
 
+    if (partId !== null) {
+        if (partesSelecionadas.includes(partId)) {
+            clickedPath.classList.remove('selected');
+            partesSelecionadas = partesSelecionadas.filter(id => id !== partId);
+        } else {
+            clickedPath.classList.add('selected');
+            partesSelecionadas.push(partId);
+            associateInjury();
+        }
+    }
 
-               if (selectedPart.includes(partId)) {
-                  clickedPath.classList.remove('selected');
-                  selectedPart = selectedPart.filter(id => id !== partId);
-                  document.querySelector('#span').textContent = '';
-               } else {
-                  clickedPath.classList.add('selected');
-                  selectedPart.push(partId);
-                  document.querySelector('#span').textContent = partId;
-               }
-               console.log(selectedPart);
-            }
-         }
+    document.querySelector('#span').textContent = partesSelecionadas.join(', ');
+    updateRecords();
+}
+
+function createRecord(partId, injury) {
+    const gravaElemento = document.createElement('div');
+    let lado;
+    if (partId.includes('esquerda' || 'esquerdo')) {
+        lado = 'Esquerdo';
+        partId = partId.replace('-esquerda', '');
+    } else if (partId.includes('direita' || 'direito')) {
+        lado = 'Direito';
+        partId = partId.replace('-direito', '');
+    } else {
+        lado = 'Meio';
+    }
+    const parte = partId;
+    const elementoFerimento = document.getElementById('field1');
+    const ferimentoTexto = elementoFerimento.options[elementoFerimento.selectedIndex].text;
+
+    gravaElemento.textContent = `Local: ${parte}, Ferimento: ${ferimentoTexto}, Lado: ${lado}`;
+    document.querySelector('.dados').appendChild(gravaElemento);
+}
+
+function associateInjury() {
+    const selecionaElementos = document.getElementById('field1');
+    const Feridaselecionada = selecionaElementos.value;
+
+    if (!Feridaselecionada) {
+        partesSelecionadas = [];
+        return;
+    }
+
+    feridas[Feridaselecionada] = [...partesSelecionadas];
+    selectedParts = [];
+
+    console.log(feridas);
+    updateRecords();
+}
+
+document.getElementById('field1').addEventListener('change', associateInjury);
+
          //     window.onload = function () {
          //     const pieces = document.getElementsByTagName('svg');
          //     for (var i = 0; pieces.length; i++) {
@@ -270,7 +319,7 @@
          //     }
          // }
       </script>
-      <script src="./javascripts/multiple_select.js"></script>
+       <!-- <script src="./javascripts/multiple_select.js"></script> -->
 </body>
 
 </html>

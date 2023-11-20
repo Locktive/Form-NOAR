@@ -2,8 +2,7 @@ var style = document.createElement('style');
 style.setAttribute("id","multiselect_dropdown_styles");
 style.innerHTML = `
 .multiselect-dropdown{
-  display: inline-block;
-  padding: 2% 15% 0px 5%;
+  padding: 2vh 25vw 2vh 10vw;
   border-radius: 4px;
   border: solid 1px #ced4da;
   background-color: white;
@@ -14,9 +13,8 @@ style.innerHTML = `
   background-size: 16px 12px;
 }
 .multiselect-dropdown span.optext, .multiselect-dropdown span.placeholder{
-  margin-right:0.5em; 
+  margin-left:-50px; 
   margin-bottom:2px;
-  padding:1px 0; 
   border-radius: 4px; 
   display:inline-block;
 }
@@ -25,8 +23,7 @@ style.innerHTML = `
 
 }
 .multiselect-dropdown span.optext .optdel {
-  float: right;
-  margin: 0 -6px 1px 5px;
+
   font-size: 0.7em;
   margin-top: 2px;
   cursor: pointer;
@@ -43,7 +40,7 @@ style.innerHTML = `
   border-radius: 4px;
   border: solid 1px #ced4da;
   display: none;
-  margin: -1px;
+  margin: 0px;
   position: absolute;
   top:0;
   left: 0;
@@ -89,7 +86,6 @@ function MultiselectDropdown(options){
   var config={
     search:true,
     height:'15rem',
-    placeholder:'select',
     txtSelected:'selected',
     txtAll:'All',
     txtRemove: 'Remove',
@@ -179,7 +175,7 @@ function MultiselectDropdown(options){
       div.refresh=()=>{
         div.querySelectorAll('span.optext, span.placeholder').forEach(t=>div.removeChild(t));
         var sels=Array.from(el.selectedOptions);
-        if(sels.length>(el.attributes['multiselect-max-items']?.value??5)){
+        if(sels.length>(el.attributes['multiselect-max-items']?.value??10)){
           div.appendChild(newEl('span',{class:['optext','maxselected'],text:sels.length+' '+config.txtSelected}));          
         }
         else{
@@ -191,7 +187,7 @@ function MultiselectDropdown(options){
             div.appendChild(c);
           });
         }
-        if(0==el.selectedOptions.length) div.appendChild(newEl('span',{class:'placeholder',text:el.attributes['placeholder']?.value??config.placeholder}));
+        //if(0==el.selectedOptions.length) div.appendChild(newEl('span',{class:'placeholder',text:el.attributes['placeholder']?.value??config.placeholder}));
       };
       div.refresh();
     }
