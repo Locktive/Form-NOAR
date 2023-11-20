@@ -12,7 +12,6 @@
 </head>
 
 <style>
-
     .sub_accordion_pes {
 
         display: flex !important;
@@ -32,24 +31,29 @@
     
 
     .icon_active {
-    transform: rotate(45deg); /* Ajuste o ângulo de rotação desejado */
-    transition: transform 0.3s ease; /* Adicione uma transição suave */
-}
+        transform: rotate(45deg);
+        /* Ajuste o ângulo de rotação desejado */
+        transition: transform 0.3s ease;
+        /* Adicione uma transição suave */
+    }
+
     .icon {
         transition: 0.4s;
     }
-    .rotating {
-    animation: spin 1s linear infinite;
-}
 
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
+    .rotating {
+        animation: spin 1s linear infinite;
     }
-    to {
-        transform: rotate(360deg);
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
     }
-}
 </style>
 
 <body>
@@ -58,7 +62,7 @@
     <div class="checkbox_row">
         <p class="checkbox_text">PSIQUIÁTRICO</p>
         <label class="custom_checkbox">
-            <input type="radio" name="radio_PSI" />
+            <input type="radio" name="radio_pes" />
         </label>
     </div>
 
@@ -71,14 +75,14 @@
         <div class="checkbox_row">
             <p class="checkbox_text">DPOC</p>
             <label class="custom_checkbox">
-                <input type="radio" name="radio_RESP" />
+                <input type="radio" name="radio_pes" />
             </label>
         </div>
 
         <div class="checkbox_row">
             <p class="checkbox_text">INALAÇÃO FUMAÇA</p>
             <label class="custom_checkbox">
-                <input type="radio" name="radio_RESP" />
+                <input type="radio" name="radio_pes" />
             </label>
         </div>
     </div>
@@ -92,7 +96,7 @@
         <div class="checkbox_row">
             <p class="checkbox_text">HIPERGLICERINA</p>
             <label class="custom_checkbox">
-                <input type="radio" name="radio_Diabetes" />
+                <input type="radio" name="radio_pes" />
             </label>
         </div>
 
@@ -100,7 +104,7 @@
             <p class="checkbox_text">HIPOGLICERINA</p>
             <label class="custom_checkbox">
 
-                <input type="radio" name="radio_Diabetes" />
+                <input type="radio" name="radio_pes" />
             </label>
         </div>
     </div>
@@ -114,14 +118,14 @@
         <div class="checkbox_row">
             <p class="checkbox_text">PARTO EMERGENCIAL</p>
             <label class="custom_checkbox">
-                <input type="radio" name="radio_OBST" />
+                <input type="radio" name="radio_pes" />
             </label>
         </div>
 
         <div class="checkbox_row">
             <p class="checkbox_text">GESTANTE</p>
             <label class="custom_checkbox">
-                <input type="radio" name="radio_OBST" />
+                <input type="radio" name="radio_pes" />
             </label>
         </div>
 
@@ -129,7 +133,7 @@
             <p class="checkbox_text">HEMORRAGIA EXESSIVA</p>
             <label class="custom_checkbox">
 
-                <input type="radio" name="radio_OBST" />
+                <input type="radio" name="radio_pes" />
             </label>
         </div>
     </div>
@@ -144,7 +148,7 @@
             <p class="checkbox_text">AÉREO</p>
             <label class="custom_checkbox">
 
-                <input type="radio" name="radio_TR" />
+                <input type="radio" name="radio_pes" />
             </label>
         </div>
 
@@ -152,7 +156,7 @@
             <p class="checkbox_text">CLÍNICO</p>
             <label class="custom_checkbox">
 
-                <input type="radio" name="radio_TR" />
+                <input type="radio" name="radio_pes" />
             </label>
         </div>
 
@@ -160,7 +164,7 @@
             <p class="checkbox_text">EMERGENCIAL</p>
             <label class="custom_checkbox">
 
-                <input type="radio" name="radio_TR" />
+                <input type="radio" name="radio_pes" />
             </label>
         </div>
 
@@ -168,14 +172,14 @@
             <p class="checkbox_text">PÓS-TRAUMA</p>
             <label class="custom_checkbox">
 
-                <input type="radio" name="radio_TR" />
+                <input type="radio" name="radio_pes" />
             </label>
         </div>
 
         <div class="checkbox_row">
             <p class="checkbox_text">SAMU</p>
             <label class="custom_checkbox">
-                <input type="radio" name="radio_TR" />
+                <input type="radio" name="radio_pes" />
             </label>
         </div>
 
@@ -183,7 +187,7 @@
             <p class="checkbox_text">SEM REMOÇÃO</p>
             <label class="custom_checkbox">
 
-                <input type="radio" name="radio_TR" />
+                <input type="radio" name="radio_pes" />
             </label>
         </div>
         <div class="textarea_row">
@@ -210,19 +214,49 @@
 
     <script>
         var acc = document.getElementsByClassName("sub_accordion_pes");
+        var i;
     
-    for (var i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function () {
-            this.classList.toggle("active");
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+    
+                var painel1 = this.nextElementSibling;
+                var icon = painel1.querySelector('.icon'); // Substitua 'sua-classe-da-imagem' pela classe da sua imagem
+                if (painel1.style.display === "flex") {
+                    painel1.style.display = "none";
+                } else {
+                    painel1.style.display = "flex";
+                    
+                }
+            });
+        }
+// pega todos os botoes
+const radiospes = document.querySelectorAll('input[name="radio_pes"]');
+        // Restaura state
+        const savedRadiopesState = localStorage.getItem('radiopesState');
+        if (savedRadiopesState) {
+            savedRadiopesState.split('').forEach((state, index) => {
+                radiospes[index].checked = state === '1';
+            });
+        }
 
-            var painel1 = this.nextElementSibling;
-            if (painel1.style.display === "flex") {
-                painel1.style.display = "none";
-            } else {
-                painel1.style.display = "flex";
-            }
+
+        // evento de mudança de estado
+        radiospes.forEach((radio, index) => {
+            radio.addEventListener('change', () => {
+                // cria um codigo binario para cada botao
+                let binarypes = '';
+                radiospes.forEach((r, i) => {
+                    binarypes += r.checked && i === index ? '1' : '0';
+                });
+
+                // Save state
+                localStorage.setItem('radiopesState', binarypes);
+
+
+                console.log(binarypes);
+            });
         });
-    }
     </script>
 
 </body>
