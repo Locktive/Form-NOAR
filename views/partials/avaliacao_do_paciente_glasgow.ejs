@@ -53,7 +53,6 @@
         transition: 0.4s !important;
 
     }
-
 </style>
 
 <body>
@@ -223,11 +222,11 @@
     <script>
         // codigo sub-accordion
         var acc = document.getElementsByClassName("sub_accordion_adp");
-    
+
         for (var i = 0; i < acc.length; i++) {
             acc[i].addEventListener("click", function () {
                 this.classList.toggle("active");
-    
+
                 var painel1 = this.nextElementSibling;
                 if (painel1.style.display === "flex") {
                     painel1.style.display = "none";
@@ -236,24 +235,24 @@
                 }
             });
         }
-    
+
         function updateTotal() {
             var checkboxes = document.querySelectorAll('input[type="radio"]:checked');
             var total = 0;
-    
+
             checkboxes.forEach(function (checkbox) {
                 total += parseInt(checkbox.value) || 0;
             });
-    
+
             document.getElementById("input_idade").innerText = total;
         }
-    
+
         var radioButtons = document.querySelectorAll('input[type="radio"]');
         radioButtons.forEach(function (radio) {
             radio.addEventListener("change", updateTotal);
         });
     </script>
-    
+
 
 </body>
 

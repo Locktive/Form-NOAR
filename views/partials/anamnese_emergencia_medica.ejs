@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./stylesheets/floating_label.css" />
     <link rel="stylesheet" type="text/css" href="./stylesheets/decisao_transporte.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/sub_accordion.css" />
     <title>Document</title>
 </head>
 <style>
@@ -44,9 +45,7 @@
 
     }
 
-    .icon:hover {
-        transform: rotate(180deg) scale(1.0);
-    }
+
 
     .icon_active {
         transform: rotate(45deg);
@@ -87,7 +86,7 @@
 
     <button type="button" class="sub_accordion_aem">
         <p class="checkbox_text">ACONTECEU OUTRAS VEZES</p>
-        <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
+        <img src="./images/arrow 4.png" style="width: 32px;  position: relative;" />
     </button>
     <div class="painel">
 
@@ -250,25 +249,21 @@
     </div>
 
 </body>
-
-</html>
-
 <script>
     var acc = document.getElementsByClassName("sub_accordion_aem");
-    var i;
 
-    for (i = 0; i < acc.length; i++) {
+    for (var i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function () {
             this.classList.toggle("active");
 
             var painel1 = this.nextElementSibling;
-            var icon = painel1.querySelector('.icon'); // Substitua 'sua-classe-da-imagem' pela classe da sua imagem
             if (painel1.style.display === "flex") {
                 painel1.style.display = "none";
             } else {
                 painel1.style.display = "flex";
-
             }
         });
     }
 </script>
+
+</html>

@@ -5,9 +5,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./stylesheets/floating_label.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/custom_checkbox1.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/custom_checkbox2.css" />
     <link rel="stylesheet" type="text/css" href="./stylesheets/decisao_transporte.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/sub_accordion.css" />
     <title>Document</title>
 </head>
+
+<style>
+    .sub_accordion_dt {
+
+        display: flex !important;
+        width: 100% !important;
+        border: none !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        background-color: #E1E1E1 !important;
+        padding: 10px !important;
+        color: #333333 !important;
+        text-decoration: none !important;
+        margin: 0 !important;
+        font-weight: 600 !important;
+
+    }
+
+
+    .active,
+    .sub_accordion_adp:hover {
+
+        background-color: #ccc;
+        transition: 0.4s !important;
+
+    }
+
+    .painel {
+        
+        width: 100%;
+        display: flex;
+        flex-direction: column !important;
+        gap: 10px;
+        padding: 0 15px 20px 22px;
+        background-color: #F1F1F1;
+        display: none;
+        overflow: hidden;
+        transition: 0.4s !important;
+
+    }
+
+
+
+
+    .icon_active {
+        transform: rotate(45deg);
+        /* Ajuste o ângulo de rotação desejado */
+        transition: transform 0.3s ease;
+        /* Adicione uma transição suave */
+    }
+
+    .icon {
+        transition: 0.4s;
+    }
+
+    .rotating {
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+</style>
 
 <body>
     <!-- Criação de uma lista de checkboxes -->
@@ -15,8 +87,8 @@
 
         <div class="botao_titulo">
             <div class="botao_situacao">
-                <input class="cont_critico emotes_container" type="radio" name="radio_dt"/><img class="icon_emote"
-                    src="./images/disappointed.png"/>
+                <input class="cont_critico emotes_container" type="radio" name="radio_dt" /><img class="icon_emote"
+                    src="./images/disappointed.png" />
             </div>
             <p class="estado" id="critico">CRÍTICO</p>
         </div>
@@ -24,8 +96,8 @@
 
         <div class="botao_titulo">
             <div class="botao_situacao">
-                <input class="cont_instavel emotes_container" type="radio" name="radio_dt"/><img class="icon_emote"
-                    src="./images/boring.png"/>
+                <input class="cont_instavel emotes_container" type="radio" name="radio_dt" /><img class="icon_emote"
+                    src="./images/boring.png" />
             </div>
             <p class="estado" id="instavel">INSTÁVEL</p>
         </div>
@@ -33,8 +105,8 @@
 
         <div class="botao_titulo">
             <div class="botao_situacao">
-                <input class="cont_pi emotes_container" type="radio" name="radio_dt"/><img class="icon_emote"
-                    src="./images/neutral.png"/>
+                <input class="cont_pi emotes_container" type="radio" name="radio_dt" /><img class="icon_emote"
+                    src="./images/neutral.png" />
             </div>
             <p class="estado" id="potencialmente_instavel">POTENCIALMENTE INSTÁVEL</p>
         </div>
@@ -42,8 +114,8 @@
 
         <div class="botao_titulo">
             <div class="botao_situacao">
-                <input class="cont_estavel emotes_container" type="radio" name="radio_dt"/><img class="icon_emote"
-                    src="./images/happy.png"/>
+                <input class="cont_estavel emotes_container" type="radio" name="radio_dt" /><img class="icon_emote"
+                    src="./images/happy.png" />
             </div>
             <p class="estado" id="estavel">ESTÁVEL</p>
         </div>
@@ -94,7 +166,7 @@
         </div>
     </div>
 
-    <button type="button" class="sub_accordion">
+    <button type="button" class="sub_accordion_dt">
         <p class="checkbox_text">FORMA DE CONDUÇÃO</p>
         <img src="./images/arrow 4.png" style="width: 32px;  position: relative;" />
     </button>
@@ -122,7 +194,22 @@
         </div>
     </div>
 
-    
+    <script>
+        var acc = document.getElementsByClassName("sub_accordion_dt");
+
+        for (var i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+
+                var painel1 = this.nextElementSibling;
+                if (painel1.style.display === "flex") {
+                    painel1.style.display = "none";
+                } else {
+                    painel1.style.display = "flex";
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
