@@ -1,0 +1,70 @@
+.container_MUD {
+        display: flex;
+        flex-direction: row;
+        background-color: #F1F1F1;
+}
+
+.coluna1 {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        background-color: #F1F1F1;
+        gap: 10px;
+}
+
+.coluna2 {
+        display: flex;
+        flex-direction: column;
+        width: 15%;
+        background-color: #F1F1F1;
+        gap: 10px;
+}
+
+.coluna3 {
+        display: flex;
+        flex-direction: column;
+        width: 15%;
+
+        background-color: #F1F1F1;
+        gap: 10px;
+}
+
+.custom_checkbox2 {
+        margin: 0;
+        width: 12rem;
+        display: flex;
+        justify-content: space-evenly;
+}
+
+.checkbox_description2 {
+        margin: 0 0;
+        gap: 5px;
+        display: flex;
+}
+
+.checkbox_text2 {
+        width: 100%;
+}
+
+.input_QTD {
+        font-weight: 600;
+        margin: 0;
+        width: 70px;
+        height: 50px;
+        border-radius: 3px;
+        border: 1px solid var(--grey-stroke, rgba(84, 84, 84, 0.19));
+        background: #E1E1E1;
+        text-align: center;
+}
+
+.checkbox_text_QTD {
+        font-size: larger;
+        font-weight: 600;
+        height: 50px;
+        margin: 0;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+
+}
