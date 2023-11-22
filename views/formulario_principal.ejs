@@ -649,10 +649,13 @@
                 function deleteLocal() {
                     localStorage.removeItem('radioState'); radios.value = '00000000000000000000';
                     localStorage.removeItem('radiovteState'); radiosvte.value = '';
-                    localStorage.removeItem('radiopesState'); radiospes.value = '';
-                    localStorage.removeItem('radiopeState'); radiospe.value = '';
-                    localStorage.removeItem('radiossState'); radiosss.value = '';
-                    localStorage.removeItem('radioacState'); radiosac.value = '';
+                    localStorage.removeItem('checkboxpeState'); checkboxpe.value = '';
+                    localStorage.removeItem('annsvState'); annsv.value = '';
+                    localStorage.removeItem('perfsvState'); perfsv.value = '';
+                    localStorage.removeItem('checkboxssState'); checkboxss.value = '';
+                    localStorage.removeItem('checkboxacState'); checkboxac.value = '';
+                    localStorage.removeItem('binaryState'); radiospes.value = '';
+                    
                     textareafinal.forEach((textarea, index) => {
                         localStorage.removeItem('textareafinal' + index);
                         textarea.value = '';

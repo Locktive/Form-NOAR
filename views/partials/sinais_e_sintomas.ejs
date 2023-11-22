@@ -93,14 +93,14 @@
         <div class="checkbox_row">
             <p class="checkbox_text">LÁBIOS</p>
             <label class="custom_checkbox">
-                <input type="radio" name="radio_ss" />
+                <input type="radio" name="checkbox_ss" />
             </label>
         </div>
 
         <div class="checkbox_row">
             <p class="checkbox_text">EXTREMIDADE</p>
             <label class="custom_checkbox">
-                <input type="radio" name="radio_ss" />
+                <input type="radio" name="checkbox_ss" />
             </label>
         </div>
     </div>
@@ -163,14 +163,14 @@
         <div class="checkbox_row">
             <p class="checkbox_text">GENERALIZADO</p>
             <label class="custom_checkbox">
-                <input type="radio" name="radio_ss" />
+                <input type="radio" name="checkbox_ss" />
             </label>
         </div>
 
         <div class="checkbox_row">
             <p class="checkbox_text">LOCALIZADO</p>
             <label class="custom_checkbox">
-                <input type="radio" name="radio_ss" />
+                <input type="radio" name="checkbox_ss" />
             </label>
         </div>
     </div>
@@ -317,42 +317,42 @@
         <div class="checkbox_row">
             <p class="checkbox_text">ANISCORIA</p>
             <label class="custom_checkbox">
-                <input type="radio" name="radio_ss" />
+                <input type="radio" name="checkbox_ss" />
             </label>
         </div>
 
         <div class="checkbox_row">
             <p class="checkbox_text">ISOCORIA</p>
             <label class="custom_checkbox">
-                <input type="radio" name="radio_ss" />
+                <input type="radio" name="checkbox_ss" />
             </label>
         </div>
 
         <div class="checkbox_row">
             <p class="checkbox_text">MIDRIASE</p>
             <label class="custom_checkbox">
-                <input type="radio" name="radio_ss" />
+                <input type="radio" name="checkbox_ss" />
             </label>
         </div>
 
         <div class="checkbox_row">
             <p class="checkbox_text">MIOSE</p>
             <label class="custom_checkbox">
-                <input type="radio" name="radio_ss" />
+                <input type="radio" name="checkbox_ss" />
             </label>
         </div>
 
         <div class="checkbox_row">
             <p class="checkbox_text">REAGENTE</p>
             <label class="custom_checkbox">
-                <input type="radio" name="radio_ss" />
+                <input type="radio" name="checkbox_ss" />
             </label>
         </div>
 
         <div class="checkbox_row">
             <p class="checkbox_text">NÃO REAGENTE</p>
             <label class="custom_checkbox">
-                <input type="radio" name="radio_ss" />
+                <input type="radio" name="checkbox_ss" />
             </label>
         </div>
 
@@ -451,7 +451,7 @@ checkboxss.forEach((checkbox, index) => {
         // cria um codigo binario para cada botao
         let binaryss = '';
         checkboxss.forEach((r, i) => {
-            binaryss += r.checked && i === index ? '1' : '0';
+            binaryss += r.checked ? '1' : '0';
         });
 
         // Save state
@@ -461,31 +461,31 @@ checkboxss.forEach((checkbox, index) => {
     });
 });
 
-// pega todos os botoes
-const radiosss = document.querySelectorAll('input[name="radio_ss"]');
-// Restaura state
-const savedRadiossState = localStorage.getItem('radiossState');
-if (savedRadiossState) {
-    savedRadiossState.split('').forEach((state, index) => {
-        radiosss[index].checked = state === '1';
-    });
-}
+// // pega todos os botoes
+// const radiosss = document.querySelectorAll('input[name="checkbox_ss"]');
+// // Restaura state
+// const savedRadiossState = localStorage.getItem('radiossState');
+// if (savedRadiossState) {
+//     savedRadiossState.split('').forEach((state, index) => {
+//         radiosss[index].checked = state === '1';
+//     });
+// }
 
-// evento de mudança de estado
-radiosss.forEach((radio, index) => {
-    radio.addEventListener('change', () => {
-        // cria um codigo binario para cada botao
-        let binaryss = '';
-        radiosss.forEach((r, i) => {
-            binaryss += r.checked && i === index ? '1' : '0';
-        });
+// // evento de mudança de estado
+// radiosss.forEach((radio, index) => {
+//     radio.addEventListener('change', () => {
+//         // cria um codigo binario para cada botao
+//         let binaryss = '';
+//         radiosss.forEach((r, i) => {
+//             binaryss += r.checked && i === index ? '1' : '0';
+//         });
 
-        // Save state
-        localStorage.setItem('radiossState', binaryss);
+//         // Save state
+//         localStorage.setItem('radiossState', binaryss);
 
-        console.log(binaryss);
-    });
-});
+//         console.log(binaryss);
+//     });
+// });
 
 
 

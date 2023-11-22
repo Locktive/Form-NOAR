@@ -100,8 +100,59 @@
     </div>
 
     <!-- Criação de um campo de texto com rótulo flutuante -->
+    <script>
+    // pega todos os botoes
+    const annsv = document.querySelectorAll('input[name="radio_sinais_vitais"]');
+    // Restaura state
+    const savedannsvState = localStorage.getItem('annsvState');
+    if (savedannsvState) {
+        savedannsvState.split('').forEach((state, index) => {
+            annsv[index].checked = state === '1';
+        });
+    }
 
+    // evento de mudança de estado
+    annsv.forEach((radio, index) => {
+        radio.addEventListener('change', () => {
+            // cria um codigo binario para cada botao
+            let binarysv = '';
+            annsv.forEach((r, i) => {
+                binarysv += r.checked && i === index ? '1' : '0';
+            });
 
+            // Save state
+            localStorage.setItem('savedannsvState', binarysv);
+
+            console.log(binarysv);
+        });
+    });
+
+    // pega todos os botoes
+    const perfsv = document.querySelectorAll('input[name="radio_perfusao"]');
+    // Restaura state
+    const savedperfsvState = localStorage.getItem('perfsvState');
+    if (savedperfsvState) {
+        savedperfsvState.split('').forEach((state, index) => {
+            perfsv[index].checked = state === '1';
+        });
+    }
+
+    // evento de mudança de estado
+    perfsv.forEach((radio, index) => {
+        radio.addEventListener('change', () => {
+            // cria um codigo binario para cada botao
+            let binarypsv = '';
+            perfsv.forEach((r, i) => {
+                binarypsv += r.checked && i === index ? '1' : '0';
+            });
+
+            // Save state
+            localStorage.setItem('perfsvState', binarypsv);
+
+            console.log(binarypsv);
+        });
+    });
+</script>
 </body>
 
 </html>

@@ -439,7 +439,7 @@
             // cria um codigo binario para cada botao
             let binarype = '';
             checkboxpe.forEach((r, i) => {
-                binarype += r.checked && i === index ? '1' : '0';
+                binarype += r.checked ? '1' : '0';
             });
 
             // Save state
