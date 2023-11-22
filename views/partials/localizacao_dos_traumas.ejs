@@ -283,6 +283,8 @@ function partClicked(event) {
 }
 
 let records = [];
+let excluidos = [];
+
 
 function createRecord(partId, injury) {
     let lado;
@@ -298,15 +300,60 @@ function createRecord(partId, injury) {
     } else {
         lado = 'Meio';
     }
-    const parte = partId;
-    const ferimentoTexto = Feridaselecionada;
 
-    const record = { parte, ferimentoTexto, lado };
-    records.push(record);
+    function displayRecords() {
+    const dadosElement = document.querySelector('.dados');
+    dadosElement.innerHTML = '';
+    records.forEach((record, index) => {
+        // Verifica se o registro foi excluído
+        if (!excluidos.includes(index)) {
+            const gravaElemento = document.createElement('div');
+            gravaElemento.id = `record-${index}`;
 
-      console.log(records);
+            gravaElemento.textContent = `Local: ${record.parte}, Ferimento: ${record.ferimentoTexto}, Lado: ${record.lado}`;
+
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Excluir';
+            deleteButton.addEventListener('click', () => deleteRecord(index));
+
+            gravaElemento.appendChild(deleteButton);
+            dadosElement.appendChild(gravaElemento);
+        }
+    });
+}
+
+function deleteRecord(index) {
+    // Remove o índice da lista de excluídos
+    excluidos = excluidos.filter(excluidoIndex => excluidoIndex !== index);
+
+    // Adiciona o índice à lista de excluídos se ainda não estiver lá
+    if (!excluidos.includes(index)) {
+        excluidos.push(index);
+    }
+
+    // Remove o registro da lista
+    records = records.filter((record, recordIndex) => recordIndex !== index);
+
     displayRecords();
 }
+
+
+    // Verifica se já existe um registro para o mesmo local e tipo de ferimento
+    const existingRecord = records.find(record => record.parte === partId && record.ferimentoTexto === Feridaselecionada);
+
+    if (existingRecord) {
+        // Se existir, atualiza o lado
+        existingRecord.lado = lado;
+    } else {
+        // Se não existir, cria um novo registro
+        const record = { parte: partId, ferimentoTexto: Feridaselecionada, lado };
+        records.push(record);
+    }
+
+    console.log(records);
+    displayRecords();
+}
+
 
 function displayRecords() {
     const dadosElement = document.querySelector('.dados');
