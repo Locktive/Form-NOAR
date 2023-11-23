@@ -252,9 +252,9 @@
             });
 
             // Save state
-            localStorage.setItem('radiopesState', binarypes);
+            localStorage.setItem('radiopesState', binarype);
 
-            console.log(binarypes);
+            console.log(binarype);
         });
     });
 // pega todos os botoes
@@ -273,7 +273,7 @@ const radiopes2 = document.querySelectorAll('input[name="radio_pes2"]');
             // cria um codigo binario para cada botao
             let binarype2 = '';
             radiopes2.forEach((r, i) => {
-                binarype += r.checked ? '1' : '0';
+                binarype2 += r.checked ? '1' : '0';
             });
 
             // Save state
@@ -298,7 +298,7 @@ const radiopes3 = document.querySelectorAll('input[name="radio_pes3"]');
             // cria um codigo binario para cada botao
             let binarype3 = '';
             radiopes3.forEach((r, i) => {
-                binarype += r.checked ? '1' : '0';
+                binarype3 += r.checked ? '1' : '0';
             });
 
             // Save state

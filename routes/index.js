@@ -96,6 +96,8 @@ router.get('/form',requireAuth, function(req, res, next) {
   res.render('formulario_principal.ejs', { pag: 'Formulário', title: 'Formulário - Bombeiros de Guaramirim', user: req.session.user });
 });
 
+
+// post do formulario principal
 router.post('/form', function(req, res) {
   res.redirect('/ocorrencia');
 });
@@ -118,10 +120,38 @@ router.get('/vitima',requireAuth, function(req, res, next) {
   res.render('vitima.ejs', { pag: 'Dados da vítima',title: 'Vítima - Bombeiros de Guaramirim', user: req.session.user });
 });
 
+
+// post dos dados da vítima
 router.post('/vitima', function(req, res) {
+  var nome = req.body.nome;
+  var idade = req.body.input_idade;
+  var sexo = req.body.radio_sexo;
+  var numero = req.body.input_numero;
+  var dados = req.body.rgcpf;
+  var acomp = req.body.Acompanhante;
+  var idadeacomp = req.body.input_idadeacomp;
+  var gravida = req.body.Gravida;
+  var local = req.body.local;
+  var sql = 'INSERT INTO acompanhante(nome,idade) VALUES (?,?)';
+  var valuesAcomp = [acomp, idadeacomp];
 
+  db.query(sql, valuesAcomp, function(err, results, fields) {
+    if (err) throw err;
+    
+    // Obtenha o ID do acompanhante inserido
+    var acompId = results.insertId;
 
-  res.redirect('/form');
+    // Consulta SQL para inserir na tabela vitima
+    var sqlVitima = 'INSERT INTO paciente(Nome_paciente, idade_paciente, telefone, RG_CPF_paciente,Local_do_ocorrido,sexo_paciente, fk_acompanhante, gravida) VALUES(?, ?, ?, ?, ?, ?, ?)';
+    var valuesVitima = [nome, idade, numero, dados,local,sexo, acompId, gravida];
+
+    // Execute a consulta
+    db.query(sqlVitima, valuesVitima, function(err, result) {
+        if (err) throw err;
+
+        res.redirect('/form');
+    });
+});
 });
 
 // Rota tela de contatos
