@@ -140,7 +140,11 @@
                             data-parent="#accordionExample">
                             <div class="card-body" id="conteudoItem2">
                                 <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
+                                    <% if(idade > 5) { %>
                                     <%- include('./partials/avaliacao_do_paciente_glasgow.ejs') %>
+                                    <% } else { %>
+                                    <%- include('./partials/avaliacao_paciente_infantil.ejs') %>
+                                    <% } %>
                                 </div>
                             </div>
                         </div>
@@ -663,8 +667,10 @@
                     localStorage.removeItem('perfsvState'); perfsv.value = '';
                     localStorage.removeItem('checkboxssState'); checkboxss.value = '';
                     localStorage.removeItem('checkboxacState'); checkboxac.value = '';
-                    localStorage.removeItem('binaryState'); radiospes.value = '';
-                    
+                    localStorage.removeItem('radiopesState'); radiopes.value = '';
+                    localStorage.removeItem('radiopes2State'); radiopes2.value = '';
+                    localStorage.removeItem('radiopes3State'); radiopes3.value = '';
+                    localStorage.removeItem('radiopes4State'); radiopes4.value = '';
                     textareafinal.forEach((textarea, index) => {
                         localStorage.removeItem('textareafinal' + index);
                         textarea.value = '';

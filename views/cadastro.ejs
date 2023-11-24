@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="./stylesheets/margin.css" />
     <link rel="icon" type="image/x-icon" href="./images/logo_pequena.png"/>
     <title><%- title %></title>
+    <link rel="stylesheet" type="text/css" href="./stylesheets/custom_checkbox1.css" />
     <style>
         /* Add responsive styles */
 
@@ -120,7 +121,7 @@
         <div>
             <img src="./images/logo_pequena.png" />
         </div>
-        <form action="" method="post" style="text-align: center; display: flex; justify-content: center;">
+        <form onsubmit="return validate(document.querySelector('input[name=codbomb]'))" action="" method="post" style="text-align: center; display: flex; justify-content: center;">
             <div class="container_cadastro">
 
 
@@ -129,29 +130,58 @@
                 </div>
 
                 <div class="did-floating-label-content">
-                    <input class="did-floating-input" type="text" id="input" required placeholder=" ">
+                    <input class="did-floating-input" type="text" id="nome" name="nome" required placeholder=" ">
                     <label class="did-floating-label">Nome</label>
                 </div>
 
                 <div class="did-floating-label-content">
-                    <input class="did-floating-input" type="text" id="input" required placeholder=" ">
-                    <label class="did-floating-label">Email</label>
-                </div>
-
-                <div class="did-floating-label-content">
-                    <input class="did-floating-input" type="Password" id="Senha" required placeholder=" ">
+                    <input class="did-floating-input" type="Password" name="senha" id="Senha" required placeholder=" ">
                     <label class="did-floating-label">Senha</label>
                 </div>
 
                 <div class="did-floating-label-content">
-                    <input class="did-floating-input" type="text" id="input" required placeholder=" ">
+                    <input class="did-floating-input" type="text" oninput="validateValue(this)" id="codbomb" name="codbomb" required placeholder=" ">
                     <label class="did-floating-label">Código de bombeiro</label>
                 </div>
+                
+                <div>
+                    <div class="linha_checkbox-group">
+                        Será administrador
+                        <input type="checkbox" onclick="teste()" name="adm" value="0" />
+                    </div>
+                </div>
 
-                <button class="button_cadastro" type="submit">Cadastrar</button>
+                <button class="button_cadastro" onsubmit="return validate(document.querySelector('input[name=codbomb]'))" type="submit">Cadastrar</button>
             </div>
         </form>
         <%- include('./partials/footer.ejs') %>
+        <script>
+            // teste de valor de checkbox do adm
+            function teste() {
+                var checkbox = document.querySelector("input[name=adm]");
+                if (checkbox.checked) {
+                    checkbox.value = 1;
+                } else {
+                    checkbox.value = 0;
+                }
+                console.log(checkbox.value);
+            }
+
+        // mascara para aceitar apenas 10 numeros
+            function validateValue(elem) {
+    const value = elem.value;
+    const numVal = value.replace(/\D+/g, "");
+    elem.value = numVal.slice(0, 10); // Limit to 10 digits
+}
+    // valida o tamanho do código do bombeiro
+    function validate(elem){
+        if (elem.value.length !== 10) {
+        alert("Por favor insira exatamente 10 digitos no código do bombeiro.");
+        return false;
+    }
+    return true;
+}
+        </script>
 </body>
 
 </html>

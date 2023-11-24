@@ -166,27 +166,27 @@
             <div class="container_vitima">
 
                 <div class="did-floating-label-content">
-                    <input class="did-floating-input input_nome" id="nome" type="text" placeholder=" ">
+                    <input class="did-floating-input input_nome" name="nome" id="nome" type="text" placeholder=" ">
                     <label class="did-floating-label">Nome</label>
                 </div>
 
                 <div class="linha_input-group">
 
                     <div class="did-floating-label-content">
-                        <input class="did-floating-input input_idade" type="text" id="input_idade" 
+                        <input class="did-floating-input input_idade" type="text" name="idade" id="input_idade" 
                             placeholder=" ">
                         <label class="did-floating-label">Idade</label>
                     </div>
 
                     <div class="did-floating-label-content">
-                        <input class="did-floating-input input_numero" type="text" id="input_numero" 
+                        <input class="did-floating-input input_numero" name="telefone" type="text" id="input_numero" 
                             placeholder=" ">
                         <label class="did-floating-label">Telefone</label>
                     </div>
                 </div>
 
                 <div class="did-floating-label-content">
-                    <textarea class="did-floating-input textarea_local" id="local" placeholder=""></textarea>
+                    <textarea class="did-floating-input textarea_local" name="local" id="local" placeholder=""></textarea>
                     <label class="did-floating-label">Local da ocorrencia</label>
                 </div>
                 <div>
@@ -204,17 +204,17 @@
                 </div>
 
                 <div class="did-floating-label-content">
-                    <input class="did-floating-input input_nome" id="rgcpf" type="text" placeholder=" ">
+                    <input class="did-floating-input input_nome" name="rgcpf" id="rgcpf" type="text" placeholder=" ">
                     <label class="did-floating-label">RG / CPF Paciente</label>
                 </div>
                 <div class="linha_input-group">
                 <div class="did-floating-label-content">
-                    <input class="did-floating-input input_numero" id="Acompanhante" type="text" placeholder=" ">
+                    <input class="did-floating-input input_numero" name="acomp" id="Acompanhante" type="text" placeholder=" ">
                     <label class="did-floating-label">Acompanhante</label>
                 </div>
 
                 <div class="did-floating-label-content">
-                    <input class="did-floating-input  input_idade" type="text" id="input_idadeacomp" 
+                    <input class="did-floating-input  input_idade" name="idadeacomp" type="text" id="input_idadeacomp" 
                         placeholder=" ">
                     <label class="did-floating-label">Idade</label>
                 </div></div>
@@ -229,6 +229,8 @@
                 function teste() {
                     var x = document.querySelector("input[name = radio_sexo]").value;
                     console.log(x);
+                    var y = document.getElementById("input_idade").value;
+                    console.log(y);
                 }
             </script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
