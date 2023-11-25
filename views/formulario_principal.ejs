@@ -611,46 +611,46 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-            <script>
-                // pega todos os botoes
-                const radios = document.querySelectorAll('input[name="radio_TDO"]');
-                // Restaura state
-                const savedRadioState = localStorage.getItem('radioState');
-                // restaura estado dos botoes
-                if (savedRadioState) {
-                    savedRadioState.split('').forEach((state, index) => {
-                        radios[index].checked = state === '1';
-                    });
-                }
-
-
-                // evento de mudança de estado
-                radios.forEach((radio, index) => {
-                    radio.addEventListener('change', () => {
-                        // cria um codigo binario para cada botao
-                        let binarytdo = '';
-                        radios.forEach((r, i) => {
-                            binarytdo += r.checked && i === index ? '1' : '0';
+                <script>
+                    // pega todos os botoes
+                    const radios = document.querySelectorAll('input[name="radio_TDO"]');
+                    // Restaura state
+                    const savedRadioState = localStorage.getItem('radioState');
+                    // restaura estado dos botoes
+                    if (savedRadioState) {
+                        savedRadioState.split('').forEach((state, index) => {
+                            radios[index].checked = state === '1';
                         });
-
-                        // Save state
-                        localStorage.setItem('radioState', binarytdo);
-
-
-                        console.log(binarytdo);
-                    });
-                });
-                // pega todos os botoes
-                const textareafinal = document.querySelectorAll('textarea');
-                // Restaura state
-                const savedTextareafinal = localStorage.getItem('textareafinal');
-
-                textareafinal.forEach((textarea, index) => {
-                    // chama state
-                    const savedText = localStorage.getItem('textareafinal' + index);
-                    if (savedText) {
-                        textarea.value = savedText;
                     }
+
+
+                    // evento de mudança de estado
+                    radios.forEach((radio, index) => {
+                        radio.addEventListener('change', () => {
+                            // cria um codigo binario para cada botao
+                            let binarytdo = '';
+                            radios.forEach((r, i) => {
+                                binarytdo += r.checked && i === index ? '1' : '0';
+                            });
+
+                            // Save state
+                            localStorage.setItem('radioState', binarytdo);
+
+
+                            console.log(binarytdo);
+                        });
+                    });
+                    // pega todos os botoes
+                    const textareafinal = document.querySelectorAll('textarea');
+                    // Restaura state
+                    const savedTextareafinal = localStorage.getItem('textareafinal');
+
+                    textareafinal.forEach((textarea, index) => {
+                        // chama state
+                        const savedText = localStorage.getItem('textareafinal' + index);
+                        if (savedText) {
+                            textarea.value = savedText;
+                        }
 
                     textarea.addEventListener('input', () => {
                         // salva conteudo da area de texto

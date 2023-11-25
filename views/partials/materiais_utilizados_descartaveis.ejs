@@ -23,15 +23,15 @@
 
                     <div class="checkbox_description2">
                         <p class="checkbox_text">8</p>
-                        <input type="radio" name="radio_perfusao" />
+                        <input type="radio" name="radio_ataduras" />
                     </div>
                     <div class="checkbox_description2">
                         <p class="checkbox_text">12</p>
-                        <input type="radio" name="radio_perfusao" />
+                        <input type="radio" name="radio_ataduras" />
                     </div>
                     <div class="checkbox_description2">
                         <p class="checkbox_text">20</p>
-                        <input type="radio" name="radio_perfusao" />
+                        <input type="radio" name="radio_ataduras" />
                     </div>
 
                 </label>
@@ -47,15 +47,15 @@
 
                     <div class="checkbox_description2">
                         <p class="checkbox_text">H</p>
-                        <input type="radio" name="radio_perfusao" />
+                        <input type="radio" name="radio_KITS" />
                     </div>
                     <div class="checkbox_description2">
                         <p class="checkbox_text">P</p>
-                        <input type="radio" name="radio_perfusao" />
+                        <input type="radio" name="radio_KITS" />
                     </div>
                     <div class="checkbox_description2">
                         <p class="checkbox_text">Q</p>
-                        <input type="radio" name="radio_perfusao" />
+                        <input type="radio" name="radio_KITS" />
                     </div>
 
                 </label>
@@ -91,11 +91,11 @@
 
                     <div class="checkbox_description2">
                         <p class="checkbox_text">H</p>
-                        <input type="radio" name="radio_perfusao" />
+                        <input type="radio" name="radio_talas" />
                     </div>
                     <div class="checkbox_description2">
                         <p class="checkbox_text">P</p>
-                        <input type="radio" name="radio_perfusao" />
+                        <input type="radio" name="radio_talas" />
                     </div>
 
                 </label>
@@ -160,5 +160,85 @@
     </div>
     <!-- Criação de um campo de texto com rótulo flutuante -->
 </body>
+<script>
 
+    // pega todos os botoes
+    const radioMUD = document.querySelectorAll('input[name="radio_ataduras"]');
+    const radioMUD2 = document.querySelectorAll('input[name="radio_KITS"]');
+    const radioMUD3 = document.querySelectorAll('input[name="radio_talas"]');
+    // Restaura state
+    const savedRadioMUDState = localStorage.getItem('radioMUDState');
+    const savedRadioMUD2State = localStorage.getItem('radioMUD2State');
+    const savedRadioMUD3State = localStorage.getItem('radioMUD3State');
+    // restaura estado dos botoes
+    if (savedRadioMUDState) {
+        savedRadioMUDState.split('').forEach((state, index) => {
+            radioMUD[index].checked = state === '1';
+        });
+    }
+
+    if (savedRadioMUD2State) {
+        savedRadioMUD2State.split('').forEach((state, index) => {
+            radioMUD2[index].checked = state === '1';
+        });
+    }
+
+    if (savedRadioMUD3State) {
+        savedRadioMUD3State.split('').forEach((state, index) => {
+            radioMUD3[index].checked = state === '1';
+        });
+    }
+
+
+    // evento de mudança de estado
+    radioMUD.forEach((radio, index) => {
+        radio.addEventListener('change', () => {
+            // cria um codigo binario para cada botao
+            let binaryMUD = '';
+            radioMUD.forEach((r, i) => {
+                binaryMUD += r.checked && i === index ? '1' : '0';
+            });
+
+            // Save state
+            localStorage.setItem('radioState_ataduras', binaryMUD);
+
+
+            console.log(binaryMUD);
+        });
+    });
+
+
+    radioMUD2.forEach((radio, index) => {
+        radio.addEventListener('change', () => {
+            // cria um codigo binario para cada botao
+            let binaryMUD2 = '';
+            radioMUD2.forEach((r, i) => {
+                binaryMUD2 += r.checked && i === index ? '1' : '0';
+            });
+
+            // Save state
+            localStorage.setItem('radioState_KITS', binaryMUD2);
+
+
+            console.log(binaryMUD2);
+        });
+    });
+
+    radioMUD3.forEach((radio, index) => {
+        radio.addEventListener('change', () => {
+            // cria um codigo binario para cada botao
+            let binaryMUD3 = '';
+            radioMUD3.forEach((r, i) => {
+                binaryMUD3 += r.checked && i === index ? '1' : '0';
+            });
+
+            // Save state
+            localStorage.setItem('radioState_talas', binaryMUD3);
+
+
+            console.log(binaryMUD3);
+        });
+    });
+    
+</script>
 </html>

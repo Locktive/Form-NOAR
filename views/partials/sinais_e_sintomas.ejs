@@ -436,56 +436,56 @@
         }
 
         // pega todos os botoes
-const checkboxss = document.querySelectorAll('input[name="checkbox_ss"]');
-// Restaura state
-const savedcheckboxssState = localStorage.getItem('checkboxssState');
-if (savedcheckboxssState) {
-    savedcheckboxssState.split('').forEach((state, index) => {
-        checkboxss[index].checked = state === '1';
-    });
-}
+        const checkboxss = document.querySelectorAll('input[name="checkbox_ss"]');
+        // Restaura state
+        const savedcheckboxssState = localStorage.getItem('checkboxssState');
+        if (savedcheckboxssState) {
+            savedcheckboxssState.split('').forEach((state, index) => {
+                checkboxss[index].checked = state === '1';
+            });
+        }
 
-// evento de mudança de estado
-checkboxss.forEach((checkbox, index) => {
-    checkbox.addEventListener('change', () => {
-        // cria um codigo binario para cada botao
-        let binaryss = '';
-        checkboxss.forEach((r, i) => {
-            binaryss += r.checked ? '1' : '0';
+        // evento de mudança de estado
+        checkboxss.forEach((checkbox, index) => {
+            checkbox.addEventListener('change', () => {
+                // cria um codigo binario para cada botao
+                let binaryss = '';
+                checkboxss.forEach((r, i) => {
+                    binaryss += r.checked ? '1' : '0';
+                });
+
+                // Save state
+                localStorage.setItem('checkboxssState', binaryss);
+
+                console.log(binaryss);
+            });
         });
 
-        // Save state
-        localStorage.setItem('checkboxssState', binaryss);
+        // // pega todos os botoes
+        // const radiosss = document.querySelectorAll('input[name="checkbox_ss"]');
+        // // Restaura state
+        // const savedRadiossState = localStorage.getItem('radiossState');
+        // if (savedRadiossState) {
+        //     savedRadiossState.split('').forEach((state, index) => {
+        //         radiosss[index].checked = state === '1';
+        //     });
+        // }
 
-        console.log(binaryss);
-    });
-});
+        // // evento de mudança de estado
+        // radiosss.forEach((radio, index) => {
+        //     radio.addEventListener('change', () => {
+        //         // cria um codigo binario para cada botao
+        //         let binaryss = '';
+        //         radiosss.forEach((r, i) => {
+        //             binaryss += r.checked && i === index ? '1' : '0';
+        //         });
 
-// // pega todos os botoes
-// const radiosss = document.querySelectorAll('input[name="checkbox_ss"]');
-// // Restaura state
-// const savedRadiossState = localStorage.getItem('radiossState');
-// if (savedRadiossState) {
-//     savedRadiossState.split('').forEach((state, index) => {
-//         radiosss[index].checked = state === '1';
-//     });
-// }
+        //         // Save state
+        //         localStorage.setItem('radiossState', binaryss);
 
-// // evento de mudança de estado
-// radiosss.forEach((radio, index) => {
-//     radio.addEventListener('change', () => {
-//         // cria um codigo binario para cada botao
-//         let binaryss = '';
-//         radiosss.forEach((r, i) => {
-//             binaryss += r.checked && i === index ? '1' : '0';
-//         });
-
-//         // Save state
-//         localStorage.setItem('radiossState', binaryss);
-
-//         console.log(binaryss);
-//     });
-// });
+        //         console.log(binaryss);
+        //     });
+        // });
 
 
 
