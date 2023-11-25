@@ -39,7 +39,7 @@
     }
 
     .painel {
-        
+
         width: 100%;
         display: flex;
         flex-direction: column !important;
@@ -87,8 +87,8 @@
 
         <div class="botao_titulo">
             <div class="botao_situacao">
-                <input class="cont_critico emotes_container" type="radio" name="radio_dt" /><img class="icon_emote"
-                    src="./images/disappointed.png" />
+                <input class="cont_critico emotes_container" type="radio" name="radio_dt" />
+                <div><img class="icon_emote" src="./images/disappointed.png" /></div>
             </div>
             <p class="estado" id="critico">CRÍTICO</p>
         </div>
@@ -96,8 +96,8 @@
 
         <div class="botao_titulo">
             <div class="botao_situacao">
-                <input class="cont_instavel emotes_container" type="radio" name="radio_dt" /><img class="icon_emote"
-                    src="./images/boring.png" />
+                <input class="cont_instavel emotes_container" type="radio" name="radio_dt" />
+                <div><img class="icon_emote" src="./images/boring.png" /></div>
             </div>
             <p class="estado" id="instavel">INSTÁVEL</p>
         </div>
@@ -105,8 +105,8 @@
 
         <div class="botao_titulo">
             <div class="botao_situacao">
-                <input class="cont_pi emotes_container" type="radio" name="radio_dt" /><img class="icon_emote"
-                    src="./images/neutral.png" />
+                <input class="cont_pi emotes_container" type="radio" name="radio_dt" />
+                <div><img class="icon_emote" src="./images/neutral.png" /></div>
             </div>
             <p class="estado" id="potencialmente_instavel">POTENCIALMENTE INSTÁVEL</p>
         </div>
@@ -114,8 +114,9 @@
 
         <div class="botao_titulo">
             <div class="botao_situacao">
-                <input class="cont_estavel emotes_container" type="radio" name="radio_dt" /><img class="icon_emote"
-                    src="./images/happy.png" />
+                <input class="cont_estavel emotes_container" type="radio" name="radio_dt" />
+                <div><img class="icon_emote" src="./images/happy.png" />
+                </div>
             </div>
             <p class="estado" id="estavel">ESTÁVEL</p>
         </div>
@@ -209,6 +210,56 @@
                 }
             });
         }
+        // pega todos os botoes
+        const dct = document.querySelectorAll('input[name="radio_dt"]');
+        // Restaura state
+        const saveddctState = localStorage.getItem('dctState');
+        if (saveddctState) {
+            saveddctState.split('').forEach((state, index) => {
+                dct[index].checked = state === '1';
+            });
+        }
+
+        // evento de mudança de estado
+        dct.forEach((checkbox, index) => {
+            checkbox.addEventListener('change', () => {
+                // cria um codigo binario para cada botao
+                let binarydct = '';
+                dct.forEach((r, i) => {
+                    binarydct += r.checked && i == index ? '1' : '0';
+                });
+
+                // Save state
+                localStorage.setItem('dctState', binarydct);
+
+                console.log(binarydct);
+            });
+        });
+        // pega todos os botoes
+        const fc = document.querySelectorAll('input[name="radio_fc"]');
+        // Restaura state
+        const savedfcState = localStorage.getItem('fcState');
+        if (savedfcState) {
+            savedfcState.split('').forEach((state, index) => {
+                fc[index].checked = state === '1';
+            });
+        }
+
+        // evento de mudança de estado
+        fc.forEach((checkbox, index) => {
+            checkbox.addEventListener('change', () => {
+                // cria um codigo binario para cada botao
+                let binaryfc = '';
+                fc.forEach((r, i) => {
+                    binaryfc += r.checked && i == index ? '1' : '0';
+                });
+
+                // Save state
+                localStorage.setItem('fcState', binaryfc);
+
+                console.log(binaryfc);
+            });
+        });
     </script>
 </body>
 

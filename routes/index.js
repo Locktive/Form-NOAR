@@ -93,16 +93,26 @@ router.get('/acesso_negado', function(req, res, next) {
 // Rota pra o formulario principal
 
 router.get('/form',requireAuth, function(req, res, next) {
-  var idade = req.session.idade;
-  res.render('formulario_principal.ejs', { pag: 'Formulário', title: 'Formulário - Bombeiros de Guaramirim', user: req.session.user , idade: req.session.idade, id_paciente : req.session.id_paciente});
+  res.render('formulario_principal.ejs', { pag: 'Formulário', title: 'Formulário - Bombeiros de Guaramirim', user: req.session.user , idade: req.session.idade, id_paciente : req.session.id_paciente, gravida: req.session.gravida});
   delete req.session.idade;
+  delete req.session.gravida;
 });
 
 
 
 // post do formulario principal
 router.post('/form', function(req, res) {
+  
 
+
+
+
+
+
+
+
+
+  delete req.session.id_paciente;
   res.redirect('/ocorrencia');
 });
 
@@ -146,6 +156,7 @@ router.get('/vitima',requireAuth, function(req, res, next) {
 
 // post dos dados da vítima
 router.post('/vitima', function(req, res) {
+  delete req.session.id_paciente;
   var nome = req.body.nome;
   var idade = req.body.idade;
   req.session.idade = req.body.idade;
@@ -154,30 +165,32 @@ router.post('/vitima', function(req, res) {
   var dados = req.body.rgcpf;
   var acomp = req.body.acomp;
   var idadeacomp = req.body.idadeacomp;
-// var gravida = req.body.radio_gravida;
+  var sexo = req.body.sexo;
+  var gravida_val = req.body.gravida_val;
+  req.session.gravida = req.body.gravida_val;
   var local = req.body.local;
-  req.session.idade = req.body.idade;
   var sql = 'INSERT INTO acompanhante(nome,idade) VALUES (?,?)';
   var valuesAcomp = [acomp, idadeacomp];
 
-   db.query(sql, valuesAcomp, function(err, results, fields) {
+    connection.query(sql, valuesAcomp, function(err, results, fields) {
     if (err) throw err;
     
     // Obtenha o ID do acompanhante inserido
-     var acompId = results.id_acompanhante;
+     var acompId = results.insertId;
 
     // Consulta SQL para inserir na tabela vitima
-   var sqlVitima = 'INSERT INTO paciente(Nome_paciente, idade_paciente, telefone, RG_CPF_paciente,Local_do_ocorrido,sexo_paciente, fk_acompanhante, gravida) VALUES(?, ?, ?, ?, ?, ?, ?)';
-   var valuesVitima = [nome, idade, numero, dados,local,sexo, acompId, gravida];
+   var sqlVitima = 'INSERT INTO paciente(Nome_paciente, Idade_paciente, telefone, RG_cpf_paciente,Local_do_ocorrido,sexo_paciente, fk_acompanhante, gravidez) VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
+   var valuesVitima = [nome, idade, numero, dados,local,sexo, acompId, gravida_val];
 
     // Execute a consulta
-    db.query(sqlVitima, valuesVitima, function(err, result) {
+    connection.query(sqlVitima, valuesVitima, function(err, result) {
         if (err) throw err;
         req.session.id_paciente = result.insertId;
+        res.redirect('/form');
     });
 });
 
-res.redirect('/form');
+
 });
 
 // Rota tela de contatos

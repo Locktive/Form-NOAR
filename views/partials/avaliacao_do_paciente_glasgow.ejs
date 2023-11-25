@@ -215,8 +215,14 @@
             </label>
         </div>
     </div>
-
-
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        <div class="did-floating-label-content textarea">
+                <div class="did-floating-label-content">
+                    <p>NÍVEL DECLARADO DE LESÃO : <p id="nivel"></p> </p>
+                </div>
+        </div>
+    </div>
+    <input type="hidden" name="nivel" id="nivel" value="">
     <!-- COLOCAR A INFORMAÇÃO DO NÍVEL DE CONSCIÊNCIA -->
 
     <script>
@@ -244,6 +250,16 @@
                 total += parseInt(checkbox.value) || 0;
             });
 
+            if (total >= 13) {
+                document.getElementById("nivel").innerHTML = "LEVE";
+            } else if (total >= 9) {
+                document.getElementById("nivel").innerHTML = "MODERADO";
+            } else if(total >= 3) {
+                document.getElementById("nivel").innerHTML = "GRAVE";
+            } else {
+                document.getElementById("nivel").innerHTML = "COMA";
+            }
+
             document.getElementById("input_idade").innerText = total;
         }
 
@@ -251,6 +267,34 @@
         radioButtons.forEach(function (radio) {
             radio.addEventListener("change", updateTotal);
         });
+        // pega todos os botoes
+        const radiosglasgow = document.querySelectorAll('input[name="radio_AOC"], input[name="radio_RV"], input[name="radio_RM"]');
+                // Restaura state
+                const savedRadioStateglasgow = localStorage.getItem('radioStateglasgow');
+                // restaura estado dos botoes
+                if (savedRadioStateglasgow) {
+                    savedRadioStateglasgow.split('').forEach((state, index) => {
+                        radiosglasgow[index].checked = state === '1';
+                    });
+                }
+
+
+                // evento de mudança de estado
+                radiosglasgow.forEach((radio, index) => {
+                    radio.addEventListener('change', () => {
+                        // cria um codigo binario para cada botao
+                        let binarytdoglasgow = '';
+                        radiosglasgow.forEach((r, i) => {
+                            binarytdoglasgow += r.checked ? '1' : '0';
+                        });
+
+                        // Save state
+                        localStorage.setItem('radioStateglasgow', binarytdoglasgow);
+
+
+                        console.log(binarytdoglasgow);
+                    });
+                });
     </script>
 
 

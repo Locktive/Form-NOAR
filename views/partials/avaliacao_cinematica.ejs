@@ -112,7 +112,7 @@ checkboxac.forEach((checkbox, index) => {
         // cria um codigo binario para cada botao
         let binaryac = '';
         checkboxac.forEach((r, i) => {
-            binaryac += r.checked && i === index ? '1' : '0';
+            binaryac += r.checked ? '1' : '0';
         });
 
         // Save state

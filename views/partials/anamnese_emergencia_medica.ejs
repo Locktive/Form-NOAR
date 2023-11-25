@@ -201,7 +201,7 @@
 
             <div class="checkbox_description">
                 <p class="checkbox_text">NÃO</p>
-                <input type="radio" name="radio_usa_medicacao" />
+                <input type="radio" name="radio_alergia" />
             </div>
 
         </div>
@@ -264,6 +264,146 @@
             }
         });
     }
+    // pega todos os botoes
+    const radioaov = document.querySelectorAll('input[name="radio_aconteceu_outras_vezes"]');
+                // Restaura state
+                const savedaovState = localStorage.getItem('aov');
+                // restaura estado dos botoes
+                if (savedaovState) {
+                    savedaovState.split('').forEach((state, index) => {
+                        radioaov[index].checked = state === '1';
+                    });
+                }
+
+
+                // evento de mudança de estado
+                radioaov.forEach((radio, index) => {
+                    radio.addEventListener('change', () => {
+                        // cria um codigo binario para cada botao
+                        let binaryaov = '';
+                        radioaov.forEach((r, i) => {
+                            binaryaov += r.checked && i === index ? '1' : '0';
+                        });
+
+                        // Save state
+                        localStorage.setItem('aov', binaryaov);
+
+
+                        console.log(binaryaov);
+                    });
+                });
+                // pega todos os botoes
+                const radiopbs = document.querySelectorAll('input[name="radio_prob_saude"]');
+                // Restaura state
+                const savedpbsState = localStorage.getItem('radiopbs');
+                // restaura estado dos botoes
+                if (savedpbsState) {
+                    savedpbsState.split('').forEach((state, index) => {
+                        radiopbs[index].checked = state === '1';
+                    });
+                }
+
+
+                // evento de mudança de estado
+                radiopbs.forEach((radio, index) => {
+                    radio.addEventListener('change', () => {
+                        // cria um codigo binario para cada botao
+                        let binarypbs = '';
+                        radiopbs.forEach((r, i) => {
+                            binarypbs += r.checked && i === index ? '1' : '0';
+                        });
+
+                        // Save state
+                        localStorage.setItem('radiopbs', binarypbs);
+
+
+                        console.log(binarypbs);
+                    });
+                });
+                // pega todos os botoes
+                const radiosmed = document.querySelectorAll('input[name="radio_usa_medicacao"]');
+                // Restaura state
+                const savedRadiomed = localStorage.getItem('radiomed');
+                // restaura estado dos botoes
+                if (savedRadiomed) {
+                    savedRadiomed.split('').forEach((state, index) => {
+                        radiosmed[index].checked = state === '1';
+                    });
+                }
+
+
+                // evento de mudança de estado
+                radiosmed.forEach((radio, index) => {
+                    radio.addEventListener('change', () => {
+                        // cria um codigo binario para cada botao
+                        let binarymed = '';
+                        radiosmed.forEach((r, i) => {
+                            binarymed += r.checked && i === index ? '1' : '0';
+                        });
+
+                        // Save state
+                        localStorage.setItem('radiomed', binarymed);
+
+
+                        console.log(binarymed);
+                    });
+                });
+                // pega todos os botoes
+        const radio_alergia = document.querySelectorAll('input[name="radio_alergia"]');
+                // Restaura state
+                const savedalergiaState = localStorage.getItem('alergiaradio');
+                // restaura estado dos botoes
+                if (savedalergiaState) {
+                    savedalergiaState.split('').forEach((state, index) => {
+                        radio_alergia[index].checked = state === '1';
+                    });
+                }
+
+
+                // evento de mudança de estado
+                radio_alergia.forEach((radio, index) => {
+                    radio.addEventListener('change', () => {
+                        // cria um codigo binario para cada botao
+                        let binaryalergia = '';
+                        radio_alergia.forEach((r, i) => {
+                            binaryalergia += r.checked && i === index ? '1' : '0';
+                        });
+
+                        // Save state
+                        localStorage.setItem('alergiaradio', binaryalergia);
+
+
+                        console.log(binaryalergia);
+                    });
+                });
+                // pega todos os botoes
+        const radioingeriu = document.querySelectorAll('input[name="radio_ingerir"]');
+                // Restaura state
+                const savedingerirState = localStorage.getItem('ingerirradio');
+                // restaura estado dos botoes
+                if (savedingerirState) {
+                    savedingerirState.split('').forEach((state, index) => {
+                        radioingeriu[index].checked = state === '1';
+                    });
+                }
+
+
+                // evento de mudança de estado
+                radioingeriu.forEach((radio, index) => {
+                    radio.addEventListener('change', () => {
+                        // cria um codigo binario para cada botao
+                        let binarying = '';
+                        radioingeriu.forEach((r, i) => {
+                            binarying += r.checked && i === index ? '1' : '0';
+                        });
+
+                        // Save state
+                        localStorage.setItem('ingerirradio', binarying);
+
+
+                        console.log(binarying);
+                    });
+                });
 </script>
 
 </html>

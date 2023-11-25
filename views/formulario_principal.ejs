@@ -456,33 +456,6 @@
                         </div>
                     </div>
 
-
-                    <!-- <div class="card"
-                        style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
-                        <div class="card-header" id="headingTwenty"
-                            style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
-                            <h2 class="mb-0">
-                                <button type="button" style="text-decoration: none;" class="collapsed btn btn-link" type="button"
-                                    data-toggle="collapse" data-target="#collapseTwenty" aria-expanded="true"
-                                    aria-controls="collapseTwenty">
-                                    <p style="color: #333333; margin: 0px; text-decoration: none;">RESPONSÁVEL PELO
-                                        PREENCHIMENTO</p>
-                                </button>
-                            </h2>
-                        </div>
-
-                        <div id="collapseTwenty" class="accordion-collapse collapse" aria-labelledby="headingTwenty"
-                            data-parent="#accordionExample">
-                            <div class="card-body" id="conteudoItem20">
-                                <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
-                                    <button type="button">Apple</button>
-                                    <button type="button">Samsung</button>
-                                    <button type="button">Sony</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
                     <div class="card"
                         style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
                         <div class="card-header" id="headingThirteen"
@@ -508,7 +481,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <% if(gravida !== 0){ %>
                     <div class="card"
                         style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
                         <div class="card-header" id="headingTwentyOne"
@@ -528,12 +501,14 @@
                             aria-labelledby="headingTwentyOne" data-parent="#accordionExample">
                             <div class="card-body" id="conteudoItem21">
                                 <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
-                                    <%- include('./partials/anamnese_gestacional.ejs') %>
+                                    
+                                    <%- include('./partials/anamnese_gestacional.ejs') %>]
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
-
+                    <% } %>
                     <div class="card"
                         style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
                         <div class="card-header" id="headingSixteen"
@@ -659,6 +634,25 @@
                         localStorage.setItem('textareafinal' + index, textarea.value);
                     });
                 });
+                // pega todos os botoes
+                const inputtext = document.querySelectorAll('input[type="text"]');
+                // Restaura state
+                const savedinputtextfinal = localStorage.getItem('inputtextfinal');
+
+                inputtext.forEach((input, index) => {
+                    // chama state
+                    const savedinputText = localStorage.getItem('inputtext' + index);
+                    if (savedinputText) {
+                        input.value = savedText;
+                    }
+
+                    input.addEventListener('input', () => {
+                        // salva conteudo da area de texto
+                        console.log(input.value);
+                        console.log(index);
+                        localStorage.setItem('inputtextfinal' + index, i.value);
+                    });
+                });
                 function deleteLocal() {
                     localStorage.removeItem('radioState'); radios.value = '00000000000000000000';
                     localStorage.removeItem('radiovteState'); radiosvte.value = '';
@@ -671,9 +665,25 @@
                     localStorage.removeItem('radiopes2State'); radiopes2.value = '';
                     localStorage.removeItem('radiopes3State'); radiopes3.value = '';
                     localStorage.removeItem('radiopes4State'); radiopes4.value = '';
+                    localStorage.removeItem('radioStateglasgow'); radiosglasgow.value = '';
+                    localStorage.removeItem('dctState'); dct.value = '';
+                    localStorage.removeItem('fcState'); fc.value = '';
+                    localStorage.removeItem('kedradioStfftate'); radioked.value = '';
+                    localStorage.removeItem('colarradioStfftate'); radiotamanhocolar.value = '';
+                    localStorage.removeItem('radiotff'); radiostff.value = '';
+                    localStorage.removeItem('aov'); radioaov.value = '';
+                    localStorage.removeItem('radiopbs'); radiopbs.value = '';
+                    localStorage.removeItem('radiomed'); radiosmed.value = '';
+                    localStorage.removeItem('alergiaradio'); radio_alergia.value = '';
+                    localStorage.removeItem('ingerirradio'); radioingeriu.value = '';
+                    localStorage.removeItem('cod'); radiocod.value = '';
                     textareafinal.forEach((textarea, index) => {
                         localStorage.removeItem('textareafinal' + index);
                         textarea.value = '';
+                    });
+                    inputtext.forEach((input, index) => {
+                        localStorage.removeItem('inputtext' + index);
+                        input.value = '';
                     });
                 }
                 function validateValue(elem) {
