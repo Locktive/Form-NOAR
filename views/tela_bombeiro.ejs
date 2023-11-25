@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%- title %></title>
+    <style>
+        /* Add responsive styles */
+        
+        .body {
+            display: flex;
+            min-width: 330px;
+            flex-direction: column;
+            row-gap: 20px;
+            margin-top: 5rem;
+            margin-bottom: 5rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button {
+            text-align: center;
+            border: none;
+            border-radius: 10px;
+            color: black;
+            background: #A3ADE0;
+            font-size: 15px;
+            padding: 10px 20px 10px 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+
+        .button:hover {
+            text-align: center;
+            border: none;
+            border-radius: 10px;
+            color: black;
+            background: #8e97c5;
+            font-size: 15px;
+            padding: 10px 20px 10px 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+
+        .input {
+            border: solid #dddddd 3px;
+            height: 15px;
+            border-radius: 5px;
+        }
+
+        .container_telabombeiro {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            width: 18rem;
+            padding: 20px;
+            background-color: #F1F1F1;
+            border-radius: 5px;
+        }
+
+        /* input */
+        .input-group {
+            position: relative;
+        }
+
+        .input {
+            background-color: #F1F1F1;
+            font-size: 18px;
+            padding: 10px 10px 10px 5px;
+            display: block;
+            justify-content: center;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        label {
+            color: #999;
+            font-size: 15px;
+            font-weight: normal;
+            position: absolute;
+            pointer-events: none;
+            padding: 5px;
+            left: 10px;
+            top: 5px;
+            transition: 0.2s ease all;
+            -moz-transition: 0.2s ease all;
+            -webkit-transition: 0.2s ease all;
+        }
+
+        .input:focus~label,
+        .input:valid~label {
+
+            top: -14px;
+            font-size: 15px;
+            background-color: #F1F1F1;
+            color: #9c9c9c;
+        }
+
+        .bar {
+            position: relative;
+            display: block;
+            width: 100%;
+        }
+
+
+        .bar:before {
+            left: 50%;
+        }
+
+        .bar:after {
+            right: 50%;
+        }
+        
+        .nome {
+            display: flex; 
+            margin-left: 10px;
+        }
+
+        .fone {
+            display: flex; 
+            margin-left: 10px;
+        }
+
+        .email {
+            display: flex; 
+            margin-left: 10px;
+        }   
+        
+
+
+        /* input */
+    </style>
+</head>
+
+<body>
+    <%- include('./partials/cabecalho.ejs') %>
+    <div class="body">
+        <div>
+            <img src="./images/usuario.png" />
+        </div>
+        <form action="" method="post" style="text-align: center; display: flex; justify-content: center;">
+            <div class="container_telabombeiro">
+
+
+                <div class="Title">
+                    <p class="title" style="font-weight: 700; font-size: 40px; color: black;">Usuário</p>
+                </div>
+                
+                    <div class="input-group">
+                     <label class="nome">Nome</label>> 
+                    </div>
+                    </a>
+                     
+                <div class="input-group">
+                    <label class="email">Email</label>
+                </div>
+
+                <div class="input-group">
+                    <label class="email">Código do Bombeiro</label>
+                </div>
+
+            </div>
+        </form>
+    </div>
+        <%- include('./partials/footer.ejs') %>
+</body>
+
+</html>
