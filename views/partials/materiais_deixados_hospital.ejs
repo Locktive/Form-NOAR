@@ -24,22 +24,22 @@
             <div class="checkbox_row">
                 <p class="checkbox_text">COLAR</p>
                 <label class="custom_checkbox2">
-
+                    
                     <div class="checkbox_description2">
                         <p class="checkbox_text">PP</p>
-                        <input type="radio" name="radio_perfusao" />
+                        <input type="radio" name="radio_colar" />
                     </div>
                     <div class="checkbox_description2">
                         <p class="checkbox_text">P</p>
-                        <input type="radio" name="radio_perfusao" />
+                        <input type="radio" name="radio_colar" />
                     </div>
                     <div class="checkbox_description2">
                         <p class="checkbox_text">M</p>
-                        <input type="radio" name="radio_perfusao" />
+                        <input type="radio" name="radio_colar" />
                     </div>
                     <div class="checkbox_description2">
                         <p class="checkbox_text">G</p>
-                        <input type="radio" name="radio_perfusao" />
+                        <input type="radio" name="radio_colar" />
                     </div>
 
                 </label>
@@ -55,11 +55,11 @@
 
                     <div class="checkbox_description2">
                         <p class="checkbox_text">ADULT.</p>
-                        <input type="radio" name="radio_perfusao" />
+                        <input type="radio" name="radio_ked" />
                     </div>
                     <div class="checkbox_description2">
                         <p class="checkbox_text">INFA.</p>
-                        <input type="radio" name="radio_perfusao" />
+                        <input type="radio" name="radio_ked" />
                     </div>
 
                 </label>
@@ -75,11 +75,11 @@
 
                     <div class="checkbox_description2">
                         <p class="checkbox_text">ADULT.</p>
-                        <input type="radio" name="radio_perfusao" />
+                        <input type="radio" name="radio_ttf" />
                     </div>
                     <div class="checkbox_description2">
                         <p class="checkbox_text">INFA.</p>
-                        <input type="radio" name="radio_perfusao" />
+                        <input type="radio" name="radio_ttf" />
                     </div>
 
                 </label>
@@ -154,7 +154,93 @@
             </div>
         </div>
     </div>
-    <!-- Criação de um campo de texto com rótulo flutuante -->
+   
+    <script>
+        // pega todos os botoes
+        const radiotamanhocolar = document.querySelectorAll('input[name="radio_colar"]');
+                // Restaura state
+                const savedcolarState = localStorage.getItem('colarradioStfftate');
+                // restaura estado dos botoes
+                if (savedcolarState) {
+                    savedcolarState.split('').forEach((state, index) => {
+                        radiotamanhocolar[index].checked = state === '1';
+                    });
+                }
+
+
+                // evento de mudança de estado
+                radiotamanhocolar.forEach((radio, index) => {
+                    radio.addEventListener('change', () => {
+                        // cria um codigo binario para cada botao
+                        let binarycolar = '';
+                        radiotamanhocolar.forEach((r, i) => {
+                            binarycolar += r.checked && i === index ? '1' : '0';
+                        });
+
+                        // Save state
+                        localStorage.setItem('colarradioStfftate', binarycolar);
+
+
+                        console.log(binarycolar);
+                    });
+                });
+                // pega todos os botoes
+                const radioked = document.querySelectorAll('input[name="radio_ked"]');
+                // Restaura state
+                const savedkedState = localStorage.getItem('kedradioStfftate');
+                // restaura estado dos botoes
+                if (savedkedState) {
+                    savedkedState.split('').forEach((state, index) => {
+                        radioked[index].checked = state === '1';
+                    });
+                }
+
+
+                // evento de mudança de estado
+                radioked.forEach((radio, index) => {
+                    radio.addEventListener('change', () => {
+                        // cria um codigo binario para cada botao
+                        let binaryked = '';
+                        radioked.forEach((r, i) => {
+                            binaryked += r.checked && i === index ? '1' : '0';
+                        });
+
+                        // Save state
+                        localStorage.setItem('kedradioStfftate', binaryked);
+
+
+                        console.log(binaryked);
+                    });
+                });
+                // pega todos os botoes
+                const radiostff = document.querySelectorAll('input[name="radio_ttf"]');
+                // Restaura state
+                const savedRadiotff = localStorage.getItem('radiotff');
+                // restaura estado dos botoes
+                if (savedRadiotff) {
+                    savedRadiotff.split('').forEach((state, index) => {
+                        radiostff[index].checked = state === '1';
+                    });
+                }
+
+
+                // evento de mudança de estado
+                radiostff.forEach((radio, index) => {
+                    radio.addEventListener('change', () => {
+                        // cria um codigo binario para cada botao
+                        let binaryttf = '';
+                        radiostff.forEach((r, i) => {
+                            binaryttf += r.checked && i === index ? '1' : '0';
+                        });
+
+                        // Save state
+                        localStorage.setItem('radiotff', binaryttf);
+
+
+                        console.log(binaryttf);
+                    });
+                });
+    </script>
 </body>
 
 </html>
