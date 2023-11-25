@@ -38,7 +38,9 @@ router.post('/login', function (req, res) {
           console.log("Resultado:", results);
           req.session.user = {
             nome: results[0].Nome,
-            isAdmin: results[0].adm // Checa se é admin
+            isAdmin: results[0].adm, // Checa se é admin
+            data_inicio: results[0].Data_inicio,
+            codigo: results[0].codigo,
           };
           console.log(req.session.user)
         console.log("Connected as " + req.session.user.nome);
@@ -102,7 +104,7 @@ router.get('/form',requireAuth, function(req, res, next) {
 
 // post do formulario principal
 router.post('/form', function(req, res) {
-  
+
 
 
 
@@ -140,6 +142,17 @@ router.post('/cadastro', function(req, res) {
   res.redirect('/contato');
 });
 
+router.get('/bombeiros',requireAuth,admLock, function(req, res, next) {
+  var sql = 'SELECT * FROM bombeiro';
+  connection.query(sql, function(err, results, fields) {
+    if (err) throw err;
+    res.render('bombeiros.ejs', { pag: 'Bombeiros', title: 'Bombeiros - Bombeiros de Guaramirim', user: req.session.user, data: results });
+  });
+});
+
+router.get('/usuario',requireAuth, function(req, res, next) {
+  res.render('usuario.ejs', { pag: 'Usuário', title: 'Usuário - Bombeiros de Guaramirim', user: req.session.user, data: req.session.user.data_inicio , nome: req.session.user.nome , codigo: req.session.user.codigo });  
+});
 
 // Rota para o histório de ocorrências
 

@@ -42,22 +42,26 @@
         <div class="offcanvas-body">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Página Inicial</a>
+                    <a class="nav-link" href="/ocorrencia">Página Inicial</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Histórico</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Página Bombeiro</a>
+                    <a class="nav-link" href="/usuario">Página Bombeiro</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/contato">Contato</a>
-                </li>
+                
                 <% if (user && user.isAdmin === 1) { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/bombeiros">Bombeiros operantes</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/cadastro">Cadastrar novo bombeiro</a>
                     </li>
                 <% } %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contato">Contato</a>
+                </li>
                 <li>
                     <a class="nav-link" href="/logout">Sair</a>
                 </li>
