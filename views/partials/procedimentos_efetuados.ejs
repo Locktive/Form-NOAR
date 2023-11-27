@@ -290,6 +290,10 @@
 
     <div class="checkbox_row">
         <p class="checkbox_text">USO COLAR</p>
+        <div class="checkbox_description">
+            <p class="checkbox_text">TAM: </p>
+            <input type="text" name="" />
+        </div>
         <label class="custom_checkbox">
             <input type="checkbox" name="checkbox_pe" />
         </label>
@@ -318,6 +322,10 @@
 
     <div class="checkbox_row">
         <p class="checkbox_text">OXIGENOTERAPIA</p>
+        <div class="checkbox_description">
+            <p class="checkbox_text">LPM</p>
+            <input type="text" name="" />
+        </div>
         <label class="custom_checkbox">
             <input type="checkbox" name="checkbox_pe" />
         </label>
@@ -325,9 +333,14 @@
 
     <div class="checkbox_row">
         <p class="checkbox_text">REANIMADOR</p>
+        <div class="checkbox_description">
+            <p class="checkbox_text">LPM</p>
+            <input type="text" name="" />
+        </div>
         <label class="custom_checkbox">
             <input type="checkbox" name="checkbox_pe" />
         </label>
+
     </div>
 
     <button type="button" class="sub_accordion_P_EFETUADOS">
@@ -402,13 +415,17 @@
             </div>
         </div>
     </div>
-
+    <input type="hidden" name="checkbox_pe1" />
 </body>
 
 <script>
     var acc = document.getElementsByClassName("sub_accordion_P_EFETUADOS");
     var i;
-
+    function validateValue(elem, max) {
+                    const value = elem.value;
+                    const numVal = value.replace(/\D+/g, "");
+                    elem.value = numVal.slice(0, max);
+                }
     for (i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function () {
             this.classList.toggle("active");
@@ -441,7 +458,7 @@
             checkboxpe.forEach((r, i) => {
                 binarype += r.checked ? '1' : '0';
             });
-
+            document.querySelector('input[name="checkbox_pe1"]').value = binarype;
             // Save state
             localStorage.setItem('checkboxpeState', binarype);
 

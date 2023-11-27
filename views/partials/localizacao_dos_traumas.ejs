@@ -239,8 +239,7 @@
                                     type="button" data-toggle="collapse" data-target="#collapseFive"
                                     aria-expanded="true" aria-controls="collapseFive"
                                     onclick="scrollToAccordion(event)">
-                                    <p style="color: #333333; margin: 0px; text-decoration: none;">LOCALIZAÇÃO DOS
-                                        TRAUMAS
+                                    <p style="color: #333333; margin: 0px; text-decoration: none;">FERIMENTOS
                                     </p>
                                 </button>
                             </h2>
@@ -273,9 +272,10 @@
                             </div>
                         </div>
                     </div>
+                  <input type="hidden" name="ferimentos" id="ferimentos">
       <script>
-
-var ferimentos = {
+var partesSelecionadas = [];
+var ferimentos = JSON.parse(localStorage.getItem('ferimentos')) || {
     "Fratura/luxação/entorse": [],
     "Ferimentos diversos": [],
     "Hemorragias": [],
@@ -287,7 +287,7 @@ var ferimentos = {
     "Queimadura 3 grau": [],
     "Queimadura 4 grau": []
 };
-let partesSelecionadas = [];
+
 
 function updatePartesSelecionadas(partId) {
     if (partesSelecionadas.includes(partId)) {
@@ -295,8 +295,12 @@ function updatePartesSelecionadas(partId) {
     } else {
         partesSelecionadas.push(partId);  
     }
+    
+     // Save ferimentos to localStorage
+     localStorage.setItem('ferimentos', JSON.stringify(ferimentos));
 }
 function partClicked(event) {
+
     const selectElement = document.getElementById('field1');
     if (!selectElement.value) {
         return;
@@ -314,18 +318,17 @@ function partClicked(event) {
         updatePartesSelecionadas(partId);
     }
   
-
-     
         var selectedInjury = document.getElementById('field1').value;
 
       
         ferimentos[selectedInjury] = partesSelecionadas.slice();
-
-
+        document.getElementById('ferimentos').value = JSON.stringify(ferimentos);
+        
         updateDadosDiv();
-
+    console.log(document.getElementById('ferimentos').value);
     console.log(partesSelecionadas);
     console.log(ferimentos);
+
 }
 
 function updateDadosDiv(x) {
@@ -338,7 +341,7 @@ function updateDadosDiv(x) {
    if (addedInjuries.includes(partId)) {
         return;
     }
-  
+    var selectedInjuries = {};
     addedInjuries.push(partId);
     dadosDiv.textContent = '';
 
@@ -352,17 +355,15 @@ function updateDadosDiv(x) {
     } else  {
         ladoLocal = 'Meio';
     }
-    var dadosString = '<div class="col-sm-3"><p>' + ladoLocal + '</p></div>\n' +
-                      '<div class="col-sm-3"><p>' + partesSelecionadas[i] + '</p></div>\n' +
+    var dadosString = '<div class="col-sm-3"><p>' + partesSelecionadas[i] + '</p></div>\n' +
+                      '<div class="col-sm-3"><p>' + ladoLocal + '</p></div>\n' +
                       '<div class="col-sm-3"><p>' + partNameLocal + '</p></div>\n' +
                       '<div class="col-sm-3"><p>' +  selectedInjury + '</p></div>\n';
     dadosDiv.innerHTML += dadosString + '\n';
+    // When the selected injury is changed...
+
 }
 }
-
-
-
-
 
 document.getElementById('field1').addEventListener('change', function() {
 

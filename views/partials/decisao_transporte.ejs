@@ -194,7 +194,8 @@
             </label>
         </div>
     </div>
-
+    <input type="hidden" name="forma_conducao" value="" />
+    <input type="hidden" name="dct1" value="" />
     <script>
         var acc = document.getElementsByClassName("sub_accordion_dt");
 
@@ -228,7 +229,7 @@
                 dct.forEach((r, i) => {
                     binarydct += r.checked && i == index ? '1' : '0';
                 });
-
+                document.querySelector('input[name="dct1"]').value = binarydct;
                 // Save state
                 localStorage.setItem('dctState', binarydct);
 
@@ -253,7 +254,7 @@
                 fc.forEach((r, i) => {
                     binaryfc += r.checked && i == index ? '1' : '0';
                 });
-
+                document.querySelector('input[name="forma_conducao"]').value = binaryfc;
                 // Save state
                 localStorage.setItem('fcState', binaryfc);
 

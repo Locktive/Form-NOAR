@@ -93,15 +93,11 @@
                 <p class="checkbox_text2">CÂNULA</p>
             </div>
 
-            <div class="checkbox_row">
-                <p class="checkbox_text2">SORO FISIOLÓGICO</p>
-            </div>
+
 
         </div>
         <div class="coluna2">
 
-            <p class="checkbox_text_QTD">QTD:</p>
-            <p class="checkbox_text_QTD">QTD:</p>
             <p class="checkbox_text_QTD">QTD:</p>
             <p class="checkbox_text_QTD">QTD:</p>
             <p class="checkbox_text_QTD">QTD:</p>
@@ -115,34 +111,28 @@
 
         <div class="coluna3">
             <div class="did-floating-label-content">
-                <input class="input_QTD" type="text" placeholder="">
+                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
             </div>
             <div class="did-floating-label-content">
-                <input class="input_QTD" type="text" placeholder="">
+                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
             </div>
             <div class="did-floating-label-content">
-                <input class="input_QTD" type="text" placeholder="">
+                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
             </div>
             <div class="did-floating-label-content">
-                <input class="input_QTD" type="text" placeholder="">
+                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
             </div>
             <div class="did-floating-label-content">
-                <input class="input_QTD" type="text" placeholder="">
+                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
             </div>
             <div class="did-floating-label-content">
-                <input class="input_QTD" type="text" placeholder="">
+                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
             </div>
             <div class="did-floating-label-content">
-                <input class="input_QTD" type="text" placeholder="">
+                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
             </div>
             <div class="did-floating-label-content">
-                <input class="input_QTD" type="text" placeholder="">
-            </div>
-            <div class="did-floating-label-content">
-                <input class="input_QTD" type="text" placeholder="">
-            </div>
-            <div class="did-floating-label-content">
-                <input class="input_QTD" type="text" placeholder="">
+                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
             </div>
         </div>
     </div>
@@ -154,8 +144,17 @@
             </div>
         </div>
     </div>
-   
+   <input type="hidden" name="radio_colar1" />
+    <input type="hidden" name="radio_ked1" />
+    <input type="hidden" name="radio_ttf1" />
+
     <script>
+        function validateValue(input) {
+            // Remove non-numeric characters
+    input.value = input.value.replace(/\D/g, '');
+        if (input.value.length > 3)
+            input.value = input.value.slice(0, 3);
+    }
         // pega todos os botoes
         const radiotamanhocolar = document.querySelectorAll('input[name="radio_colar"]');
                 // Restaura state
@@ -176,7 +175,7 @@
                         radiotamanhocolar.forEach((r, i) => {
                             binarycolar += r.checked && i === index ? '1' : '0';
                         });
-
+                        document.querySelector('input[name="radio_colar1"]').value = binarycolar;
                         // Save state
                         localStorage.setItem('colarradioStfftate', binarycolar);
 
@@ -204,7 +203,7 @@
                         radioked.forEach((r, i) => {
                             binaryked += r.checked && i === index ? '1' : '0';
                         });
-
+                        document.querySelector('input[name="radio_ked1"]').value = binaryked;
                         // Save state
                         localStorage.setItem('kedradioStfftate', binaryked);
 
@@ -232,7 +231,7 @@
                         radiostff.forEach((r, i) => {
                             binaryttf += r.checked && i === index ? '1' : '0';
                         });
-
+                        document.querySelector('input[name="radio_ttf1"]').value = binaryttf;
                         // Save state
                         localStorage.setItem('radiotff', binaryttf);
 

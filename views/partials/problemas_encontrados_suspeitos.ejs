@@ -209,8 +209,12 @@
             </div>
         </div>
     </div>
+    <input type="hidden" name="radio1pes" />
+    <input type="hidden" name="radio1pes2" />
+    <input type="hidden" name="radio1pes3" />
+    <input type="hidden" name="radio1pes4" />
 
-    <!-- COLOCAR A INFORMAÇÃO DO NÍVEL DE CONSCIÊNCIA -->
+   
 
     <script>
         var acc = document.getElementsByClassName("sub_accordion_pes");
@@ -250,7 +254,7 @@
             radiopes.forEach((r, i) => {
                 binarype += r.checked ? '1' : '0';
             });
-
+            document.querySelector('input[name="radio1pes"]').value = binarype;
             // Save state
             localStorage.setItem('radiopesState', binarype);
 
@@ -275,7 +279,7 @@ const radiopes2 = document.querySelectorAll('input[name="radio_pes2"]');
             radiopes2.forEach((r, i) => {
                 binarype2 += r.checked ? '1' : '0';
             });
-
+            document.querySelector('input[name="radio1pes2"]').value = binarype2;
             // Save state
             localStorage.setItem('radiopes2State', binarype2);
 
@@ -300,7 +304,7 @@ const radiopes3 = document.querySelectorAll('input[name="radio_pes3"]');
             radiopes3.forEach((r, i) => {
                 binarype3 += r.checked ? '1' : '0';
             });
-
+            document.querySelector('input[name="radio1pes3"]').value = binarype3;
             // Save state
             localStorage.setItem('radiopes3State', binarype3);
 
@@ -325,7 +329,7 @@ const radiopes4 = document.querySelectorAll('input[name="radio_pes4"]');
             radiopes4.forEach((r, i) => {
                 binarype4 += r.checked ? '1' : '0';
             });
-
+            document.querySelector('input[name="radio1pes4"]').value = binarype4;
             // Save state
             localStorage.setItem('radiopes4State', binarype4);
 

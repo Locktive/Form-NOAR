@@ -12,7 +12,7 @@
 </head>
 
 <style>
-    .input_idade {
+    .totalglasgow {
         width: 5rem;
         text-align: center;
     }
@@ -209,7 +209,7 @@
         <div class="linha_checkbox-group">
             <label class="custom_checkbox">
                 <div class="did-floating-label-content">
-                    <p class="did-floating-input input_idade" id="input_idade"></p>
+                    <p class="did-floating-input totalglasgow" id="totalglasgow"></p>
                     <label class="did-floating-label">Total</label>
                 </div>
             </label>
@@ -222,8 +222,10 @@
                 </div>
         </div>
     </div>
-    <input type="hidden" name="nivel" id="nivel" value="">
-    <!-- COLOCAR A INFORMAÇÃO DO NÍVEL DE CONSCIÊNCIA -->
+    <input type="hidden" name="nivel" id="nivel">
+    <input type="hidden" name="totalglasgow" id="totalglasgow">
+    <input type="hidden" name="adulto" id="adulto" value="1">
+
 
     <script>
         // codigo sub-accordion
@@ -251,16 +253,20 @@
             });
 
             if (total >= 13) {
+                document.getElementById("nivel").value = "LEVE";
                 document.getElementById("nivel").innerHTML = "LEVE";
             } else if (total >= 9) {
+                document.getElementById("nivel").value = "MODERADO";
                 document.getElementById("nivel").innerHTML = "MODERADO";
-            } else if(total >= 3) {
+            } else if(total > 3) {
+                document.getElementById("nivel").value = "GRAVE";
                 document.getElementById("nivel").innerHTML = "GRAVE";
             } else {
+                document.getElementById("nivel").value = "COMA";
                 document.getElementById("nivel").innerHTML = "COMA";
             }
-
-            document.getElementById("input_idade").innerText = total;
+            document.getElementById('totalglasgow').value = total;
+            document.getElementById('totalglasgow').innerHTML = total;
         }
 
         var radioButtons = document.querySelectorAll('input[type="radio"]');

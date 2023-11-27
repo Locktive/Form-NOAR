@@ -94,7 +94,7 @@ transition: 0.4s !important;
             <input type="checkbox" name="checkbox_ac" />
         </label>
     </div>
-
+    <input type="hidden" name="checkbox_ac1" />
 <script>
     // pega todos os botoes
 const checkboxac = document.querySelectorAll('input[name="checkbox_ac"]');
@@ -114,7 +114,7 @@ checkboxac.forEach((checkbox, index) => {
         checkboxac.forEach((r, i) => {
             binaryac += r.checked ? '1' : '0';
         });
-
+        document.querySelector('input[name="checkbox_ac1"]').value = binaryac;
         // Save state
         localStorage.setItem('checkboxacState', binaryac);
 

@@ -80,7 +80,7 @@
 <body class="body">
     <%- include('./partials/cabecalho.ejs') %>
         <div class="container mt-20" style="display: flex; flex-direction: column; min-width: 500px;">
-            <form action="/form" method="post" id="formulario">
+            <form action="/form_alter" method="post" id="formulario">
                 <div class="accordion" id="accordionExample"
                     style="display: flex; flex-direction: column; margin-bottom: 20px;">
 
@@ -554,7 +554,7 @@
         </div>
         <div class="button-row">
             <button id="enviar" type="submit" style="text-decoration: none;" onclick="deleteLocal();"
-                class="button_enviar">Enviar</button>
+                class="button_enviar">Alterar</button>
         </div>
         <input type="hidden" name="radios1" id="radios1">
         <input type="hidden" name="textareafinal1" id="textareafinal1" value="">

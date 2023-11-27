@@ -175,12 +175,10 @@
         </div>
 
         <div class="textarea_row">
-            <div style="width: 100%;">
-                <p class="checkbox_text">HORARIO DA MEDICAÇÃO</p>
+            <p class="checkbox_text">HORÁRIO DA ULTIMA MEDICAÇÃO</p>
                 <div class="did-floating-label-content textarea">
                     <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
                 </div>
-            </div>
         </div>
 
     </div>
@@ -238,19 +236,24 @@
         </div>
 
         <div class="textarea_row">
-            <div style="width: 100%;">
-                <p class="checkbox_text">QUE HORAS</p>
+            <p class="checkbox_text">HORÁRIO DA ÚLTIMA INGESTÃO</p>
                 <div class="did-floating-label-content textarea">
                     <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
                 </div>
-            </div>
         </div>
 
     </div>
+    <input type="hidden" name="radioaov"  />
+    <input type="hidden" name="radiopbs"  />
+    <input type="hidden" name="radiomed"  />
+    <input type="hidden" name="radioalergia"  />
+    <input type="hidden" name="radioingerir"  />
+
 
 </body>
 <script>
     var acc = document.getElementsByClassName("sub_accordion_aem");
+
 
     for (var i = 0; i < acc.length; i++) {
         acc[i].addEventListener("click", function () {
@@ -284,7 +287,7 @@
                         radioaov.forEach((r, i) => {
                             binaryaov += r.checked && i === index ? '1' : '0';
                         });
-
+                        document.querySelector('input[name="radioaov"]').value = binaryaov;
                         // Save state
                         localStorage.setItem('aov', binaryaov);
 
@@ -312,7 +315,7 @@
                         radiopbs.forEach((r, i) => {
                             binarypbs += r.checked && i === index ? '1' : '0';
                         });
-
+                        document.querySelector('input[name="radiopbs"]').value = binarypbs;
                         // Save state
                         localStorage.setItem('radiopbs', binarypbs);
 
@@ -340,7 +343,7 @@
                         radiosmed.forEach((r, i) => {
                             binarymed += r.checked && i === index ? '1' : '0';
                         });
-
+                        document.querySelector('input[name="radiomed"]').value = binarymed;
                         // Save state
                         localStorage.setItem('radiomed', binarymed);
 
@@ -368,7 +371,7 @@
                         radio_alergia.forEach((r, i) => {
                             binaryalergia += r.checked && i === index ? '1' : '0';
                         });
-
+                        document.querySelector('input[name="radioalergia"]').value = binaryalergia;
                         // Save state
                         localStorage.setItem('alergiaradio', binaryalergia);
 
@@ -396,7 +399,7 @@
                         radioingeriu.forEach((r, i) => {
                             binarying += r.checked && i === index ? '1' : '0';
                         });
-
+                        document.querySelector('input[name="radioingerir"]').value = binarying;
                         // Save state
                         localStorage.setItem('ingerirradio', binarying);
 

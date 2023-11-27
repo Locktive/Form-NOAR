@@ -100,6 +100,32 @@
         </label>
     </div>
 
+    <div class="textarea_row">
+        <div style="width: 100%;">
+            <p class="checkbox_text">NOME DO MÉDICO</p>
+            <div class="did-floating-label-content textarea">
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">EXISTE POSSIBILIDADE DE COMPLICAÇÃO?</p>
+        <label class="custom_checkbox">
+
+            <div class="checkbox_description">
+                <p class="checkbox_text"> SIM </p>
+                <input type="radio" name="radio_pre_natal4" />
+            </div>
+
+            <div class="checkbox_description">
+                <p class="checkbox_text"> NÃO </p>
+                <input type="radio" name="radio_pre_natal4" />
+            </div>
+
+        </label>
+    </div>
+
     <button type="button" class="sub_accordion_gest">
         <p class="checkbox_text">É O PRIMEIRO FILHO?</p>
         <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
@@ -130,13 +156,11 @@
 
     </div>
 
-    <div class="checkbox_row">
-        <p class="checkbox_text">QUE HORA INICIARAM AS CONTRAÇÕES?</p>
-        <label class="custom_checkbox">
-            <div class="checkbox_description">
-                <input type="time" name="tempo_contracoes" />
+    <div class="textarea_row">
+        <p class="checkbox_text">HORÁRIO DE ÍNICIO DAS CONTRAÇÕES</p>
+            <div class="did-floating-label-content textarea">
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
             </div>
-        </label>
     </div>
 
     <div class="textarea_row">
@@ -208,7 +232,76 @@
         </label>
     </div>
 
+    <button type="button" class="sub_accordion_gest">
+        <p class="checkbox_text">PARTO REALIZADO</p>
+        <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
+    </button>
+    <div class="painel">
+
+        <div class="checkbox_row two_options">
+
+            <div class="checkbox_description">
+                <p class="checkbox_text">SIM</p>
+                <input type="radio" name="radio_parto" />
+            </div>
+
+            <div class="checkbox_description">
+                <p class="checkbox_text">NÃO</p>
+                <input type="radio" name="radio_parto" />
+            </div>
+
+        </div>
+
+        <div class="textarea_row">
+            <p class="checkbox_text">HORÁRIO DO NASCIMENTO</p>
+                <div class="did-floating-label-content textarea">
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                </div>
+        </div>
+
+    </div>
+
+    <button type="button" class="sub_accordion_gest">
+        <p class="checkbox_text">SEXO DO BEBE</p>
+        <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
+    </button>
+    <div class="painel">
+
+        <div class="checkbox_row two_options">
+
+            <div class="checkbox_description">
+                <p class="checkbox_text">MASCULINO</p>
+                <input type="radio" name="radio_bebe" />
+            </div>
+
+            <div class="checkbox_description">
+                <p class="checkbox_text">FEMININO</p>
+                <input type="radio" name="radio_bebe" />
+            </div>
+
+        </div>
+
+        <div class="textarea_row">
+            <div style="width: 100%;">
+                <p class="checkbox_text">NOME DO BEBE</p>
+                <div class="did-floating-label-content textarea">
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <input type="hidden" name="radio_pre_natalState1" value="" />
+    <input type="hidden" name="radio_p_filho1State1" value="" />
+    <input type="hidden" name="radio_pre_natal1State1" value="" />
+    <input type="hidden" name="radio_pre_natal2State1" value="" />
+    <input type="hidden" name="radio_pre_natal3State1" value="" />
+    <input type="hidden" name="radio_parto1" value="" />
+    <input type="hidden" name="radio_bebe1" value="" />
+    <input type="hidden" name="radio_pre_natal4State1" value="" />
+
     <script>
+        //sub acordeão
         var acc = document.getElementsByClassName("sub_accordion_gest");
         var i;
 
@@ -217,7 +310,7 @@
                 this.classList.toggle("active");
 
                 var painel1 = this.nextElementSibling;
-                var icon = painel1.querySelector('.icon'); // Substitua 'sua-classe-da-imagem' pela classe da sua imagem
+                var icon = painel1.querySelector('.icon');
                 if (painel1.style.display === "flex") {
                     painel1.style.display = "none";
                 } else {
@@ -226,8 +319,6 @@
                 }
             });
         }
-    </script>
-    <script>
 
         // pega todos os botoes
         const radioAG = document.querySelectorAll('input[name="radio_pre_natal"]');
@@ -235,12 +326,20 @@
         const radioAG3 = document.querySelectorAll('input[name="radio_pre_natal1"]');
         const radioAG4 = document.querySelectorAll('input[name="radio_pre_natal2"]');
         const radioAG5 = document.querySelectorAll('input[name="radio_pre_natal3"]');
-        // Restaura state
-        const savedRadioAGState = localStorage.getItem('radioAGState');
-        const savedRadioAG2State = localStorage.getItem('radioAG2State');
-        const savedRadioAG3State = localStorage.getItem('radioAG3State');
-        const savedRadioAG4State = localStorage.getItem('radioAG4State');
-        const savedRadioAG5State = localStorage.getItem('radioAG5State');
+        const radioAG6 = document.querySelectorAll('input[name="radio_parto"]');
+        const radioAG7 = document.querySelectorAll('input[name="radio_bebe"]');
+        const radioAG8 = document.querySelectorAll('input[name="radio_pre_natal4"]');
+       
+    
+        const savedRadioAGState = localStorage.getItem('radio_pre_natalState');
+        const savedRadioAG2State = localStorage.getItem('radio_p_filho1State');
+        const savedRadioAG3State = localStorage.getItem('radio_pre_natal1State');
+        const savedRadioAG4State = localStorage.getItem('radio_pre_natal2State');
+        const savedRadioAG5State = localStorage.getItem('radio_pre_natal3State');
+        const savedRadioAG6State = localStorage.getItem('radio_parto');
+        const savedRadioAG7State = localStorage.getItem('radio_bebe');
+        const savedRadioAG8State = localStorage.getItem('radio_pre_natal4State');
+    
         // restaura estado dos botoes
         if (savedRadioAGState) {
             savedRadioAGState.split('').forEach((state, index) => {
@@ -272,6 +371,24 @@
             });
         }
 
+        if (savedRadioAG6State) {
+            savedRadioAG6State.split('').forEach((state, index) => {
+                radioAG6[index].checked = state === '1';
+            });
+        }
+
+        if (savedRadioAG7State) {
+            savedRadioAG7State.split('').forEach((state, index) => {
+                radioAG7[index].checked = state === '1';
+            });
+        }
+
+        if (savedRadioAG8State) {
+            savedRadioAG8State.split('').forEach((state, index) => {
+                radioAG8[index].checked = state === '1';
+            });
+        }
+
         // evento de mudança de estado
         radioAG.forEach((radio, index) => {
             radio.addEventListener('change', () => {
@@ -280,11 +397,9 @@
                 radioAG.forEach((r, i) => {
                     binaryAG += r.checked && i === index ? '1' : '0';
                 });
-
+                document.querySelector('input[name="radio_pre_natalState1"]').value = binaryAG;
                 // Save state
                 localStorage.setItem('radio_pre_natalState', binaryAG);
-
-
                 console.log(binaryAG);
             });
         });
@@ -297,31 +412,27 @@
                 radioAG2.forEach((r, i) => {
                     binaryAG2 += r.checked && i === index ? '1' : '0';
                 });
-
+                document.querySelector('input[name="radio_p_filho1State1"]').value = binaryAG2;
                 // Save state
                 localStorage.setItem('radio_p_filho1State', binaryAG2);
-
-
                 console.log(binaryAG2);
             });
         });
 
         // evento de mudança de estado
-        radioAG3.forEach((radio, index) => {
-            radio.addEventListener('change', () => {
-                // cria um codigo binario para cada botao
-                let binaryAG3 = '';
-                radioAG3.forEach((r, i) => {
-                    binaryAG3 += r.checked && i === index ? '1' : '0';
+            radioAG3.forEach((radio, index) => {
+                radio.addEventListener('change', () => {
+                    // cria um codigo binario para cada botao
+                    let binaryAG3 = '';
+                    radioAG3.forEach((r, i) => {
+                        binaryAG3 += r.checked && i === index ? '1' : '0';
+                    });
+                    document.querySelector('input[name="radio_pre_natal1State1"]').value = binaryAG3;
+                    // Save state
+                    localStorage.setItem('radio_pre_natal1State', binaryAG3);
+                    console.log(binaryAG3);
                 });
-
-                // Save state
-                localStorage.setItem('radio_pre_natal1State', binaryAG3);
-
-
-                console.log(binaryAG3);
             });
-        });
 
         radioAG4.forEach((radio, index) => {
             radio.addEventListener('change', () => {
@@ -330,11 +441,9 @@
                 radioAG4.forEach((r, i) => {
                     binaryAG4 += r.checked && i === index ? '1' : '0';
                 });
-
+                document.querySelector('input[name="radio_pre_natal2State1"]').value = binaryAG4;
                 // Save state
                 localStorage.setItem('radio_pre_natal2State', binaryAG4);
-
-
                 console.log(binaryAG4);
             });
         });
@@ -346,12 +455,52 @@
                 radioAG5.forEach((r, i) => {
                     binaryAG5 += r.checked && i === index ? '1' : '0';
                 });
-
+                document.querySelector('input[name="radio_pre_natal3State1"]').value = binaryAG5;
                 // Save state
                 localStorage.setItem('radio_pre_natal3State', binaryAG5);
-
-
                 console.log(binaryAG5);
+            });
+        });
+
+        radioAG6.forEach((radio, index) => {
+            radio.addEventListener('change', () => {
+                // cria um codigo binario para cada botao
+                let binaryAG6 = '';
+                radioAG6.forEach((r, i) => {
+                    binaryAG6 += r.checked && i === index ? '1' : '0';
+                });
+                document.querySelector('input[name="radio_parto1"]').value = binaryAG6;
+                // Save state
+                localStorage.setItem('radio_parto', binaryAG6);
+                console.log(binaryAG6);
+            });
+        });
+
+        radioAG7.forEach((radio, index) => {
+            radio.addEventListener('change', () => {
+                // cria um codigo binario para cada botao
+                let binaryAG7 = '';
+                radioAG7.forEach((r, i) => {
+                    binaryAG7 += r.checked && i === index ? '1' : '0';
+                });
+                document.querySelector('input[name="radio_bebe1"]').value = binaryAG7;
+                // Save state
+                localStorage.setItem('radio_bebe', binaryAG7);
+                console.log(binaryAG7);
+            });
+        });
+
+        radioAG8.forEach((radio, index) => {
+            radio.addEventListener('change', () => {
+                // cria um codigo binario para cada botao
+                let binaryAG8 = '';
+                radioAG8.forEach((r, i) => {
+                    binaryAG8 += r.checked && i === index ? '1' : '0';
+                });
+                document.querySelector('input[name="radio_pre_natal4State1"]').value = binaryAG8;
+                // Save state
+                localStorage.setItem('radio_pre_natal4State', binaryAG8);
+                console.log(binaryAG8);
             });
         });
 

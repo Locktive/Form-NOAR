@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/floating_label.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/margin.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/custom_checkbox1.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/custom_checkbox2.css" />
+    <link rel="icon" type="image/x-icon" href="./images/logo_pequena.png" />
+    <title><%- title %></title>
+
+    <style>
+        /* Add responsive styles */
+
+        .button {
+            text-align: center;
+            border: none;
+            border-radius: 10px;
+            color: black;
+            background: #A3ADE0;
+            font-size: 15px;
+            padding: 10px 20px 10px 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+
+        .button:hover {
+            text-align: center;
+            border: none;
+            border-radius: 10px;
+            color: black;
+            background: #8e97c5;
+            font-size: 15px;
+            padding: 10px 20px 10px 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+
+
+
+        .linha_input-group {
+            display: flex;
+            width: 22rem;
+            justify-content: space-between;
+
+        }
+
+        .linha_checkbox-group {
+            display: flex;
+            width: 22rem;
+            justify-content: space-evenly;
+
+        }
+
+        .input_idade {
+            width: 5rem;
+            text-align: center;
+        }
+
+        .input_nome {
+            width: 22rem;
+        }
+
+        .input_numero {
+            width: 15rem;
+        }
+
+        .container_vitima {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 25rem;
+            padding: 20px;
+            background-color: #F1F1F1;
+            border-radius: 5px;
+        }
+
+        .campo {
+            display: flex;
+            border: none;
+            align-items: center;
+            gap: 150px;
+            background-color: #E1E1E1;
+            font-size: 18px;
+            width: 28rem;
+            padding: 10px 15px 10px 15px;
+            color: #999;
+            margin: 0;
+            text-align: left;
+        }
+
+        .botao {
+            display: block;
+            position: relative;
+            width: 30px;
+            height: 30px;
+            background-color: #E1E1E1;
+            border: none;
+        }
+
+        .checkbox {
+            width: 25px;
+            height: 25px;
+            background-color: #E1E1E1;
+            color: #999;
+            border: solid #dddddd 3px;
+        }
+
+        .ocorrencia {
+            display: flex;
+            border: none;
+            align-items: center;
+            gap: 150px;
+            background-color: #E1E1E1;
+            font-size: 18px;
+            width: 28rem;
+            padding: 10px 15px 10px 15px;
+            color: #999;
+            margin: 0;
+            text-align: left;
+        }
+
+        .textarea_local {
+            width: 22rem;
+        }
+
+        .button_proximo {
+            text-align: center;
+            border: none;
+            border-radius: 10px;
+            color: black;
+            background: #A3ADE0;
+            font-size: 15px;
+            padding: 10px 20px 10px 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+
+        .button_proximo:hover {
+            text-align: center;
+            border: none;
+            border-radius: 10px;
+            color: black;
+            background: #8e97c5;
+            font-size: 15px;
+            padding: 10px 20px 10px 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: 700;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+
+<body class="body">
+    <%- include('./partials/cabecalho.ejs') %>
+        <div>
+            <img src="./images/logo_pequena.png" />
+        </div>
+
+        <form action="/vitimaalter" method="post" style="text-align: center; display: flex; justify-content: center;">
+            <div class="container_vitima">
+
+                <div class="did-floating-label-content">
+                    <input class="did-floating-input input_nome" name="nome" id="nome" type="text" placeholder=" ">
+                    <label class="did-floating-label">Nome</label>
+                </div>
+
+                <div class="linha_input-group">
+
+                    <div class="did-floating-label-content">
+                        <input class="did-floating-input input_idade" oninput="validateValue(this, 2);" type="text"
+                            name="idade" id="input_idade" placeholder=" ">
+                        <label class="did-floating-label">Idade</label>
+                    </div>
+
+                    <div class="did-floating-label-content">
+                        <input class="did-floating-input input_numero" oninput="validateValue(this, 11);"
+                            name="telefone" type="text" id="input_numero" placeholder=" ">
+                        <label class="did-floating-label">Telefone</label>
+                    </div>
+                </div>
+
+                <div class="did-floating-label-content">
+                    <textarea class="did-floating-input textarea_local" name="local" id="local"
+                        placeholder=""></textarea>
+                    <label class="did-floating-label">Local da ocorrencia</label>
+                </div>
+                <div>
+                    <p>Sexo</p>
+                    <div class="linha_checkbox-group">
+                        Masculino
+                        <label class="custom_checkbox">
+                            <input onclick="teste(); hideBox();" value="0" type="radio" name="radio_sexo" />
+                        </label>
+                        Feminino
+                        <label class="custom_checkbox">
+                            <input onclick="teste(); showBox();" type="radio" value="1" name="radio_sexo" />
+                        </label>
+                    </div>
+                </div>
+                <div class="checkbox_row" id="gravida" style="display: none;">
+                    <p class="checkbox_text" id="gravida">PACIENTE É GRÁVIDA </p>
+                    <label class="custom_checkbox" id="gravida">
+                        <input id="gravida" onclick="teste();" type="checkbox" name="gravida" />
+                    </label>
+                </div>
+                <div class="did-floating-label-content">
+                    <input class="did-floating-input input_nome" oninput="validateValue(this, 11);" name="rgcpf"
+                        id="rgcpf" type="text" placeholder=" ">
+                    <label class="did-floating-label">RG / CPF Paciente</label>
+                </div>
+                <div class="linha_input-group">
+                    <div class="did-floating-label-content">
+                        <input class="did-floating-input input_numero" name="acomp" id="Acompanhante" type="text"
+                            placeholder=" ">
+                        <label class="did-floating-label">Acompanhante</label>
+                    </div>
+
+                    <div class="did-floating-label-content">
+                        <input class="did-floating-input  input_idade" oninput="validateValue(this, 2);"
+                            name="idadeacomp" type="text" id="input_idadeacomp" placeholder=" ">
+                        <label class="did-floating-label">Idade</label>
+                    </div>
+                </div>
+                <input type="hidden" name="sexo" id="sexo-input">
+                <input type="hidden" name="gravida_val" id="gravida-input">
+
+                <button class="button_proximo" type="submit">ALterar e prosseguir</button>
+
+            </div>
+        </form>
+        <%- include('./partials/footer.ejs') %>
+            <script>
+
+                function validateValue(elem, max) {
+                    const value = elem.value;
+                    const numVal = value.replace(/\D+/g, "");
+                    elem.value = numVal.slice(0, max);
+                }
+                function teste() {
+                    // 0 e 1 das checkbox
+                    var radio_sexo = document.querySelector('input[name="radio_sexo"]:checked');
+                    var sexo = radio_sexo ? radio_sexo.value : 0; 
+                    var gravida = document.querySelector('input[name="gravida"]');
+                    var gravida_val = gravida.checked ? 1 : 0; 
+                    var sexoletra = sexo === '0' ? 'M' : 'F';
+                    // desmarca gravida se for masculino
+                    if (sexo === '0') {
+                        gravida.checked = false;
+                        gravida_val = 0;
+                    }
+                    console.log(gravida_val);
+                    // atualiza os valores dos inputs hidden
+                    document.getElementById('sexo-input').value = sexoletra;
+                    document.getElementById('gravida-input').value = gravida_val;
+                }
+                function showBox() {
+                    document.getElementById("gravida").style.display = "";
+                }
+                function hideBox() {
+                    document.getElementById("gravida").style.display = "none";
+                }
+            </script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

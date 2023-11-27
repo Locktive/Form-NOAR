@@ -11,13 +11,15 @@
 
 
 </head>
+
 <body>
     <!-- Criação de uma lista de checkboxes -->
     <div class="textarea_row">
         <div style="width: 100%;">
             <p class="checkbox_text">N° USB</p>
             <div class="did-floating-label-content textarea">
-                <textarea name="textfinal" class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                <textarea oninput="validateValue(this)" name="textfinal" class="did-floating-input row_textarea"
+                    placeholder="Insira o texto"></textarea>
             </div>
         </div>
     </div>
@@ -26,7 +28,8 @@
         <div style="width: 100%;">
             <p class="checkbox_text">N° OCORRENCIA</p>
             <div class="did-floating-label-content textarea">
-                <textarea name="textfinal"  class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                <textarea oninput="validateValue(this)" name="textfinal" class="did-floating-input row_textarea"
+                    placeholder="Insira o texto"></textarea>
             </div>
         </div>
     </div>
@@ -35,7 +38,8 @@
         <div style="width: 100%;">
             <p class="checkbox_text">DESP</p>
             <div class="did-floating-label-content textarea">
-                <textarea name="textfinal"  class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                <textarea name="textfinal" class="did-floating-input row_textarea"
+                    placeholder="Insira o texto"></textarea>
             </div>
         </div>
     </div>
@@ -44,7 +48,8 @@
         <div style="width: 100%;">
             <p class="checkbox_text">H. CH</p>
             <div class="did-floating-label-content textarea">
-                <textarea name="textfinal"  class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                <textarea name="textfinal" class="did-floating-input row_textarea"
+                    placeholder="Insira o texto"></textarea>
             </div>
         </div>
     </div>
@@ -53,7 +58,8 @@
         <div style="width: 100%;">
             <p class="checkbox_text">KM FINAL</p>
             <div class="did-floating-label-content textarea">
-                <textarea name="textfinal"  class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                <textarea name="textfinal" oninput="validateValue(this)" class="did-floating-input row_textarea"
+                    placeholder="Insira o texto"></textarea>
             </div>
         </div>
     </div>
@@ -62,7 +68,8 @@
         <div style="width: 100%;">
             <p class="checkbox_text">COD. SIA/SUS</p>
             <div class="did-floating-label-content textarea">
-                <textarea name="textfinal" oninput="validateValue(this);"  class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                <textarea name="textfinal" oninput="validateValue(this);" class="did-floating-input row_textarea"
+                    placeholder="Insira o texto"></textarea>
             </div>
         </div>
     </div>
@@ -82,41 +89,58 @@
             </div>
 
         </label>
+        
     </div>
+    <div class="checkbox_row">
+            <p class="checkbox_text">DATA EM QUE OCORREU</p>
+            <div class="did-floating-label-content custom_checkbox">
+                <label for="dataoco">Data : </label>
+                <input type="date" id="dataoco" name="dataocotime">
+            </div>
+    </div>
+    <input type="hidden" name="cod1" />
+    <input type="hidden" name="dataoco" />
 </body>
 <script>
     function validateValue(input) {
-        if (input.value.length > 7)
-            input.value = input.value.slice(0, 7);
+        // Remove non-numeric characters
+    input.value = input.value.replace(/\D/g, '');
+        if (input.value.length > 11)
+            input.value = input.value.slice(0, 11);
     }
     // pega todos os botoes
     const radiocod = document.querySelectorAll('input[name="radio_cod"]');
-                // Restaura state
-                const savedcodState = localStorage.getItem('cod');
-                // restaura estado dos botoes
-                if (savedcodState) {
-                    savedcodState.split('').forEach((state, index) => {
-                        radiocod[index].checked = state === '1';
-                    });
-                }
+    const date = document.querySelector('input[name="dataoco"]');
+    date.addEventListener('change', () => {
+        document.querySelector('input[name="dataoco"]').value = date.value;
+    });
+    // Restaura state
+    const savedcodState = localStorage.getItem('cod');
+    // restaura estado dos botoes
+    if (savedcodState) {
+        savedcodState.split('').forEach((state, index) => {
+            radiocod[index].checked = state === '1';
+        });
+    }
 
 
-                // evento de mudança de estado
-                radiocod.forEach((radio, index) => {
-                    radio.addEventListener('change', () => {
-                        // cria um codigo binario para cada botao
-                        let binarycod = '';
-                        radiocod.forEach((r, i) => {
-                            binarycod += r.checked && i === index ? '1' : '0';
-                        });
+    // evento de mudança de estado
+    radiocod.forEach((radio, index) => {
+        radio.addEventListener('change', () => {
+            // cria um codigo binario para cada botao
+            let binarycod = '';
+            radiocod.forEach((r, i) => {
+                binarycod += r.checked && i === index ? '1' : '0';
+            });
+            document.querySelector('input[name="cod1"]').value = binarycod;
+            // Save state
+            localStorage.setItem('cod', binarycod);
 
-                        // Save state
-                        localStorage.setItem('cod', binarycod);
 
-
-                        console.log(binarycod);
-                    });
-                });
+            console.log(binarycod);
+        });
+    });
 
 </script>
+
 </html>
