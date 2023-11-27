@@ -110,9 +110,10 @@
     }
     // pega todos os botoes
     const radiocod = document.querySelectorAll('input[name="radio_cod"]');
-    const date = document.querySelector('input[name="dataoco"]');
+    const date = document.querySelector('input[name="dataocotime"]');
     date.addEventListener('change', () => {
         document.querySelector('input[name="dataoco"]').value = date.value;
+        console.log(date.value);
     });
     // Restaura state
     const savedcodState = localStorage.getItem('cod');
