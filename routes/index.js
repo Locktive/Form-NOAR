@@ -111,6 +111,9 @@ router.post('/vitima', function (req, res) {
   var sexo = req.body.sexo;
   var gravida_val = req.body.gravida_val;
   console.log(gravida_val);
+  if(idadeacomp == ''){
+    idadeacomp = 0;
+  }
   var local = req.body.local;
   var sql = 'INSERT INTO acompanhante(nome,idade) VALUES (?,?)';
   var valuesAcomp = [acomp, idadeacomp];
@@ -196,7 +199,7 @@ router.post('/form',requireAuth, function (req, res) {
     "Queimadura 4 grau": []
 };
 console.log(corpo)
-if (corpo === undefined) {
+if (corpo === undefined || corpo === null || corpo === '[object Object]') {
   corpo = {
       "Fratura/luxação/entorse": [],
       "Ferimentos diversos": [],
@@ -262,6 +265,9 @@ var parts = JSON.parse(textareafinal);
     // var hora_nascimento = 0;
     // var nome_bebe = 0;
     console.log(parts)
+  }
+  if(km_final == ''){
+  km_final = 0;
   }
   var inputtextfinal = req.body.inputtextfinal1;
 var partsinput = JSON.parse(inputtextfinal);
