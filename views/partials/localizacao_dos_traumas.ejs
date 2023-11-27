@@ -5,13 +5,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"></script>
+   <link rel="stylesheet" type="text/css" href="./stylesheets/sub_accordion.css" />
    <style>
       .human-body svg:hover {
          cursor: pointer;
@@ -86,6 +80,105 @@
       #area #data {
          color: black;
       }
+
+      .sub_accordion_ldt {
+
+         display: flex !important;
+         width: 100% !important;
+         border: none !important;
+         align-items: center !important;
+         justify-content: space-between !important;
+         background-color: #E1E1E1 !important;
+         padding: 10px !important;
+         color: #333333 !important;
+         text-decoration: none !important;
+         margin: 0 !important;
+         font-weight: 600 !important;
+
+
+      }
+
+      .row_tabela {
+         display: flex;
+         align-items: center;
+         justify-content: space-evenly;
+         background-color: #617ee9;
+         font-weight: 600;
+         text-align: center;
+
+      }
+
+      .desc {
+         font-size: large;
+         margin: 0;
+      }
+      @media(max-width: 767px) {
+         p {
+            width: 120px;
+         }
+      }
+      .col-sm-3 {
+         display: flex;
+         align-items: center;
+         width: 215px;
+         border-left: rgba(172, 171, 171, 0.38) solid 2px;
+         border-right: rgba(172, 171, 171, 0.38) solid 2px;
+      }
+      .col-6{
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+
+      .select_ferimento {
+         background: #E1E1E1;
+         height: 20rem;
+         width: 13rem;
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+
+
+      }
+
+      
+      @media(max-width: 767px) {
+         .painel {
+            display: grid;
+            grid-template-columns: 100px 100px;
+            /* posicionar na grid */
+            flex-direction: row!important;
+         }
+      }
+
+      @media(max-width: 767px) {
+         .row_tabela {
+            display: flex;
+            flex-direction: column;
+            height: 50rem;
+            width: 120px;
+         }
+      }
+      @media(max-width: 767px) {
+         .col-sm-2  {
+            display: flex;
+            width: 300px;
+            height: 50rem;
+         }
+      }
+      @media(max-width: 767px) {
+         .dados  {
+            display: flex;
+            width: 100px;
+         }
+      }
+
+      
+
+      option{
+         margin: 6px;
+         font-size: large;
+      }
    </style>
 </head>
 
@@ -142,30 +235,30 @@
                <path style="opacity:1" name="frente"
                   d="m 17.255895,87.868445 0.1243,3.45228 0.28983,1.20638 h 0.87136 l 0.24897,-0.83181 0.29058,-0.0416 -0.0624,0.83181 1.09914,-0.33332 0.29058,-0.16629 1.24444,-0.27033 0.0416,-0.97748 -1.20319,-2.03743 -0.82974,-1.0399 -2.03294,-0.83181 z"
                   id="pe-esquerdo" />
-               <path id="panturrilha-esquerda" style="opacity:1" name="frente" 
+               <path id="panturrilha-esquerda" style="opacity:1" name="frente"
                   d="m 18.251375,70.441125 0.29058,0.91486 0.6224,3.8681 0.0829,5.15733 -0.87136,5.03304 0.0412,-6.44714 -0.91242,-2.57848 -0.12561,-2.82837 z m 1.9915,2.32915 -0.20753,7.73637 -1.65949,6.23904 1.80478,-0.853 3.00816,-10.83583 -1.03727,-6.82095 z" />
                <path id="joelho-esquerdo" style="opacity:1" name="frente"
                   d="m 21.404635,64.784375 0.1243,1.12295 -0.87118,1.08171 -0.29058,1.70599 -0.58116,0.24933 -0.49774,-2.57866 -0.33182,-0.91486 0.29058,-0.58247 z m -3.85853,0.0832 0.6224,1.74685 1.3273,2.57867 -0.33182,2.37095 -0.95423,-2.66209 -0.78738,-1.49734 z m 4.97811,-2.37039 -0.95423,5.11609 0.62241,-0.33295 0.49773,1.66381 z" />
                <path id="coxa-direita" style="opacity:1" name="frente"
                   d="m 8.2694651,50.399125 0.15504,4.75053 2.4026299,6.60968 -0.73638,1.90021 -2.3640099,-8.34435 z m 0.58117,-11.60768 0.15503,4.00684 -1.31754,7.93154 -0.61978,-6.40308 z m 0.38769,5.1223 2.7515099,6.07239 0.61997,4.87425 -1.16232,6.85771 -2.5190499,-6.98163 -0.15504,-7.18801 z" />
-               <path id="genitália" style="opacity:1" name="frente" 
+               <path id="genitália" style="opacity:1" name="frente"
                   d="m 14.404465,45.040075 0.0221,-0.0277 -0.14866,-0.37945 -3.10172,-3.40449 -0.23283,-0.0825 2.05918,5.32009 z m -1.17263,2.01833 1.27705,3.29948 0.42631,-4.04862 -0.25196,-0.64303 z m 4.05219,-2.01795 -0.0221,-0.0281 0.14867,-0.37926 3.10171,-3.40449 0.23246,-0.0825 -2.05843,5.3199 z m 1.17263,2.01795 -1.27706,3.29948 -0.42631,-4.04843 0.25197,-0.64303 z" />
                <path id="posteriordecoxa-direita" style="opacity:1" name="frente"
                   d="m 9.6258251,39.369415 v 4.21363 l 2.9451699,5.8253 1.86028,5.78349 -0.19366,-4.0072 z m 3.2488699,13.42559 0.0647,0.15485 1.21294,2.90207 -0.78307,7.18803 -1.23618,-0.66102 1.0714,-6.69273 z" />
-               <path style="opacity:1" name="frente" 
+               <path style="opacity:1" name="frente"
                   d="m 14.433335,87.868265 -0.12448,3.45228 -0.29058,1.20637 h -0.87118 l -0.24877,-0.83181 -0.29059,-0.0416 0.0623,0.83181 -1.09934,-0.33333 -0.29058,-0.16629 -1.2448,-0.27033 -0.0412,-0.97747 1.2031899,-2.03781 0.82975,-1.04009 2.03294,-0.83181 z"
                   id="pe-direito" />
-               <path id="panturrilha-direita" style="opacity:1" name="frente" 
+               <path id="panturrilha-direita" style="opacity:1" name="frente"
                   d="m 13.437675,70.440945 -0.29058,0.91486 -0.62241,3.86828 -0.0829,5.15733 0.87174,5.03304 -0.0418,-6.44714 0.91298,-2.57848 0.1243,-2.82837 z m -1.99151,2.32914 0.20735,7.73637 1.65968,6.23904 -1.80497,-0.85299 -3.0079799,-10.83584 1.03728,-6.82095 z" />
                <path id="joelho-direito" style="opacity:1" name="frente"
                   d="m 10.284405,64.784375 -0.12448,1.12295 0.87118,1.08171 0.29058,1.70599 0.58116,0.24933 0.49774,-2.57866 0.33182,-0.91486 -0.29058,-0.58247 z m 3.85854,0.0832 -0.62241,1.74685 -1.32767,2.57867 0.33182,2.37095 0.95423,-2.66209 0.78832,-1.4964 z m -4.9786799,-2.37058 0.9542299,5.11609 -0.6223999,-0.33313 -0.49793,1.6638 z" />
-               <path style="opacity:1" d="m 3.2054751,27.370125 0.005,3.09419 -0.57959,1.91184 -0.54539,-2.41185 z" name="frente"
-                  id="cotovelo-direito" />
+               <path style="opacity:1" d="m 3.2054751,27.370125 0.005,3.09419 -0.57959,1.91184 -0.54539,-2.41185 z"
+                  name="frente" id="cotovelo-direito" />
                <path style="opacity:1" name="frente"
                   d="m 4.3904451,43.563145 -1.5198,0.0506 -0.76631,-0.67112 -1.21261996,2.15767 -0.86245,3.32873 0.49386,0.22113 0.59814996,-2.20238 0.50016,0.25356 -0.35639,2.49422 0.62382,0.24345 0.41402,-2.49194 0.55839,0.17851 -0.2262,2.76603 0.76938,0.32268 0.25788,-2.86764 0.4578,-0.0181 0.16611,2.65239 0.65997,0.2633 0.0712,-4.56643 0.34158,-0.19428 1.35316,1.68367 0.32832,-0.34354 -0.72644,-2.0551 z"
                   id="mão-direita" />
-               <path style="opacity:1" d="m 28.325215,27.370125 -0.005,3.09419 0.57959,1.91184 0.54538,-2.41185 z" name="frente"
-                  id="cotovelo-esquerdo" />
+               <path style="opacity:1" d="m 28.325215,27.370125 -0.005,3.09419 0.57959,1.91184 0.54538,-2.41185 z"
+                  name="frente" id="cotovelo-esquerdo" />
                <path style="opacity:1" name="frente"
                   d="m 27.140245,43.563145 1.5198,0.0506 0.76631,-0.67111 1.21262,2.15766 0.86245,3.32873 -0.49386,0.22113 -0.59815,-2.20238 -0.50016,0.25356 0.35639,2.49422 -0.62382,0.24345 -0.41402,-2.49194 -0.55839,0.17851 0.2262,2.76603 -0.76938,0.32268 -0.25788,-2.86764 -0.4578,-0.0181 -0.16611,2.6524 -0.65997,0.26329 -0.0712,-4.56643 -0.34158,-0.19428 -1.35316,1.68368 -0.32832,-0.34355 0.72644,-2.0551 z"
                   id="mão-esquerda" />
@@ -188,7 +281,7 @@
                <path style="opacity:1" name="atrás"
                   d="m 52.369695,12.105075 -2.35767,-1.55045 -1.47119,-3.9514301 -0.60741,0.0403 0.27409,1.82447 0.97635,0.33932 0.7613,2.2157201 0.33017,1.06849 0.0895,2.14894 1.16448,0.008 0.10563,-0.70833 0.54716,-0.0606 z m 1.01793,1.47595 0.23768,0.64982 1.38107,-0.004 0.01,-2.38784 0.25971,-0.79061 0.57215,-2.1698001 0.76359,-0.41018 0.25158,-1.78416 -0.62859,0.0193 -1.08488,3.8998101 -2.39725,1.46684 0.2768,1.48507 z"
                   id="nuca" />
-               <path id="partedetrasdobraço-direita" style="opacity:1"
+               <path id="partedetrasdobraço-direita" style="opacity:1" name="atrás"
                   d="m 61.657445,27.250625 -0.32785,-1.05121 -1.27383,-2.05489 1.38708,-2.96476 2.28579,0.91634 1.83971,1.74245 0.53937,1.78549 -0.26073,4.30868 z m 2.64394,15.3417 1.51839,0.0828 0.78033,-0.65476 1.16673,2.18281 0.79187,3.34623 -0.49843,0.21064 -0.55144,-2.21453 -0.50541,0.24292 0.30356,2.5012 -0.62882,0.23021 -0.36124,-2.50014 -0.56203,0.16666 0.16765,2.77019 -0.77603,0.30634 -0.19719,-2.87245 -0.45732,-0.0278 -0.22215,2.64829 -0.66539,0.24928 0.0254,-4.56692 -0.3374,-0.20146 -1.38845,1.65469 -0.32098,-0.35041 0.76973,-2.03928 z m 0.97685,-0.1799 1.43335,-0.74932 0.29002,-7.01054 c 0,0 -0.65,-2.77789 -0.64401,-3.06126 l -0.61212,-1.21783 -3.98124,-2.57566 1.0222,1.93525 -0.38967,4.82212 1.8218,7.69308 z" />
                <path id="perna-direita" style="opacity:1" name="atrás"
                   d="m 54.019305,64.073985 1.20605,3.01461 -0.70737,0.26558 -0.89755,3.51771 0.55802,-4.01191 z m 5.08496,-3.15003 -0.63355,1.8609 -0.16813,2.03261 -0.61313,1.93117 0.90584,-0.0851 0.28534,2.15982 z m -4.3014,6.58834 -1.27664,4.99697 0.28984,3.02284 0.67869,10.06546 1.66325,0.63506 3.504,-11.96959 -1.24986,-7.17525 z m -0.54053,20.8287 -0.85194,1.3581 -0.37189,0.79238 0.15589,1.21774 0.76983,0.74446 1.51186,0.12543 1.12989,-0.29192 0.24225,-0.95894 -0.80765,-1.30405 0.22563,-0.85987 -0.29679,-0.84153 0.0194,-1.81524 -1.53568,-0.54817 z m 1.19598,0.4675 -0.15943,1.25776 0.6023,0.97431 m 0.54436,0.29544 -1.06474,0.40084 -1.55326,-0.65137 m 3.56525,-39.90247 -3.97962,-1.70224 -0.56389,0.27131 -0.0528,1.79746 -0.075,4.64669 1.97837,6.04282 -0.47612,1.41403 1.42813,3.29446 1.7661,-0.30111 0.50079,-2.11605 0.1695,-1.75674 2.42102,-8.15763 0.009,-3.68308 z" />
@@ -212,9 +305,7 @@
             </div>
          </div>
          <div class="col-6">
-            <select name="field1" id="field1" multiple="multiple"
-              
-               multiselect-hide-x="true">
+            <select class="select_ferimento" name="field1" id="field1" multiple="multiple" multiselect-hide-x="true">
                <option value="Fratura/luxação/entorse">Fratura/luxação/entorse</option>
                <option value="Ferimentos diversos">Ferimentos diversos</option>
                <option value="Hemorragias">Hemorragias</option>
@@ -228,163 +319,168 @@
             </select>
             <!-- <div id="dados" class="dados"></div>
          </div> -->
-      </div></div>
+         </div>
       </div>
-      <div class="card"
-                        style="border: none; background-color: #F1F1F1; display: flex; flex-direction: column; justify-content: space-around;">
-                        <div class="card-header" id="headingFive"
-                            style="background-color: #FFF0A3; margin-bottom: 40px; height: 55px; display: flex; justify-content: center; align-items: center; border-radius: 10px; border: none;">
-                            <h2 class="mb-0">
-                                <button type="button" style="text-decoration: none;" class="collapsed btn btn-link"
-                                    type="button" data-toggle="collapse" data-target="#collapseFive"
-                                    aria-expanded="true" aria-controls="collapseFive"
-                                    onclick="scrollToAccordion(event)">
-                                    <p style="color: #333333; margin: 0px; text-decoration: none;">FERIMENTOS
-                                    </p>
-                                </button>
-                            </h2>
-                        </div>
+   </div>
 
-                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
-                            data-parent="#accordionExample">
-                            <div class="card-body" id="conteudoItem5">
-                                <div class="btn-group" style="display: flex; flex-direction: column; gap: 10px;">
-                            
-                                <div class="container justify-content-center">
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <p>Local</p>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <p>Lado</p>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <p>Face</p>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <p>Tipo</p>
-                                        </div>
-                                    </div>
-                                    <div id="dados" class="row dados">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                  <input type="hidden" name="ferimentos" id="ferimentos">
-      <script>
-var partesSelecionadas = [];
-var ferimentos = JSON.parse(localStorage.getItem('ferimentos')) || {
-    "Fratura/luxação/entorse": [],
-    "Ferimentos diversos": [],
-    "Hemorragias": [],
-    "Evisceração": [],
-    "F.A.B./F.A.F.": [],
-    "Amputação": [],
-    "Queimadura 1 grau": [],
-    "Queimadura 2 grau": [],
-    "Queimadura 3 grau": [],
-    "Queimadura 4 grau": []
-};
+   <button type="button" class="sub_accordion_ldt">
+      <p class="checkbox_text">FERIMENTOS</p>
+      <img src="./images/arrow 4.png" style="width: 32px;  position: relative;" />
+   </button>
+   <div class="painel">
+
+      <div class="row_tabela">
+         <div class="Desc_coluna">
+            <p class="desc">Local</p>
+         </div>
+         <div class="Desc_coluna">
+            <p class="desc">Lado</p>
+         </div>
+         <div class="Desc_coluna">
+            <p class="desc">Face</p>
+         </div>
+         <div class="Desc_coluna">
+            <p class="desc">Tipo</p>
+         </div>
+      </div>
+      <div id="dados" class="row dados" style="justify-content: center;">
+      </div>
+
+      <input type="hidden" name="ferimentos" id="ferimentos">
+   </div>
 
 
-function updatePartesSelecionadas(partId) {
-    if (partesSelecionadas.includes(partId)) {
-        partesSelecionadas = partesSelecionadas.filter(id => id !== partId);
-    } else {
-        partesSelecionadas.push(partId);  
-    }
-    
-     // Save ferimentos to localStorage
-     localStorage.setItem('ferimentos', JSON.stringify(ferimentos));
-}
-function partClicked(event) {
 
-    const selectElement = document.getElementById('field1');
-    if (!selectElement.value) {
-        return;
-    }
+   <script>
 
-    const clickedPath = event.target;
-    const partId = clickedPath.getAttribute('id');
+      var acc = document.getElementsByClassName("sub_accordion_ldt");
 
-    if (partId !== null) {
-        if (partesSelecionadas.includes(partId)) {
-            clickedPath.classList.remove('selected');
-        } else {
-            clickedPath.classList.add('selected');
-        }
-        updatePartesSelecionadas(partId);
-    }
-  
-        var selectedInjury = document.getElementById('field1').value;
 
-      
-        ferimentos[selectedInjury] = partesSelecionadas.slice();
-        document.getElementById('ferimentos').value = JSON.stringify(ferimentos);
-        
-        updateDadosDiv();
-    console.log(document.getElementById('ferimentos').value);
-    console.log(partesSelecionadas);
-    console.log(ferimentos);
+      for (var i = 0; i < acc.length; i++) {
+         acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
 
-}
+            var painel1 = this.nextElementSibling;
+            if (painel1.style.display === "flex") {
+               painel1.style.display = "none";
+            } else {
+               painel1.style.display = "flex";
+            }
+         });
+      }
 
-function updateDadosDiv(x) {
-    // Get the dados div
-    const clickedPath = event.target;
-    const partId = clickedPath.getAttribute('id');
-    var dadosDiv = document.getElementById('dados');
-    var selectedInjury = document.getElementById('field1').value;
-    var addedInjuries = [];
-   if (addedInjuries.includes(partId)) {
-        return;
-    }
-    var selectedInjuries = {};
-    addedInjuries.push(partId);
-    dadosDiv.textContent = '';
 
-    for (var i = 0; i < partesSelecionadas.length; i++) {
-    var ladoLocal;
-    var partNameLocal = document.getElementById(partesSelecionadas[i]).getAttribute('name');
-    if (partesSelecionadas[i].includes('esquerda') || partesSelecionadas[i].includes('esquerdo')) {
-        ladoLocal = 'esquerdo';
-    } else if (partesSelecionadas[i].includes('direito') || partesSelecionadas[i].includes('direita')) {
-        ladoLocal = 'direito';
-    } else  {
-        ladoLocal = 'Meio';
-    }
-    var dadosString = '<div class="col-sm-3"><p>' + partesSelecionadas[i] + '</p></div>\n' +
-                      '<div class="col-sm-3"><p>' + ladoLocal + '</p></div>\n' +
-                      '<div class="col-sm-3"><p>' + partNameLocal + '</p></div>\n' +
-                      '<div class="col-sm-3"><p>' +  selectedInjury + '</p></div>\n';
-    dadosDiv.innerHTML += dadosString + '\n';
-    // When the selected injury is changed...
+      var partesSelecionadas = [];
+      var ferimentos = JSON.parse(localStorage.getItem('ferimentos')) || {
+         "Fratura/luxação/entorse": [],
+         "Ferimentos diversos": [],
+         "Hemorragias": [],
+         "Evisceração": [],
+         "F.A.B./F.A.F.": [],
+         "Amputação": [],
+         "Queimadura 1 grau": [],
+         "Queimadura 2 grau": [],
+         "Queimadura 3 grau": [],
+         "Queimadura 4 grau": []
+      };
 
-}
-}
 
-document.getElementById('field1').addEventListener('change', function() {
-
-    partesSelecionadas = [];
-    var selectedInjury = this.value;
-  
-    var paths = document.querySelectorAll('svg path');
-    for (var i = 0; i < paths.length; i++) {
-        paths[i].classList.remove('selected');
-    }
-    if (ferimentos[selectedInjury].length > 0) {
-        for (var i = 0; i < ferimentos[selectedInjury].length; i++) {
-            var partId = ferimentos[selectedInjury][i];
+      function updatePartesSelecionadas(partId) {
+         if (partesSelecionadas.includes(partId)) {
+            partesSelecionadas = partesSelecionadas.filter(id => id !== partId);
+         } else {
             partesSelecionadas.push(partId);
-            document.getElementById(partId).classList.add('selected');
-        }
-    }
-    updateDadosDiv();
-});
+         }
 
-      </script>
+         // Save ferimentos to localStorage
+         localStorage.setItem('ferimentos', JSON.stringify(ferimentos));
+      }
+      function partClicked(event) {
+
+         const selectElement = document.getElementById('field1');
+         if (!selectElement.value) {
+            return;
+         }
+
+         const clickedPath = event.target;
+         const partId = clickedPath.getAttribute('id');
+
+         if (partId !== null) {
+            if (partesSelecionadas.includes(partId)) {
+               clickedPath.classList.remove('selected');
+            } else {
+               clickedPath.classList.add('selected');
+            }
+            updatePartesSelecionadas(partId);
+         }
+
+         var selectedInjury = document.getElementById('field1').value;
+
+
+         ferimentos[selectedInjury] = partesSelecionadas.slice();
+         document.getElementById('ferimentos').value = JSON.stringify(ferimentos);
+
+         updateDadosDiv();
+         console.log(document.getElementById('ferimentos').value);
+         console.log(partesSelecionadas);
+         console.log(ferimentos);
+
+      }
+
+      function updateDadosDiv(x) {
+         // Get the dados div
+         const clickedPath = event.target;
+         const partId = clickedPath.getAttribute('id');
+         var dadosDiv = document.getElementById('dados');
+         var selectedInjury = document.getElementById('field1').value;
+         var addedInjuries = [];
+         if (addedInjuries.includes(partId)) {
+            return;
+         }
+         var selectedInjuries = {};
+         addedInjuries.push(partId);
+         dadosDiv.textContent = '';
+
+         for (var i = 0; i < partesSelecionadas.length; i++) {
+            var ladoLocal;
+            var partNameLocal = document.getElementById(partesSelecionadas[i]).getAttribute('name');
+            if (partesSelecionadas[i].includes('esquerda') || partesSelecionadas[i].includes('esquerdo')) {
+               ladoLocal = 'esquerdo';
+            } else if (partesSelecionadas[i].includes('direito') || partesSelecionadas[i].includes('direita')) {
+               ladoLocal = 'direito';
+            } else {
+               ladoLocal = 'Meio';
+            }
+            var dadosString = '<div class="col-sm-3"><p>' + partesSelecionadas[i] + '</p></div>\n' +
+               '<div class="col-sm-3"><p>' + ladoLocal + '</p></div>\n' +
+               '<div class="col-sm-3"><p>' + partNameLocal + '</p></div>\n' +
+               '<div class="col-sm-3"><p>' + selectedInjury + '</p></div>\n';
+            dadosDiv.innerHTML += dadosString + '\n';
+            // When the selected injury is changed...
+
+         }
+      }
+
+      document.getElementById('field1').addEventListener('change', function () {
+
+         partesSelecionadas = [];
+         var selectedInjury = this.value;
+
+         var paths = document.querySelectorAll('svg path');
+         for (var i = 0; i < paths.length; i++) {
+            paths[i].classList.remove('selected');
+         }
+         if (ferimentos[selectedInjury].length > 0) {
+            for (var i = 0; i < ferimentos[selectedInjury].length; i++) {
+               var partId = ferimentos[selectedInjury][i];
+               partesSelecionadas.push(partId);
+               document.getElementById(partId).classList.add('selected');
+            }
+         }
+         updateDadosDiv();
+      });
+
+   </script>
 
 </body>
 
