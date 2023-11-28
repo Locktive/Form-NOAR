@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/custom_checkbox1.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/custom_checkbox2.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/floating_label.css" />
+    <title>Document</title>
+
+</head>
+<body>
+    <!-- Criação de uma lista de checkboxes -->
+
+    <div class="textarea_row">
+        <div style="width: 100%;">
+            <p class="checkbox_text">PRESSÃO ARTERIAL: mmHg</p>
+            <div class="did-floating-label-content textarea">
+                <textarea onclick="validateValue(this);" class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="textarea_row">
+        <div style="width: 100%;">
+            <p class="checkbox_text">RESPIRAÇÃO: M.R.M</p>
+            <div class="did-floating-label-content textarea">
+                <textarea onclick="validateValue(this);" class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="textarea_row">
+        <div style="width: 100%;">
+            <p class="checkbox_text">SATURAÇÃO</p>
+            <div class="did-floating-label-content textarea">
+                <textarea onclick="validateValue(this);" class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="textarea_row">
+        <div style="width: 100%;">
+            <p class="checkbox_text">TEMPERATURA: °C</p>
+            <div class="did-floating-label-content textarea">
+                <textarea onclick="validateValue(this);" class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">PERFUSÃO</p>
+        <label class="custom_checkbox">
+
+            <div class="checkbox_description">
+                <p class="checkbox_text"> &gt;2 SEGS</p>
+                <input type="radio" name="radio_perfusao" />
+            </div>
+
+            <div class="checkbox_description">
+                <p class="checkbox_text">&lt;2 SEG</p>
+                <input type="radio" name="radio_perfusao" />
+            </div>
+
+        </label>
+    </div>
+
+    <div class="textarea_row">
+        <div style="width: 100%;">
+            <p class="checkbox_text">PULSO: B.C.P.M</p>
+            <div class="did-floating-label-content textarea">
+                <textarea onclick="validateValue(this);" class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="textarea_row">
+        <div style="width: 100%;">
+            <p class="checkbox_text">HTG</p>
+            <div class="did-floating-label-content textarea">
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="checkbox_row two_options">
+
+        <div class="checkbox_description">
+            <p class="checkbox_text">NORMAL</p>
+            <input type="radio" name="radio_sinais_vitais" />
+        </div>
+
+        <div class="checkbox_description">
+            <p class="checkbox_text">ANORMAL</p>
+            <input type="radio" name="radio_sinais_vitais" />
+        </div>
+
+    </div>
+    <input type="hidden" name="sinais_annsv1" value="" />
+    <input type="hidden" name="sinais_perfsv1" value="" />
+    <!-- Criação de um campo de texto com rótulo flutuante -->
+    <script>
+        function validateValue(input) {
+        if (input.value.length > 4)
+            input.value = input.value.slice(0, 4);
+    }
+    // pega todos os botoes
+    const annsv = document.querySelectorAll('input[name="radio_sinais_vitais"]');
+    // Restaura state
+    const savedannsvState = localStorage.getItem('annsvState');
+    if (savedannsvState) {
+        savedannsvState.split('').forEach((state, index) => {
+            annsv[index].checked = state === '1';
+        });
+    }
+
+    // evento de mudança de estado
+    annsv.forEach((radio, index) => {
+        radio.addEventListener('change', () => {
+            // cria um codigo binario para cada botao
+            let binarysv = '';
+            annsv.forEach((r, i) => {
+                binarysv += r.checked && i === index ? '1' : '0';
+            });
+            document.querySelector('input[name="sinais_annsv1"]').value = binarysv;
+            // Save state
+            localStorage.setItem('savedannsvState', binarysv);
+
+            console.log(binarysv);
+        });
+    });
+
+    // pega todos os botoes
+    const perfsv = document.querySelectorAll('input[name="radio_perfusao"]');
+    // Restaura state
+    const savedperfsvState = localStorage.getItem('perfsvState');
+    if (savedperfsvState) {
+        savedperfsvState.split('').forEach((state, index) => {
+            perfsv[index].checked = state === '1';
+        });
+    }
+
+    // evento de mudança de estado
+    perfsv.forEach((radio, index) => {
+        radio.addEventListener('change', () => {
+            // cria um codigo binario para cada botao
+            let binarypsv = '';
+            perfsv.forEach((r, i) => {
+                binarypsv += r.checked && i === index ? '1' : '0';
+            });
+            document.querySelector('input[name="sinais_perfsv1"]').value = binarypsv;
+            // Save state
+            localStorage.setItem('perfsvState', binarypsv);
+
+            console.log(binarypsv);
+        });
+    });
+</script>
+</body>
+
+</html>

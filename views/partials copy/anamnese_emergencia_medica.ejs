@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/floating_label.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/decisao_transporte.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/sub_accordion.css" />
+    <title>Document</title>
+</head>
+<style>
+    .input_idade {
+        width: 5rem;
+        text-align: center;
+    }
+
+    .sub_accordion_aem {
+
+        display: flex !important;
+        width: 100% !important;
+        border: none !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        background-color: #E1E1E1 !important;
+        padding: 10px !important;
+        color: #333333 !important;
+        text-decoration: none !important;
+        margin: 0 !important;
+        font-weight: 600 !important;
+
+
+    }
+
+    .painel2 {
+
+        display: flex;
+        flex-direction: column !important;
+        gap: 10px;
+        padding: 0 15px 20px 22px;
+        background-color: #F1F1F1;
+        display: none;
+        overflow: hidden;
+        transition: 0.4s !important;
+
+    }
+
+
+
+    .icon_active {
+        transform: rotate(45deg);
+        /* Ajuste o ângulo de rotação desejado */
+        transition: transform 0.3s ease;
+        /* Adicione uma transição suave */
+    }
+
+    .icon {
+        transition: 0.4s;
+    }
+
+    .rotating {
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<body>
+
+    <div class="textarea_row">
+        <div style="width: 100%;">
+            <p class="checkbox_text">O QUE ACONTECEU:</p>
+            <div class="did-floating-label-content textarea">
+                <textarea class="did-floating-input row_textarea" value="<%= oqacon %>" placeholder="Insira o texto"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <button type="button" class="sub_accordion_aem">
+        <p class="checkbox_text">ACONTECEU OUTRAS VEZES</p>
+        <img src="./images/arrow 4.png" style="width: 32px;  position: relative;" />
+    </button>
+    <div class="painel">
+
+        <div class="checkbox_row two_options">
+
+            <div class="checkbox_description">
+                <p class="checkbox_text">SIM</p>
+                <input type="radio" name="radio_aconteceu_outras_vezes" />
+            </div>
+
+            <div class="checkbox_description">
+                <p class="checkbox_text">NÃO</p>
+                <input type="radio" name="radio_aconteceu_outras_vezes" />
+            </div>
+
+        </div>
+        <div class="textarea_row">
+            <div style="width: 100%;">
+                <p class="checkbox_text">A QUANTO TEMPO ISSO ACONTECEU?</p>
+                <div class="did-floating-label-content textarea">
+                    <textarea class="did-floating-input row_textarea" value="<%= quantotemp %>" placeholder="Insira o texto"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <button type="button" class="sub_accordion_aem">
+        <p class="checkbox_text">POSSUI ALGUM PROBLEMA DE SAÚDE</p>
+        <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
+    </button>
+    <div class="painel">
+
+        <div class="checkbox_row two_options">
+
+            <div class="checkbox_description">
+                <p class="checkbox_text">SIM</p>
+                <input type="radio" name="radio_prob_saude" />
+            </div>
+
+            <div class="checkbox_description">
+                <p class="checkbox_text">NÃO</p>
+                <input type="radio" name="radio_prob_saude" />
+            </div>
+
+        </div>
+
+        <div class="textarea_row">
+            <div style="width: 100%;">
+                <p class="checkbox_text">QUAIS?</p>
+                <div class="did-floating-label-content textarea">
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <button type="button" class="sub_accordion_aem">
+        <p class="checkbox_text">FAZ USO DE MEDICAÇÃO</p>
+        <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
+    </button>
+    <div class="painel">
+
+        <div class="checkbox_row two_options">
+
+            <div class="checkbox_description">
+                <p class="checkbox_text">SIM</p>
+                <input type="radio" name="radio_usa_medicacao" />
+            </div>
+
+            <div class="checkbox_description">
+                <p class="checkbox_text">NÃO</p>
+                <input type="radio" name="radio_usa_medicacao" />
+            </div>
+
+        </div>
+
+        <div class="textarea_row">
+            <div style="width: 100%;">
+                <p class="checkbox_text">QUAIS OS MEDICAMENTOS?</p>
+                <div class="did-floating-label-content textarea">
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="textarea_row">
+            <p class="checkbox_text">HORÁRIO DA ULTIMA MEDICAÇÃO</p>
+                <div class="did-floating-label-content textarea">
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                </div>
+        </div>
+
+    </div>
+
+
+    <button type="button" class="sub_accordion_aem">
+        <p class="checkbox_text">POSSUI ALGUMA ALERGIA</p>
+        <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
+    </button>
+    <div class="painel">
+
+        <div class="checkbox_row two_options">
+
+            <div class="checkbox_description">
+                <p class="checkbox_text">SIM</p>
+                <input type="radio" name="radio_alergia" />
+            </div>
+
+            <div class="checkbox_description">
+                <p class="checkbox_text">NÃO</p>
+                <input type="radio" name="radio_alergia" />
+            </div>
+
+        </div>
+
+        <div class="textarea_row">
+            <div style="width: 100%;">
+                <p class="checkbox_text">QUE TIPO DE ALERGIA</p>
+                <div class="did-floating-label-content textarea">
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <button type="button" class="sub_accordion_aem">
+        <p class="checkbox_text">INGERIU ALIMENTO OU LIQUIDO &#62;= 6H:</p>
+        <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
+    </button>
+    <div class="painel">
+
+        <div class="checkbox_row two_options">
+
+            <div class="checkbox_description">
+                <p class="checkbox_text">SIM</p>
+                <input type="radio" name="radio_ingerir" />
+            </div>
+
+            <div class="checkbox_description">
+                <p class="checkbox_text">NÃO</p>
+                <input type="radio" name="radio_ingerir" />
+            </div>
+
+        </div>
+
+        <div class="textarea_row">
+            <p class="checkbox_text">HORÁRIO DA ÚLTIMA INGESTÃO</p>
+                <div class="did-floating-label-content textarea">
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                </div>
+        </div>
+
+    </div>
+    <input type="hidden" name="radioaov"  />
+    <input type="hidden" name="radiopbs"  />
+    <input type="hidden" name="radiomed"  />
+    <input type="hidden" name="radioalergia"  />
+    <input type="hidden" name="radioingerir"  />
+    <input type="hidden" name="acov" value="<%= oqacon %>"
+
+</body>
+<script>
+    var acc = document.getElementsByClassName("sub_accordion_aem");
+
+
+    for (var i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+
+            var painel1 = this.nextElementSibling;
+            if (painel1.style.display === "flex") {
+                painel1.style.display = "none";
+            } else {
+                painel1.style.display = "flex";
+            }
+        });
+    }
+    // pega todos os botoes
+    const radioaov = document.querySelectorAll('input[name="radio_aconteceu_outras_vezes"]');
+    // Restaura state
+    const acov = document.querySelector('input[name="acov"]');
+                // restaura estado dos botoes
+                if (acov) {
+                   acov.split('').forEach((state, index) => {
+                        radioaov[index].checked = state === '1';
+                    });
+                }
+                // Restaura state
+                const savedaovState = localStorage.getItem('aov');
+                // restaura estado dos botoes
+                if (savedaovState) {
+                    savedaovState.split('').forEach((state, index) => {
+                        radioaov[index].checked = state === '1';
+                    });
+                }
+
+
+                // evento de mudança de estado
+                radioaov.forEach((radio, index) => {
+                    radio.addEventListener('change', () => {
+                        // cria um codigo binario para cada botao
+                        let binaryaov = '';
+                        radioaov.forEach((r, i) => {
+                            binaryaov += r.checked && i === index ? '1' : '0';
+                        });
+                        document.querySelector('input[name="radioaov"]').value = binaryaov;
+                        // Save state
+                        localStorage.setItem('aov', binaryaov);
+
+
+                        console.log(binaryaov);
+                    });
+                });
+                // pega todos os botoes
+                const radiopbs = document.querySelectorAll('input[name="radio_prob_saude"]');
+                // Restaura state
+                const savedpbsState = localStorage.getItem('radiopbs');
+                // restaura estado dos botoes
+                if (savedpbsState) {
+                    savedpbsState.split('').forEach((state, index) => {
+                        radiopbs[index].checked = state === '1';
+                    });
+                }
+
+
+                // evento de mudança de estado
+                radiopbs.forEach((radio, index) => {
+                    radio.addEventListener('change', () => {
+                        // cria um codigo binario para cada botao
+                        let binarypbs = '';
+                        radiopbs.forEach((r, i) => {
+                            binarypbs += r.checked && i === index ? '1' : '0';
+                        });
+                        document.querySelector('input[name="radiopbs"]').value = binarypbs;
+                        // Save state
+                        localStorage.setItem('radiopbs', binarypbs);
+
+
+                        console.log(binarypbs);
+                    });
+                });
+                // pega todos os botoes
+                const radiosmed = document.querySelectorAll('input[name="radio_usa_medicacao"]');
+                // Restaura state
+                const savedRadiomed = localStorage.getItem('radiomed');
+                // restaura estado dos botoes
+                if (savedRadiomed) {
+                    savedRadiomed.split('').forEach((state, index) => {
+                        radiosmed[index].checked = state === '1';
+                    });
+                }
+
+
+                // evento de mudança de estado
+                radiosmed.forEach((radio, index) => {
+                    radio.addEventListener('change', () => {
+                        // cria um codigo binario para cada botao
+                        let binarymed = '';
+                        radiosmed.forEach((r, i) => {
+                            binarymed += r.checked && i === index ? '1' : '0';
+                        });
+                        document.querySelector('input[name="radiomed"]').value = binarymed;
+                        // Save state
+                        localStorage.setItem('radiomed', binarymed);
+
+
+                        console.log(binarymed);
+                    });
+                });
+                // pega todos os botoes
+        const radio_alergia = document.querySelectorAll('input[name="radio_alergia"]');
+                // Restaura state
+                const savedalergiaState = localStorage.getItem('alergiaradio');
+                // restaura estado dos botoes
+                if (savedalergiaState) {
+                    savedalergiaState.split('').forEach((state, index) => {
+                        radio_alergia[index].checked = state === '1';
+                    });
+                }
+
+
+                // evento de mudança de estado
+                radio_alergia.forEach((radio, index) => {
+                    radio.addEventListener('change', () => {
+                        // cria um codigo binario para cada botao
+                        let binaryalergia = '';
+                        radio_alergia.forEach((r, i) => {
+                            binaryalergia += r.checked && i === index ? '1' : '0';
+                        });
+                        document.querySelector('input[name="radioalergia"]').value = binaryalergia;
+                        // Save state
+                        localStorage.setItem('alergiaradio', binaryalergia);
+
+
+                        console.log(binaryalergia);
+                    });
+                });
+                // pega todos os botoes
+        const radioingeriu = document.querySelectorAll('input[name="radio_ingerir"]');
+                // Restaura state
+                const savedingerirState = localStorage.getItem('ingerirradio');
+                // restaura estado dos botoes
+                if (savedingerirState) {
+                    savedingerirState.split('').forEach((state, index) => {
+                        radioingeriu[index].checked = state === '1';
+                    });
+                }
+
+
+                // evento de mudança de estado
+                radioingeriu.forEach((radio, index) => {
+                    radio.addEventListener('change', () => {
+                        // cria um codigo binario para cada botao
+                        let binarying = '';
+                        radioingeriu.forEach((r, i) => {
+                            binarying += r.checked && i === index ? '1' : '0';
+                        });
+                        document.querySelector('input[name="radioingerir"]').value = binarying;
+                        // Save state
+                        localStorage.setItem('ingerirradio', binarying);
+
+
+                        console.log(binarying);
+                    });
+                });
+</script>
+
+</html>

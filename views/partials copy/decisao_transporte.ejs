@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/floating_label.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/custom_checkbox1.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/custom_checkbox2.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/decisao_transporte.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/sub_accordion.css" />
+    <title>Document</title>
+</head>
+
+<style>
+    .sub_accordion_dt {
+
+        display: flex !important;
+        width: 100% !important;
+        border: none !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        background-color: #E1E1E1 !important;
+        padding: 10px !important;
+        color: #333333 !important;
+        text-decoration: none !important;
+        margin: 0 !important;
+        font-weight: 600 !important;
+
+    }
+
+
+    .active,
+    .sub_accordion_adp:hover {
+
+        background-color: #ccc;
+        transition: 0.4s !important;
+
+    }
+
+    .painel {
+
+        width: 100%;
+        display: flex;
+        flex-direction: column !important;
+        gap: 10px;
+        padding: 0 15px 20px 22px;
+        background-color: #F1F1F1;
+        display: none;
+        overflow: hidden;
+        transition: 0.4s !important;
+
+    }
+
+
+
+
+    .icon_active {
+        transform: rotate(45deg);
+        /* Ajuste o ângulo de rotação desejado */
+        transition: transform 0.3s ease;
+        /* Adicione uma transição suave */
+    }
+
+    .icon {
+        transition: 0.4s;
+    }
+
+    .rotating {
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<body>
+    <!-- Criação de uma lista de checkboxes -->
+    <div class="container_decisao_transporte">
+
+        <div class="botao_titulo">
+            <div class="botao_situacao">
+                <input class="cont_critico emotes_container" type="radio" name="radio_dt" />
+                <div><img class="icon_emote" src="./images/disappointed.png" /></div>
+            </div>
+            <p class="estado" id="critico">CRÍTICO</p>
+        </div>
+
+
+        <div class="botao_titulo">
+            <div class="botao_situacao">
+                <input class="cont_instavel emotes_container" type="radio" name="radio_dt" />
+                <div><img class="icon_emote" src="./images/boring.png" /></div>
+            </div>
+            <p class="estado" id="instavel">INSTÁVEL</p>
+        </div>
+
+
+        <div class="botao_titulo">
+            <div class="botao_situacao">
+                <input class="cont_pi emotes_container" type="radio" name="radio_dt" />
+                <div><img class="icon_emote" src="./images/neutral.png" /></div>
+            </div>
+            <p class="estado" id="potencialmente_instavel">POTENCIALMENTE INSTÁVEL</p>
+        </div>
+
+
+        <div class="botao_titulo">
+            <div class="botao_situacao">
+                <input class="cont_estavel emotes_container" type="radio" name="radio_dt" />
+                <div><img class="icon_emote" src="./images/happy.png" />
+                </div>
+            </div>
+            <p class="estado" id="estavel">ESTÁVEL</p>
+        </div>
+    </div>
+
+    <div class="textarea_row">
+        <div style="width: 100%;">
+            <p class="checkbox_text">MOTORISTA:</p>
+            <div class="did-floating-label-content textarea">
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="textarea_row">
+        <div style="width: 100%;">
+            <p class="checkbox_text">SOCORRISTA 1:</p>
+            <div class="did-floating-label-content textarea">
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="textarea_row">
+        <div style="width: 100%;">
+            <p class="checkbox_text">SOCORRISTA 2:</p>
+            <div class="did-floating-label-content textarea">
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="textarea_row">
+        <div style="width: 100%;">
+            <p class="checkbox_text">SOCORRISTA 3:</p>
+            <div class="did-floating-label-content textarea">
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="textarea_row">
+        <div style="width: 100%;">
+            <p class="checkbox_text">DEMANDANTE:</p>
+            <div class="did-floating-label-content textarea">
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <button type="button" class="sub_accordion_dt">
+        <p class="checkbox_text">FORMA DE CONDUÇÃO</p>
+        <img src="./images/arrow 4.png" style="width: 32px;  position: relative;" />
+    </button>
+    <div class="painel">
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">DEITADA</p>
+            <label class="custom_checkbox">
+                <input type="radio" name="radio_fc" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">SEMI-SENTADA</p>
+            <label class="custom_checkbox">
+                <input type="radio" name="radio_fc" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">SENTADA</p>
+            <label class="custom_checkbox">
+                <input type="radio" name="radio_fc" />
+            </label>
+        </div>
+    </div>
+    <input type="hidden" name="forma_conducao" value="" />
+    <input type="hidden" name="dct1" value="" />
+    <script>
+        var acc = document.getElementsByClassName("sub_accordion_dt");
+
+        for (var i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+
+                var painel1 = this.nextElementSibling;
+                if (painel1.style.display === "flex") {
+                    painel1.style.display = "none";
+                } else {
+                    painel1.style.display = "flex";
+                }
+            });
+        }
+        // pega todos os botoes
+        const dct = document.querySelectorAll('input[name="radio_dt"]');
+        // Restaura state
+        const saveddctState = localStorage.getItem('dctState');
+        if (saveddctState) {
+            saveddctState.split('').forEach((state, index) => {
+                dct[index].checked = state === '1';
+            });
+        }
+
+        // evento de mudança de estado
+        dct.forEach((checkbox, index) => {
+            checkbox.addEventListener('change', () => {
+                // cria um codigo binario para cada botao
+                let binarydct = '';
+                dct.forEach((r, i) => {
+                    binarydct += r.checked && i == index ? '1' : '0';
+                });
+                document.querySelector('input[name="dct1"]').value = binarydct;
+                // Save state
+                localStorage.setItem('dctState', binarydct);
+
+                console.log(binarydct);
+            });
+        });
+        // pega todos os botoes
+        const fc = document.querySelectorAll('input[name="radio_fc"]');
+        // Restaura state
+        const savedfcState = localStorage.getItem('fcState');
+        if (savedfcState) {
+            savedfcState.split('').forEach((state, index) => {
+                fc[index].checked = state === '1';
+            });
+        }
+
+        // evento de mudança de estado
+        fc.forEach((checkbox, index) => {
+            checkbox.addEventListener('change', () => {
+                // cria um codigo binario para cada botao
+                let binaryfc = '';
+                fc.forEach((r, i) => {
+                    binaryfc += r.checked && i == index ? '1' : '0';
+                });
+                document.querySelector('input[name="forma_conducao"]').value = binaryfc;
+                // Save state
+                localStorage.setItem('fcState', binaryfc);
+
+                console.log(binaryfc);
+            });
+        });
+    </script>
+</body>
+
+</html>

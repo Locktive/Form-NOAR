@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/custom_checkbox1.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/custom_checkbox2.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/floating_label.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/floating_label.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/materiais_deixados_hospital.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Criação de uma lista de checkboxes -->
+    <div class="container_DH">
+        <div class="coluna1">
+
+            <div class="checkbox_row">
+                <p class="checkbox_text2">BASE DO ESTABILIZADOR</p>
+            </div>
+
+            <div class="checkbox_row">
+                <p class="checkbox_text">COLAR</p>
+                <label class="custom_checkbox2">
+                    
+                    <div class="checkbox_description2">
+                        <p class="checkbox_text">PP</p>
+                        <input type="radio" name="radio_colar" />
+                    </div>
+                    <div class="checkbox_description2">
+                        <p class="checkbox_text">P</p>
+                        <input type="radio" name="radio_colar" />
+                    </div>
+                    <div class="checkbox_description2">
+                        <p class="checkbox_text">M</p>
+                        <input type="radio" name="radio_colar" />
+                    </div>
+                    <div class="checkbox_description2">
+                        <p class="checkbox_text">G</p>
+                        <input type="radio" name="radio_colar" />
+                    </div>
+
+                </label>
+            </div>
+
+            <div class="checkbox_row">
+                <p class="checkbox_text2">COXINS ESTABILIZA</p>
+            </div>
+
+            <div class="checkbox_row">
+                <p class="checkbox_text">KED</p>
+                <label class="custom_checkbox2">
+
+                    <div class="checkbox_description2">
+                        <p class="checkbox_text">ADULT.</p>
+                        <input type="radio" name="radio_ked" />
+                    </div>
+                    <div class="checkbox_description2">
+                        <p class="checkbox_text">INFA.</p>
+                        <input type="radio" name="radio_ked" />
+                    </div>
+
+                </label>
+            </div>
+
+            <div class="checkbox_row">
+                <p class="checkbox_text2">MACA RÍGIDA</p>
+            </div>
+
+            <div class="checkbox_row">
+                <p class="checkbox_text">T.T.F</p>
+                <label class="custom_checkbox2">
+
+                    <div class="checkbox_description2">
+                        <p class="checkbox_text">ADULT.</p>
+                        <input type="radio" name="radio_ttf" />
+                    </div>
+                    <div class="checkbox_description2">
+                        <p class="checkbox_text">INFA.</p>
+                        <input type="radio" name="radio_ttf" />
+                    </div>
+
+                </label>
+            </div>
+
+            <div class="checkbox_row">
+                <p class="checkbox_text2">TIRANTE DE CABEÇA</p>
+            </div>
+
+            <div class="checkbox_row">
+                <p class="checkbox_text2">CÂNULA</p>
+            </div>
+
+
+
+        </div>
+        <div class="coluna2">
+
+            <p class="checkbox_text_QTD">QTD:</p>
+            <p class="checkbox_text_QTD">QTD:</p>
+            <p class="checkbox_text_QTD">QTD:</p>
+            <p class="checkbox_text_QTD">QTD:</p>
+            <p class="checkbox_text_QTD">QTD:</p>
+            <p class="checkbox_text_QTD">QTD:</p>
+            <p class="checkbox_text_QTD">QTD:</p>
+            <p class="checkbox_text_QTD">QTD:</p>
+
+        </div>
+
+        <div class="coluna3">
+            <div class="did-floating-label-content">
+                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
+            </div>
+            <div class="did-floating-label-content">
+                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
+            </div>
+            <div class="did-floating-label-content">
+                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
+            </div>
+            <div class="did-floating-label-content">
+                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
+            </div>
+            <div class="did-floating-label-content">
+                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
+            </div>
+            <div class="did-floating-label-content">
+                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
+            </div>
+            <div class="did-floating-label-content">
+                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
+            </div>
+            <div class="did-floating-label-content">
+                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
+            </div>
+        </div>
+    </div>
+    <div class="textarea_row">
+        <div style="width: 100%;">
+            <p class="checkbox_text">OUTRO</p>
+            <div class="did-floating-label-content textarea">
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+            </div>
+        </div>
+    </div>
+   <input type="hidden" name="radio_colar1" />
+    <input type="hidden" name="radio_ked1" />
+    <input type="hidden" name="radio_ttf1" />
+
+    <script>
+        function validateValue(input) {
+            // Remove non-numeric characters
+    input.value = input.value.replace(/\D/g, '');
+        if (input.value.length > 3)
+            input.value = input.value.slice(0, 3);
+    }
+        // pega todos os botoes
+        const radiotamanhocolar = document.querySelectorAll('input[name="radio_colar"]');
+                // Restaura state
+                const savedcolarState = localStorage.getItem('colarradioStfftate');
+                // restaura estado dos botoes
+                if (savedcolarState) {
+                    savedcolarState.split('').forEach((state, index) => {
+                        radiotamanhocolar[index].checked = state === '1';
+                    });
+                }
+
+
+                // evento de mudança de estado
+                radiotamanhocolar.forEach((radio, index) => {
+                    radio.addEventListener('change', () => {
+                        // cria um codigo binario para cada botao
+                        let binarycolar = '';
+                        radiotamanhocolar.forEach((r, i) => {
+                            binarycolar += r.checked && i === index ? '1' : '0';
+                        });
+                        document.querySelector('input[name="radio_colar1"]').value = binarycolar;
+                        // Save state
+                        localStorage.setItem('colarradioStfftate', binarycolar);
+
+
+                        console.log(binarycolar);
+                    });
+                });
+                // pega todos os botoes
+                const radioked = document.querySelectorAll('input[name="radio_ked"]');
+                // Restaura state
+                const savedkedState = localStorage.getItem('kedradioStfftate');
+                // restaura estado dos botoes
+                if (savedkedState) {
+                    savedkedState.split('').forEach((state, index) => {
+                        radioked[index].checked = state === '1';
+                    });
+                }
+
+
+                // evento de mudança de estado
+                radioked.forEach((radio, index) => {
+                    radio.addEventListener('change', () => {
+                        // cria um codigo binario para cada botao
+                        let binaryked = '';
+                        radioked.forEach((r, i) => {
+                            binaryked += r.checked && i === index ? '1' : '0';
+                        });
+                        document.querySelector('input[name="radio_ked1"]').value = binaryked;
+                        // Save state
+                        localStorage.setItem('kedradioStfftate', binaryked);
+
+
+                        console.log(binaryked);
+                    });
+                });
+                // pega todos os botoes
+                const radiostff = document.querySelectorAll('input[name="radio_ttf"]');
+                // Restaura state
+                const savedRadiotff = localStorage.getItem('radiotff');
+                // restaura estado dos botoes
+                if (savedRadiotff) {
+                    savedRadiotff.split('').forEach((state, index) => {
+                        radiostff[index].checked = state === '1';
+                    });
+                }
+
+
+                // evento de mudança de estado
+                radiostff.forEach((radio, index) => {
+                    radio.addEventListener('change', () => {
+                        // cria um codigo binario para cada botao
+                        let binaryttf = '';
+                        radiostff.forEach((r, i) => {
+                            binaryttf += r.checked && i === index ? '1' : '0';
+                        });
+                        document.querySelector('input[name="radio_ttf1"]').value = binaryttf;
+                        // Save state
+                        localStorage.setItem('radiotff', binaryttf);
+
+
+                        console.log(binaryttf);
+                    });
+                });
+    </script>
+</body>
+
+</html>

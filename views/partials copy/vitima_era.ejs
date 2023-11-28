@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/custom_checkbox1.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/custom_checkbox2.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/floating_label.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Criação de uma lista de checkboxes -->
+    <div class="checkbox_row">
+        <p class="checkbox_text">CICLISTA</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio_vte" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">CONDUTOR DE MOTO</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio_vte" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">GESTANTE</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio_vte" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">PASSAGEIRO BANCO DA FRENTE</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio_vte" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">PASSAGEIRO MOTO</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio_vte" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">CONDUTOR CARRO</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio_vte" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">CLÍNICO</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio_vte" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">TRAUMA</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio_vte" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">PASSAGEIRO BANCO DE TRÁS</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio_vte" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">PEDESTRE</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio_vte" />
+        </label>
+    </div>
+    <input type="hidden" name="radio_vte1" value="" />
+    <script>
+        // pega todos os botoes
+        const radiosvte = document.querySelectorAll('input[name="radio_vte"]');
+        // Restaura state
+        const savedRadiovteState = localStorage.getItem('radiovteState');
+        if (savedRadiovteState) {
+            savedRadiovteState.split('').forEach((state, index) => {
+                radiosvte[index].checked = state === '1';
+            });
+        }
+
+
+        // evento de mudança de estado
+        radiosvte.forEach((radio, index) => {
+            radio.addEventListener('change', () => {
+                // cria um codigo binario para cada botao
+                let binaryvte = '';
+                radiosvte.forEach((r, i) => {
+                    binaryvte += r.checked && i === index ? '1' : '0';
+                });
+                document.querySelector('input[name="radio_vte1"]').value = binaryvte;
+                // Save state
+                localStorage.setItem('radiovteState', binaryvte);
+
+
+                console.log(binaryvte);
+            });
+        });
+
+    </script>
+</body>
+
+</html>
