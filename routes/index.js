@@ -574,11 +574,12 @@ router.get('/ocview', requireAuth, function (req, res, next) {
   var vte = req.query.vte;
   var ferimentos = req.query.ferimentos;
   var final = req.query.final;
-  var anamneemer = req.query.anamneemer;
+  var anamneemer = req.query.anamnemer;
   var anamnegesta = req.query.anamnegesta;
   var mtehosp = req.query.mtehosp;
   var mtedesc = req.query.mtedesc;
   var sv = req.query.sv;
+  var relatorio = req.query.relatorio;
   var id = parseInt(paciente, 10);
   connection.query('SELECT * FROM paciente WHERE id_paciente = ?', [id], function (err, results, fields) {
     if (err) throw err;
@@ -594,7 +595,7 @@ router.get('/ocview', requireAuth, function (req, res, next) {
       var acompnome = results[0].nome;
       var acompidade = results[0].idade;
 
-      res.render('vitima_alter.ejs', { pag: 'Ocorrências', title: 'Ocorrência - Bombeiros de Guaramirim', user: req.session.user, paciente: id, observ: observ, avacine: avacine, dct: dct, fc: fc, obj: obj, pbs: pbs, pe: pe, ss: ss, glasgow: glasgow, tpo: tpo, vte: vte, ferimentos: ferimentos, final: final, anamneemer: anamneemer, anamnegesta: anamnegesta, mtehosp: mtehosp, mtedesc: mtedesc, sv: sv, nome: nome, idade: idade, telefone: telefone, rgcpf: rgcpf, local: local, sexo: sexo, gravida: gravida, acompnome: acompnome, acompidade: acompidade, acomp: acomp });
+      res.render('vitima_alter.ejs', {relatorio: relatorio,  pag: 'Ocorrências', title: 'Ocorrência - Bombeiros de Guaramirim', user: req.session.user, paciente: id, observ: observ, avacine: avacine, dct: dct, fc: fc, obj: obj, pbs: pbs, pe: pe, ss: ss, glasgow: glasgow, tpo: tpo, vte: vte, ferimentos: ferimentos, final: final, anamneemer: anamneemer, anamnegesta: anamnegesta, mtehosp: mtehosp, mtedesc: mtedesc, sv: sv, nome: nome, idade: idade, telefone: telefone, rgcpf: rgcpf, local: local, sexo: sexo, gravida: gravida, acompnome: acompnome, acompidade: acompidade, acomp: acomp });
     });
   });
 });
@@ -707,27 +708,27 @@ router.get('/alterform', requireAuth, function (req, res, next) {
         var socorrista3 = results[0].socorrista3;
         var demandante = results[0].demandante;
 
-        var fcq = 'SELECT * FROM forma_de_conducao WHERE id_forma_de_conducao = ?';
+        var fcq = 'SELECT * FROM forma_de_conducao WHERE id_forma_conducao = ?';
         connection.query(fcq, [fc], function (err, results, fields) {
           if (err) throw err;
           // Handle the results
 
           var fcop = results[0].opcao_escolhida;
 
-          var observeq = 'SELECT * FROM observacoes WHERE id_observacoes = ?';
+          var observeq = 'SELECT * FROM observacoes WHERE id_observ = ?';
           connection.query(observeq, [observ], function (err, results, fields) {
             if (err) throw err;
             // Handle the results
             var obsgerais = results[0].observacoes;
 
-            var objetosq = 'SELECT * FROM objeto_recolhido WHERE id_objeto_recolhido = ?';
+            var objetosq = 'SELECT * FROM objeto_recolhido WHERE id_recolhidos = ?';
             connection.query(objetosq, [obj], function (err, results, fields) {
               if (err) throw err;
               // Handle the results
 
               var objetos = results[0].descricao;
 
-              var proceefetq = 'SELECT * FROM procedimentos_efetuados WHERE id_procedimentos_efetuados = ?';
+              var proceefetq = 'SELECT * FROM procedimentos_efetuados WHERE id_procedimentos = ?';
               connection.query(proceefetq, [pe], function (err, results, fields) {
                 if (err) throw err;
                 // Handle the results
@@ -913,7 +914,7 @@ router.get('/alterform', requireAuth, function (req, res, next) {
                                                   var talastmn = results[0].tamanho;
                                                   var relatorio = req.query.relatorio;
 
-                                                  res.render('form_alter.ejs', { pag: 'Ocorrências', title: 'Ocorrência - Bombeiros de Guaramirim', user: req.session.user, relatorio: relatorio, observ: observ, avacine: avacine, dct: dct, fc: fc, obj: obj, pbs: pbs, pe: pe, ss: ss, glasgow: glasgow, tpo: tpo, vte: vte, ferimentos: ferimentos, final: final, anamneemer: anamneemer, anamnegesta: anamnegesta, mtehosp: mtehosp, mtedesc: mtedesc, sv: sv, oqacon: oqacon, quantotemp: quantotemp, problemasaude: problemasaude, medicamentos: medicamentos, aov: aov, med: med, horamedica: horamedica, tipoalergia: tipoalergia, alergia: alergia, ingeriu: ingeriu, hora_ingest: hora_ingest, periodogesta: periodogesta, medico_pre_natal: medico_pre_natal, quantosfilho: quantosfilho, horacontracoes: horacontracoes, duracaocontracao: duracaocontracao, intervalocontracoes: intervalocontracoes, hora_nascimento: hora_nascimento, nome_bebe: nome_bebe, dct: dct, motorista: motorista, socorrista1: socorrista1, socorrista2: socorrista2, socorrista3: socorrista3, demandante: demandante, fcop: fcop, obsgerais: obsgerais, objetos: objetos, pe: pe, fle: fle, feridiv: feridiv, hemorragia: hemorragia, evisc: evisc, fabfaf: fabfaf, amput: amput, queim1: queim1, queim2: queim2, queim3: queim3, queim4: queim4, ac: ac, CSESS: CSESS, pressaoarteria: pressaoarteria, pulso: pulso, respira: respira, satura: satura, htg: htg, temperatura: temperatura, perf: perf , normal: normal, adultoglasgow: adultoglasgow, somaglasgow: somaglasgow, nivelglasgow: nivelglasgow, tpo: tpo, outrosTPO: outrosTPO, vte: vte, nusb: nusb, despachante: despachante, h_ch: h_ch, km_final: km_final, cod: cod, codsiasus: codsiasus, pes: pes, outroproblemasuspeito: outroproblemasuspeito, outrotransporte: outrotransporte, pes2: pes2, pes3: pes3, pes4: pes4, colarqtd: colarqtd, colartmn: colartmn, ttfqtd: ttfqtd, ttftmn: ttftmn, kedqtd: kedqtd, kedtmn: kedtmn, kitsqtd: kitsqtd, kitstmn: kitstmn, atadurasqtd: atadurasqtd, atadurastmn: atadurastmn, talasqtd: talasqtd, talastmn: talastmn,talas:  talas, canula: canula, tirante: tirante, macarigida: macarigida, coxins: coxins, base: base, outromaterialhosp: outromaterialhosp, caratertpoc: caratertpoc, compressa: compressa, luvasdesc: luvasdesc, mascdesc: mascdesc, mantailuminizada: mantailuminizada, pasdodea: pasdodea, sonda: sonda, sorofisi: sorofisi, outromaterialdesc: outromaterialdesc , ataduras: ataduras, kits : kits, ked: ked, ttf: ttf, colar: colar, relatorio: relatorio , tmusocolar: tmusocolar, lpmoxi: lpmoxi, lpmreanima: lpmreanima, outropcef: outropcef, adultoglasgow: adultoglasgow, somaglasgow: somaglasgow, nivelglasgow: nivelglasgow, tpo: tpo, outrosTPO: outrosTPO, vte: vte, nusb: nusb, despachante: despachante, h_ch: h_ch, km_final: km_final, cod: cod, codsiasus: codsiasus, pes: pes, outroproblemasuspeito: outroproblemasuspeito, outrotransporte: outrotransporte, pes2: pes2, pes3: pes3, pes4: pes4, colarqtd: colarqtd, colartmn: colartmn, ttfqtd: ttfqtd, ttftmn: ttftmn, kedqtd: kedqtd, kedtmn: kedtmn, kitsqtd: kitsqtd, kitstmn: kitstmn, atadurasqtd: atadurasqtd, atadurastmn: atadurastmn, talasqtd: talasqtd, talastmn: talastmn, canula: canula, tirante: tirante, macarigida: macarigida, coxins: coxins, base: base, outromaterialhosp: outromaterialhosp, caratertpoc: caratertpoc, compressa: compressa, luvasdesc: luvasdesc, mascdesc: mascdesc, mantailuminizada: mantailuminizada, pasdodea: pasdodea, sonda: sonda, sorofisi: sorofisi, outromaterialdesc: outromaterialdesc , ataduras: ataduras, kits : kits, ked: ked, ttf: ttf, colar: colar});
+                                                  res.render('form_alter.ejs', { outrosinal_sintoma: outrosinal_sintoma, SESS: SESS, SESS2: SESS2, SESS3: SESS3, SESS4: SESS4,SESS5: SESS5, pag: 'Ocorrências', title: 'Ocorrência - Bombeiros de Guaramirim', user: req.session.user, observ: observ, avacine: avacine, dct: dct, fc: fc, obj: obj, pbs: pbs, pe: pe, ss: ss, glasgow: glasgow, tpo: tpo, vte: vte, ferimentos: ferimentos, final: final, anamneemer: anamneemer, anamnegesta: anamnegesta, mtehosp: mtehosp, mtedesc: mtedesc, sv: sv, oqacon: oqacon, quantotemp: quantotemp, problemasaude: problemasaude, medicamentos: medicamentos, aov: aov, med: med, horamedica: horamedica, tipoalergia: tipoalergia, alergia: alergia, ingeriu: ingeriu, hora_ingest: hora_ingest, periodogesta: periodogesta, medico_pre_natal: medico_pre_natal, quantosfilho: quantosfilho, horacontracoes: horacontracoes, duracaocontracao: duracaocontracao, intervalocontracoes: intervalocontracoes, hora_nascimento: hora_nascimento, nome_bebe: nome_bebe, dct: dct, motorista: motorista, socorrista1: socorrista1, socorrista2: socorrista2, socorrista3: socorrista3, demandante: demandante, fcop: fcop, obsgerais: obsgerais, objetos: objetos, pe: pe, fle: fle, feridiv: feridiv, hemorragia: hemorragia, evisc: evisc, fabfaf: fabfaf, amput: amput, queim1: queim1, queim2: queim2, queim3: queim3, queim4: queim4, ac: ac, CSESS: CSESS, pressaoarteria: pressaoarteria, pulso: pulso, respira: respira, satura: satura, htg: htg, temperatura: temperatura, perf: perf , normal: normal, adultoglasgow: adultoglasgow, somaglasgow: somaglasgow, nivelglasgow: nivelglasgow, tpo: tpo, outrosTPO: outrosTPO, vte: vte, nusb: nusb, despachante: despachante, h_ch: h_ch, km_final: km_final, cod: cod, codsiasus: codsiasus, pes: pes, outroproblemasuspeito: outroproblemasuspeito, outrotransporte: outrotransporte, pes2: pes2, pes3: pes3, pes4: pes4, colarqtd: colarqtd, colartmn: colartmn, ttfqtd: ttfqtd, ttftmn: ttftmn, kedqtd: kedqtd, kedtmn: kedtmn, kitsqtd: kitsqtd, kitstmn: kitstmn, atadurasqtd: atadurasqtd, atadurastmn: atadurastmn, talasqtd: talasqtd, talastmn: talastmn,talas:  talas, canula: canula, tirante: tirante, macarigida: macarigida, coxins: coxins, base: base, outromaterialhosp: outromaterialhosp, caratertpoc: caratertpoc, compressa: compressa, luvasdesc: luvasdesc, mascdesc: mascdesc, mantailuminizada: mantailuminizada, pasdodea: pasdodea, sonda: sonda, sorofisi: sorofisi, outromaterialdesc: outromaterialdesc , ataduras: ataduras, kits : kits, ked: ked, ttf: ttf, colar: colar, relatorio: relatorio , tmusocolar: tmusocolar, lpmoxi: lpmoxi, lpmreanima: lpmreanima, outropcef: outropcef, tpo: tpo, outrosTPO: outrosTPO, vte: vte, nusb: nusb, despachante: despachante, h_ch: h_ch, km_final: km_final, cod: cod, codsiasus: codsiasus, pes: pes, outroproblemasuspeito: outroproblemasuspeito, outrotransporte: outrotransporte, pes2: pes2, pes3: pes3, pes4: pes4, colarqtd: colarqtd, colartmn: colartmn, ttfqtd: ttfqtd, ttftmn: ttftmn, kedqtd: kedqtd, kedtmn: kedtmn, kitsqtd: kitsqtd, kitstmn: kitstmn, atadurasqtd: atadurasqtd, atadurastmn: atadurastmn, talasqtd: talasqtd, talastmn: talastmn, canula: canula, tirante: tirante, macarigida: macarigida, coxins: coxins, base: base, outromaterialhosp: outromaterialhosp, caratertpoc: caratertpoc, compressa: compressa, luvasdesc: luvasdesc, mascdesc: mascdesc, mantailuminizada: mantailuminizada, pasdodea: pasdodea, sonda: sonda, sorofisi: sorofisi, outromaterialdesc: outromaterialdesc , ataduras: ataduras, kits : kits, ked: ked, ttf: ttf, colar: colar});
                                                 });
                                               });
                                             });
