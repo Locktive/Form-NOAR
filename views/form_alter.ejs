@@ -561,16 +561,47 @@
         <input type="hidden" name="inputtextfinal1" id="inputtextfinal1" value="">
         <input type="hidden" name="id_paciente" id="id_paciente" value="<%- id_paciente %>">
         <input type="hidden" name="gravida" id="gravida" value="<%- gravida %>">
+
+        <input type="hidden" name="observ2" value="<%= observ %>">
+        <input type="hidden" name="avacine2" value="<%= avacine %>">
+        <input type="hidden" name="dct2" value="<%= dct %>">
+        <input type="hidden" name="fc2" value="<%= fc %>">
+        <input type="hidden" name="obj2" value="<%= obj %>">
+        <input type="hidden" name="pbs2" value="<%= pbs %>">
+        <input type="hidden" name="pe2" value="<%= pe %>">
+        <input type="hidden" name="ss2" value="<%= ss %>">
+        <input type="hidden" name="glasgow2" value="<%= glasgow %>">
+        <input type="hidden" name="tpo2" value="<%= tpo %>">
+        <input type="hidden" name="vte2" value="<%= vte %>">
+        <input type="hidden" name="ferimentos2" value="<%= ferimentos %>">
+        <input type="hidden" name="final2" value="<%= final %>">
+        <input type="hidden" name="anamneemer2" value="<%= anamneemer %>">
+        <input type="hidden" name="anamnegesta2" value="<%= anamnegesta %>">
+        <input type="hidden" name="mtehosp2" value="<%= mtehosp %>">
+        <input type="hidden" name="mtedesc2" value="<%= mtedesc %>">
+        <input type="hidden" name="sv2" value="<%= sv %>">
+        <input type="hidden" name="talas2" value="<%= talas %>">
+        <input type="hidden" name="tff2" value="<%= tff %>">
+        <input type="hidden" name="ataduras2" value="<%= ataduras %>">
+        <input type="hidden" name="colar2" value="<%= colar %>">
+        <input type="hidden" name="ked2" value="<%= ked %>">
+        <input type="hidden" name="kits2" value="<%= kits %>">
+        <input type="hidden" name="relatorio" value="<%= relatorio %>">
+
         </form>
 
+        
         </div>
-
-
         <%- include('./partials/footer.ejs') %>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
             <script>
+
+
+
+
+
 
                 // pega todos os botoes
                 const radios = document.querySelectorAll('input[name="radio_TDO"]');

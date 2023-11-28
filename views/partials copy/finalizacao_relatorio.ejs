@@ -18,17 +18,7 @@
         <div style="width: 100%;">
             <p class="checkbox_text">N° USB</p>
             <div class="did-floating-label-content textarea">
-                <textarea oninput="validateValue(this)" name="textfinal" class="did-floating-input row_textarea"
-                    placeholder="Insira o texto"></textarea>
-            </div>
-        </div>
-    </div>
-
-    <div class="textarea_row">
-        <div style="width: 100%;">
-            <p class="checkbox_text">N° OCORRENCIA</p>
-            <div class="did-floating-label-content textarea">
-                <textarea oninput="validateValue(this)" name="textfinal" class="did-floating-input row_textarea"
+                <textarea oninput="validateValue(this)" value="<%= nusb %>" name="textfinal" class="did-floating-input row_textarea"
                     placeholder="Insira o texto"></textarea>
             </div>
         </div>
@@ -38,7 +28,7 @@
         <div style="width: 100%;">
             <p class="checkbox_text">DESP</p>
             <div class="did-floating-label-content textarea">
-                <textarea name="textfinal" class="did-floating-input row_textarea"
+                <textarea name="textfinal" value="<%= despachante %>"  class="did-floating-input row_textarea"
                     placeholder="Insira o texto"></textarea>
             </div>
         </div>
@@ -48,7 +38,7 @@
         <div style="width: 100%;">
             <p class="checkbox_text">H. CH</p>
             <div class="did-floating-label-content textarea">
-                <textarea name="textfinal" class="did-floating-input row_textarea"
+                <textarea name="textfinal" value="<%= h_ch %>" class="did-floating-input row_textarea"
                     placeholder="Insira o texto"></textarea>
             </div>
         </div>
@@ -58,7 +48,7 @@
         <div style="width: 100%;">
             <p class="checkbox_text">KM FINAL</p>
             <div class="did-floating-label-content textarea">
-                <textarea name="textfinal" oninput="validateValue(this)" class="did-floating-input row_textarea"
+                <textarea name="textfinal" oninput="validateValue(this)" value="<%= km_final %>" class="did-floating-input row_textarea"
                     placeholder="Insira o texto"></textarea>
             </div>
         </div>
@@ -68,7 +58,7 @@
         <div style="width: 100%;">
             <p class="checkbox_text">COD. SIA/SUS</p>
             <div class="did-floating-label-content textarea">
-                <textarea name="textfinal" oninput="validateValue(this);" class="did-floating-input row_textarea"
+                <textarea name="textfinal" oninput="validateValue(this);" value="<%= codsiasus %>" class="did-floating-input row_textarea"
                     placeholder="Insira o texto"></textarea>
             </div>
         </div>
@@ -90,13 +80,6 @@
 
         </label>
         
-    </div>
-    <div class="checkbox_row">
-            <p class="checkbox_text">DATA EM QUE OCORREU</p>
-            <div class="did-floating-label-content custom_checkbox">
-                <label for="dataoco">Data : </label>
-                <input type="date" id="dataoco" name="dataocotime">
-            </div>
     </div>
     <input type="hidden" name="cod1" />
     <input type="hidden" name="dataoco" />
