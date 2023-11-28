@@ -413,7 +413,7 @@
         <div style="width: 100%;">
             <p class="checkbox_text">OUTRO</p>
             <div class="did-floating-label-content textarea">
-                <textarea class="did-floating-input row_textarea" value="<%= outrosinal_sintoma %>" placeholder="Insira o texto"></textarea>
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
             </div>
         </div>
     </div>
@@ -451,6 +451,49 @@
                         radioaov[index].checked = state === '1';
                     });
                 }
+                const SESS = document.querySelector('input[name="SESS"]');
+                // restaura estado dos botoes
+                if (SESS) {
+                    SESS.split('').forEach((state, index) => {
+                        radioaov[index].checked = state === '1';
+                    });
+                }
+                const SESS1 = document.querySelector('input[name="SESS1"]');
+                // restaura estado dos botoes
+                if (SESS1) {
+                    SESS1.split('').forEach((state, index) => {
+                        radioaov[index].checked = state === '1';
+                    });
+                }
+                const SESS2 = document.querySelector('input[name="SESS2"]');
+                // restaura estado dos botoes
+                if (SESS2) {
+                    SESS2.split('').forEach((state, index) => {
+                        radioaov[index].checked = state === '1';
+                    });
+                }
+                const SESS3 = document.querySelector('input[name="SESS3"]');
+                // restaura estado dos botoes
+                if (SESS3) {
+                    SESS3.split('').forEach((state, index) => {
+                        radioaov[index].checked = state === '1';
+                    });
+                }
+                const SESS4 = document.querySelector('input[name="SESS4"]');
+                // restaura estado dos botoes
+                if (SESS4) {
+                    SESS4.split('').forEach((state, index) => {
+                        radioaov[index].checked = state === '1';
+                    });
+                }
+                const SESS5 = document.querySelector('input[name="SESS5"]');
+                // restaura estado dos botoes
+                if (SESS5) {
+                    SESS5.split('').forEach((state, index) => {
+                        radioaov[index].checked = state === '1';
+                    });
+                }
+                
 
         // pega todos os botoes
         const checkboxSES = document.querySelectorAll('input[name="checkbox_ses"]');

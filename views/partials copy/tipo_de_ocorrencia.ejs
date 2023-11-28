@@ -157,18 +157,21 @@
         <div style="width: 100%;">
             <p class="checkbox_text">OUTRO</p>
             <div class="did-floating-label-content textarea">
-                <textarea class="did-floating-input row_textarea" value="<%= outrosTPO %>"placeholder="Insira o texto"></textarea>
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
             </div>
         </div>
     </div>
     <input type="hidden" name="radios" value="" />
+    <input type="hidden" name="acov" value="<%= tpo %>">
     <script>
-        const tipoocorrenciaq = document.querySelector('input[name="tipoocorrenciaq"]');
+        
+        const tpo = document.querySelector('input[name="tpo"]');
         // restaura estado dos botoes
-        if (tipoocorrenciaq) {
-            tipoocorrenciaq.split('').forEach((state, index) => {
+        if (tpo) {
+            tpo.split('').forEach((state, index) => {
                 radioaov[index].checked = state === '1';
             });
+        }
     </script>
 
 </body>
