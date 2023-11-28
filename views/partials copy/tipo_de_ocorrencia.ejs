@@ -162,21 +162,14 @@
         </div>
     </div>
     <input type="hidden" name="radios" value="" />
-        <script>
-  
-
-
-//   // evento de click no textarea para limpar seleções prévias
-//   textarea.ad"hidden"
-//     // limpa seleções prévias
-//     radios.forEach(radio => {
-//       radio.checked = false;
-//     });
-
-//     // Limpa dados salvos
-//     localStorage.setItem('radioState', '00000000000000000000');
-//   });
-</script>
+    <script>
+        const tipoocorrenciaq = document.querySelector('input[name="tipoocorrenciaq"]');
+        // restaura estado dos botoes
+        if (tipoocorrenciaq) {
+            tipoocorrenciaq.split('').forEach((state, index) => {
+                radioaov[index].checked = state === '1';
+            });
+    </script>
 
 </body>
 

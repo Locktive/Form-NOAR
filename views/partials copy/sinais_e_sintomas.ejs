@@ -423,6 +423,8 @@
     <input type="hidden" name="radioedema" />
     <input type="hidden" name="radiohemorragia" />
     <input type="hidden" name="checkboxparada" />
+    <input type="hidden" name="acov" value="<%= sinal_sintomav %>">
+
 
     <script>
 
@@ -441,6 +443,14 @@
                 }
             });
         }
+
+        const CSESS = document.querySelector('input[name="CSESS"]');
+                // restaura estado dos botoes
+                if (CSESS) {
+                    CSESS.split('').forEach((state, index) => {
+                        radioaov[index].checked = state === '1';
+                    });
+                }
 
         // pega todos os botoes
         const checkboxSES = document.querySelectorAll('input[name="checkbox_ses"]');

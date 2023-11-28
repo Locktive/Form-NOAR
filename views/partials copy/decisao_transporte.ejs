@@ -196,7 +196,51 @@
     </div>
     <input type="hidden" name="forma_conducao" value="" />
     <input type="hidden" name="dct1" value="" />
+    <input type="hidden" name="acov" value="<%= transportev %>">
+
     <script>
+          const dct = document.querySelector('input[name="dct"]');
+                // restaura estado dos botoes
+                if (dct) {
+                    dct.split('').forEach((state, index) => {
+                        radioaov[index].checked = state === '1';
+                    });
+                }
+                const motorista = document.querySelector('input[name="motorista"]');
+                // restaura estado dos botoes
+                if (motorista) {
+                    motorista.split('').forEach((state, index) => {
+                        radioaov[index].checked = state === '1';
+                    });
+                }
+                const motorista1 = document.querySelector('input[name="motorista1"]');
+                // restaura estado dos botoes
+                if (motorista1) {
+                    motorista1.split('').forEach((state, index) => {
+                        radioaov[index].checked = state === '1';
+                    });
+                }
+                const motorista2 = document.querySelector('input[name="motorista2"]');
+                // restaura estado dos botoes
+                if (motorista2) {
+                    motorista2.split('').forEach((state, index) => {
+                        radioaov[index].checked = state === '1';
+                    });
+                }
+                const motorista3 = document.querySelector('input[name="motorista3"]');
+                // restaura estado dos botoes
+                if (motorista3) {
+                    motorista3.split('').forEach((state, index) => {
+                        radioaov[index].checked = state === '1';
+                    });
+                }
+                const demandante = document.querySelector('input[name="demandante"]');
+                // restaura estado dos botoes
+                if (demandante) {
+                    demandante.split('').forEach((state, index) => {
+                        radioaov[index].checked = state === '1';
+                    });
+                }
         var acc = document.getElementsByClassName("sub_accordion_dt");
 
         for (var i = 0; i < acc.length; i++) {

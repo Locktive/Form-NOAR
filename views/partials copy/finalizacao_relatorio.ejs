@@ -102,12 +102,55 @@
     <input type="hidden" name="dataoco" />
 </body>
 <script>
+     const nusb = document.querySelector('input[name="nusb"]');
+                // restaura estado dos botoes
+                if (nusb) {
+                    nusb.split('').forEach((state, index) => {
+                        radioaov[index].checked = state === '1';
+                    });
+                }
     function validateValue(input) {
         // Remove non-numeric characters
     input.value = input.value.replace(/\D/g, '');
         if (input.value.length > 11)
             input.value = input.value.slice(0, 11);
     }
+    const despachante = document.querySelector('input[name="despachante"]');
+                // restaura estado dos botoes
+                if (despachante) {
+                    despachante.split('').forEach((state, index) => {
+                        radioaov[index].checked = state === '1';
+                    });
+                }
+                const h_ch = document.querySelector('input[name="h_ch"]');
+                // restaura estado dos botoes
+                if (h_ch) {
+                    h_ch.split('').forEach((state, index) => {
+                        radioaov[index].checked = state === '1';
+                    });
+                }
+                const km_final = document.querySelector('input[name="km_final"]');
+                // restaura estado dos botoes
+                if (km_final) {
+                    km_final.split('').forEach((state, index) => {
+                        radioaov[index].checked = state === '1';
+                    });
+                }
+                const cod = document.querySelector('input[name="cod"]');
+                // restaura estado dos botoes
+                if (cod) {
+                    cod.split('').forEach((state, index) => {
+                        radioaov[index].checked = state === '1';
+                    });
+                }
+                const codsiasus = document.querySelector('input[name="codsiasus"]');
+                // restaura estado dos botoes
+                if (codsiasus) {
+                    codsiasus.split('').forEach((state, index) => {
+                        radioaov[index].checked = state === '1';
+                    });
+                }
+
     // pega todos os botoes
     const radiocod = document.querySelectorAll('input[name="radio_cod"]');
     const date = document.querySelector('input[name="dataocotime"]');
