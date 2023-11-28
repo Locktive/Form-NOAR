@@ -165,9 +165,8 @@
 
         <form action="/vitimaalter" method="post" style="text-align: center; display: flex; justify-content: center;">
             <div class="container_vitima">
-
                 <div class="did-floating-label-content">
-                    <input class="did-floating-input input_nome" name="nome" id="nome" type="text" placeholder=" ">
+                    <input class="did-floating-input input_nome" name="nome" id="nome" type="text" placeholder=" " value="<%= nome %>">
                     <label class="did-floating-label">Nome</label>
                 </div>
 
@@ -175,20 +174,20 @@
 
                     <div class="did-floating-label-content">
                         <input class="did-floating-input input_idade" oninput="validateValue(this, 2);" type="text"
-                            name="idade" id="input_idade" placeholder=" ">
+                            name="idade" id="input_idade" placeholder=" " value="<%= idade %>">
                         <label class="did-floating-label">Idade</label>
                     </div>
 
                     <div class="did-floating-label-content">
                         <input class="did-floating-input input_numero" oninput="validateValue(this, 11);"
-                            name="telefone" type="text" id="input_numero" placeholder=" ">
+                            name="telefone" type="text" id="input_numero" placeholder=" " value="<%= telefone %>">
                         <label class="did-floating-label">Telefone</label>
                     </div>
                 </div>
 
                 <div class="did-floating-label-content">
                     <textarea class="did-floating-input textarea_local" name="local" id="local"
-                        placeholder=""></textarea>
+                        placeholder=""><%= local %></textarea>
                     <label class="did-floating-label">Local da ocorrencia</label>
                 </div>
                 <div>
@@ -196,44 +195,64 @@
                     <div class="linha_checkbox-group">
                         Masculino
                         <label class="custom_checkbox">
-                            <input onclick="teste(); hideBox();" value="0" type="radio" name="radio_sexo" />
+                            <input onclick="teste(); hideBox();" value="0" type="radio" name="radio_sexo" <% if (sexo === 'M') { %>checked<% } %> />
                         </label>
                         Feminino
                         <label class="custom_checkbox">
-                            <input onclick="teste(); showBox();" type="radio" value="1" name="radio_sexo" />
+                            <input onclick="teste(); showBox();" type="radio" value="1" name="radio_sexo" <% if (sexo === 'F') { %>checked<% } %> />
                         </label>
                     </div>
                 </div>
-                <div class="checkbox_row" id="gravida" style="display: none;">
-                    <p class="checkbox_text" id="gravida">PACIENTE É GRÁVIDA </p>
+                <div class="checkbox_row" id="gravida" <% if (sexo === 'F' && gravida === 1) { %>style="display: ;"<% } else { %>style="display: none;"<% } %>>
+                    <p class="checkbox_text" id="gravida">PACIENTE É GRÁVIDA: </p>
                     <label class="custom_checkbox" id="gravida">
-                        <input id="gravida" onclick="teste();" type="checkbox" name="gravida" />
+                        <input id="gravida" onclick="teste();" type="checkbox" name="gravida" <% if (gravida === 1) { %>checked<% } %> />
                     </label>
                 </div>
                 <div class="did-floating-label-content">
                     <input class="did-floating-input input_nome" oninput="validateValue(this, 11);" name="rgcpf"
-                        id="rgcpf" type="text" placeholder=" ">
+                        id="rgcpf" type="text" placeholder=" " value="<%= rgcpf %>">
                     <label class="did-floating-label">RG / CPF Paciente</label>
                 </div>
                 <div class="linha_input-group">
                     <div class="did-floating-label-content">
-                        <input class="did-floating-input input_numero" name="acomp" id="Acompanhante" type="text"
-                            placeholder=" ">
+                        <input class="did-floating-input input_numero" name="acompnome" id="Acompanhante" type="text"
+                            placeholder=" " value="<%= acompnome %>">
                         <label class="did-floating-label">Acompanhante</label>
                     </div>
 
                     <div class="did-floating-label-content">
                         <input class="did-floating-input  input_idade" oninput="validateValue(this, 2);"
-                            name="idadeacomp" type="text" id="input_idadeacomp" placeholder=" ">
+                            name="idadeacomp" type="text" id="input_idadeacomp" placeholder=" " value="<%= acompidade %>">
                         <label class="did-floating-label">Idade</label>
                     </div>
                 </div>
-                <input type="hidden" name="sexo" id="sexo-input">
-                <input type="hidden" name="gravida_val" id="gravida-input">
+                <input type="hidden" name="sexo" id="sexo-input" value="<%= sexo %>">
+                <input type="hidden" name="gravida_val" id="gravida-input" value="<%= gravida %>">
 
-                <button class="button_proximo" type="submit">ALterar e prosseguir</button>
+                <button class="button_proximo" type="submit">Alterar e prosseguir</button>
 
             </div>
+            <input type="hidden" name="acomp" value="<%= acomp %>">
+            <input type="hidden" name="paciente" value="<%= paciente %>">
+            <input type="hidden" name="observ" value="<%= observ %>">
+            <input type="hidden" name="avacine" value="<%= avacine %>">
+            <input type="hidden" name="dct" value="<%= dct %>">
+            <input type="hidden" name="fc" value="<%= fc %>">
+            <input type="hidden" name="obj" value="<%= obj %>">
+            <input type="hidden" name="pbs" value="<%= pbs %>">
+            <input type="hidden" name="pe" value="<%= pe %>">
+            <input type="hidden" name="ss" value="<%= ss %>">
+            <input type="hidden" name="glasgow" value="<%= glasgow %>">
+            <input type="hidden" name="tpo" value="<%= tpo %>">
+            <input type="hidden" name="vte" value="<%= vte %>">
+            <input type="hidden" name="ferimentos" value="<%= ferimentos %>">
+            <input type="hidden" name="final" value="<%= final %>">
+            <input type="hidden" name="anamneemer" value="<%= anamneemer %>">
+            <input type="hidden" name="anamnegesta" value="<%= anamnegesta %>">
+            <input type="hidden" name="mtehosp" value="<%= mtehosp %>">
+            <input type="hidden" name="mtedesc" value="<%= mtedesc %>">
+            <input type="hidden" name="sv" value="<%= sv %>">
         </form>
         <%- include('./partials/footer.ejs') %>
             <script>
