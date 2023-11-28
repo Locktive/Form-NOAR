@@ -113,8 +113,9 @@
                     <img src="./images/plus.png" style="width: 30px; height: 30px; position: relative;" />
                 </a>
 
-                
-                <a href="/#" class="ocorrencia">Ocorrência: XXXXXXXXXXXXXX</a>
+                <% for(var index=0; index<data.length; index++) { %>
+                    <a href="/ocview?paciente=<%- data[index].fk_paciente %>&observ=<%- data[index].fk_observacoes %>&avacine=<%- data[index].fk_avaliacaocinematica %>&dct=<%- data[index].fk_decisaotransporte %>&fc=<%- data[index].fk_formadeconducao %>&obj=<%- data[index].fk_objetorecolhido %>&pbs=<%- data[index].prob_encontrados_suspeitos %>&pe=<%- data[index].fk_procedimentosefetuados %>&ss=<%- data[index].fk_sinais_sintomas %>&glasgow=<%- data[index].fk_teste_glasgow %>&tpo=<%- data[index].fk_tipo_ocorrencia_pre_hospitalar %>&vte=<%- data[index].fk_vitima_era %>&ferimentos=<%- data[index].fk_ferimentos_corpo %>&final=<%- data[index].fk_finalizacao %>&anamnemer=<%- data[index].fk_anamne_emergencial %>&anamnegesta=<%- data[index].fk_anamne_gestacional %>&mtehosp=<%- data[index].fk_materiais_hospital %>&mtedesc=<%- data[index].fk_materiais_descarte %>&sv=<%- data[index].fk_sinais_vitais %>" class="ocorrencia">Ocorrência: <%= data[index].cod_relatorio %></a>
+                  <% } %>
 
             </div>
         </form>

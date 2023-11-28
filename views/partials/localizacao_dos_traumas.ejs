@@ -82,7 +82,6 @@
       }
 
       .sub_accordion_ldt {
-
          display: flex !important;
          width: 100% !important;
          border: none !important;
@@ -94,16 +93,14 @@
          text-decoration: none !important;
          margin: 0 !important;
          font-weight: 600 !important;
-
-
       }
 
       .row_tabela {
          display: flex;
          align-items: center;
-         justify-content: space-evenly;
+         justify-content: space-around;
          background-color: #617ee9;
-         font-weight: 600;
+         font-weight: 700;
          text-align: center;
 
       }
@@ -111,20 +108,39 @@
       .desc {
          font-size: large;
          margin: 0;
+         width: 100px;
       }
-      @media(max-width: 767px) {
-         p {
-            width: 120px;
+
+      .dados {
+         display: grid;
+         grid-template-columns: 150px 150px 150px 150px;
+         grid-auto-rows: 120px;
+         justify-content: space-evenly;
+         align-items: center;
+      }
+
+      @media (max-width: 767px) {
+         .dados {
+            display: grid;
+            grid-template-columns: 90px 90px 90px 90px;
+            grid-auto-rows: 140px;
+            justify-content: space-evenly;
+            align-items: center;
          }
       }
+
       .col-sm-3 {
          display: flex;
          align-items: center;
-         width: 215px;
-         border-left: rgba(172, 171, 171, 0.38) solid 2px;
-         border-right: rgba(172, 171, 171, 0.38) solid 2px;
+         width: 200px;
+         height: 120px;
+         border-left: rgba(172, 171, 171, 0.38) solid 3px;
+         border-right: rgba(172, 171, 171, 0.38) solid 3px;
+         word-break: break-word;
+         font-size: large  ;
       }
-      .col-6{
+
+      .col-6 {
          display: flex;
          justify-content: center;
          align-items: center;
@@ -132,50 +148,14 @@
 
       .select_ferimento {
          background: #E1E1E1;
-         height: 20rem;
-         width: 13rem;
+         height: 21rem;
+         width: 14rem;
          display: flex;
          flex-direction: column;
          justify-content: space-between;
-
-
       }
 
-      
-      @media(max-width: 767px) {
-         .painel {
-            display: grid;
-            grid-template-columns: 100px 100px;
-            /* posicionar na grid */
-            flex-direction: row!important;
-         }
-      }
-
-      @media(max-width: 767px) {
-         .row_tabela {
-            display: flex;
-            flex-direction: column;
-            height: 50rem;
-            width: 120px;
-         }
-      }
-      @media(max-width: 767px) {
-         .col-sm-2  {
-            display: flex;
-            width: 300px;
-            height: 50rem;
-         }
-      }
-      @media(max-width: 767px) {
-         .dados  {
-            display: flex;
-            width: 100px;
-         }
-      }
-
-      
-
-      option{
+      option {
          margin: 6px;
          font-size: large;
       }
@@ -327,7 +307,7 @@
       <p class="checkbox_text">FERIMENTOS</p>
       <img src="./images/arrow 4.png" style="width: 32px;  position: relative;" />
    </button>
-   <div class="painel">
+   <div class="painel painel_ferimentos">
 
       <div class="row_tabela">
          <div class="Desc_coluna">
@@ -343,7 +323,7 @@
             <p class="desc">Tipo</p>
          </div>
       </div>
-      <div id="dados" class="row dados" style="justify-content: center;">
+      <div id="dados" class="row dados">
       </div>
 
       <input type="hidden" name="ferimentos" id="ferimentos">
