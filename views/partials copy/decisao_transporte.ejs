@@ -126,7 +126,7 @@
         <div style="width: 100%;">
             <p class="checkbox_text">MOTORISTA:</p>
             <div class="did-floating-label-content textarea">
-                <textarea class="did-floating-input row_textarea" value="<%= motorista %>" placeholder="Insira o texto"></textarea>
+                <textarea class="did-floating-input row_textarea" value="<%= motorista %>" placeholder="Insira o texto"><%= motorista %></textarea>
             </div>
         </div>
     </div>
@@ -135,7 +135,7 @@
         <div style="width: 100%;">
             <p class="checkbox_text">SOCORRISTA 1:</p>
             <div class="did-floating-label-content textarea">
-                <textarea class="did-floating-input row_textarea" value="<%= socorrista1 %>" placeholder="Insira o texto"></textarea>
+                <textarea class="did-floating-input row_textarea" value="<%= socorrista1 %>" placeholder="Insira o texto"><%= socorrista1 %></textarea>
             </div>
         </div>
     </div>
@@ -144,7 +144,7 @@
         <div style="width: 100%;">
             <p class="checkbox_text">SOCORRISTA 2:</p>
             <div class="did-floating-label-content textarea">
-                <textarea class="did-floating-input row_textarea" value="<%= socorrista2 %>" placeholder="Insira o texto"></textarea>
+                <textarea class="did-floating-input row_textarea" value="<%= socorrista2 %>" placeholder="Insira o texto"><%= socorrista2 %></textarea>
             </div>
         </div>
     </div>
@@ -153,7 +153,7 @@
         <div style="width: 100%;">
             <p class="checkbox_text">SOCORRISTA 3:</p>
             <div class="did-floating-label-content textarea">
-                <textarea class="did-floating-input row_textarea" value="<%= socorrista3 %>" placeholder="Insira o texto"></textarea>
+                <textarea class="did-floating-input row_textarea" value="<%= socorrista3 %>" placeholder="Insira o texto"><%= socorrista3 %></textarea>
             </div>
         </div>
     </div>
@@ -162,7 +162,7 @@
         <div style="width: 100%;">
             <p class="checkbox_text">DEMANDANTE:</p>
             <div class="did-floating-label-content textarea">
-                <textarea class="did-floating-input row_textarea" value="<%= demandante %>" placeholder="Insira o texto"></textarea>
+                <textarea class="did-floating-input row_textarea" value="<%= demandante %>" placeholder="Insira o texto"><%= demandante %></textarea>
             </div>
         </div>
     </div>
@@ -194,53 +194,15 @@
             </label>
         </div>
     </div>
-    <input type="hidden" name="forma_conducao" value="" />
     <input type="hidden" name="dct1" value="" />
-    <input type="hidden" name="acov" value="<%= transportev %>">
+    <input type="hidden" name="forma_conducao" value="" />
+    <input type="hidden" name="dct2" value="<%= dct %>" />
+    <input type="hidden" name="fc2" value="<%= fcop %>">
 
     <script>
-          const dct = document.querySelector('input[name="dct"]');
-                // restaura estado dos botoes
-                if (dct) {
-                    dct.split('').forEach((state, index) => {
-                        radioaov[index].checked = state === '1';
-                    });
-                }
-                const motorista = document.querySelector('input[name="motorista"]');
-                // restaura estado dos botoes
-                if (motorista) {
-                    motorista.split('').forEach((state, index) => {
-                        radioaov[index].checked = state === '1';
-                    });
-                }
-                const motorista1 = document.querySelector('input[name="motorista1"]');
-                // restaura estado dos botoes
-                if (motorista1) {
-                    motorista1.split('').forEach((state, index) => {
-                        radioaov[index].checked = state === '1';
-                    });
-                }
-                const motorista2 = document.querySelector('input[name="motorista2"]');
-                // restaura estado dos botoes
-                if (motorista2) {
-                    motorista2.split('').forEach((state, index) => {
-                        radioaov[index].checked = state === '1';
-                    });
-                }
-                const motorista3 = document.querySelector('input[name="motorista3"]');
-                // restaura estado dos botoes
-                if (motorista3) {
-                    motorista3.split('').forEach((state, index) => {
-                        radioaov[index].checked = state === '1';
-                    });
-                }
-                const demandante = document.querySelector('input[name="demandante"]');
-                // restaura estado dos botoes
-                if (demandante) {
-                    demandante.split('').forEach((state, index) => {
-                        radioaov[index].checked = state === '1';
-                    });
-                }
+       
+
+
         var acc = document.getElementsByClassName("sub_accordion_dt");
 
         for (var i = 0; i < acc.length; i++) {
@@ -257,6 +219,13 @@
         }
         // pega todos os botoes
         const dct = document.querySelectorAll('input[name="radio_dt"]');
+        const dct2 = document.querySelector('input[name="dct"]');
+                // restaura estado dos botoes
+                if (dct2) {
+                    dct2.split('').forEach((state, index) => {
+                        dct[index].checked = state === '1';
+                    });
+                }
         // Restaura state
         const saveddctState = localStorage.getItem('dctState');
         if (saveddctState) {
@@ -282,6 +251,15 @@
         });
         // pega todos os botoes
         const fc = document.querySelectorAll('input[name="radio_fc"]');
+        
+                
+                const fc2 = document.querySelector('input[name="fc2"]').value;
+                console.log(fc2);
+                if (fc2) {
+                    fc2.split('').forEach((state, index) => {
+                        fc[index].checked = state === '1';
+                    });
+                }
         // Restaura state
         const savedfcState = localStorage.getItem('fcState');
         if (savedfcState) {

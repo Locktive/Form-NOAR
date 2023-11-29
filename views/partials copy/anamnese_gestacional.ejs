@@ -78,7 +78,7 @@
         <div style="width: 100%;">
             <p class="checkbox_text">PERÍODO DA GESTAÇÃO:</p>
             <div class="did-floating-label-content textarea">
-                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto" value="<%= periodogesta %>"></textarea>
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"><%= periodogesta %></textarea>
             </div>
         </div>
     </div>
@@ -104,7 +104,7 @@
         <div style="width: 100%;">
             <p class="checkbox_text">NOME DO MÉDICO</p>
             <div class="did-floating-label-content textarea">
-                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"  value="<%= medico_pre_natal %>"></textarea>
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"><%= medico_pre_natal %></textarea>
             </div>
         </div>
     </div>
@@ -149,7 +149,7 @@
             <div style="width: 100%;">
                 <p class="checkbox_text">QUANTOS?</p>
                 <div class="did-floating-label-content textarea">
-                    <textarea class="did-floating-input row_textarea" value="<%= quantosfilho %>" placeholder="Insira o texto"></textarea>
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"><%= quantosfilho %></textarea>
                 </div>
             </div>
         </div>
@@ -159,7 +159,7 @@
     <div class="textarea_row">
         <p class="checkbox_text">HORÁRIO DE ÍNICIO DAS CONTRAÇÕES</p>
             <div class="did-floating-label-content textarea">
-                <textarea class="did-floating-input row_textarea"value="<%= horacontracoes %>" placeholder="Insira o texto"></textarea>
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"><%= horacontracoes %></textarea>
             </div>
     </div>
 
@@ -167,7 +167,7 @@
         <div style="width: 100%;">
             <p class="checkbox_text">DURAÇÃO DAS CONTRAÇÕES</p>
             <div class="did-floating-label-content textarea">
-                <textarea class="did-floating-input row_textarea"value="<%= duracaocontracao %>" placeholder="Insira o texto"></textarea>
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"><%= duracaocontracao %></textarea>
             </div>
         </div>
     </div>
@@ -176,7 +176,7 @@
         <div style="width: 100%;">
             <p class="checkbox_text">INTERVALO DAS CONTRAÇÕES</p>
             <div class="did-floating-label-content textarea">
-                <textarea class="did-floating-input row_textarea"value="<%= intervalocontracoes %>" placeholder="Insira o texto"></textarea>
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"><%= intervalocontracoes %></textarea>
             </div>
         </div>
     </div>
@@ -255,7 +255,7 @@
         <div class="textarea_row">
             <p class="checkbox_text">HORÁRIO DO NASCIMENTO</p>
                 <div class="did-floating-label-content textarea">
-                    <textarea class="did-floating-input row_textarea"value="<%= hora_nascimento %>" placeholder="Insira o texto"></textarea>
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"><%= hora_nascimento %></textarea>
                 </div>
         </div>
 
@@ -285,7 +285,7 @@
             <div style="width: 100%;">
                 <p class="checkbox_text">NOME DO BEBE</p>
                 <div class="did-floating-label-content textarea">
-                    <textarea class="did-floating-input row_textarea"value="<%= nome_bebe %>" placeholder="Insira o texto"></textarea>
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"><%= nome_bebe %></textarea>
                 </div>
             </div>
         </div>
@@ -299,6 +299,15 @@
     <input type="hidden" name="radio_parto1" value="" />
     <input type="hidden" name="radio_bebe1" value="" />
     <input type="hidden" name="radio_pre_natal4State1" value="" />
+
+    <input type="hidden" name="radio_pre_natalState2" value="<%= pre_natal %>" />
+    <input type="hidden" name="radio_p_filho1State2" value="<%= primeiro_filho %>" />
+    <input type="hidden" name="radio_pre_natal1State2" value="<%= pressao %>" />
+    <input type="hidden" name="radio_pre_natal2State2" value="<%= ruptura_bolsa %>" />
+    <input type="hidden" name="radio_pre_natal3State2" value="<%= visual %>" />
+    <input type="hidden" name="radio_parto2" value="<%= parto %>" />
+    <input type="hidden" name="radio_bebe2" value="<%= sexo_bebe %>" />
+    <input type="hidden" name="radio_pre_natal4State2" value="<%= complica %>" />
 
     <script>
         //sub acordeão
@@ -329,6 +338,58 @@
         const radioAG6 = document.querySelectorAll('input[name="radio_parto"]');
         const radioAG7 = document.querySelectorAll('input[name="radio_bebe"]');
         const radioAG8 = document.querySelectorAll('input[name="radio_pre_natal4"]');
+        // pega estado salvo
+        const prenatal = document.querySelector('input[name="radio_pre_natalState2"]').value;
+        const primeirofilho = document.querySelector('input[name="radio_p_filho1State2"]').value;
+        const pressao = document.querySelector('input[name="radio_pre_natal1State2"]').value;
+        const ruptura = document.querySelector('input[name="radio_pre_natal2State2"]').value;
+        const visual = document.querySelector('input[name="radio_pre_natal3State2"]').value;
+        const parto = document.querySelector('input[name="radio_parto2"]').value;
+        const bebe = document.querySelector('input[name="radio_bebe2"]').value;
+        const complica = document.querySelector('input[name="radio_pre_natal4State2"]').value;
+
+        // restaura estado dos botoes
+        if (prenatal) {
+            prenatal.split('').forEach((state, index) => {
+                radioAG[index].checked = state === '1';
+            });
+        }
+        if (primeirofilho) {
+            primeirofilho.split('').forEach((state, index) => {
+                radioAG2[index].checked = state === '1';
+            });
+        }
+        if (pressao) {
+            pressao.split('').forEach((state, index) => {
+                radioAG3[index].checked = state === '1';
+            });
+        }
+        if (ruptura) {
+            ruptura.split('').forEach((state, index) => {
+                radioAG4[index].checked = state === '1';
+            });
+        }
+        if (visual) {
+            visual.split('').forEach((state, index) => {
+                radioAG5[index].checked = state === '1';
+            });
+        }
+        if (parto) {
+            parto.split('').forEach((state, index) => {
+                radioAG6[index].checked = state === '1';
+            });
+        }
+        if (bebe) {
+            bebe.split('').forEach((state, index) => {
+                radioAG7[index].checked = state === '1';
+            });
+        }
+        if (complica) {
+            complica.split('').forEach((state, index) => {
+                radioAG8[index].checked = state === '1';
+            });
+        }
+        
        
     
         const savedRadioAGState = localStorage.getItem('radio_pre_natalState');

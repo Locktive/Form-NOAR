@@ -37,7 +37,9 @@ router.post('/login', function (req, res) {
   connection.query(sql, [codigo], function (err, results, fields) {
     if (!err) {
       if (results && results.length > 0) {
+        console.log("passou");
         var passCheck = results[0].senha;
+        console.log(passCheck);
         if (senha === passCheck) {
           console.log("Resultado:", results);
           req.session.user = {
@@ -45,7 +47,7 @@ router.post('/login', function (req, res) {
             nome: results[0].Nome,
             isAdmin: results[0].adm, // Checa se é admin
             data_inicio: results[0].Data_inicio,
-            codigo: results[0].codigo,
+            codigo: results[0].codigo
           };
           console.log(req.session.user)
           console.log("Connected as " + req.session.user.nome);
@@ -55,6 +57,7 @@ router.post('/login', function (req, res) {
           return;
         }
       } else {
+        console.log("Consulta não realizada");
         res.render('index.ejs', { title: 'Login - Bombeiros de Guaramirim', pag: 'Login', errorMessage: 'Código não encontrado' });
         return;
       }
@@ -234,6 +237,7 @@ router.post('/form', requireAuth, function (req, res) {
   var gravida = req.body.gravida || 0;
   var id_paciente = req.body.id_paciente || 0; ''
   var textareafinal = req.body.textareafinal1;
+  var tirante1 = req.body.tirante1 || 0;
   var parts = JSON.parse(textareafinal);
   if (gravida == 1) {
     var [
@@ -271,7 +275,7 @@ router.post('/form', requireAuth, function (req, res) {
   }
   var inputtextfinal = req.body.inputtextfinal1;
   var partsinput = JSON.parse(inputtextfinal);
-  var [tmusocolar, lpmoxi, lpmreanima, atadurasqtd, caratertpoc, compressa, kitsqtd, luvasdesc, mascdesc, mantailuminizada, pasdodea, sonda, sorofisi, talasqtd, base, colarqtd, coxins, kedqtd, macarigida, ttfqtd, tirante, canula] = partsinput;
+  var [tmusocolar, lpmoxi, lpmreanima, atadurasqtd, caratertpoc, compressa, kitsqtd, luvasdesc, mascdesc, mantailuminizada, pasdodea, sonda, sorofisi, talasqtd, base, colarqtd, coxins, kedqtd, macarigida, ttfqtd, tirante,tirante1, canula] = partsinput;
   console.log(partsinput)
   var anme_emeq = 'INSERT INTO anamnese_emergencial (o_que_ocorreu, quanto_tempo_ocorreu, quais_problemas, quais_medicamentos, aconteceu_outras_vezes, usa_medicacao, horario_ultima_medicacao, alergias, alergico, ingeriu_mais_de_6hrs, ingeriu_que_hrs, possui_problema_saude) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);'
   var anme_eme_values = [oqacon, quantotemp, problemasaude, medicamentos, aov, med, horamedica, tipoalergia, alergia, ingeriu, hora_ingest, pbs];
@@ -458,7 +462,7 @@ router.post('/form', requireAuth, function (req, res) {
                                             console.log('finalizacao_ocorrencia inserted');
                                             finaloco_id = results.insertId;
                                             var materiaishosp = 'INSERT INTO materiais_hospital (fk_colar, fk_KED, fk_ttf, canula_qtde, tirante_cabeca_qtde, tirante_aranha_qtde, maca_rigida_qtde, coxins_estabilizador_qtde, base_estabilizador_qtde , outros) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);'
-                                            var materiaishosp_values = [colar_id, ked_id, ttf_id, canula, tirante, tirante, macarigida, coxins, base, outromaterialhosp];
+                                            var materiaishosp_values = [colar_id, ked_id, ttf_id, canula, tirante, tirante1, macarigida, coxins, base, outromaterialhosp];
 
                                             connection.query(materiaishosp, materiaishosp_values, function (error, results) {
                                               if (error) throw error;
@@ -574,7 +578,8 @@ router.get('/ocview', requireAuth, function (req, res, next) {
   var vte = req.query.vte;
   var ferimentos = req.query.ferimentos;
   var final = req.query.final;
-  var anamneemer = req.query.anamneemer;
+  var anamneemer = req.query.anamnemer;
+  console.log(anamneemer);
   var anamnegesta = req.query.anamnegesta;
   var mtehosp = req.query.mtehosp;
   var mtedesc = req.query.mtedesc;
@@ -594,7 +599,7 @@ router.get('/ocview', requireAuth, function (req, res, next) {
       var acompnome = results[0].nome;
       var acompidade = results[0].idade;
 
-      res.render('vitima_alter.ejs', { pag: 'Ocorrências', title: 'Ocorrência - Bombeiros de Guaramirim', user: req.session.user, paciente: id, observ: observ, avacine: avacine, dct: dct, fc: fc, obj: obj, pbs: pbs, pe: pe, ss: ss, glasgow: glasgow, tpo: tpo, vte: vte, ferimentos: ferimentos, final: final, anamneemer: anamneemer, anamnegesta: anamnegesta, mtehosp: mtehosp, mtedesc: mtedesc, sv: sv, nome: nome, idade: idade, telefone: telefone, rgcpf: rgcpf, local: local, sexo: sexo, gravida: gravida, acompnome: acompnome, acompidade: acompidade, acomp: acomp });
+      res.render('vitima_alter.ejs', { pag: 'Ocorrências', title: 'Ocorrência - Bombeiros de Guaramirim', user: req.session.user, paciente: id, observ: observ, avacine: avacine, dct: dct, fc: fc, obj: obj, pbs: pbs, pe: pe, ss: ss, glasgow: glasgow, tpo: tpo, vte: vte, ferimentos: ferimentos, final: final, anamneemer: anamneemer, anamnegesta: anamnegesta, mtehosp: mtehosp, mtedesc: mtedesc, sv: sv, nome: nome, idade: idade, telefone: telefone, rgcpf: rgcpf, local: local, sexo: sexo, gravida: gravida, acompnome: acompnome, acompidade: acompidade, acomp: acomp , relatorio: req.query.relatorio});
     });
   });
 });
@@ -629,6 +634,7 @@ router.post('/vitimaalter', function (req, res) {
   var acomp = req.body.acomp;
   var acompnome = req.body.acompnome;
   var acompidade = req.body.idadeacomp;
+  var relatorio = req.body.relatorio;
   var id_paciente = parseInt(paciente, 10);
   var sqlacompanhante = 'UPDATE acompanhante SET nome = ?, idade = ? WHERE id_acompanhante = ?';
   connection.query(sqlacompanhante, [acompnome, acompidade, acomp], function (err, result) {
@@ -640,8 +646,9 @@ router.post('/vitimaalter', function (req, res) {
   connection.query(sql, values, function (err, result) {
     if (err) throw err;
     console.log("1 record inserted");
+    res.redirect('/alterform?gravida=' + gravida_val + '&idade=' + idade + '&relatorio=' + relatorio + '&paciente=' + id_paciente + '&observ=' + observ + '&avacine=' + avacine + '&dct=' + dct + '&fc=' + fc + '&obj=' + obj + '&pbs=' + pbs + '&pe=' + pe + '&ss=' + ss + '&glasgow=' + glasgow + '&tpo=' + tpo + '&vte=' + vte + '&ferimentos=' + ferimentos + '&final=' + final + '&anamneemer=' + anamneemer + '&anamnegesta=' + anamnegesta + '&mtehosp=' + mtehosp + '&mtedesc=' + mtedesc + '&sv=' + sv);
   });
-  res.redirect('/alterform?paciente=' + id_paciente + '&observ=' + observ + '&avacine=' + avacine + '&dct=' + dct + '&fc=' + fc + '&obj=' + obj + '&pbs=' + pbs + '&pe=' + pe + '&ss=' + ss + '&glasgow=' + glasgow + '&tpo=' + tpo + '&vte=' + vte + '&ferimentos=' + ferimentos + '&final=' + final + '&anamneemer=' + anamneemer + '&anamnegesta=' + anamnegesta + '&mtehosp=' + mtehosp + '&mtedesc=' + mtedesc + '&sv=' + sv);
+  
 });
 
 router.get('/alterform', requireAuth, function (req, res, next) {
@@ -663,10 +670,13 @@ router.get('/alterform', requireAuth, function (req, res, next) {
   var mtehosp = req.query.mtehosp;
   var mtedesc = req.query.mtedesc;
   var sv = req.query.sv;
+  var relatorio = req.query.relatorio;
 
-  var anme_emeq = 'SELECT * FROM anamnese_emergencial WHERE id_anamnese_emergencial = ?';
+
+  var anme_emeq = 'SELECT * FROM anamnese_emergencial WHERE id_anamnese_emer = ?';
   connection.query(anme_emeq, [anamneemer], function (err, results, fields) {
     if (err) throw err;
+    console.log(results);
     // Handle the results
     var oqacon = results[0].o_que_ocorreu;
     var quantotemp = results[0].quanto_tempo_ocorreu;
@@ -674,26 +684,35 @@ router.get('/alterform', requireAuth, function (req, res, next) {
     var medicamentos = results[0].quais_medicamentos;
     var aov = results[0].aconteceu_outras_vezes;
     var med = results[0].usa_medicacao;
+    console.log(med);
     var horamedica = results[0].horario_ultima_medicacao;
     var tipoalergia = results[0].alergias;
     var alergia = results[0].alergico;
+    console.log(alergia);
     var ingeriu = results[0].ingeriu_mais_de_6hrs;
     var hora_ingest = results[0].ingeriu_que_hrs;
 
 
-    var anme_gestq = 'SELECT * FROM anamnese_gestacional WHERE id_anamnese_gestacional = ?';
+    var anme_gestq = 'SELECT * FROM anamnese_gestacional WHERE id_anamnese_gest = ?';
     connection.query(anme_gestq, [anamnegesta], function (err, results, fields) {
       if (err) throw err;
       // Handle the results
       var periodogesta = results[0].periodo;
-      var medico_pre_natal = results[0].pre_natal;
+      var medico_pre_natal = results[0].medico_pre_natal;
+      var pre_natal = results[0].pre_natal;
       var quantosfilho = results[0].quantos_filhos;
+      var primeiro_filho = results[0].primeiro_filho;
+      var complica = results[0].possibilidade_complicacoes;
       var horacontracoes = results[0].inicio_contracoes;
       var duracaocontracao = results[0].duracao_contracoes;
       var intervalocontracoes = results[0].intervalo_contracoes;
       var hora_nascimento = results[0].hora_nascimento;
       var nome_bebe = results[0].nome_do_bebe;
-
+      var ruptura_bolsa = results[0].ruptura_bolsa;
+      var pressao = results[0].pressao_quadril_ou_evacuar
+      var visual = results[0].inspecao_visual;
+      var parto = results[0].parto_realizado;
+      var sexo_bebe = results[0].sexo_bebe;
 
       var dctransporteq = 'SELECT * FROM decisao_transporte WHERE id_decisao_transporte = ?';
       connection.query(dctransporteq, [dct], function (err, results, fields) {
@@ -706,34 +725,40 @@ router.get('/alterform', requireAuth, function (req, res, next) {
         var socorrista3 = results[0].socorrista3;
         var demandante = results[0].demandante;
 
-        var fcq = 'SELECT * FROM forma_de_conducao WHERE id_forma_de_conducao = ?';
+        var fcq = 'SELECT * FROM forma_de_conducao WHERE id_forma_conducao = ?';
         connection.query(fcq, [fc], function (err, results, fields) {
           if (err) throw err;
           // Handle the results
 
           var fcop = results[0].opcao_escolhida;
 
-          var observeq = 'SELECT * FROM observacoes WHERE id_observacoes = ?';
+          var observeq = 'SELECT * FROM observacoes WHERE id_observ = ?';
           connection.query(observeq, [observ], function (err, results, fields) {
             if (err) throw err;
             // Handle the results
             var obsgerais = results[0].observacoes;
 
-            var objetosq = 'SELECT * FROM objeto_recolhido WHERE id_objeto_recolhido = ?';
+            var objetosq = 'SELECT * FROM objeto_recolhido WHERE id_recolhidos = ?';
             connection.query(objetosq, [obj], function (err, results, fields) {
               if (err) throw err;
               // Handle the results
 
               var objetos = results[0].descricao;
 
-              var proceefetq = 'SELECT * FROM procedimentos_efetuados WHERE id_procedimentos_efetuados = ?';
+              var proceefetq = 'SELECT * FROM procedimentos_efetuados WHERE id_procedimentos = ?';
               connection.query(proceefetq, [pe], function (err, results, fields) {
                 if (err) throw err;
                 // Handle the results
 
-                var pe = results[0].codigo_selecoes;
+                var pe1 = results[0].codigo_selecoes;
+                console.log(pe1);
+                var tmusocolar = results[0].uso_colar_tmn;
+                var lpmoxi = results[0].oxigenoterapia_lpm;
+                var lpmreanima = results[0].reanimador_lpm;
+                var outropcef = results[0].outros;
 
-                var corpoq = 'SELECT * FROM ferimentos_corpo WHERE id_ferimentos_corpo = ?';
+
+                var corpoq = 'SELECT * FROM ferimentos_corpo WHERE id_ferimentos = ?';
                 connection.query(corpoq, [ferimentos], function (err, results, fields) {
                   if (err) throw err;
                   // Handle the results
@@ -750,17 +775,25 @@ router.get('/alterform', requireAuth, function (req, res, next) {
                   var queim4 = results[0].queimadura_4_grau;
 
 
-                  var avacineq = 'SELECT * FROM avaliacao_cinematica WHERE id_avaliacao_cinematica = ?';
+                  var avacineq = 'SELECT * FROM avaliacao_cinematica WHERE id_cinematica = ?';
                   connection.query(avacineq, [avacine], function (err, results, fields) {
                     if (err) throw err;
                     // Handle the results
                     var ac = results[0].escolhas;
 
-                    var sinal_sintomaq = 'SELECT * FROM sinais_e_sintomas WHERE id_sinais_e_sintomas = ?';
+                    var sinal_sintomaq = 'SELECT * FROM sinais_e_sintomas WHERE id_sinal_sintoma = ?';
                     connection.query(sinal_sintomaq, [ss], function (err, results, fields) {
                       if (err) throw err;
                       // Handle the results
                       var CSESS = results[0].codigo_selecoes;
+                      var outrosinal_sintoma = results[0].outros;
+                      var SESS = results[0].codigo_tipopupilas;
+                      console.log(SESS);
+                      var SESS2 = results[0].codigo_cianose;
+                      var SESS3 = results[0].cod_edema;
+                      var SESS4 = results[0].cod_hemorragia;
+                      var SESS5 = results[0].cod_parada;
+                      
 
                       var sinalvitalq = 'SELECT * FROM sinais_vitais WHERE id_sinais_vitais = ?';
                       connection.query(sinalvitalq, [sv], function (err, results, fields) {
@@ -777,7 +810,7 @@ router.get('/alterform', requireAuth, function (req, res, next) {
                         var normal = results[0].paciente_normal;
 
 
-                        var glasgowq = 'SELECT * FROM teste_de_glasgow WHERE id_teste_de_glasgow = ?';
+                        var glasgowq = 'SELECT * FROM teste_de_glasgow WHERE id_teste_glasgow = ?';
                         connection.query(glasgowq, [glasgow], function (err, results, fields) {
                           if (err) throw err;
                           // Handle the results
@@ -787,7 +820,7 @@ router.get('/alterform', requireAuth, function (req, res, next) {
                           var nivelglasgow = results[0].nivel_declarado;
 
 
-                          var tipoocorrenciaq = 'SELECT * FROM tipo_ocorrencia_pre_hospitalar WHERE id_tipo_ocorrencia_pre_hospitalar = ?';
+                          var tipoocorrenciaq = 'SELECT * FROM tipo_ocorrencia_pre_hospitalar WHERE id_tipo_ocorrencia = ?';
                           connection.query(tipoocorrenciaq, [tpo], function (err, results, fields) {
                             if (err) throw err;
                             // Handle the results
@@ -796,14 +829,14 @@ router.get('/alterform', requireAuth, function (req, res, next) {
                             var outrosTPO = results[0].outros;
 
 
-                            var vitimaeraq = 'SELECT * FROM vitima_era WHERE id_vitima_era = ?';
+                            var vitimaeraq = 'SELECT * FROM vitima_era WHERE id_vit_era = ?';
                             connection.query(vitimaeraq, [vte], function (err, results, fields) {
                               if (err) throw err;
                               // Handle the results
 
-                              var vte = results[0].escolha;
+                              var vteesc = results[0].escolha;
 
-                              var finalocoq = 'SELECT * FROM finalizacao_ocorrencia WHERE id_finalizacao_ocorrencia = ?';
+                              var finalocoq = 'SELECT * FROM finalizacao_ocorrencia WHERE id_finalizacao = ?';
                               connection.query(finalocoq, [final], function (err, results, fields) {
                                 if (err) throw err;
                                 // Handle the results
@@ -815,7 +848,7 @@ router.get('/alterform', requireAuth, function (req, res, next) {
                                 var cod = results[0].cod_IR_PS;
                                 var codsiasus = results[0].codigo_SIA_SUS;
 
-                                var problemassuspeitosq = 'SELECT * FROM problemas_encontrado_suspeitos WHERE id_problemas_encontrado_suspeitos = ?';
+                                var problemassuspeitosq = 'SELECT * FROM problemas_encontrado_suspeitos WHERE id_problemas_suspeitos = ?';
                                 connection.query(problemassuspeitosq, [pbs], function (err, results, fields) {
                                   if (err) throw err;
                                   // Handle the results
@@ -841,7 +874,7 @@ router.get('/alterform', requireAuth, function (req, res, next) {
                                     var base = results[0].base_estabilizador_qtde;
                                     var outromaterialhosp = results[0].outros;
 
-                                    var mtedescq = 'SELECT * FROM materiais_descartaveis WHERE id_materiais_descartaveis = ?';
+                                    var mtedescq = 'SELECT * FROM materiais_descartaveis WHERE id_materiais_hospital = ?';
                                     connection.query(mtedescq, [mtedesc], function (err, results, fields) {
                                       if (err) throw err;
                                       var ataduras = results[0].fk_ataduras;
@@ -886,7 +919,7 @@ router.get('/alterform', requireAuth, function (req, res, next) {
                                               var kitstmn = results[0].H_P_G;
                                               var kitsqtd = results[0].qtde;
 
-                                              var atadurasq = 'SELECT * FROM ataduras WHERE id_ataduras = ?';
+                                              var atadurasq = 'SELECT * FROM ataduras WHERE id_atadura = ?';
                                               connection.query(atadurasq, [ataduras], function (err, results, fields) {
                                                 if (err) throw err;
 
@@ -898,9 +931,9 @@ router.get('/alterform', requireAuth, function (req, res, next) {
 
                                                   var talasqtd = results[0].qtde;
                                                   var talastmn = results[0].tamanho;
+                                                  connection.query('SELECT * FROM relatorio WHERE id_relatorio = ?', [relatorio], function (err, results, fields) {
 
-
-                                                  res.render('form_alter.ejs', {tirante1: tirante1, pag: 'Ocorrências', title: 'Ocorrência - Bombeiros de Guaramirim', user: req.session.user, paciente: paciente, observ: observ, avacine: avacine, dct: dct, fc: fc, obj: obj, pbs: pbs, pe: pe, ss: ss, glasgow: glasgow, tpo: tpo, vte: vte, ferimentos: ferimentos, final: final, anamneemer: anamneemer, anamnegesta: anamnegesta, mtehosp: mtehosp, mtedesc: mtedesc, sv: sv, oqacon: oqacon, quantotemp: quantotemp, problemasaude: problemasaude, medicamentos: medicamentos, aov: aov, med: med, horamedica: horamedica, tipoalergia: tipoalergia, alergia: alergia, ingeriu: ingeriu, hora_ingest: hora_ingest, periodogesta: periodogesta, medico_pre_natal: medico_pre_natal, quantosfilho: quantosfilho, horacontracoes: horacontracoes, duracaocontracao: duracaocontracao, intervalocontracoes: intervalocontracoes, hora_nascimento: hora_nascimento, nome_bebe: nome_bebe, dct: dct, motorista: motorista, socorrista1: socorrista1, socorrista2: socorrista2, socorrista3: socorrista3, demandante: demandante, fcop: fcop, obsgerais: obsgerais, objetos: objetos, pe: pe, fle: fle, feridiv: feridiv, hemorragia: hemorragia, evisc: evisc, fabfaf: fabfaf, amput: amput, queim1: queim1, queim2: queim2, queim3: queim3, queim4: queim4, ac: ac, CSESS: CSESS, pressaoarteria: pressaoarteria, pulso: pulso, respira: respira, satura: satura, htg: htg, temperatura: temperatura, perf: perf , normal: normal, adultoglasgow: adultoglasgow, somaglasgow: somaglasgow, nivelglasgow: nivelglasgow, tpo: tpo, outrosTPO: outrosTPO, vte: vte, nusb: nusb, despachante: despachante, h_ch: h_ch, km_final: km_final, cod: cod, codsiasus: codsiasus, pes: pes, outroproblemasuspeito: outroproblemasuspeito, outrotransporte: outrotransporte, pes2: pes2, pes3: pes3, pes4: pes4, colarqtd: colarqtd, colartmn: colartmn, ttfqtd: ttfqtd, ttftmn: ttftmn, kedqtd: kedqtd, kedtmn: kedtmn, kitsqtd: kitsqtd, kitstmn: kitstmn, atadurasqtd: atadurasqtd, atadurastmn: atadurastmn, talasqtd: talasqtd, talastmn: talastmn, canula: canula, tirante: tirante, macarigida: macarigida, coxins: coxins, base: base, outromaterialhosp: outromaterialhosp, caratertpoc: caratertpoc, compressa: compressa, luvasdesc: luvasdesc, mascdesc: mascdesc, mantailuminizada: mantailuminizada, pasdodea: pasdodea, sonda: sonda, sorofisi: sorofisi, outromaterialdesc: outromaterialdesc});
+                                                  res.render('form_alter.ejs', { ruptura_bolsa: ruptura_bolsa, pressao: pressao, visual: visual, parto: parto, sexo_bebe: sexo_bebe,complica: complica,pre_natal: pre_natal,primeiro_filho: primeiro_filho, tirante1: tirante1, pag: 'Formulário', gravida: req.query.gravida, idade: req.query.idade,  title: 'Formulário - Bombeiros de Guaramirim', user: req.session.user,relatorio: relatorio,cod: cod,  observ: observ, avacine: avacine, dct: dct, fc: fc, obj: obj, pbs: pbs, pe: pe, ss: ss, glasgow: glasgow, tpo: tpo, vte: vte, ferimentos: ferimentos, final: final, anamneemer: anamneemer, anamnegesta: anamnegesta, mtehosp: mtehosp, mtedesc: mtedesc, sv: sv, oqacon: oqacon, quantotemp: quantotemp, problemasaude: problemasaude, medicamentos: medicamentos, aov: aov, med: med, horamedica: horamedica, tipoalergia: tipoalergia, alergia: alergia, ingeriu: ingeriu, hora_ingest: hora_ingest, periodogesta: periodogesta, medico_pre_natal: medico_pre_natal, quantosfilho: quantosfilho, horacontracoes: horacontracoes, duracaocontracao: duracaocontracao, intervalocontracoes: intervalocontracoes, hora_nascimento: hora_nascimento, nome_bebe: nome_bebe, motorista: motorista, socorrista1: socorrista1, socorrista2: socorrista2, socorrista3: socorrista3, demandante: demandante, fcop: fcop, obsgerais: obsgerais, objetos: objetos, pe1: pe1, fle: fle, feridiv: feridiv, hemorragia: hemorragia, evisc: evisc, fabfaf: fabfaf, amput: amput, queim1: queim1, queim2: queim2, queim3: queim3, queim4: queim4, ac: ac, CSESS: CSESS, pressaoarteria: pressaoarteria, pulso: pulso, respira: respira, satura: satura, htg: htg, temperatura: temperatura, perf: perf , normal: normal, adultoglasgow: adultoglasgow, somaglasgow: somaglasgow, nivelglasgow: nivelglasgow, tpo: tpo, outrosTPO: outrosTPO, vteesc: vteesc, nusb: nusb, despachante: despachante, h_ch: h_ch, km_final: km_final, codsiasus: codsiasus, pes: pes, outroproblemasuspeito: outroproblemasuspeito, outrotransporte: outrotransporte, pes2: pes2, pes3: pes3, pes4: pes4, colarqtd: colarqtd, colartmn: colartmn, ttfqtd: ttfqtd, ttftmn: ttftmn, kedqtd: kedqtd, kedtmn: kedtmn, kitsqtd: kitsqtd, kitstmn: kitstmn, atadurasqtd: atadurasqtd, atadurastmn: atadurastmn, talasqtd: talasqtd, talastmn: talastmn, canula: canula, tirante: tirante, macarigida: macarigida, coxins: coxins, base: base, outromaterialhosp: outromaterialhosp, caratertpoc: caratertpoc, compressa: compressa, luvasdesc: luvasdesc, mascdesc: mascdesc, mantailuminizada: mantailuminizada, pasdodea: pasdodea, sonda: sonda, sorofisi: sorofisi, outromaterialdesc: outromaterialdesc, SESS: SESS, SESS2: SESS2, SESS3: SESS3, SESS4: SESS4, SESS5: SESS5, colar: colar, ttf: ttf, ked: ked, kits: kits, ataduras: ataduras, talas: talas, outrosinal_sintoma: outrosinal_sintoma, tmusocolar: tmusocolar, lpmoxi: lpmoxi, lpmreanima: lpmreanima, outropcef: outropcef});
                                                 });
                                               });
                                             });
@@ -926,8 +959,329 @@ router.get('/alterform', requireAuth, function (req, res, next) {
     });
   });
 });
+});
 
-// Rota para o histório de ocorrências
+
+router.post('/form_alter', requireAuth, function (req, res, next) {
+  
+  var observ2 = parseInt(req.body.observ2);
+  var avacine2 = parseInt(req.body.avacine2);
+  var dct2 = parseInt(req.body.dct2);
+  var fc2 = parseInt(req.body.fc2);
+  var obj2 = parseInt(req.body.obj2);
+  var pbs2 = parseInt(req.body.pbs2);
+  var pe2 = parseInt(req.body.pe2);
+  var ss2 = parseInt(req.body.ss2);
+  var glasgow2 = parseInt(req.body.glasgow2);
+  var tpo2 = parseInt(req.body.tpo2);
+  var vte2 = parseInt(req.body.vte2);
+  var ferimentos2 = parseInt(req.body.ferimentos2);
+  var final2 = parseInt(req.body.final2);
+  var anamneemer2 = parseInt(req.body.anamneemer2);
+  var anamnegesta2 = parseInt(req.body.anamnegesta2);
+  var mtehosp2 = parseInt(req.body.mtehosp2);
+  var mtedesc2 = parseInt(req.body.mtedesc2);
+  var sv2 = parseInt(req.body.sv2);
+  var relatorio = parseInt(req.body.relatorio2);
+  var talas2 = parseInt(req.body.talas2);
+  var ttf2 = parseInt(req.body.tff2);
+  var ataduras2 = parseInt(req.body.ataduras2);
+  var colar2 = parseInt(req.body.colar2);
+  var ked2 = parseInt(req.body.ked2);
+  var kits2 = parseInt(req.body.kits2);
+  var tpo = req.body.radios1 || 0;
+  var vte = req.body.radiovte1 || 0;
+  var pe = req.body.checkboxpe1 || 0;
+  var normal = req.body.sinais_annsv1 || 0;
+  var perf = req.body.sinais_perfsv1 || 0;
+  var ac = req.body.checkboxac1 || 0;
+  var pes = req.body.radio1pes || 0;
+  var pes2 = req.body.radio1pes2 || 0;
+  var pes3 = req.body.radio1pes3 || 0;
+  var pes4 = req.body.radio1pes4 || 0;
+  var dct = req.body.dct1 || 0;
+  var fc = req.body.forma_conducao || 0;
+  var ked = req.body.kedradioStfftate1 || 0;
+  var colar = req.body.colarradioStfftate1 || 0;
+  var ttf = req.body.radiotff1 || 0;
+  var aov = req.body.radioaov || 0;
+  var pbs = req.body.radiopbs || 0;
+  var med = req.body.radiomed || 0;
+  console.log(med);
+  var alergia = req.body.radioalergia || 0;
+  console.log(alergia);
+  var ingeriu = req.body.radioingerir || 0;
+  var cod = req.body.cod1 || 0;
+  var CSESS = req.body.checkboxses || 0;
+  var SESS = req.body.radiopupila || 0;
+  var SESS2 = req.body.radiocianose || 0;
+  var SESS3 = req.body.radioedema || 0;
+  var SESS4 = req.body.radiohemorragia || 0;
+  var SESS5 = req.body.checkboxparada || 0;
+  var corpo = req.body.ferimentos;
+  console.log(corpo)
+  if (corpo === undefined || corpo === null || corpo === '[object Object]') {
+    corpo = {
+      "Fratura/luxação/entorse": [],
+      "Ferimentos diversos": [],
+      "Hemorragias": [],
+      "Evisceração": [],
+      "F.A.B./F.A.F.": [],
+      "Amputação": [],
+      "Queimadura 1 grau": [],
+      "Queimadura 2 grau": [],
+      "Queimadura 3 grau": [],
+      "Queimadura 4 grau": []
+    };
+  }
+  var ferimentos = JSON.parse(corpo);
+  console.log(ferimentos);
+  console.log(req.body.adulto);
+  var savedRadioAGState = req.body.radio_pre_natalState1 || 0;
+  var savedRadioAG2State = req.body.radio_p_filho1State1 || 0;
+  var savedRadioAG3State = req.body.radio_pre_natal1State1 || 0;
+  var savedRadioAG4State = req.body.radio_pre_natal2State1 || 0;
+  var savedRadioAG5State = req.body.radio_pre_natal3State1 || 0;
+  var parto_realizado = req.body.radio_parto1 || 0;
+  var sexobebe = req.body.radio_bebe1 || 0;
+  var savedRadioAG8State = req.body.radio_pre_natal4State1 || 0;
+  var ataduras = req.body.radioState_ataduras || 0;
+  var talas = req.body.radioState_talas || 0;
+  var kits = req.body.radioState_KITS || 0;
+  var somaglasgow = req.body.totalglasgow || 0;
+  var nivelglasgow = req.body.nivel || 0;
+  var gravida = req.body.gravida || 0;
+  var textareafinal = req.body.textareafinal1;
+  var parts = JSON.parse(textareafinal);
+  if (gravida == 1) {
+    var [
+      outrosTPO, pressaoarteria, respira, satura, temperatura,
+      pulso, htg, outrotransporte, outroproblemasuspeito, outrosinal_sintoma, motorista,
+      socorrista1, socorrista2, socorrista3, demandante, outropcef,
+      outromaterialdesc, outromaterialhosp, oqacon, quantotemp, problemasaude,
+      medicamentos, horamedica, tipoalergia, hora_ingest, periodogesta, medico_pre_natal, quantosfilho,
+      horacontracoes, duracaocontracao, intervalocontracoes, hora_nascimento, nome_bebe, objetos, obsgerais, nusb,
+     despachante, h_ch, km_final, codsiasus
+    ] = parts;
+    console.log(parts)
+  } else {
+    var [
+      outrosTPO, pressaoarteria, respira, satura, temperatura,
+      pulso, htg, outrotransporte, outroproblemasuspeito, outrosinal_sintoma, motorista,
+      socorrista1, socorrista2, socorrista3, demandante, outropcef,
+      outromaterialdesc, outromaterialhosp, oqacon, quantotemp, problemasaude,
+      medicamentos, horamedica, tipoalergia, hora_ingest, objetos, obsgerais, nusb,
+     despachante, h_ch, km_final, codsiasus, periodogesta, medico_pre_natal, quantosfilho,
+      horacontracoes, duracaocontracao, intervalocontracoes, hora_nascimento, nome_bebe
+    ] = parts;
+    // var periodogesta = 0;
+    // var medico_pre_natal = 0;
+    // var quantosfilho = 0;
+    // var horacontracoes = 0;
+    // var duracaocontracao = 0;
+    // var intervalocontracoes = 0;
+    // var hora_nascimento = 0;
+    // var nome_bebe = 0;
+    console.log(parts)
+  }
+  if (km_final == '') {
+    km_final = 0;
+  }
+  var inputtextfinal = req.body.inputtextfinal1;
+  var partsinput = JSON.parse(inputtextfinal);
+  var [tmusocolar, lpmoxi, lpmreanima, atadurasqtd, caratertpoc, compressa, kitsqtd, luvasdesc, mascdesc, mantailuminizada, pasdodea, sonda, sorofisi, talasqtd, base, colarqtd, coxins, kedqtd, macarigida, ttfqtd, tirante,tirante1, canula] = partsinput;
+  console.log(partsinput)
+  var anme_emeq = 'UPDATE anamnese_emergencial SET o_que_ocorreu = ?, quanto_tempo_ocorreu = ?, quais_problemas = ?, quais_medicamentos = ?, aconteceu_outras_vezes = ?, usa_medicacao = ?, horario_ultima_medicacao = ?, alergias = ?, alergico = ?, ingeriu_mais_de_6hrs = ?, ingeriu_que_hrs = ?, possui_problema_saude = ? WHERE id_anamnese_emer = ?';
+  var anme_eme_values = [oqacon, quantotemp, problemasaude, medicamentos, aov, med, horamedica, tipoalergia, alergia, ingeriu, hora_ingest, pbs, anamneemer2];
+  var anme_gestq = 'UPDATE anamnese_gestacional SET periodo = ?, pre_natal = ?, medico_pre_natal = ?, possibilidade_complicacoes = ?, primeiro_filho = ?, quantos_filhos = ?, inicio_contracoes = ?, duracao_contracoes = ?, intervalo_contracoes = ?, pressao_quadril_ou_evacuar = ?, ruptura_bolsa = ?, inspecao_visual = ?, parto_realizado = ?, hora_nascimento = ?, sexo_bebe = ?, nome_do_bebe = ? WHERE id_anamnese_gest = ?';
+  var anme_gest_values = [periodogesta, savedRadioAGState, medico_pre_natal, savedRadioAG8State, savedRadioAG2State, quantosfilho, horacontracoes, duracaocontracao, intervalocontracoes, savedRadioAG3State, savedRadioAG4State, savedRadioAG5State, parto_realizado, hora_nascimento, sexobebe, nome_bebe, anamnegesta2];
+  var atadurasq = 'UPDATE ataduras SET tamanho = ?, qtde = ? WHERE id_atadura = ?';
+  var ataduras_values = [ataduras, atadurasqtd, ataduras2];
+  var dctransporte = 'UPDATE decisao_transporte SET transporte_opcao = ?, motorista = ?, socorrista1 = ?, socorrista2 = ?, socorrista3 = ?, demandante = ? WHERE id_decisao_transporte = ?';
+  var dctransporte_values = [dct, motorista, socorrista1, socorrista2, socorrista3, demandante, dct2];
+  var fcq = 'UPDATE forma_de_conducao SET opcao_escolhida = ? WHERE id_forma_conducao = ?';
+  var fc_values = [fc, fc2];
+  var observe = 'UPDATE observacoes SET observacoes = ? WHERE id_observ = ?';
+  var observe_values = [obsgerais, observ2];
+  var objetosq = 'UPDATE objeto_recolhido SET descricao = ? WHERE id_recolhidos = ?';
+  var objetos_values = [objetos, obj2];
+  var talasq = 'UPDATE talas_pap SET tamanho = ?, qtde = ? WHERE id_talas_pap = ?';
+  var talas_values = [talas, talasqtd, talas2];
+  var proceefet = 'UPDATE procedimentos_efetuados SET codigo_selecoes = ?, uso_colar_tmn = ?, oxigenoterapia_lpm = ?, reanimador_lpm = ?, outros = ? WHERE id_procedimentos = ?';
+  var proceefet_values = [pe, tmusocolar, lpmoxi, lpmreanima, outropcef, pe2];
+  var colarq = 'UPDATE colar SET qtde_colar = ?, tamanho_colar = ? WHERE id_colar = ?';
+  var colar_values = [colarqtd, colar, colar2];
+  var fle = ferimentos["Fratura/luxação/entorse"].join(',');
+  var feridiv = ferimentos["Ferimentos diversos"].join(',');
+  var hemorragia = ferimentos["Hemorragias"].join(',');
+  var evisc = ferimentos["Evisceração"].join(',');
+  var fabfaf = ferimentos["F.A.B./F.A.F."].join(',');
+  var amput = ferimentos["Amputação"].join(',');
+  var queim1 = ferimentos["Queimadura 1 grau"].join(',');
+  var queim2 = ferimentos["Queimadura 2 grau"].join(',');
+  var queim3 = ferimentos["Queimadura 3 grau"].join(',');
+  var queim4 = ferimentos["Queimadura 4 grau"].join(',');
+  var corpoq = 'UPDATE ferimentos_corpo SET fratura_luxacao_entorse = ?, ferimentos_diversos = ?, hemorragias = ?, evisceracao = ?, FAB_FAF = ?, amputacao = ?, queimadura_1_grau = ?, queimadura_2_grau = ?, queimadura_3_grau = ?, queimadura_4_grau = ? WHERE id_ferimentos = ?';
+  var corpo_values = [fle, feridiv, hemorragia, evisc, fabfaf, amput, queim1, queim2, queim3, queim4, ferimentos2];
+  var kedq = 'UPDATE ked SET qtde_ked = ?, tamanho_ked = ? WHERE id_KED = ?';
+  var ked_values = [kedqtd, ked, ked2];
+  var kitsq = 'UPDATE kits SET H_P_G = ?, qtde = ? WHERE id_kits = ?';
+  var kits_values = [kits, kitsqtd, kits2];
+  var ttfq = 'UPDATE ttf SET qtde_ttf = ?, tamanho_tff = ? WHERE id_ttf = ?';
+  var ttf_values = [ttfqtd, ttf, ttf2];
+  var avacineq = 'UPDATE avaliacao_cinematica SET escolhas = ? WHERE id_cinematica = ?';
+  var avacine_values = [ac, avacine2];
+  var sinal_sintomaq = 'UPDATE sinais_e_sintomas SET codigo_selecoes = ?, outros = ?, codigo_tipopupilas = ?, codigo_cianose = ?, cod_edema = ?, cod_hemorragia = ?, cod_parada = ? WHERE id_sinal_sintoma = ?';
+  var sinal_sintoma_values = [CSESS, outrosinal_sintoma, SESS, SESS2, SESS3, SESS4, SESS5, ss2];
+  var sinalvital = 'UPDATE sinais_vitais SET pressao_arterial = ?, pulso = ?, respiracao = ?, saturacao = ?, hgt = ?, temperatura = ?, perfusao = ?, paciente_normal = ? WHERE id_sinais_vitais = ?';
+  var sinalvital_values = [pressaoarteria, pulso, respira, satura, htg, temperatura, perf, normal, sv2];
+  var glasgowq = 'UPDATE teste_de_glasgow SET soma_total = ?, nivel_declarado = ? WHERE id_teste_glasgow = ?';
+  var glasgow_values = [ somaglasgow, nivelglasgow, glasgow2];
+  var tipoocorrenciaq = 'UPDATE tipo_ocorrencia_pre_hospitalar SET codigo_selecoes = ?, outros = ? WHERE id_tipo_ocorrencia = ?';
+  var tipoocorrencia_values = [tpo, outrosTPO, tpo2];
+  var vitimaeraq = 'UPDATE vitima_era SET escolha = ? WHERE id_vit_era = ?';
+  var vitimaera_values = [vte, vte2];
+  var finalocoq = 'UPDATE finalizacao_ocorrencia SET n_USB = ?, despachante = ?, H_CH = ?, km_final = ?, cod_IR_PS = ?, codigo_SIA_SUS = ? WHERE id_finalizacao = ?';
+  var finaloco_values = [nusb, despachante, h_ch, km_final, cod, codsiasus, final2];
+  var problemassuspeitosq = 'UPDATE problemas_encontrado_suspeitos SET respira_psiquiatrico = ?, outros = ?, transporte_outros = ?, diabetes = ?, obstetrico = ?, transporte = ? WHERE id_problemas_suspeitos = ?';
+  var problemassuspeitos_values = [pes, outroproblemasuspeito, outrotransporte, pes2, pes3, pes4, pbs2];
+  connection.query(anme_emeq, anme_eme_values, function (error, results) {
+    if (error) throw error;
+    console.log('anamnese_emergencial updated');
+    connection.query(anme_gestq, anme_gest_values, function (error, results) {
+      if (error) throw error;
+      console.log('anamnese_gestacional updated');
+      connection.query(atadurasq, ataduras_values, function (error, results) {
+        if (error) throw error;
+        console.log('ataduras updated');
+        // Continue with the rest of the queries...
+      });
+    });
+  });
+        connection.query(dctransporte, dctransporte_values, function (error, results) {
+          if (error) throw error;
+          console.log('decisao_transporte inserted');
+       
+          connection.query(fcq, fc_values, function (error, results) {
+            if (error) throw error;
+            console.log('forma_de_conducao inserted');
+       
+            connection.query(observe, observe_values, function (error, results) {
+              if (error) throw error;
+              console.log('observacoes inserted');
+    
+              connection.query(objetosq, objetos_values, function (error, results) {
+                if (error) throw error;
+                console.log('objeto_recolhido inserted');
+      
+                connection.query(talasq, talas_values, function (error, results) {
+                  if (error) throw error;
+                  console.log('talas_pap inserted');
+                  talas_id = results.insertId;
+                  connection.query(proceefet, proceefet_values, function (error, results) {
+                    if (error) throw error;
+                    console.log('procedimentos_efetuados inserted');
+                    proceefet_id = results.insertId;
+                    connection.query(colarq, colar_values, function (error, results) {
+                      if (error) throw error;
+                      console.log('colar inserted');
+                      colar_id = results.insertId;
+                      console.log(colar_id);
+                      connection.query(corpoq, corpo_values, function (error, results) {
+                        if (error) throw error;
+                        console.log('ferimentos_corpo inserted');
+                        corpo_id = results.insertId;
+                        console.log(colar_id);
+                        connection.query(kedq, ked_values, function (error, results) {
+                          if (error) throw error;
+                          console.log('ked inserted');
+                          ked_id = results.insertId;
+                          console.log(ked_id);
+                          connection.query(kitsq, kits_values, function (error, results) {
+                            if (error) throw error;
+                            console.log('kits inserted');
+                            kits_id = results.insertId;
+                            console.log(kits_id);
+                            connection.query(ttfq, ttf_values, function (error, results) {
+                              if (error) throw error;
+                              console.log('ttf inserted');
+                          
+                              connection.query(avacineq, avacine_values, function (error, results) {
+                                if (error) throw error;
+                                console.log('avaliacao_cinematica inserted');
+                          
+                                connection.query(sinal_sintomaq, sinal_sintoma_values, function (error, results) {
+                                  if (error) throw error;
+                                  console.log('sinais_e_sintomas inserted');
+                           
+                                  connection.query(sinalvital, sinalvital_values, function (error, results) {
+                                    if (error) throw error;
+                                    console.log('sinais_vitais inserted');
+                               
+                                    connection.query(glasgowq, glasgow_values, function (error, results) {
+                                      if (error) throw error;
+                                      console.log('teste_de_glasgow inserted');
+                               
+                                      connection.query(tipoocorrenciaq, tipoocorrencia_values, function (error, results) {
+                                        if (error) throw error;
+                                        console.log('tipo_de_ocorrencia inserted');
+                    
+                                        connection.query(vitimaeraq, vitimaera_values, function (error, results) {
+                                          if (error) throw error;
+                                          console.log('vitima_era inserted');
+                   
+                                          connection.query(finalocoq, finaloco_values, function (error, results) {
+                                            if (error) throw error;
+                                            console.log('finalizacao_ocorrencia inserted');
+                                
+                                            var materiaishosp = 'UPDATE materiais_hospital SET canula_qtde = ?, tirante_cabeca_qtde = ?, tirante_aranha_qtde = ?, maca_rigida_qtde = ?, coxins_estabilizador_qtde = ?, base_estabilizador_qtde = ?, outros = ? WHERE id_materiais_hospital = ?;';
+                                            var materiaishosp_values = [canula, tirante, tirante1, macarigida, coxins, base, outromaterialhosp, mtehosp2];
+                                            connection.query(materiaishosp, materiaishosp_values, function (error, results) {
+                                              if (error) throw error;
+                                              console.log('materiais_hospital inserted');
+                                           
+                                                var materiaisdesc = 'UPDATE materiais_descartaveis SET cateter_tp_oculos_qtde = ?, compressa_comum_qtde = ?, luvas_descartaveis_qtde = ?, mascaras_descartaveis_qtde = ?, manta_luminizada_qtde = ?, pas_do_dea_qtde = ?, sonda_de_aspiracao_qtde = ?, soro_fisiologico_qtde = ?, outros = ? WHERE id_materiais_hospital = ?;'
+                                                var materiaisdesc_values = [caratertpoc, compressa, luvasdesc, mascdesc, mantailuminizada, pasdodea, sonda, sorofisi, outromaterialdesc, mtedesc2];
+                                                connection.query(materiaisdesc, materiaisdesc_values, function (error, results) {
+                                                  if (error) throw error;
+                                                  console.log('materiais_descartaveis inserted');
+                     
+                                                  connection.query(problemassuspeitosq, problemassuspeitos_values, function (error, results) {
+                                                    if (error) throw error;
+                                                    console.log('problemas_encontrado_suspeitos inserted');
+                                       
+                                                    var data = new Date();
+                                                    var formattedDate = data.getFullYear() + '-' + (data.getMonth() + 1) + '-' + data.getDate();
+                                                    var updateRelatorio = 'UPDATE relatorio SET ultima_alteracao = ? WHERE id_relatorio = ?;';
+                                                    var updateRelatorioValues = [  formattedDate, relatorio ];
+                                                    connection.query(updateRelatorio, updateRelatorioValues, function (error, results) {
+                                                      if (error) throw error;
+                                                      console.log('relatorio updated');
+                                                      res.redirect('/ocorrencia');
+                                                    });
+                                                  });
+                                                });
+                                            });
+                                          });
+                                        });
+                                      });
+                                    });
+                                  });
+                                });
+                              });
+                            });
+                          });
+                        });
+                      });
+                    });
+                  });
+                });
+              });
+            });
+    });
+  });
+});
+
 
 router.get('/historico', requireAuth, function (req, res, next) {
   var sql = 'SELECT * FROM relatorio ORDER BY ultima_alteracao DESC';

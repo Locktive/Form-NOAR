@@ -292,7 +292,7 @@
         <p class="checkbox_text">USO COLAR</p>
         <div class="checkbox_description">
             <p class="checkbox_text">TAM: </p>
-            <input type="text" name="" />
+            <input type="text" name="tmusocolar" value="<%= tmusocolar %>" />
         </div>
         <label class="custom_checkbox">
             <input type="checkbox" name="checkbox_pe" />
@@ -324,7 +324,7 @@
         <p class="checkbox_text">OXIGENOTERAPIA</p>
         <div class="checkbox_description">
             <p class="checkbox_text">LPM</p>
-            <input type="text" name="" />
+            <input type="text" name="lpmo" value="<%= lpmoxi %>" />
         </div>
         <label class="custom_checkbox">
             <input type="checkbox" name="checkbox_pe" />
@@ -335,7 +335,7 @@
         <p class="checkbox_text">REANIMADOR</p>
         <div class="checkbox_description">
             <p class="checkbox_text">LPM</p>
-            <input type="text" name="" />
+            <input type="text" name="lpmr" <%= lpmreanima %> />
         </div>
         <label class="custom_checkbox">
             <input type="checkbox" name="checkbox_pe" />
@@ -411,11 +411,13 @@
         <div style="width: 100%;">
             <p class="checkbox_text">OUTRO</p>
             <div class="did-floating-label-content textarea">
-                <textarea class="did-floating-input row_textarea" value="<%= outropcef %>" placeholder="Insira o texto"></textarea>
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"><%= outropcef %></textarea>
             </div>
         </div>
     </div>
     <input type="hidden" name="checkbox_pe1" />
+    <input type="hidden" name="pe" value="<%= pe1 %>" />
+
 </body>
 
 <script>
@@ -443,6 +445,13 @@
     // pega todos os botoes
     const checkboxpe = document.querySelectorAll('input[name="checkbox_pe"]');
     // Restaura state
+    const peesc = document.querySelector('input[name="pe"]').value;
+    // restaura estado dos botoes
+    if (peesc) {
+        peesc.split('').forEach((state, index) => {
+            checkboxpe[index].checked = state === '1';
+        });
+    }
     const savedcheckboxpeState = localStorage.getItem('checkboxpeState');
     if (savedcheckboxpeState) {
         savedcheckboxpeState.split('').forEach((state, index) => {
@@ -450,6 +459,37 @@
         });
     }
 
+    // evento de mudança de estado
+    checkboxpe.forEach((checkbox, index) => {
+        checkbox.addEventListener('change', () => {
+            // cria um codigo binario para cada botao
+            let binarype = '';
+            checkboxpe.forEach((r, i) => {
+                binarype += r.checked ? '1' : '0';
+            });
+            document.querySelector('input[name="checkbox_pe1"]').value = binarype;
+            // Save state
+            localStorage.setItem('checkboxpeState', binarype);
+
+            console.log(binarype);
+        });
+    });
+
+    const lpmo = document.querySelector('input[name="lpmo"]');
+    const lpmr = document.querySelector('input[name="lpmr"]');
+    const tmusocolar = document.querySelector('input[name="tmusocolar"]');
+
+    lpmo.addEventListener('input', () => {
+        validateValue(lpmo, 3);
+    });
+    lpmr.addEventListener('input', () => {
+        validateValue(lpmr, 3);
+    });
+    tmusocolar.addEventListener('input', () => {
+        validateValue(tmusocolar, 3);
+    });
+
+    
     // evento de mudança de estado
     checkboxpe.forEach((checkbox, index) => {
         checkbox.addEventListener('change', () => {

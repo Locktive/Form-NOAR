@@ -157,21 +157,52 @@
         <div style="width: 100%;">
             <p class="checkbox_text">OUTRO</p>
             <div class="did-floating-label-content textarea">
-                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"><%= outrosTPO %></textarea>
             </div>
         </div>
     </div>
     <input type="hidden" name="radios" value="" />
-    <input type="hidden" name="acov" value="<%= tpo %>">
+    <input type="hidden" name="tpo2" value="<%= tpo %>">
     <script>
-        
-        const tpo = document.querySelector('input[name="tpo"]');
+        // pega todos os botoes
+        const radios = document.querySelectorAll('input[name="radio_TDO"]');
+                // Restaura state
+                const tpo2 = document.querySelector('input[name="tpo2"]');
+                var tpo = tpo2.value;
+        console.log(tpo);
         // restaura estado dos botoes
         if (tpo) {
             tpo.split('').forEach((state, index) => {
-                radioaov[index].checked = state === '1';
+                radios[index].checked = state === '1';
             });
         }
+                const savedRadioState = localStorage.getItem('radioState');
+                // restaura estado dos botoes
+                if (savedRadioState) {
+                    savedRadioState.split('').forEach((state, index) => {
+                        radios[index].checked = state === '1';
+                    });
+                }
+
+
+                // evento de mudança de estado
+                radios.forEach((radio, index) => {
+                    radio.addEventListener('change', () => {
+                        // cria um codigo binario para cada botao
+                        let binarytdo = '';
+                        radios.forEach((r, i) => {
+                            binarytdo += r.checked && i === index ? '1' : '0';
+                        });
+                        document.getElementById("radios1").value = binarytdo;
+                        // Save state
+                        localStorage.setItem('radioState', binarytdo);
+
+
+                        console.log(binarytdo);
+                    });
+                });
+
+        
     </script>
 
 </body>

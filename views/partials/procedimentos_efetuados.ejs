@@ -292,7 +292,7 @@
         <p class="checkbox_text">USO COLAR</p>
         <div class="checkbox_description">
             <p class="checkbox_text">TAM: </p>
-            <input type="text" name="" />
+            <input type="text" name="tmusocolar" />
         </div>
         <label class="custom_checkbox">
             <input type="checkbox" name="checkbox_pe" />
@@ -324,7 +324,7 @@
         <p class="checkbox_text">OXIGENOTERAPIA</p>
         <div class="checkbox_description">
             <p class="checkbox_text">LPM</p>
-            <input type="text" name="" />
+            <input type="text" name="lpmo" />
         </div>
         <label class="custom_checkbox">
             <input type="checkbox" name="checkbox_pe" />
@@ -335,7 +335,7 @@
         <p class="checkbox_text">REANIMADOR</p>
         <div class="checkbox_description">
             <p class="checkbox_text">LPM</p>
-            <input type="text" name="" />
+            <input type="text" name="lpmr" />
         </div>
         <label class="custom_checkbox">
             <input type="checkbox" name="checkbox_pe" />
@@ -466,6 +466,20 @@
         });
     });
 
+
+    const lpmo = document.querySelector('input[name="lpmo"]');
+    const lpmr = document.querySelector('input[name="lpmr"]');
+    const tmusocolar = document.querySelector('input[name="tmusocolar"]');
+
+    lpmo.addEventListener('input', () => {
+        validateValue(lpmo, 3);
+    });
+    lpmr.addEventListener('input', () => {
+        validateValue(lpmr, 3);
+    });
+    tmusocolar.addEventListener('input', () => {
+        validateValue(tmusocolar, 3);
+    });
 </script>
 
 </html>

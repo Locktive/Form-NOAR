@@ -17,7 +17,7 @@
         <div style="width: 100%;">
             <p class="checkbox_text">PRESSÃO ARTERIAL: mmHg</p>
             <div class="did-floating-label-content textarea">
-                <textarea onclick="validateValue(this);"value="<%= pressaoarteria %>" class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                <textarea onclick="validateValue(this);"value="<%= pressaoarteria %>" class="did-floating-input row_textarea" placeholder="Insira o texto"><%= pressaoarteria %></textarea>
             </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
         <div style="width: 100%;">
             <p class="checkbox_text">RESPIRAÇÃO: M.R.M</p>
             <div class="did-floating-label-content textarea">
-                <textarea onclick="validateValue(this);"value="<%= respira %>" class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                <textarea onclick="validateValue(this);" class="did-floating-input row_textarea" placeholder="Insira o texto"><%= respira %></textarea>
             </div>
         </div>
     </div>
@@ -36,7 +36,7 @@
         <div style="width: 100%;">
             <p class="checkbox_text">SATURAÇÃO</p>
             <div class="did-floating-label-content textarea">
-                <textarea onclick="validateValue(this);"value="<%= satura %>" class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                <textarea onclick="validateValue(this);" class="did-floating-input row_textarea" placeholder="Insira o texto"><%= satura %></textarea>
             </div>
         </div>
     </div>
@@ -45,7 +45,7 @@
         <div style="width: 100%;">
             <p class="checkbox_text">TEMPERATURA: °C</p>
             <div class="did-floating-label-content textarea">
-                <textarea onclick="validateValue(this);"value="<%= temperatura %>" class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                <textarea onclick="validateValue(this);" class="did-floating-input row_textarea" placeholder="Insira o texto"><%= temperatura %></textarea>
             </div>
         </div>
     </div>
@@ -71,7 +71,7 @@
         <div style="width: 100%;">
             <p class="checkbox_text">PULSO: B.C.P.M</p>
             <div class="did-floating-label-content textarea">
-                <textarea onclick="validateValue(this);"value="<%= pulso %>" class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                <textarea onclick="validateValue(this);"value="" class="did-floating-input row_textarea" placeholder="Insira o texto"><%= pulso %></textarea>
             </div>
         </div>
     </div>
@@ -80,7 +80,7 @@
         <div style="width: 100%;">
             <p class="checkbox_text">HTG</p>
             <div class="did-floating-label-content textarea">
-                <textarea class="did-floating-input row_textarea"value="<%= htg %>" placeholder="Insira o texto"></textarea>
+                <textarea class="did-floating-input row_textarea"value="" placeholder="Insira o texto"><%= htg %></textarea>
             </div>
         </div>
     </div>
@@ -100,16 +100,12 @@
     </div>
     <input type="hidden" name="sinais_annsv1" value="" />
     <input type="hidden" name="sinais_perfsv1" value="" />
+    <input type="hidden" name="perf" value="<%= perf %>" />
+    <input type="hidden" name="annsv" value="<%= normal %>" />
     <!-- Criação de um campo de texto com rótulo flutuante -->
     <script>
 
-const perf = document.querySelector('input[name="perf"]');
-                // restaura estado dos botoes
-                if (perf) {
-                   perf.split('').forEach((state, index) => {
-                        radioaov[index].checked = state === '1';
-                    });
-                }
+
 
         function validateValue(input) {
         if (input.value.length > 4)
@@ -117,6 +113,13 @@ const perf = document.querySelector('input[name="perf"]');
     }
     // pega todos os botoes
     const annsv = document.querySelectorAll('input[name="radio_sinais_vitais"]');
+    const normal = document.querySelector('input[name="normal"]');
+                // restaura estado dos botoes
+                if (normal) {
+                   normal.split('').forEach((state, index) => {
+                        annsv[index].checked = state === '1';
+                    });
+                }
     // Restaura state
     const savedannsvState = localStorage.getItem('annsvState');
     if (savedannsvState) {
@@ -143,6 +146,13 @@ const perf = document.querySelector('input[name="perf"]');
 
     // pega todos os botoes
     const perfsv = document.querySelectorAll('input[name="radio_perfusao"]');
+    const perf = document.querySelector('input[name="perf"]').value;
+                // restaura estado dos botoes
+                if (perf) {
+                   perf.split('').forEach((state, index) => {
+                        perfsv[index].checked = state === '1';
+                    });
+                }
     // Restaura state
     const savedperfsvState = localStorage.getItem('perfsvState');
     if (savedperfsvState) {

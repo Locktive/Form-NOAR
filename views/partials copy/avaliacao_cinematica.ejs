@@ -95,10 +95,18 @@ transition: 0.4s !important;
         </label>
     </div>
     <input type="hidden" name="checkbox_ac1" />
+    <input type="hidden" name="checkbox_ac2" value="<%= ac %>"/>
 <script>
     // pega todos os botoes
 const checkboxac = document.querySelectorAll('input[name="checkbox_ac"]');
 // Restaura state
+const ac1 = document.querySelector('input[name="checkbox_ac2"]').value;
+if (ac1) {
+    ac1.split('').forEach((state, index) => {
+        checkboxac[index].checked = state === '1';
+    });
+}
+
 const savedcheckboxacState = localStorage.getItem('checkboxacState');
 if (savedcheckboxacState) {
     savedcheckboxacState.split('').forEach((state, index) => {

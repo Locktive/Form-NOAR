@@ -18,8 +18,8 @@
         <div style="width: 100%;">
             <p class="checkbox_text">N° USB</p>
             <div class="did-floating-label-content textarea">
-                <textarea oninput="validateValue(this)" value="<%= nusb %>" name="textfinal" class="did-floating-input row_textarea"
-                    placeholder="Insira o texto"></textarea>
+                <textarea oninput="validateValue(this)" name="textfinal" class="did-floating-input row_textarea"
+                    placeholder="Insira o texto"><%= nusb %></textarea>
             </div>
         </div>
     </div>
@@ -28,8 +28,8 @@
         <div style="width: 100%;">
             <p class="checkbox_text">DESP</p>
             <div class="did-floating-label-content textarea">
-                <textarea name="textfinal" value="<%= despachante %>"  class="did-floating-input row_textarea"
-                    placeholder="Insira o texto"></textarea>
+                <textarea name="textfinal"  class="did-floating-input row_textarea"
+                    placeholder="Insira o texto"><%= despachante %></textarea>
             </div>
         </div>
     </div>
@@ -38,8 +38,8 @@
         <div style="width: 100%;">
             <p class="checkbox_text">H. CH</p>
             <div class="did-floating-label-content textarea">
-                <textarea name="textfinal" value="<%= h_ch %>" class="did-floating-input row_textarea"
-                    placeholder="Insira o texto"></textarea>
+                <textarea name="textfinal" class="did-floating-input row_textarea"
+                    placeholder="Insira o texto"><%= h_ch %></textarea>
             </div>
         </div>
     </div>
@@ -48,8 +48,8 @@
         <div style="width: 100%;">
             <p class="checkbox_text">KM FINAL</p>
             <div class="did-floating-label-content textarea">
-                <textarea name="textfinal" oninput="validateValue(this)" value="<%= km_final %>" class="did-floating-input row_textarea"
-                    placeholder="Insira o texto"></textarea>
+                <textarea name="textfinal" oninput="validateValue(this)" class="did-floating-input row_textarea"
+                    placeholder="Insira o texto"><%= km_final %></textarea>
             </div>
         </div>
     </div>
@@ -58,8 +58,8 @@
         <div style="width: 100%;">
             <p class="checkbox_text">COD. SIA/SUS</p>
             <div class="did-floating-label-content textarea">
-                <textarea name="textfinal" oninput="validateValue(this);" value="<%= codsiasus %>" class="did-floating-input row_textarea"
-                    placeholder="Insira o texto"></textarea>
+                <textarea name="textfinal" oninput="validateValue(this);" class="did-floating-input row_textarea"
+                    placeholder="Insira o texto"><%= codsiasus %></textarea>
             </div>
         </div>
     </div>
@@ -82,65 +82,29 @@
         
     </div>
     <input type="hidden" name="cod1" />
-    <input type="hidden" name="dataoco" />
+    <input type="hidden" name="cod" value="<%= cod %>" />
 </body>
 <script>
-     const nusb = document.querySelector('input[name="nusb"]');
-                // restaura estado dos botoes
-                if (nusb) {
-                    nusb.split('').forEach((state, index) => {
-                        radioaov[index].checked = state === '1';
-                    });
-                }
+
     function validateValue(input) {
         // Remove non-numeric characters
     input.value = input.value.replace(/\D/g, '');
         if (input.value.length > 11)
             input.value = input.value.slice(0, 11);
     }
-    const despachante = document.querySelector('input[name="despachante"]');
-                // restaura estado dos botoes
-                if (despachante) {
-                    despachante.split('').forEach((state, index) => {
-                        radioaov[index].checked = state === '1';
-                    });
-                }
-                const h_ch = document.querySelector('input[name="h_ch"]');
-                // restaura estado dos botoes
-                if (h_ch) {
-                    h_ch.split('').forEach((state, index) => {
-                        radioaov[index].checked = state === '1';
-                    });
-                }
-                const km_final = document.querySelector('input[name="km_final"]');
-                // restaura estado dos botoes
-                if (km_final) {
-                    km_final.split('').forEach((state, index) => {
-                        radioaov[index].checked = state === '1';
-                    });
-                }
-                const cod = document.querySelector('input[name="cod"]');
-                // restaura estado dos botoes
-                if (cod) {
-                    cod.split('').forEach((state, index) => {
-                        radioaov[index].checked = state === '1';
-                    });
-                }
-                const codsiasus = document.querySelector('input[name="codsiasus"]');
-                // restaura estado dos botoes
-                if (codsiasus) {
-                    codsiasus.split('').forEach((state, index) => {
-                        radioaov[index].checked = state === '1';
-                    });
-                }
+    
+            
 
     // pega todos os botoes
     const radiocod = document.querySelectorAll('input[name="radio_cod"]');
-    const date = document.querySelector('input[name="dataocotime"]');
-    date.addEventListener('change', () => {
-        document.querySelector('input[name="dataoco"]').value = date.value;
-        console.log(date.value);
-    });
+    
+    const cod = document.querySelector('input[name="cod"]').value;
+                // restaura estado dos botoes
+                if (cod) {
+                    cod.split('').forEach((state, index) => {
+                        radiocod[index].checked = state === '1';
+                    });
+                }
     // Restaura state
     const savedcodState = localStorage.getItem('cod');
     // restaura estado dos botoes

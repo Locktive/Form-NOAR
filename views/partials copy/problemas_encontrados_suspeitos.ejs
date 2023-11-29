@@ -194,7 +194,7 @@
             <div style="width: 100%;">
                 <p class="checkbox_text">OUTRO</p>
                 <div class="did-floating-label-content textarea">
-                    <textarea class="did-floating-input row_textarea" value="<%= outrotransporte %>" placeholder="Insira o texto"></textarea>
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"><%= outrotransporte %></textarea>
                 </div>
             </div>
         </div>
@@ -205,7 +205,7 @@
         <div style="width: 100%;">
             <p class="checkbox_text">OUTRO</p>
             <div class="did-floating-label-content textarea">
-                <textarea class="did-floating-input row_textarea" value="<%= outroproblemasuspeito %>" placeholder="Insira o texto"></textarea>
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"><%= outroproblemasuspeito %></textarea>
             </div>
         </div>
     </div>
@@ -213,6 +213,11 @@
     <input type="hidden" name="radio1pes2" />
     <input type="hidden" name="radio1pes3" />
     <input type="hidden" name="radio1pes4" />
+
+    <input type="hidden" name="radio2pes" value="<%= pes %>" />
+    <input type="hidden" name="radio2pes2" value="<%= pes2 %>" />
+    <input type="hidden" name="radio2pes3" value="<%= pes3 %>"/>
+    <input type="hidden" name="radio2pes4" value="<%= pes4 %>" />
 
    
 
@@ -239,6 +244,12 @@
         // pega todos os botoes
     const radiopes = document.querySelectorAll('input[name="radio_pes"]');
     // Restaura state
+    const pesesc = document.querySelector('input[name="radio2pes"]').value;
+    if (pesesc) {
+        pesesc.split('').forEach((state, index) => {
+            radiopes[index].checked = state === '1';
+        });
+    }
     const savedpesState = localStorage.getItem('radiopesState');
     if (savedpesState) {
         savedpesState.split('').forEach((state, index) => {
@@ -264,6 +275,12 @@
 // pega todos os botoes
 const radiopes2 = document.querySelectorAll('input[name="radio_pes2"]');
     // Restaura state
+    const pesesc2 = document.querySelector('input[name="radio2pes2"]').value;
+    if (pesesc2) {
+        pesesc2.split('').forEach((state, index) => {
+            radiopes2[index].checked = state === '1';
+        });
+    }
     const savedradiopes2State = localStorage.getItem('radiopes2State');
     if (savedradiopes2State) {
         savedradiopes2State.split('').forEach((state, index) => {
@@ -289,6 +306,13 @@ const radiopes2 = document.querySelectorAll('input[name="radio_pes2"]');
 // pega todos os botoes
 const radiopes3 = document.querySelectorAll('input[name="radio_pes3"]');
     // Restaura state
+    const pesesc3 = document.querySelector('input[name="radio2pes3"]').value;
+    if (pesesc3) {
+        pesesc3.split('').forEach((state, index) => {
+            radiopes3[index].checked = state === '1';
+        });
+    }
+
     const savedradiopes3State = localStorage.getItem('radiopes3State');
     if (savedradiopes3State) {
         savedradiopes3State.split('').forEach((state, index) => {
@@ -314,6 +338,12 @@ const radiopes3 = document.querySelectorAll('input[name="radio_pes3"]');
 // pega todos os botoes
 const radiopes4 = document.querySelectorAll('input[name="radio_pes4"]');
     // Restaura state
+    const pesesc4 = document.querySelector('input[name="radio2pes4"]').value;
+    if (pesesc4) {
+        pesesc4.split('').forEach((state, index) => {
+            radiopes4[index].checked = state === '1';
+        });
+    }
     const savedradiopes4State = localStorage.getItem('radiopes4State');
     if (savedradiopes4State) {
         savedradiopes4State.split('').forEach((state, index) => {

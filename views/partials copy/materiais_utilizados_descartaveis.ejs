@@ -124,37 +124,37 @@
 
         <div class="coluna3">
             <div class="did-floating-label-content">
-                <input class="input_QTD" oninput="validateValue(this);" type="text" placeholder="" value="0">
+                <input class="input_QTD" oninput="validateValue(this);" type="text" placeholder="" value="<%= atadurasqtd %>">
             </div>
             <div class="did-floating-label-content">
-                <input class="input_QTD" oninput="validateValue(this);" type="text" placeholder="" value="0">
+                <input class="input_QTD" oninput="validateValue(this);" type="text" placeholder="" value="<%= caratertpoc %>">
             </div>
             <div class="did-floating-label-content">
-                <input oninput="validateValue(this);" class="input_QTD" type="text" placeholder="" value="0">
+                <input oninput="validateValue(this);" class="input_QTD" type="text" placeholder="" value="<%= compressa %>">
             </div>
             <div class="did-floating-label-content">
-                <input class="input_QTD" oninput="validateValue(this);" type="text" placeholder="" value="0">
+                <input class="input_QTD" oninput="validateValue(this);" type="text" placeholder="" value="<%= kitsqtd %>">
             </div>
             <div class="did-floating-label-content">
-                <input class="input_QTD" oninput="validateValue(this);" type="text" placeholder="" value="0">
+                <input class="input_QTD" oninput="validateValue(this);" type="text" placeholder="" value="<%= luvasdesc %>">
             </div>
             <div class="did-floating-label-content">
-                <input class="input_QTD" oninput="validateValue(this);" type="text" placeholder="" value="0">
+                <input class="input_QTD" oninput="validateValue(this);" type="text" placeholder="" value="<%= mascdesc %>">
             </div>
             <div class="did-floating-label-content">
-                <input oninput="validateValue(this);" class="input_QTD" type="text" placeholder="" value="0">
+                <input oninput="validateValue(this);" class="input_QTD" type="text" placeholder="" value="<%= mantailuminizada %>">
             </div>
             <div class="did-floating-label-content">
-                <input oninput="validateValue(this);" class="input_QTD" type="text" placeholder="" value="0">
+                <input oninput="validateValue(this);" class="input_QTD" type="text" placeholder="" value="<%= pasdodea %>">
             </div>
             <div class="did-floating-label-content">
-                <input oninput="validateValue(this);" class="input_QTD" type="text" placeholder="" value="0">
+                <input oninput="validateValue(this);" class="input_QTD" type="text" placeholder="" value="<%= sonda %>">
             </div>
             <div class="did-floating-label-content">
-                <input oninput="validateValue(this);" class="input_QTD" type="text" placeholder="" value="0">
+                <input oninput="validateValue(this);" class="input_QTD" type="text" placeholder="" value="<%= sorofisi %>">
             </div>
             <div class="did-floating-label-content">
-                <input oninput="validateValue(this);" class="input_QTD" type="text" placeholder="" value="0">
+                <input oninput="validateValue(this);" class="input_QTD" type="text" placeholder="" value="<%= talasqtd %>">
             </div>
         </div>
     </div>
@@ -162,13 +162,17 @@
         <div style="width: 100%;">
             <p class="checkbox_text">OUTRO</p>
             <div class="did-floating-label-content textarea">
-                <textarea class="did-floating-input row_textarea" value="<%= outromaterialdesc %>" placeholder="Insira o texto"></textarea>
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"><%= outromaterialdesc %></textarea>
             </div>
         </div>
     </div>
     <input type="hidden" name="radioState_ataduras" id="radioState_ataduras" />
     <input type="hidden" name="radioState_KITS" id="radioState_KITS" />
     <input type="hidden" name="radioState_talas" id="radioState_talas" />
+
+    <input type="hidden" name="atadurastmn" id="atadurastm" value="<%= atadurastmn %>" />
+    <input type="hidden" name="kit" id="caratertpoc" value="<%= kitstmn %>" />
+    <input type="hidden" name="tala" id="compressa" value="<%= talastmn %>" />
 </body>
 <script>
     function validateValue(input) {
@@ -182,9 +186,31 @@
 
     // pega todos os botoes
     const radioMUD = document.querySelectorAll('input[name="radio_ataduras"]');
-    const radioMUD2 = document.querySelectorAll('input[name="radio_KITS"]');
-    const radioMUD3 = document.querySelectorAll('input[name="radio_talas"]');
+    const atadura = document.querySelectorAll('input[name="atadurastmn"]').value;
     // Restaura state
+    if(atadura) {
+        atadura.split('').forEach((state, index) => {
+                        radioMUD[index].checked = state === '1';
+                    });
+    }
+   
+
+    const radioMUD2 = document.querySelectorAll('input[name="radio_KITS"]');
+    const kit = document.querySelectorAll('input[name="kit]').value;
+     // Restaura state
+     if(kit) {
+        kit.split('').forEach((state, index) => {
+                        radioMUD[index].checked = state === '1';
+                    });
+    }
+    const radioMUD3 = document.querySelectorAll('input[name="radio_talas"]');
+    const tala = document.querySelectorAll('input[name="talasqtd"]').value;
+    // Restaura state
+    if(tala) {
+        tala.split('').forEach((state, index) => {
+                        radioMUD3[index].checked = state === '1';
+                    });
+    }
     const savedRadioMUDState = localStorage.getItem('radioState_ataduras');
     const savedRadioMUD2State = localStorage.getItem('radioState_KITS');
     const savedRadioMUD3State = localStorage.getItem('radioState_talas');

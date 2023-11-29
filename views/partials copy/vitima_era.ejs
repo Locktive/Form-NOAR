@@ -82,10 +82,17 @@
         </label>
     </div>
     <input type="hidden" name="radio_vte1" value="" />
+    <input type="hidden" name="radio_vte2" value="<%= vteesc %>" />
     <script>
         // pega todos os botoes
         const radiosvte = document.querySelectorAll('input[name="radio_vte"]');
         // Restaura state
+        const vte = document.querySelector('input[name="radio_vte1"]').value;
+        if (vte) {
+            vte.split('').forEach((state, index) => {
+                radiosvte[index].checked = state === '1';
+            });
+        }
         const savedRadiovteState = localStorage.getItem('radiovteState');
         if (savedRadiovteState) {
             savedRadiovteState.split('').forEach((state, index) => {

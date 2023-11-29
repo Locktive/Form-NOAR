@@ -8,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="./stylesheets/custom_checkbox2.css" />
     <link rel="stylesheet" type="text/css" href="./stylesheets/floating_label.css" />
     <link rel="stylesheet" type="text/css" href="./stylesheets/sub_accordion.css" />
-    <title>Document</title>
 </head>
 
 
@@ -423,7 +422,12 @@
     <input type="hidden" name="radioedema" />
     <input type="hidden" name="radiohemorragia" />
     <input type="hidden" name="checkboxparada" />
-    <input type="hidden" name="acov" value="<%= sinal_sintomav %>">
+    <input type="hidden" name="csess" value="<%= CSESS %>">
+    <input type="hidden" name="sess" value="<%= SESS %>">
+    <input type="hidden" name="sess2" value="<%= SESS2 %>">
+    <input type="hidden" name="sess3" value="<%= SESS3 %>">
+    <input type="hidden" name="sess4" value="<%= SESS4 %>">
+    <input type="hidden" name="sess5" value="<%= SESS5 %>">
 
 
     <script>
@@ -444,55 +448,6 @@
             });
         }
 
-        const CSESS = document.querySelector('input[name="CSESS"]');
-                // restaura estado dos botoes
-                if (CSESS) {
-                    CSESS.split('').forEach((state, index) => {
-                        radioaov[index].checked = state === '1';
-                    });
-                }
-                const SESS = document.querySelector('input[name="SESS"]');
-                // restaura estado dos botoes
-                if (SESS) {
-                    SESS.split('').forEach((state, index) => {
-                        radioaov[index].checked = state === '1';
-                    });
-                }
-                const SESS1 = document.querySelector('input[name="SESS1"]');
-                // restaura estado dos botoes
-                if (SESS1) {
-                    SESS1.split('').forEach((state, index) => {
-                        radioaov[index].checked = state === '1';
-                    });
-                }
-                const SESS2 = document.querySelector('input[name="SESS2"]');
-                // restaura estado dos botoes
-                if (SESS2) {
-                    SESS2.split('').forEach((state, index) => {
-                        radioaov[index].checked = state === '1';
-                    });
-                }
-                const SESS3 = document.querySelector('input[name="SESS3"]');
-                // restaura estado dos botoes
-                if (SESS3) {
-                    SESS3.split('').forEach((state, index) => {
-                        radioaov[index].checked = state === '1';
-                    });
-                }
-                const SESS4 = document.querySelector('input[name="SESS4"]');
-                // restaura estado dos botoes
-                if (SESS4) {
-                    SESS4.split('').forEach((state, index) => {
-                        radioaov[index].checked = state === '1';
-                    });
-                }
-                const SESS5 = document.querySelector('input[name="SESS5"]');
-                // restaura estado dos botoes
-                if (SESS5) {
-                    SESS5.split('').forEach((state, index) => {
-                        radioaov[index].checked = state === '1';
-                    });
-                }
                 
 
         // pega todos os botoes
@@ -502,6 +457,50 @@
         const radioSES3 = document.querySelectorAll('input[name="radio_edema"]');
         const radioSES4 = document.querySelectorAll('input[name="radio_hemorragia"]');
         const radioSES5 = document.querySelectorAll('input[name="checkbox_parada"]');
+
+        
+        const C1SESS = document.querySelector('input[name="csess"]').value;
+                // restaura estado dos botoes
+                if (C1SESS) {
+                    C1SESS.split('').forEach((state, index) => {
+                        checkboxSES[index].checked = state === '1';
+                    });
+                }
+                const S1ESS = document.querySelector('input[name="sess"]').value;
+                // restaura estado dos botoes
+                if (S1ESS) {
+                    S1ESS.split('').forEach((state, index) => {
+                        radioSES[index].checked = state === '1';
+                    });
+                }
+                const S1ESS2 = document.querySelector('input[name="sess2"]').value;
+                // restaura estado dos botoes
+                if (S1ESS2) {
+                    S1ESS2.split('').forEach((state, index) => {
+                        radioSES2[index].checked = state === '1';
+                    });
+                }
+                const S1ESS3 = document.querySelector('input[name="sess3"]').value;
+                // restaura estado dos botoes
+                if (S1ESS3) {
+                    S1ESS3.split('').forEach((state, index) => {
+                        radioSES3[index].checked = state === '1';
+                    });
+                }
+                const S1ESS4 = document.querySelector('input[name="sess4"]').value;
+                // restaura estado dos botoes
+                if (S1ESS4) {
+                    S1ESS4.split('').forEach((state, index) => {
+                        radioSES4[index].checked = state === '1';
+                    });
+                }
+                const S1ESS5 = document.querySelector('input[name="sess5"]').value;
+                // restaura estado dos botoes
+                if (S1ESS5) {
+                    S1ESS5.split('').forEach((state, index) => {
+                        radioSES5[index].checked = state === '1';
+                    });
+                }
 
         // Restaura state
         const savedcheckboxSESState = localStorage.getItem('checkboxSESState');

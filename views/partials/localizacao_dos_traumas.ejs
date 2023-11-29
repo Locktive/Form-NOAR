@@ -351,7 +351,7 @@
 
 
       var partesSelecionadas = [];
-      var ferimentos = JSON.parse(localStorage.getItem('ferimentos')) || {
+      var ferimentos = {
          "Fratura/luxação/entorse": [],
          "Ferimentos diversos": [],
          "Hemorragias": [],
@@ -372,11 +372,9 @@
             partesSelecionadas.push(partId);
          }
 
-         // Save ferimentos to localStorage
-         localStorage.setItem('ferimentos', JSON.stringify(ferimentos));
       }
       function partClicked(event) {
-
+         console.log(ferimentos);
          const selectElement = document.getElementById('field1');
          if (!selectElement.value) {
             return;
@@ -442,7 +440,7 @@
       }
 
       document.getElementById('field1').addEventListener('change', function () {
-
+         var clickedPath = event.target;
          partesSelecionadas = [];
          var selectedInjury = this.value;
 
@@ -454,7 +452,7 @@
             for (var i = 0; i < ferimentos[selectedInjury].length; i++) {
                var partId = ferimentos[selectedInjury][i];
                partesSelecionadas.push(partId);
-               document.getElementById(partId).classList.add('selected');
+               clickedPath.classList.add('selected');
             }
          }
          updateDadosDiv();

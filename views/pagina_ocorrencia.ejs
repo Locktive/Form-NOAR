@@ -114,12 +114,66 @@
                 </a>
 
                 <% for(var index=0; index<data.length; index++) { %>
-                    <a href="/ocview?paciente=<%- data[index].fk_paciente %>&observ=<%- data[index].fk_observacoes %>&avacine=<%- data[index].fk_avaliacaocinematica %>&dct=<%- data[index].fk_decisaotransporte %>&fc=<%- data[index].fk_formadeconducao %>&obj=<%- data[index].fk_objetorecolhido %>&pbs=<%- data[index].prob_encontrados_suspeitos %>&pe=<%- data[index].fk_procedimentosefetuados %>&ss=<%- data[index].fk_sinais_sintomas %>&glasgow=<%- data[index].fk_teste_glasgow %>&tpo=<%- data[index].fk_tipo_ocorrencia_pre_hospitalar %>&vte=<%- data[index].fk_vitima_era %>&ferimentos=<%- data[index].fk_ferimentos_corpo %>&final=<%- data[index].fk_finalizacao %>&anamnemer=<%- data[index].fk_anamne_emergencial %>&anamnegesta=<%- data[index].fk_anamne_gestacional %>&mtehosp=<%- data[index].fk_materiais_hospital %>&mtedesc=<%- data[index].fk_materiais_descarte %>&sv=<%- data[index].fk_sinais_vitais %>" class="ocorrencia">Ocorrência: <%= data[index].cod_relatorio %></a>
+                    <a href="/ocview?relatorio=<%= data[index].id_relatorio %>&paciente=<%- data[index].fk_paciente %>&observ=<%- data[index].fk_observacoes %>&avacine=<%- data[index].fk_avaliacaocinematica %>&dct=<%- data[index].fk_decisaotransporte %>&fc=<%- data[index].fk_formadeconducao %>&obj=<%- data[index].fk_objetorecolhido %>&pbs=<%- data[index].fk_prob_encontrados_suspeitos %>&pe=<%- data[index].fk_procedimentos_efetuados %>&ss=<%- data[index].fk_sinais_sintomas %>&glasgow=<%- data[index].fk_teste_glasgow %>&tpo=<%- data[index].fk_tipo_ocorrencia_pre_hospitalar %>&vte=<%- data[index].fk_vitima_era %>&ferimentos=<%- data[index].fk_ferimentos_corpo %>&final=<%- data[index].fk_finalizacao %>&anamnemer=<%- data[index].fk_anamne_emergencial %>&anamnegesta=<%- data[index].fk_anamne_gestacional %>&mtehosp=<%- data[index].fk_materiais_hospital %>&mtedesc=<%- data[index].fk_materiais_descarte %>&sv=<%- data[index].fk_sinais_vitais %>" class="ocorrencia">Ocorrência: <%= data[index].cod_relatorio %></a>
                   <% } %>
 
             </div>
         </form>
         <%- include('./partials/footer.ejs') %>
 </body>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        localStorage.removeItem('radioState');
+                    localStorage.removeItem('radiovteState');
+                    localStorage.removeItem('checkboxpeState');
+                    localStorage.removeItem('annsvState');
+                    localStorage.removeItem('perfsvState');
+                    localStorage.removeItem('checkboxacState');
+                    localStorage.removeItem('radiopesState');
+                    localStorage.removeItem('radiopes2State');
+                    localStorage.removeItem('radiopes3State');
+                    localStorage.removeItem('radiopes4State');
+                    localStorage.removeItem('radioStateglasgow');
+                    localStorage.removeItem('dctState');
+                    localStorage.removeItem('fcState');
+                    localStorage.removeItem('kedradioStfftate');
+                    localStorage.removeItem('colarradioStfftate');
+                    localStorage.removeItem('radiotff');
+                    localStorage.removeItem('aov');
+                    localStorage.removeItem('radiopbs');
+                    localStorage.removeItem('radiomed');
+                    localStorage.removeItem('alergiaradio');
+                    localStorage.removeItem('ingerirradio');
+                    localStorage.removeItem('cod');
+                    localStorage.removeItem('checkboxSESState');
+                    localStorage.removeItem('radioSESState');
+                    localStorage.removeItem('radioSES2State');
+                    localStorage.removeItem('radioSES3State');
+                    localStorage.removeItem('radioSES4State');
+                    localStorage.removeItem('radioSES5State');
+                    localStorage.removeItem('ferimentos');
+                    localStorage.removeItem('radio_pre_natalState');
+                    localStorage.removeItem('radio_pre_natal1State');
+                    localStorage.removeItem('radio_pre_natal2State');
+                    localStorage.removeItem('radio_pre_natal3State');
+                    localStorage.removeItem('radio_pre_natal4State');
+                    localStorage.removeItem('radio_bebe');
+                    localStorage.removeItem('radio_parto');
+                    localStorage.removeItem('radio_p_filho1State');
+                    localStorage.removeItem('tempo_med');
+                    localStorage.removeItem('tempo_ingestao');
+                    localStorage.removeItem('radioState_ataduras');
+                    localStorage.removeItem('radioState_KITS');
+                    localStorage.removeItem('radioState_talas');
+                    for (let i = 0; i < 42; i++) {
+                        localStorage.removeItem('textareafinal' + i);
+                    }
+                    for (let i = 0; i < 24; i++) {
+                        localStorage.removeItem('inputtext' + i);
+                    }
+});
+</script>
 
 </html>

@@ -209,7 +209,7 @@
         <div class="linha_checkbox-group">
             <label class="custom_checkbox">
                 <div class="did-floating-label-content">
-                    <p class="did-floating-input totalglasgow" id="totalglasgow"></p>
+                    <p class="did-floating-input totalglasgow" id="totalglasgow"><%= somaglasgow %></p>
                     <label class="did-floating-label">Total</label>
                 </div>
             </label>
@@ -218,13 +218,13 @@
     <div style="display: flex; flex-direction: column; align-items: center;">
         <div class="did-floating-label-content textarea">
                 <div class="did-floating-label-content">
-                    <p>NÍVEL DECLARADO DE LESÃO : </p><div id="nivelglasgow"></div> 
+                    <p>NÍVEL DECLARADO DE LESÃO : </p><div id="nivelglasgow"><%= somaglasgow %></div> 
                 </div>
         </div>
     </div>
-    <input type="hidden" name="nivel" id="nivel">
-    <input type="hidden" name="total" id="total">
-    <input type="hidden" name="adulto" id="adulto" value="1">
+    <input type="hidden" name="nivel" id="nivel" value="<%= nivelglasgow %>">
+    <input type="hidden" name="total" id="total" value="<%= somaglasgow %>">
+    <input type="hidden" name="adulto" id="adulto" value="<%= adultoglasgow %>">
 
 
     <script>

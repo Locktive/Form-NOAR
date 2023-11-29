@@ -90,6 +90,10 @@
             </div>
 
             <div class="checkbox_row">
+                <p class="checkbox_text2">TIRANTE ARANHA</p>
+            </div>
+
+            <div class="checkbox_row">
                 <p class="checkbox_text2">CÂNULA</p>
             </div>
 
@@ -106,33 +110,37 @@
             <p class="checkbox_text_QTD">QTD:</p>
             <p class="checkbox_text_QTD">QTD:</p>
             <p class="checkbox_text_QTD">QTD:</p>
+            <p class="checkbox_text_QTD">QTD:</p>
 
         </div>
 
         <div class="coluna3">
             <div class="did-floating-label-content">
-                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
+                <input class="input_QTD" oninput="validateValue(this);" value="<%= base %>" type="text" placeholder="">
             </div>
             <div class="did-floating-label-content">
-                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
+                <input class="input_QTD" oninput="validateValue(this);" value="<%= colarqtd %>" type="text" placeholder="">
             </div>
             <div class="did-floating-label-content">
-                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
+                <input class="input_QTD" oninput="validateValue(this);" value="<%= coxins %>" type="text" placeholder="">
             </div>
             <div class="did-floating-label-content">
-                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
+                <input class="input_QTD" oninput="validateValue(this);" value="<%= kedqtd %>" type="text" placeholder="">
             </div>
             <div class="did-floating-label-content">
-                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
+                <input class="input_QTD" oninput="validateValue(this);" value="<%= macarigida %>" type="text" placeholder="">
             </div>
             <div class="did-floating-label-content">
-                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
+                <input class="input_QTD" oninput="validateValue(this);" value="<%= ttfqtd %>" type="text" placeholder="">
             </div>
             <div class="did-floating-label-content">
-                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
+                <input class="input_QTD" oninput="validateValue(this);" value="<%= tirante %>" type="text" placeholder="">
             </div>
             <div class="did-floating-label-content">
-                <input class="input_QTD" oninput="validateValue(this);" value="0" type="text" placeholder="">
+                <input class="input_QTD" oninput="validateValue(this);" value="<%= canula %>" type="text" placeholder="">
+            </div>
+            <div class="did-floating-label-content">
+                <input class="input_QTD" oninput="validateValue(this);" value="<%= tirante1 %>" type="text" placeholder="">
             </div>
         </div>
     </div>
@@ -140,13 +148,17 @@
         <div style="width: 100%;">
             <p class="checkbox_text">OUTRO</p>
             <div class="did-floating-label-content textarea">
-                <textarea class="did-floating-input row_textarea" value="<%= outromaterialhosp %>" placeholder="Insira o texto"></textarea>
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"><%= outromaterialhosp %></textarea>
             </div>
         </div>
     </div>
    <input type="hidden" name="radio_colar1" />
     <input type="hidden" name="radio_ked1" />
     <input type="hidden" name="radio_ttf1" />
+
+    <input type="hidden" name="colar" value="<%= colartmn %>" />
+    <input type="hidden" name="ked" value="<%= kedtmn %>" />
+    <input type="hidden" name="ttf" value="<%= ttftmn %>" />
 
     <script>
         function validateValue(input) {
@@ -158,6 +170,13 @@
         // pega todos os botoes
         const radiotamanhocolar = document.querySelectorAll('input[name="radio_colar"]');
                 // Restaura state
+                const tamanhocolar = document.querySelector('input[name="colar"]').value;
+                // restaura estado dos botoes
+                if (tamanhocolar) {
+                    tamanhocolar.split('').forEach((state, index) => {
+                        radiotamanhocolar[index].checked = state === '1';
+                    });
+                }
                 const savedcolarState = localStorage.getItem('colarradioStfftate');
                 // restaura estado dos botoes
                 if (savedcolarState) {
@@ -186,6 +205,13 @@
                 // pega todos os botoes
                 const radioked = document.querySelectorAll('input[name="radio_ked"]');
                 // Restaura state
+                const savedked = document.querySelector('input[name="ked"]').value;
+                // restaura estado dos botoes
+                if (savedked) {
+                    savedked.split('').forEach((state, index) => {
+                        radioked[index].checked = state === '1';
+                    });
+                }
                 const savedkedState = localStorage.getItem('kedradioStfftate');
                 // restaura estado dos botoes
                 if (savedkedState) {
@@ -214,7 +240,25 @@
                 // pega todos os botoes
                 const radiostff = document.querySelectorAll('input[name="radio_ttf"]');
                 // Restaura state
-                const savedRadiotff = localStorage.getItem('radiotff');
+                const savedttf = document.querySelector('input[name="ttf"]').value;
+                if (savedttf) {
+                    savedttf.split('').forEach((state, index) => {
+                        radiostff[index].checked = state === '1';
+                    });
+                }
+                // Restaura state
+                if (savedttf) {
+                    savedttf.split('').forEach((state, index) => {
+                        radiostff[index].checked = state === '1';
+                    });
+                }
+
+                const savedRadiotff = document.querySelector('input[name="ttf"]').value;
+                if (savedttf) {
+                    savedttf.split('').forEach((state, index) => {
+                        radiostff[index].checked = state === '1';
+                    });
+                }
                 // restaura estado dos botoes
                 if (savedRadiotff) {
                     savedRadiotff.split('').forEach((state, index) => {

@@ -79,7 +79,7 @@
         <div style="width: 100%;">
             <p class="checkbox_text">O QUE ACONTECEU:</p>
             <div class="did-floating-label-content textarea">
-                <textarea class="did-floating-input row_textarea" value="<%= oqacon %>" placeholder="Insira o texto"></textarea>
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"><%= oqacon %></textarea>
             </div>
         </div>
     </div>
@@ -107,7 +107,7 @@
             <div style="width: 100%;">
                 <p class="checkbox_text">A QUANTO TEMPO ISSO ACONTECEU?</p>
                 <div class="did-floating-label-content textarea">
-                    <textarea class="did-floating-input row_textarea" value="<%= quantotemp %>" placeholder="Insira o texto"></textarea>
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"><%= quantotemp %></textarea>
                 </div>
             </div>
         </div>
@@ -138,7 +138,7 @@
             <div style="width: 100%;">
                 <p class="checkbox_text">QUAIS?</p>
                 <div class="did-floating-label-content textarea">
-                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"><%= problemasaude %></textarea>
                 </div>
             </div>
         </div>
@@ -169,7 +169,7 @@
             <div style="width: 100%;">
                 <p class="checkbox_text">QUAIS OS MEDICAMENTOS?</p>
                 <div class="did-floating-label-content textarea">
-                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"><%= medicamentos %></textarea>
                 </div>
             </div>
         </div>
@@ -177,7 +177,7 @@
         <div class="textarea_row">
             <p class="checkbox_text">HORÁRIO DA ULTIMA MEDICAÇÃO</p>
                 <div class="did-floating-label-content textarea">
-                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"><%= horamedica %></textarea>
                 </div>
         </div>
 
@@ -208,7 +208,7 @@
             <div style="width: 100%;">
                 <p class="checkbox_text">QUE TIPO DE ALERGIA</p>
                 <div class="did-floating-label-content textarea">
-                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"><%= tipoalergia %></textarea>
                 </div>
             </div>
         </div>
@@ -238,7 +238,7 @@
         <div class="textarea_row">
             <p class="checkbox_text">HORÁRIO DA ÚLTIMA INGESTÃO</p>
                 <div class="did-floating-label-content textarea">
-                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"><%= hora_ingest %></textarea>
                 </div>
         </div>
 
@@ -248,7 +248,11 @@
     <input type="hidden" name="radiomed"  />
     <input type="hidden" name="radioalergia"  />
     <input type="hidden" name="radioingerir"  />
-    <input type="hidden" name="acov" value="<%= oqacon %>">
+    <input type="hidden" name="acov" value="<%= aov %>">
+    <input type="hidden" name="pbs" value="<%= problemasaude %>">
+    <input type="hidden" name="radiomed1" value="<%= med %>">
+    <input type="hidden" name="radioalergia1" value="<%= alergia %>">
+    <input type="hidden" name="radioingerir1" value="<%= ingeriu %>">
 
 </body>
 <script>
@@ -270,18 +274,11 @@
     // pega todos os botoes
     const radioaov = document.querySelectorAll('input[name="radio_aconteceu_outras_vezes"]');
     // Restaura state
-    const acov = document.querySelector('input[name="acov"]');
+    const acov = document.querySelector('input[name="acov"]').value;
+    console.log(acov);
                 // restaura estado dos botoes
                 if (acov) {
                    acov.split('').forEach((state, index) => {
-                        radioaov[index].checked = state === '1';
-                    });
-                }
-                // Restaura state
-                const savedaovState = localStorage.getItem('aov');
-                // restaura estado dos botoes
-                if (savedaovState) {
-                    savedaovState.split('').forEach((state, index) => {
                         radioaov[index].checked = state === '1';
                     });
                 }
@@ -297,7 +294,7 @@
                         });
                         document.querySelector('input[name="radioaov"]').value = binaryaov;
                         // Save state
-                        localStorage.setItem('aov', binaryaov);
+                        console.log(binaryaov);
 
 
                         console.log(binaryaov);
@@ -306,6 +303,13 @@
                 // pega todos os botoes
                 const radiopbs = document.querySelectorAll('input[name="radio_prob_saude"]');
                 // Restaura state
+                const pbs = document.querySelector('input[name="pbs"]').value;
+                // restaura estado dos botoes
+                if (pbs) {
+                   pbs.split('').forEach((state, index) => {
+                        radiopbs[index].checked = state === '1';
+                    });
+                }
                 const savedpbsState = localStorage.getItem('radiopbs');
                 // restaura estado dos botoes
                 if (savedpbsState) {
@@ -334,6 +338,13 @@
                 // pega todos os botoes
                 const radiosmed = document.querySelectorAll('input[name="radio_usa_medicacao"]');
                 // Restaura state
+                const medicamentos = document.querySelector('input[name="radiomed1"]').value;
+                // restaura estado dos botoes
+                if (medicamentos) {
+                   medicamentos.split('').forEach((state, index) => {
+                        radiosmed[index].checked = state === '1';
+                    });
+                }
                 const savedRadiomed = localStorage.getItem('radiomed');
                 // restaura estado dos botoes
                 if (savedRadiomed) {
@@ -361,6 +372,14 @@
                 });
                 // pega todos os botoes
         const radio_alergia = document.querySelectorAll('input[name="radio_alergia"]');
+
+                const alergia = document.querySelector('input[name="radioalergia1"]').value;
+                // restaura estado dos botoes
+                if (alergia) {
+                   alergia.split('').forEach((state, index) => {
+                        radio_alergia[index].checked = state === '1';
+                    });
+                }
                 // Restaura state
                 const savedalergiaState = localStorage.getItem('alergiaradio');
                 // restaura estado dos botoes
@@ -389,6 +408,13 @@
                 });
                 // pega todos os botoes
         const radioingeriu = document.querySelectorAll('input[name="radio_ingerir"]');
+                const ingeriu = document.querySelector('input[name="radioingerir1"]').value;
+                // restaura estado dos botoes
+                if (ingeriu) {
+                   ingeriu.split('').forEach((state, index) => {
+                        radioingeriu[index].checked = state === '1';
+                    });
+                }
                 // Restaura state
                 const savedingerirState = localStorage.getItem('ingerirradio');
                 // restaura estado dos botoes
