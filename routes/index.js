@@ -40,6 +40,8 @@ router.post('/login', function (req, res) {
         console.log("passou");
         var passCheck = results[0].senha;
         console.log(passCheck);
+        var operante = results[0].Operante;
+        if (operante == 1) {
         if (senha === passCheck) {
           console.log("Resultado:", results);
           req.session.user = {
@@ -47,7 +49,8 @@ router.post('/login', function (req, res) {
             nome: results[0].Nome,
             isAdmin: results[0].adm, // Checa se é admin
             data_inicio: results[0].Data_inicio,
-            codigo: results[0].codigo
+            codigo: results[0].codigo,
+            operante: results[0].Operante
           };
           console.log(req.session.user)
           console.log("Connected as " + req.session.user.nome);
@@ -56,6 +59,10 @@ router.post('/login', function (req, res) {
           res.render('index.ejs', { title: 'Login - Bombeiros de Guaramirim', pag: 'Login', errorMessage: 'Senha incorreta' });
           return;
         }
+      } else {
+        res.render('index.ejs', { title: 'Login - Bombeiros de Guaramirim', pag: 'Login', errorMessage: 'Bombeiro não operante' });
+        return;
+      }
       } else {
         console.log("Consulta não realizada");
         res.render('index.ejs', { title: 'Login - Bombeiros de Guaramirim', pag: 'Login', errorMessage: 'Código não encontrado' });
@@ -72,7 +79,7 @@ router.post('/login', function (req, res) {
 // mecanismo de autenticação
 
 function requireAuth(req, res, next) {
-  if (req.session && req.session.user) {
+  if (req.session && req.session.user && req.session.user.operante == 1) {
     return next();
   } else {
     res.redirect('/');
@@ -82,7 +89,7 @@ function requireAuth(req, res, next) {
 // mecanismo de permissao de administrador
 
 function admLock(req, res, next) {
-  if (req.session && req.session.user && req.session.user.isAdmin === 1) {
+  if (req.session && req.session.user && req.session.user.isAdmin === 1 ) {
     return next();
   } else {
     res.redirect('/acesso_negado');
@@ -533,15 +540,21 @@ router.post('/cadastro', function (req, res) {
   console.log(formattedDate);
   var sql = 'INSERT INTO bombeiro(Nome,Data_inicio, Operante,  codigo, senha, adm) VALUES (?,?, ?, ?, ?, ?)';
   var values = [nome, formattedDate, 1, codigo, senha, admp];
-  connection.query(sql, values, function (err, result) {
-    if (err) throw err;
-    console.log("1 record inserted");
-  });
-  res.redirect('/contato');
+  if (req.session.user.isAdmin === 1) {
+    connection.query(sql, values, function (err, result) {
+      if (err) throw err;
+      console.log("1 record inserted");
+      res.redirect('/bombeiros');
+    });
+  } else {
+    res.redirect('/acesso_negado');
+  }
+  
+  
 });
 
 router.get('/bombeiros', requireAuth, admLock, function (req, res, next) {
-  var sql = 'SELECT * FROM bombeiro';
+  var sql = 'SELECT * FROM bombeiro WHERE Operante = 1;';
   connection.query(sql, function (err, results, fields) {
     if (err) throw err;
     res.render('bombeiros.ejs', { pag: 'Bombeiros', title: 'Bombeiros - Bombeiros de Guaramirim', user: req.session.user, data: results });
@@ -1298,8 +1311,21 @@ router.get('/contato', function (req, res, next) {
 });
 
 // rota do registro de bombeiros
-router.get('/registro', requireAuth, admLock, function (req, res, next) {
-  res.render('registro_bomb_ambu.ejs', { pag: 'Bombeiros registrados', title: 'Bombeiros registrados - Bombeiros de Guaramirim', Nome: 'Olá, ' + req.session.user + '!', user: req.session.user });
+router.post('/bombeiros', requireAuth, admLock, function (req, res, next) {
+  var desativar = req.query.desativa;
+
+  if(req.session.user.isAdmin == 1){
+    var sql = 'UPDATE bombeiro SET Operante = 0 WHERE id_bombeiro = ?';
+    var values = [desativar];
+    connection.query(sql, values, function (err, results, fields) {
+      if (err) throw err;
+      res.redirect('/bombeiros');
+    });
+  } else {
+    res.redirect('/ocorrencia');
+  }
+
+  
 });
 
 // log out do usuário
