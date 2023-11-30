@@ -196,7 +196,7 @@
     </div>
     <input type="hidden" name="dct1" value="" />
     <input type="hidden" name="forma_conducao" value="" />
-    <input type="hidden" name="dct2" value="<%= dct1 %>" />
+    <input type="hidden" name="dct2" value="<%= dct %>" />
     <input type="hidden" name="fc2" value="<%= fcop %>">
 
     <script>
@@ -219,7 +219,7 @@
         }
         // pega todos os botoes
         const dct = document.querySelectorAll('input[name="radio_dt"]');
-        const dct2 = document.querySelector('input[name="dct2"]').value;
+        const dct2 = document.querySelector('input[name="dct"]');
                 // restaura estado dos botoes
                 if (dct2) {
                     dct2.split('').forEach((state, index) => {
