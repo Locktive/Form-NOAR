@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/custom_checkbox1.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/custom_checkbox2.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/floating_label.css" />
+    <title>Document</title>
+</head>
+<style>
+
+    .sub_accordion_P_EFETUADOS {
+
+        display: flex !important;
+        width: 100% !important;
+        border: none !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        background-color: #E1E1E1 !important;
+        padding: 10px !important;
+        color: #333333 !important;
+        text-decoration: none !important;
+        margin: 0 !important;
+        font-weight: 600 !important;
+
+
+    }
+    .icon:hover  {
+        transform: rotate(180deg) scale(1.0);
+    }
+
+    .icon_active {
+    transform: rotate(45deg); /* Ajuste o ângulo de rotação desejado */
+    transition: transform 0.3s ease; /* Adicione uma transição suave */
+}
+    .icon {
+        transition: 0.4s;
+    }
+    .rotating {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+</style>
+
+<body>
+    <!-- Criação de uma lista de checkboxes -->
+    <div class="checkbox_row">
+        <p class="checkbox_text">ASPIRAÇÃO</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">AVALIAÇÃO INICIAL</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">AVALIAÇÃO DIRIGIDA</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">AVALIAÇÃO CONTINUADA</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">CHAVE DE RAUTEK</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">CÂNULA DE GUEDEL</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">DESOBSTRUSÃO DE V.A</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">EMPREGO DE D.E.A</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">GERENCIAMENTO DE RISCOS</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">CURATIVOS</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">COMPRESSIVOS</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">ENCRAVAMENTO</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">OCULAR</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">QUEIMADURA</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">SIMPLES</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">3 PONTAS</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <button type="button" class="sub_accordion_P_EFETUADOS">
+        <p class="checkbox_text">IMOBILIZAÇÕES</p>
+        <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
+    </button>
+    <div class="painel">
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">MEMBRO INF. DIREITO</p>
+            <label class="custom_checkbox">
+                <input type="checkbox" name="checkbox_MA" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">MEMBRO INF. ESQUERDO</p>
+            <label class="custom_checkbox">
+                <input type="checkbox" name="checkbox_MA" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">MEMBRO SUP. DIREITO</p>
+            <label class="custom_checkbox">
+                <input type="checkbox" name="checkbox_MA" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">MEMBRO SUP. ESQUERDO</p>
+            <label class="custom_checkbox">
+                <input type="checkbox" name="checkbox_MA" />
+            </label>
+        </div>
+        
+        <div class="checkbox_row">
+            <p class="checkbox_text">QUADRIL</p>
+            <label class="custom_checkbox">
+                <input type="checkbox" name="checkbox_MA" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">CERVICAL</p>
+            <label class="custom_checkbox">
+                <input type="checkbox" name="checkbox_MA" />
+            </label>
+        </div>
+
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">MACA SOBRE RODAS</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">MACA RÍGIDA</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">PONTE</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">RETIRADO PACACETE</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">R.C.P</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">ROLAMENTO 90°</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">ROLAMENTO 180°</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">TOMADA DECISÃO</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">TRATADO CHOQUE</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">USO DE CÂNULA</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">USO COLAR</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">USO KED</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">USO TTF</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">VENTILAÇÃO SUPORTE</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">OXIGENOTERAPIA</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">REANIMADOR</p>
+        <label class="custom_checkbox">
+            <input type="checkbox" name="checkbox_P_EFETUADOS" />
+        </label>
+    </div>
+
+    <button type="button" class="sub_accordion_P_EFETUADOS">
+        <p class="checkbox_text">MEIOS AUXILIARES</p>
+        <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
+    </button>
+    <div class="painel">
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">CELESC</p>
+            <label class="custom_checkbox">
+                <input type="checkbox" name="checkbox_MA" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">POLICIA CIVIL</p>
+            <label class="custom_checkbox">
+                <input type="checkbox" name="checkbox_MA" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">POLICIA MILITAR</p>
+            <label class="custom_checkbox">
+                <input type="checkbox" name="checkbox_MA" />
+            </label>
+        </div>
+        
+        <div class="checkbox_row">
+            <p class="checkbox_text">PRE</p>
+            <label class="custom_checkbox">
+                <input type="checkbox" name="checkbox_MA" />
+            </label>
+        </div>
+        
+        <div class="checkbox_row">
+            <p class="checkbox_text">PRF</p>
+            <label class="custom_checkbox">
+                <input type="checkbox" name="checkbox_MA" />
+            </label>
+        </div>
+        
+        <div class="checkbox_row">
+            <p class="checkbox_text">DEF. CIVIL</p>
+            <label class="custom_checkbox">
+                <input type="checkbox" name="checkbox_MA" />
+            </label>
+        </div>
+        
+        <div class="checkbox_row">
+            <p class="checkbox_text">IGP / PC</p>
+            <label class="custom_checkbox">
+                <input type="checkbox" name="checkbox_MA" />
+            </label>
+        </div>
+        
+        <div class="checkbox_row">
+            <p class="checkbox_text">CIT</p>
+            <label class="custom_checkbox">
+                <input type="checkbox" name="checkbox_MA" />
+            </label>
+        </div>
+
+    </div>
+
+    <div class="textarea_row">
+        <div style="width: 100%;">
+            <p class="checkbox_text">OUTRO</p>
+            <div class="did-floating-label-content textarea">
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    var acc = document.getElementsByClassName("sub_accordion_P_EFETUADOS");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+
+            var painel1 = this.nextElementSibling;
+            var icon = painel1.querySelector('.icon'); // Substitua 'sua-classe-da-imagem' pela classe da sua imagem
+            if (painel1.style.display === "flex") {
+                painel1.style.display = "none";
+            } else {
+                painel1.style.display = "flex";
+                
+            }
+        });
+    }
+</script>
+
+</html>

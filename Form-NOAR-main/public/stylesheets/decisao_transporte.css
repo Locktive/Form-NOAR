@@ -1,0 +1,148 @@
+.container_decisao_transporte {
+    display: grid;
+    grid-template-columns: 15rem 15rem;
+    grid-template-rows: 15rem 15rem;
+    justify-content: space-evenly;
+    align-items: space-evenly;
+    gap: 15px;
+    padding: 20px;
+    width: 100%;
+    height: 40rem;
+    background-color: #E1E1E1;
+}
+
+.botao_situacao {
+    display: block;
+    width: 12rem;
+    height: 12rem;
+}
+
+.estado {
+    font-size: large;
+    font-weight: 700;
+    height: 10px;
+    display: flex;
+    text-align: center;
+    margin: 0;
+}
+
+#critico {
+    color: #DD0000;
+}
+
+#instavel {
+    color: #FFA24B;
+}
+
+#potencialmente_instavel {
+    color: #FFD600;
+}
+
+#estavel {
+    color: #4CC900;
+}
+
+.emotes_container {
+    width: 12rem !important;
+    height: 12rem !important;
+    padding: 15px !important;
+    border: none !important;
+    border-radius: 20px !important;
+
+}
+
+.select {
+    background: rgb(255, 145, 0);
+}
+
+.select.highlight {
+    background: rgb(26, 255, 0);
+}
+
+#cont_instavel {
+    background-color: #FFA24B59 !important;
+}
+
+.icon_emote {
+    position: relative;
+    bottom: 145px;
+    left: 50px;
+}
+
+.botao_titulo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* aa */
+.cont_critico {
+    background-color: #FF000033 !important;
+
+    border: solid #e90000 3px;
+    border-radius: 5px;
+
+}
+
+.cont_critico::before {
+    background-color: #FF000055 !important;
+    width: 6em !important;
+    height: 6em !important;
+    transition: none !important;
+    border-radius: 10px !important;
+    z-index: 1 !important;
+}
+
+.cont_instavel {
+    background-color: #FFA24B59 !important;
+
+    border: solid #e90000 3px;
+    border-radius: 5px;
+
+}
+
+.cont_instavel::before {
+    background-color: #FFA24BA6 !important;
+    width: 6em !important;
+    height: 6em !important;
+    transition: none !important;
+    border-radius: 10px !important;
+    z-index: 1 !important;
+}
+
+.cont_pi {
+
+    background-color: #FFD60033 !important;
+
+    border: solid #e90000 3px;
+    border-radius: 5px;
+
+}
+
+.cont_pi::before {
+    background-color: #FFD60066 !important;
+    width: 6em !important;
+    height: 6em !important;
+    transition: none !important;
+    border-radius: 10px !important;
+    z-index: 1 !important;
+}
+
+.cont_estavel {
+
+    background-color: #52FF0033 !important;
+
+    border: solid #e90000 3px;
+    border-radius: 5px;
+
+}
+
+.cont_estavel::before {
+    background-color: #52FF0073 !important;
+    width: 6em !important;
+    height: 6em !important;
+    transition: none !important;
+    border-radius: 10px !important;
+    z-index: 1 !important;
+}

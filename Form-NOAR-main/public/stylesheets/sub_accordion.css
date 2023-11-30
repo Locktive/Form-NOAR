@@ -1,0 +1,42 @@
+.sub_accordion {
+
+  display: flex !important;
+  width: 100% !important;
+  border: none !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background-color: #E1E1E1 !important;
+  padding: 10px !important;
+  color: #333333 !important;
+  text-decoration: none !important;
+  margin: 0 !important;
+  font-weight: 600 !important;
+
+}
+
+.active,.sub_accordion:hover {
+
+  background-color: #ccc;
+  transition: 0.4s !important;
+
+}
+
+.painel {
+  
+  display: flex;
+  flex-direction: column !important;
+  gap: 10px;
+  margin-top:-10px;
+  padding:20px;
+  border: solid #E1E1E1 5px;
+  border-radius: 0px 0px 10px 10px;
+  background-color: #E1E1E1;
+  display: none;
+  overflow: hidden;
+  transition: 0.4s !important;
+
+}
+
+.painel > .checkbox_row {
+  background-color: #D3D3D3;
+}

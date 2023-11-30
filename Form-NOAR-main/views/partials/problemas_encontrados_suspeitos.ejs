@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/custom_checkbox1.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/custom_checkbox2.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/floating_label.css" />
+    <link rel="stylesheet" type="text/css" href="./stylesheets/sub_accordion.css" />
+    <title>Document</title>
+</head>
+
+<style>
+
+    .sub_accordion_pes {
+
+        display: flex !important;
+        width: 100% !important;
+        border: none !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        background-color: #E1E1E1 !important;
+        padding: 10px !important;
+        color: #333333 !important;
+        text-decoration: none !important;
+        margin: 0 !important;
+        font-weight: 600 !important;
+
+
+    }
+    .icon:hover  {
+        transform: rotate(180deg) scale(1.0);
+    }
+
+    .icon_active {
+    transform: rotate(45deg); /* Ajuste o ângulo de rotação desejado */
+    transition: transform 0.3s ease; /* Adicione uma transição suave */
+}
+    .icon {
+        transition: 0.4s;
+    }
+    .rotating {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+</style>
+
+<body>
+    <!-- Criação de uma lista de checkboxes -->
+
+    <div class="checkbox_row">
+        <p class="checkbox_text">PSIQUIÁTRICO</p>
+        <label class="custom_checkbox">
+            <input type="radio" name="radio_PSI" />
+        </label>
+    </div>
+
+    <button type="button" class="sub_accordion_pes">
+        <p class="checkbox_text">RESPIRATÓRIO</p>
+        <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
+    </button>
+    <div class="painel">
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">DPOC</p>
+            <label class="custom_checkbox">
+                <input type="radio" name="radio_RESP" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">INALAÇÃO FUMAÇA</p>
+            <label class="custom_checkbox">
+                <input type="radio" name="radio_RESP" />
+            </label>
+        </div>
+    </div>
+
+    <button type="button" class="sub_accordion_pes">
+        <p class="checkbox_text">DIABETES</p>
+        <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
+    </button>
+    <div class="painel">
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">HIPERGLICERINA</p>
+            <label class="custom_checkbox">
+                <input type="radio" name="radio_Diabetes" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">HIPOGLICERINA</p>
+            <label class="custom_checkbox">
+
+                <input type="radio" name="radio_Diabetes" />
+            </label>
+        </div>
+    </div>
+
+    <button type="button" class="sub_accordion_pes">
+        <p class="checkbox_text">OBSTÉTRICO</p>
+        <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
+    </button>
+    <div class="painel">
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">PARTO EMERGENCIAL</p>
+            <label class="custom_checkbox">
+                <input type="radio" name="radio_OBST" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">GESTANTE</p>
+            <label class="custom_checkbox">
+                <input type="radio" name="radio_OBST" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">HEMORRAGIA EXESSIVA</p>
+            <label class="custom_checkbox">
+
+                <input type="radio" name="radio_OBST" />
+            </label>
+        </div>
+    </div>
+
+    <button type="button" class="sub_accordion_pes">
+        <p class="checkbox_text">TRANSPORTE</p>
+        <img src="./images/arrow 4.png" class="icon" style="width: 32px;  position: relative;" />
+    </button>
+    <div class="painel">
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">AÉREO</p>
+            <label class="custom_checkbox">
+
+                <input type="radio" name="radio_TR" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">CLÍNICO</p>
+            <label class="custom_checkbox">
+
+                <input type="radio" name="radio_TR" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">EMERGENCIAL</p>
+            <label class="custom_checkbox">
+
+                <input type="radio" name="radio_TR" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">PÓS-TRAUMA</p>
+            <label class="custom_checkbox">
+
+                <input type="radio" name="radio_TR" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">SAMU</p>
+            <label class="custom_checkbox">
+                <input type="radio" name="radio_TR" />
+            </label>
+        </div>
+
+        <div class="checkbox_row">
+            <p class="checkbox_text">SEM REMOÇÃO</p>
+            <label class="custom_checkbox">
+
+                <input type="radio" name="radio_TR" />
+            </label>
+        </div>
+        <div class="textarea_row">
+            <div style="width: 100%;">
+                <p class="checkbox_text">OUTRO</p>
+                <div class="did-floating-label-content textarea">
+                    <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="textarea_row">
+        <div style="width: 100%;">
+            <p class="checkbox_text">OUTRO</p>
+            <div class="did-floating-label-content textarea">
+                <textarea class="did-floating-input row_textarea" placeholder="Insira o texto"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- COLOCAR A INFORMAÇÃO DO NÍVEL DE CONSCIÊNCIA -->
+
+    <script>
+        var acc = document.getElementsByClassName("sub_accordion_pes");
+        var i;
+    
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+    
+                var painel1 = this.nextElementSibling;
+                var icon = painel1.querySelector('.icon'); // Substitua 'sua-classe-da-imagem' pela classe da sua imagem
+                if (painel1.style.display === "flex") {
+                    painel1.style.display = "none";
+                } else {
+                    painel1.style.display = "flex";
+                    
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>
