@@ -455,6 +455,20 @@
                clickedPath.classList.add('selected');
             }
          }
+   
+    // Se o ferimento selecionado existir no objeto 'ferimentos'...
+    if (ferimentos.hasOwnProperty(selectedInjury)) {
+        // Iterar sobre cada valor no array do ferimento selecionado
+        ferimentos[selectedInjury].forEach(function(id) {
+            var element = document.getElementById(id);
+            if (element) {
+                // Adicionar a classe 'selected' ao elemento
+                element.classList.add('selected');
+            }
+        });
+    }
+    document.getElementById('ferimentos').value = JSON.stringify(ferimentos);
+    console.log(document.getElementById('ferimentos').value);
          updateDadosDiv();
       });
 
