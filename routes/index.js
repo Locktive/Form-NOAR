@@ -1321,7 +1321,7 @@ router.get('/historico', requireAuth, function (req, res, next) {
       if (err) throw err;
       bombeiros = results;
       console.log(bombeiros);
-      sqlb = 'SELECT Nome, id_bombeiro FROM bombeiro;'
+      sqlb = 'SELECT Nome, id_bombeiro FROM bombeiro WHERE Operante = 1;'
     connection.query(sqlb, function (err, results, fields) {
       if (err) throw err;
       nomes = results;
