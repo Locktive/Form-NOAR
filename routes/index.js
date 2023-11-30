@@ -171,7 +171,7 @@ router.post('/form', requireAuth, function (req, res) {
   console.log(req.body.ferimentos)
   var tpo = req.body.radios1 || 0;
   var vte = req.body.radiovte1 || 0;
-  var pe = req.body.checkboxpe1 || 0;
+  var pe = req.body.checkbox_pe1 || 0;
   var normal = req.body.sinais_annsv1 || 0;
   var perf = req.body.sinais_perfsv1 || 0;
   var ac = req.body.checkboxac1 || 0;
@@ -565,6 +565,18 @@ router.get('/usuario', requireAuth, function (req, res, next) {
   res.render('usuario.ejs', { pag: 'Usuário', title: 'Usuário - Bombeiros de Guaramirim', user: req.session.user, data: req.session.user.data_inicio, nome: req.session.user.nome, codigo: req.session.user.codigo });
 });
 
+router.post('/alteruser', requireAuth, function (req, res, next) {
+  var nome = req.body.nome;
+  var sql = 'UPDATE bombeiro SET Nome = ? WHERE id_bombeiro = ?';
+  var values = [nome, req.session.user.id];
+  connection.query(sql, values, function (err, results, fields) {
+    console.log(results);
+    var newname = nome;
+    req.session.user.nome = newname;
+    if (err) throw err;
+    res.redirect('/ocorrencia');
+  });
+});
 // Rota para o histório de ocorrências
 
 router.get('/ocorrencia', requireAuth, function (req, res, next) {
@@ -622,6 +634,7 @@ router.post('/vitimaalter', function (req, res) {
   var observ = req.body.observ;
   var avacine = req.body.avacine;
   var dct = req.body.dct;
+  console.log(dct);
   var fc = req.body.fc;
   var obj = req.body.obj;
   var pbs = req.body.pbs;
@@ -731,7 +744,8 @@ router.get('/alterform', requireAuth, function (req, res, next) {
       connection.query(dctransporteq, [dct], function (err, results, fields) {
         if (err) throw err;
         // Handle the results
-        var dct = results[0].transporte_opcao;
+        var dct1 = results[0].transporte_opcao;
+        console.log(dct1);
         var motorista = results[0].motorista;
         var socorrista1 = results[0].socorrista1;
         var socorrista2 = results[0].socorrista2;
@@ -946,7 +960,7 @@ router.get('/alterform', requireAuth, function (req, res, next) {
                                                   var talastmn = results[0].tamanho;
                                                   connection.query('SELECT * FROM relatorio WHERE id_relatorio = ?', [relatorio], function (err, results, fields) {
 
-                                                  res.render('form_alter.ejs', { ruptura_bolsa: ruptura_bolsa, pressao: pressao, visual: visual, parto: parto, sexo_bebe: sexo_bebe,complica: complica,pre_natal: pre_natal,primeiro_filho: primeiro_filho, tirante1: tirante1, pag: 'Formulário', gravida: req.query.gravida, idade: req.query.idade,  title: 'Formulário - Bombeiros de Guaramirim', user: req.session.user,relatorio: relatorio,cod: cod,  observ: observ, avacine: avacine, dct: dct, fc: fc, obj: obj, pbs: pbs, pe: pe, ss: ss, glasgow: glasgow, tpo: tpo, vte: vte, ferimentos: ferimentos, final: final, anamneemer: anamneemer, anamnegesta: anamnegesta, mtehosp: mtehosp, mtedesc: mtedesc, sv: sv, oqacon: oqacon, quantotemp: quantotemp, problemasaude: problemasaude, medicamentos: medicamentos, aov: aov, med: med, horamedica: horamedica, tipoalergia: tipoalergia, alergia: alergia, ingeriu: ingeriu, hora_ingest: hora_ingest, periodogesta: periodogesta, medico_pre_natal: medico_pre_natal, quantosfilho: quantosfilho, horacontracoes: horacontracoes, duracaocontracao: duracaocontracao, intervalocontracoes: intervalocontracoes, hora_nascimento: hora_nascimento, nome_bebe: nome_bebe, motorista: motorista, socorrista1: socorrista1, socorrista2: socorrista2, socorrista3: socorrista3, demandante: demandante, fcop: fcop, obsgerais: obsgerais, objetos: objetos, pe1: pe1, fle: fle, feridiv: feridiv, hemorragia: hemorragia, evisc: evisc, fabfaf: fabfaf, amput: amput, queim1: queim1, queim2: queim2, queim3: queim3, queim4: queim4, ac: ac, CSESS: CSESS, pressaoarteria: pressaoarteria, pulso: pulso, respira: respira, satura: satura, htg: htg, temperatura: temperatura, perf: perf , normal: normal, adultoglasgow: adultoglasgow, somaglasgow: somaglasgow, nivelglasgow: nivelglasgow, tpo: tpo, outrosTPO: outrosTPO, vteesc: vteesc, nusb: nusb, despachante: despachante, h_ch: h_ch, km_final: km_final, codsiasus: codsiasus, pes: pes, outroproblemasuspeito: outroproblemasuspeito, outrotransporte: outrotransporte, pes2: pes2, pes3: pes3, pes4: pes4, colarqtd: colarqtd, colartmn: colartmn, ttfqtd: ttfqtd, ttftmn: ttftmn, kedqtd: kedqtd, kedtmn: kedtmn, kitsqtd: kitsqtd, kitstmn: kitstmn, atadurasqtd: atadurasqtd, atadurastmn: atadurastmn, talasqtd: talasqtd, talastmn: talastmn, canula: canula, tirante: tirante, macarigida: macarigida, coxins: coxins, base: base, outromaterialhosp: outromaterialhosp, caratertpoc: caratertpoc, compressa: compressa, luvasdesc: luvasdesc, mascdesc: mascdesc, mantailuminizada: mantailuminizada, pasdodea: pasdodea, sonda: sonda, sorofisi: sorofisi, outromaterialdesc: outromaterialdesc, SESS: SESS, SESS2: SESS2, SESS3: SESS3, SESS4: SESS4, SESS5: SESS5, colar: colar, ttf: ttf, ked: ked, kits: kits, ataduras: ataduras, talas: talas, outrosinal_sintoma: outrosinal_sintoma, tmusocolar: tmusocolar, lpmoxi: lpmoxi, lpmreanima: lpmreanima, outropcef: outropcef});
+                                                  res.render('form_alter.ejs', { ruptura_bolsa: ruptura_bolsa, pressao: pressao, visual: visual, parto: parto, sexo_bebe: sexo_bebe,complica: complica,pre_natal: pre_natal,primeiro_filho: primeiro_filho, tirante1: tirante1, pag: 'Formulário', gravida: req.query.gravida, idade: req.query.idade,  title: 'Formulário - Bombeiros de Guaramirim', user: req.session.user,relatorio: relatorio,cod: cod,  observ: observ, avacine: avacine, dct: dct, dct1: dct1, fc: fc, obj: obj, pbs: pbs, pe: pe, ss: ss, glasgow: glasgow, tpo: tpo, vte: vte, ferimentos: ferimentos, final: final, anamneemer: anamneemer, anamnegesta: anamnegesta, mtehosp: mtehosp, mtedesc: mtedesc, sv: sv, oqacon: oqacon, quantotemp: quantotemp, problemasaude: problemasaude, medicamentos: medicamentos, aov: aov, med: med, horamedica: horamedica, tipoalergia: tipoalergia, alergia: alergia, ingeriu: ingeriu, hora_ingest: hora_ingest, periodogesta: periodogesta, medico_pre_natal: medico_pre_natal, quantosfilho: quantosfilho, horacontracoes: horacontracoes, duracaocontracao: duracaocontracao, intervalocontracoes: intervalocontracoes, hora_nascimento: hora_nascimento, nome_bebe: nome_bebe, motorista: motorista, socorrista1: socorrista1, socorrista2: socorrista2, socorrista3: socorrista3, demandante: demandante, fcop: fcop, obsgerais: obsgerais, objetos: objetos, pe1: pe1, fle: fle, feridiv: feridiv, hemorragia: hemorragia, evisc: evisc, fabfaf: fabfaf, amput: amput, queim1: queim1, queim2: queim2, queim3: queim3, queim4: queim4, ac: ac, CSESS: CSESS, pressaoarteria: pressaoarteria, pulso: pulso, respira: respira, satura: satura, htg: htg, temperatura: temperatura, perf: perf , normal: normal, adultoglasgow: adultoglasgow, somaglasgow: somaglasgow, nivelglasgow: nivelglasgow, tpo: tpo, outrosTPO: outrosTPO, vteesc: vteesc, nusb: nusb, despachante: despachante, h_ch: h_ch, km_final: km_final, codsiasus: codsiasus, pes: pes, outroproblemasuspeito: outroproblemasuspeito, outrotransporte: outrotransporte, pes2: pes2, pes3: pes3, pes4: pes4, colarqtd: colarqtd, colartmn: colartmn, ttfqtd: ttfqtd, ttftmn: ttftmn, kedqtd: kedqtd, kedtmn: kedtmn, kitsqtd: kitsqtd, kitstmn: kitstmn, atadurasqtd: atadurasqtd, atadurastmn: atadurastmn, talasqtd: talasqtd, talastmn: talastmn, canula: canula, tirante: tirante, macarigida: macarigida, coxins: coxins, base: base, outromaterialhosp: outromaterialhosp, caratertpoc: caratertpoc, compressa: compressa, luvasdesc: luvasdesc, mascdesc: mascdesc, mantailuminizada: mantailuminizada, pasdodea: pasdodea, sonda: sonda, sorofisi: sorofisi, outromaterialdesc: outromaterialdesc, SESS: SESS, SESS2: SESS2, SESS3: SESS3, SESS4: SESS4, SESS5: SESS5, colar: colar, ttf: ttf, ked: ked, kits: kits, ataduras: ataduras, talas: talas, outrosinal_sintoma: outrosinal_sintoma, tmusocolar: tmusocolar, lpmoxi: lpmoxi, lpmreanima: lpmreanima, outropcef: outropcef});
                                                 });
                                               });
                                             });
@@ -1307,15 +1321,22 @@ router.get('/historico', requireAuth, function (req, res, next) {
       if (err) throw err;
       bombeiros = results;
       console.log(bombeiros);
-    res.render('historico.ejs', { pag: 'Histórico', title: 'Histórico - Bombeiros de Guaramirim',bombeiros: bombeiros, user: req.session.user, data: data, codigo: data.cod_relatorio, data_alterado: data.ultima_alteracao, fk_paciente: data.fk_paciente, fk_observacoes: data.fk_observacoes, fk_avaliacaocinematica: data.fk_avaliacaocinematica, fk_decisaotransporte: data.fk_decisaotransporte, fk_formadeconducao: data.fk_formadeconducao, fk_objetorecolhido: data.fk_objetorecolhido, fk_prob_encontrados_suspeitos: data.fk_prob_encontrados_suspeitos, fk_procedimentos_efetuados: data.fk_procedimentos_efetuados, fk_sinais_sintomas: data.fk_sinais_sintomas, fk_teste_glasgow: data.fk_teste_glasgow, fk_tipo_ocorrencia_pre_hospitalar: data.fk_tipo_ocorrencia_pre_hospitalar, fk_vitima_era: data.fk_vitima_era, fk_ferimentos_corpo: data.fk_ferimentos_corpo, fk_finalizacao: data.fk_finalizacao, fk_anamne_emergencial: data.fk_anamne_emergencial, fk_anamne_gestacional: data.fk_anamne_gestacional, fk_materiais_hospital: data.fk_materiais_hospital, fk_materiais_descarte: data.fk_materiais_descarte, fk_sinais_vitais: data.fk_sinais_vitais, data_relatorio: data.data_relatorio, criador_relatorio: data.criador_relatorio });
+      sqlb = 'SELECT Nome, id_bombeiro FROM bombeiro;'
+    connection.query(sqlb, function (err, results, fields) {
+      if (err) throw err;
+      nomes = results;
+      console.log(nomes);
+    res.render('historico.ejs', { pag: 'Histórico', title: 'Histórico - Bombeiros de Guaramirim',nomes : nomes,bombeiros: bombeiros, user: req.session.user, data: data, codigo: data.cod_relatorio, data_alterado: data.ultima_alteracao, fk_paciente: data.fk_paciente, fk_observacoes: data.fk_observacoes, fk_avaliacaocinematica: data.fk_avaliacaocinematica, fk_decisaotransporte: data.fk_decisaotransporte, fk_formadeconducao: data.fk_formadeconducao, fk_objetorecolhido: data.fk_objetorecolhido, fk_prob_encontrados_suspeitos: data.fk_prob_encontrados_suspeitos, fk_procedimentos_efetuados: data.fk_procedimentos_efetuados, fk_sinais_sintomas: data.fk_sinais_sintomas, fk_teste_glasgow: data.fk_teste_glasgow, fk_tipo_ocorrencia_pre_hospitalar: data.fk_tipo_ocorrencia_pre_hospitalar, fk_vitima_era: data.fk_vitima_era, fk_ferimentos_corpo: data.fk_ferimentos_corpo, fk_finalizacao: data.fk_finalizacao, fk_anamne_emergencial: data.fk_anamne_emergencial, fk_anamne_gestacional: data.fk_anamne_gestacional, fk_materiais_hospital: data.fk_materiais_hospital, fk_materiais_descarte: data.fk_materiais_descarte, fk_sinais_vitais: data.fk_sinais_vitais, data_relatorio: data.data_relatorio, criador_relatorio: data.criador_relatorio });
   });
 });
-});
+});});
 // Rota tela de contatos
 
 router.get('/contato', function (req, res, next) {
   res.render('contatos.ejs', { pag: 'Contato', title: 'Contato - Bombeiros de Guaramirim', user: req.session.user });
 });
+
+
 
 // rota do registro de bombeiros
 router.post('/bombeiros', requireAuth, admLock, function (req, res, next) {

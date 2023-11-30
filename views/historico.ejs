@@ -32,38 +32,66 @@
            <p class="col-sm-4">Criador do relatorio 
             <select name="bombeiros" id="bombeiros">
                 <option value="0">Filtrar por nome</option>
-                <% for( let index = 0; index < bombeiros.length; index++ ) { %>
-                    <option value="<%= data[index].criador_relatorio %>"><%= bombeiros[index].Nome %></option>
+                <% for( let index = 0; index < nomes.length; index++ ) { %>
+                    <option value="<%= nomes[index].id_bombeiro %>"><%= nomes[index].Nome %></option>
                 <% } %>
         </select></p>
-                <p class="col-sm-2">Acesso </p>
+                <p class="col-sm-2">Acesso</p>
             </div>
             <% for( let index = 0; index < data.length; index++ ) { %>
      <br>
             
-            <div class="row">
+            <div class="row main">
+                <input type="hidden" name="<%= index + 1 %>" value="<%= data[index].criador_relatorio %>">
                 <div class="col-sm-2">
                  <%- data[index].cod_relatorio %>
                 </div>
               <div class="col-sm-2">
-                <%- data[index].data_ocorrencia %>
+                <%- data[index].data_relatorio %>
             </div>
              
             <div class="col-sm-2">
                 <%- data[index].ultima_alteracao %>
             </div>
-            <div class="col-sm-4">
-                <%- data[index].criador_relatorio %>
-            <br>
+            <div name="nome" class="col-sm-4">
+                <%- bombeiros[index].Nome %>
+            </div>
             <div class="col-sm-2">
                 <a href="/ocview?relatorio=<%= data[index].id_relatorio %>&paciente=<%- data[index].fk_paciente %>&observ=<%- data[index].fk_observacoes %>&avacine=<%- data[index].fk_avaliacaocinematica %>&dct=<%- data[index].fk_decisaotransporte %>&fc=<%- data[index].fk_formadeconducao %>&obj=<%- data[index].fk_objetorecolhido %>&pbs=<%- data[index].fk_prob_encontrados_suspeitos %>&pe=<%- data[index].fk_procedimentos_efetuados %>&ss=<%- data[index].fk_sinais_sintomas %>&glasgow=<%- data[index].fk_teste_glasgow %>&tpo=<%- data[index].fk_tipo_ocorrencia_pre_hospitalar %>&vte=<%- data[index].fk_vitima_era %>&ferimentos=<%- data[index].fk_ferimentos_corpo %>&final=<%- data[index].fk_finalizacao %>&anamnemer=<%- data[index].fk_anamne_emergencial %>&anamnegesta=<%- data[index].fk_anamne_gestacional %>&mtehosp=<%- data[index].fk_materiais_hospital %>&mtedesc=<%- data[index].fk_materiais_descarte %>&sv=<%- data[index].fk_sinais_vitais %>" class="btn btn-primary">Acessar</a>
             </div>
-
         </div>
+        <br>
         <br>
         <% } %>
     </div>
         <%- include('./partials/footer.ejs') %>
+        <script>
+             // Seleciona o elemento select
+  var select = document.getElementById('bombeiros');
+
+// Seleciona todas as divs de relatório
+var reportDivs = document.querySelectorAll('.main');
+
+// Adiciona um ouvinte de evento para o evento change
+select.addEventListener('change', function() {
+  // Obtém o valor selecionado
+  var selectedValue = event.target.value;
+    console.log(selectedValue);
+  // Mostra a div de relatório correspondente e oculta todas as outras
+  reportDivs.forEach(function(div, index) {
+    var idcor = index + 1;
+    console.log(idcor);
+    var value = div.querySelector('input[name="'+ idcor +'"]').value;
+
+    console.log(value);
+    if (selectedValue == 0 || value == selectedValue) {
+      div.style.display = 'flex';
+    } else {
+      div.style.display = 'none';
+    }
+  });
+});
+        </script>
 </body>
 
 </html>

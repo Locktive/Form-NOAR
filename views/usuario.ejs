@@ -13,7 +13,7 @@
             min-width: 330px;
             flex-direction: column;
             row-gap: 20px;
-            margin-top: 5rem;
+            margin-top: 3rem;
             margin-bottom: 5rem;
             justify-content: center;
             align-items: center;
@@ -56,7 +56,7 @@
             flex-direction: column;
             align-items: center;
             gap: 10px;
-            width: 18rem;
+            width: 20rem;
             padding: 20px;
             background-color: #F1F1F1;
             border-radius: 5px;
@@ -144,25 +144,25 @@
         <div>
             <img src="./images/usuario.png" />
         </div>
-        <form action="" method="post" style="text-align: center; display: flex; justify-content: center;">
+        <form action="/alteruser" method="post" style="text-align: center; display: flex; justify-content: center;">
             <div class="container_usuario">
                 <div class="Title">
                     <p class="title" style="font-weight: 700; font-size: 40px; color: black;"><%- nome %></p>
                 </div>
                 
                     <div class="input-group1">
-                     <label class="nome">Nome : <%- nome %></label>
-                    </div>
-                    
+                        <label for="nome" class="nome">Nome : </label>   <input type="text" id="nome" name="nome" value="<%- nome %>">
                      
+                    </div>
+            
                 <div class="input-group1">
-                    <label class="email">Data de inicio: <%- data %></label>
+                    <label class="email">Data de inicio:  <br><%- data %></label>
                 </div>
 
                 <div class="input-group1">
                     <label class="email">Código : <%- codigo %></label>
                 </div>
-
+                <input type="submit" class="button" value="Alterar">
             </div>
         </form>
     </div>
