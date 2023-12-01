@@ -1311,25 +1311,34 @@ router.post('/form_alter', requireAuth, function (req, res, next) {
 
 
 router.get('/historico', requireAuth, function (req, res, next) {
+  if (req.session.user.isAdmin == 1) {
   var sqlh = 'SELECT * FROM relatorio ORDER BY ultima_alteracao DESC';
 
   connection.query(sqlh, function (err, results, fields) {
     if (err) throw err;
     data = results;
-    sqlb = 'SELECT Nome FROM bombeiro INNER JOIN relatorio ON id_bombeiro = criador_relatorio;'
+    var sqlb = 'SELECT Nome FROM bombeiro INNER JOIN relatorio ON id_bombeiro = criador_relatorio;'
     connection.query(sqlb, function (err, results, fields) {
       if (err) throw err;
       bombeiros = results;
       console.log(bombeiros);
-      sqlb = 'SELECT Nome, id_bombeiro FROM bombeiro WHERE Operante = 1;'
-    connection.query(sqlb, function (err, results, fields) {
+      var sqln = 'SELECT Nome, id_bombeiro FROM bombeiro WHERE Operante = 1;'
+    connection.query(sqln, function (err, results, fields) {
       if (err) throw err;
       nomes = results;
       console.log(nomes);
     res.render('historico.ejs', { pag: 'Histórico', title: 'Histórico - Bombeiros de Guaramirim',nomes : nomes,bombeiros: bombeiros, user: req.session.user, data: data, codigo: data.cod_relatorio, data_alterado: data.ultima_alteracao, fk_paciente: data.fk_paciente, fk_observacoes: data.fk_observacoes, fk_avaliacaocinematica: data.fk_avaliacaocinematica, fk_decisaotransporte: data.fk_decisaotransporte, fk_formadeconducao: data.fk_formadeconducao, fk_objetorecolhido: data.fk_objetorecolhido, fk_prob_encontrados_suspeitos: data.fk_prob_encontrados_suspeitos, fk_procedimentos_efetuados: data.fk_procedimentos_efetuados, fk_sinais_sintomas: data.fk_sinais_sintomas, fk_teste_glasgow: data.fk_teste_glasgow, fk_tipo_ocorrencia_pre_hospitalar: data.fk_tipo_ocorrencia_pre_hospitalar, fk_vitima_era: data.fk_vitima_era, fk_ferimentos_corpo: data.fk_ferimentos_corpo, fk_finalizacao: data.fk_finalizacao, fk_anamne_emergencial: data.fk_anamne_emergencial, fk_anamne_gestacional: data.fk_anamne_gestacional, fk_materiais_hospital: data.fk_materiais_hospital, fk_materiais_descarte: data.fk_materiais_descarte, fk_sinais_vitais: data.fk_sinais_vitais, data_relatorio: data.data_relatorio, criador_relatorio: data.criador_relatorio });
   });
 });
-});});
+});} else {
+  var sql = 'SELECT * FROM relatorio WHERE criador_relatorio = ? ORDER BY ultima_alteracao DESC';
+  var values = [req.session.user.id];
+  connection.query(sql, values, function (err, results, fields) {
+    if (err) throw err;
+    data = results;
+
+    res.render('historic_copy.ejs', { pag: 'Histórico', title: 'Histórico - Bombeiros de Guaramirim',Nome : req.session.user.nome, user: req.session.user, data: data, codigo: data.cod_relatorio, data_alterado: data.ultima_alteracao, fk_paciente: data.fk_paciente, fk_observacoes: data.fk_observacoes, fk_avaliacaocinematica: data.fk_avaliacaocinematica, fk_decisaotransporte: data.fk_decisaotransporte, fk_formadeconducao: data.fk_formadeconducao, fk_objetorecolhido: data.fk_objetorecolhido, fk_prob_encontrados_suspeitos: data.fk_prob_encontrados_suspeitos, fk_procedimentos_efetuados: data.fk_procedimentos_efetuados, fk_sinais_sintomas: data.fk_sinais_sintomas, fk_teste_glasgow: data.fk_teste_glasgow, fk_tipo_ocorrencia_pre_hospitalar: data.fk_tipo_ocorrencia_pre_hospitalar, fk_vitima_era: data.fk_vitima_era, fk_ferimentos_corpo: data.fk_ferimentos_corpo, fk_finalizacao: data.fk_finalizacao, fk_anamne_emergencial: data.fk_anamne_emergencial, fk_anamne_gestacional: data.fk_anamne_gestacional, fk_materiais_hospital: data.fk_materiais_hospital, fk_materiais_descarte: data.fk_materiais_descarte, fk_sinais_vitais: data.fk_sinais_vitais, data_relatorio: data.data_relatorio, criador_relatorio: data.criador_relatorio });
+});}});
 // Rota tela de contatos
 
 router.get('/contato', function (req, res, next) {
